@@ -1,0 +1,28 @@
+{#- ZA LEKARE · sekcija za ginekologe (prenatalni testovi i matične ćelije)
+    Sidro: #ginekolozi (link u zaglavlju)
+    Sadržaj: stranice.zaLekare.ginekolozi  ·  dugme sa "glavno: true" je puno zeleno
+    Ikonice: ilustracije/za-lekare/ikonice.njk  ·  Stil: css/stranice/za-lekare.css (.lekari-gin) -#}
+{%- from "ilustracije/za-lekare/ikonice.njk" import ikonica -%}
+{%- set d = stranice.zaLekare.ginekolozi -%}
+<section id="ginekolozi" class="lekari-gin" aria-labelledby="lekari-gin-naslov">
+  <div class="kontejner lekari-gin__mreza">
+    <div class="lekari-gin__levo">
+      <p class="lekari-gin__nadnaslov">{{ d.nadnaslov }}</p>
+      <h2 id="lekari-gin-naslov" class="naslov-l lekari-gin__naslov">{{ d.naslov }}</h2>
+      <p class="blag lekari-gin__tekst">{{ d.tekst }}</p>
+      <div class="lekari-gin__dugmad">
+        {%- for b in d.dugmad %}
+        <a href="{{ b.link }}" class="lekari-gin__dugme{% if b.glavno %} lekari-gin__dugme--glavno{% endif %}">{{ b.tekst }}<span class="lekari-gin__strelica" aria-hidden="true">→</span></a>
+        {%- endfor %}
+      </div>
+    </div>
+    <ul class="lekari-gin__lista">
+      {%- for s in d.stavke %}
+      <li class="lekari-kartica lekari-kartica--mint">
+        {{ ikonica(s.ikonica, 34) }}
+        <span><strong>{{ s.naslov }}</strong><span>{{ s.tekst }}</span></span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

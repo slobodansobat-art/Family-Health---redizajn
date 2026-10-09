@@ -1,0 +1,336 @@
+/* ==========================================================================
+   STRANICA: ONKO ANALIZA, šablon  (/onkogenetika/analize/<slug>/, uzor: Cancer Precision)
+   Sekcije: src/_includes/sekcije/analiza/  ·  JS: src/assets/js/stranice/analiza.js
+   Redosled: hero · prekidač (Za lekare / Za pacijente) · panel za lekare ·
+             panel za pacijente · srodne analize · kontakt
+   ========================================================================== */
+.analiza {
+  --analiza-mreza: 600px;          /* veličina animirane mreže u heru */
+  --analiza-traka: 72px;           /* visina prilepljene trake sa tabovima */
+}
+.analiza__h2 {                     /* veliki naslovi sekcija (serif) */
+  font-family: var(--font-naslov); font-size: 40px; line-height: 1.12; color: var(--ljubicasta-800);
+}
+/* Skok na #kontakt ili #za-pacijente: cilj ostaje ispod prilepljene trake sa tabovima */
+.analiza #kontakt, .analiza__panel { scroll-margin-top: var(--analiza-traka); }
+/* Prva sekcija panela uvek ima isti razmak od vrha (i kad analiza nema sve sekcije) */
+.analiza__panel > section:first-child, .analiza__panel > div:first-child { padding-top: 88px; }
+
+/* --- Hero (tamna pozadina + animirana mreža) ------------------------------ */
+.analiza-hero { position: relative; overflow: hidden; background: var(--ljubicasta-800); color: var(--bela); }
+.analiza-hero__mreza {
+  position: absolute; right: -80px; top: -110px;
+  width: var(--analiza-mreza); height: var(--analiza-mreza); opacity: .9; pointer-events: none;
+}
+.analiza-hero__unutra { position: relative; padding-top: 40px; }
+.analiza-hero__putanja { margin-bottom: 44px; font-size: 14px; color: var(--ljubicasta-400); }
+.analiza-hero__putanja a { color: var(--ljubicasta-400); }
+.analiza-hero__putanja a:hover { color: var(--bela); }
+.analiza-hero__nadnaslov { margin-bottom: 14px; font-size: 15px; color: var(--ljubicasta-400); }
+.analiza-hero__naslov { font-family: var(--font-naslov); font-size: 72px; line-height: 1; letter-spacing: -0.8px; }
+.analiza-hero__tekst { margin-top: 22px; max-width: 560px; font-size: 19px; color: var(--tekst-na-tamnom); }
+.analiza-hero__podaci {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 20px 32px;
+  max-width: 980px; margin: 44px 0 0; padding: 26px 0 30px;
+  border-top: 1px solid var(--ljubicasta-700);
+}
+.analiza-hero__podaci dt { font-size: 13px; color: var(--ljubicasta-400); }
+.analiza-hero__podaci dd { margin: 4px 0 0; }
+/* Bez tabele podataka: malo prostora ispod teksta */
+.analiza-hero__unutra > :last-child:not(dl) { margin-bottom: 64px; }
+
+/* --- Prekidač publike (prilepljen uz vrh ekrana pri skrolovanju) ---------- */
+.analiza-prekidac {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--bela); border-bottom: 1px solid var(--linija-svetla);
+}
+.analiza-prekidac__unutra {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;
+  padding-block: 14px;
+}
+.analiza-prekidac__tabovi { display: flex; padding: 4px; background: var(--ljubicasta-50); border-radius: 999px; }
+.analiza-prekidac__tab {
+  padding: 10px 22px; border: 0; border-radius: 999px;
+  background: transparent; color: var(--ljubicasta-650);
+  font-size: 15px; font-weight: 600; line-height: 1.4;
+  transition: background .25s ease, color .25s ease;
+}
+.analiza-prekidac__tab:hover { color: var(--ljubicasta-800); }
+.analiza-prekidac__tab[aria-selected="true"] { background: var(--ljubicasta-600); color: var(--bela); }
+.analiza-prekidac__dugme { padding: 11px 20px; }
+
+/* --- Panel ZA LEKARE ------------------------------------------------------- */
+/* Tehnički podaci: uvod levo, tabela desno */
+.analiza-tehnicki {
+  display: flex; flex-wrap: wrap; align-items: flex-start; gap: 40px 72px;
+  padding-block: 88px 40px;
+}
+.analiza-tehnicki__uvod { flex: 1 1 340px; min-width: 0; }
+.analiza-tehnicki__uvod .analiza__h2 { margin-bottom: 16px; }
+.analiza-tehnicki__tekst { max-width: 420px; color: var(--tekst-blag); }
+.analiza-tehnicki__tabela { flex: 1.4 1 560px; min-width: 0; margin: 0; border-bottom: 1px solid var(--linija); }
+.analiza-tehnicki__tabela > div {
+  display: grid; grid-template-columns: minmax(150px, 1fr) 2fr; gap: 12px;
+  padding: 14px 0; border-top: 1px solid var(--linija);
+}
+.analiza-tehnicki__tabela dt { color: var(--tekst-blag); }
+.analiza-tehnicki__tabela dd { margin: 0; }
+
+/* Uzorak + šta sadrži izveštaj: dve kartice */
+.analiza-kartice {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;
+  padding-block: 48px;
+}
+.analiza-kartica { min-width: 0; border-radius: var(--zaobljenje); }
+.analiza-kartica:only-child { max-width: 760px; }   /* samo jedna kartica: ne preko cele širine */
+.analiza-kartica--puna { padding: 32px; background: var(--ljubicasta-50); }
+.analiza-kartica--izvestaj { border: 1px solid var(--ljubicasta-200); overflow: hidden; }
+.analiza-kartica__telo { padding: 32px; }
+.analiza-kartica__naslov { margin-bottom: 14px; font-family: var(--font-tekst); font-size: 20px; font-weight: 600; line-height: 1.3; color: var(--ljubicasta-800); }
+.analiza-kartica__lista { display: flex; flex-direction: column; gap: 10px; padding-left: 20px; }
+.analiza-kartica__lista strong { font-weight: 600; }
+.analiza-kartica__napomena { margin-top: 16px; font-size: 14px; color: var(--tekst-blag); }
+/* Traka "primer nalaza" i kvačice vide se samo na mobilnom (kao u skici) */
+.analiza-kartica__traka { display: none; }
+.analiza-kartica__lista--kvacice svg { display: none; }
+
+/* Dokumenta + direktna linija */
+.analiza-dokumenti {
+  display: flex; flex-wrap: wrap; align-items: flex-start; gap: 32px 72px;
+  padding-block: 48px var(--sekcija);
+}
+.analiza-dokumenti__lista { flex: 1 1 420px; min-width: 0; }
+.analiza-dokumenti__lista ul { list-style: none; border-bottom: 1px solid var(--linija-svetla); }
+.analiza-dokumenti__stavka {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  padding: 14px 0; border-top: 1px solid var(--linija-svetla);
+  color: var(--tekst); text-decoration: none;
+}
+.analiza-dokumenti__stavka--link { color: var(--ljubicasta-600); font-weight: 600; }
+.analiza-dokumenti__stavka--link:hover { color: var(--ljubicasta-650); text-decoration: underline; }
+.analiza-dokumenti__oznaka { flex-shrink: 0; font-size: 14px; font-weight: 400; color: var(--tekst-blag); }
+.analiza-linija {
+  flex: 1 1 320px; min-width: 0; padding: 32px;
+  border-radius: var(--zaobljenje); background: var(--ljubicasta-800); color: var(--bela);
+}
+.analiza-dokumenti--samo-linija .analiza-linija { flex: 0 1 560px; }
+.analiza-linija__oznaka { font-size: 15px; color: var(--ljubicasta-400); }
+.analiza-linija__broj {
+  display: block; margin-top: 6px;
+  font-family: var(--font-naslov); font-size: 32px; line-height: 1.2; color: var(--bela); text-decoration: none;
+}
+.analiza-linija__broj:hover { color: var(--ljubicasta-250); }
+.analiza-linija__tekst { margin-top: 12px; font-size: 15px; color: var(--tekst-na-tamnom); }
+
+/* --- Panel ZA PACIJENTE ---------------------------------------------------- */
+/* Šta analiza pokazuje: tekst i preporuka levo, dijagram desno */
+.analiza-objasnjenje {
+  display: grid; grid-template-columns: minmax(0, 1.07fr) minmax(0, 1fr); grid-template-rows: auto 1fr;
+  column-gap: 80px; align-items: start;
+  padding-block: 88px 40px;
+}
+.analiza-objasnjenje__tekst { grid-column: 1; }
+.analiza-objasnjenje__tekst .analiza__h2 { margin-bottom: 18px; }
+.analiza-objasnjenje__pasusi { max-width: 600px; font-size: 17px; }
+.analiza-objasnjenje__pasusi > * + * { margin-top: 14px; }
+.analiza-objasnjenje__dijagram {
+  grid-column: 2; grid-row: 1 / span 2;
+  display: flex; flex-direction: column; gap: 14px;
+  padding: 30px; border-radius: var(--zaobljenje); background: var(--ljubicasta-50);
+}
+.analiza-objasnjenje__dijagram figcaption { font-size: 15px; color: var(--tekst-blag); }
+.analiza-objasnjenje__preporuka { grid-column: 1; }
+.analiza-objasnjenje__preporuka h3 { margin: 28px 0 12px; font-family: var(--font-tekst); font-size: 18px; font-weight: 600; color: var(--ljubicasta-800); }
+.analiza-objasnjenje__preporuka ul { display: flex; flex-direction: column; gap: 8px; padding-left: 20px; }
+.analiza-objasnjenje--bez-dijagrama { grid-template-columns: minmax(0, 760px); }
+
+/* Dijagram: tumor naspram zdravog tkiva (ilustracije/analiza/dijagram.njk) */
+.analiza-dijagram { display: block; width: 100%; height: auto; font-family: var(--font-tekst); }
+.analiza-dijagram__naslov { font-size: 13px; font-weight: 600; fill: var(--ljubicasta-800); }
+.analiza-dijagram__tumor { fill: var(--ljubicasta-400); }
+.analiza-dijagram__zdravo { fill: var(--ljubicasta-100); }
+.analiza-dijagram__potez { stroke: var(--bela); stroke-width: 2; }
+.analiza-dijagram__nasledjena { fill: var(--bela); stroke: var(--ljubicasta-500); stroke-width: 3; }
+.analiza-dijagram__meta { fill: var(--crvena-600); }
+.analiza-dijagram__veza { fill: none; stroke: var(--crvena-600); stroke-width: 2; stroke-dasharray: 4 5; }
+.analiza-dijagram__oznaka { font-size: 13px; font-weight: 600; fill: var(--bela); }
+.analiza-dijagram__legenda { font-size: 12px; fill: var(--tekst-blag); }
+/* Šira verzija crteža od 600px naviše, uža na telefonu */
+.analiza-dijagram--uski { display: none; }
+@media (max-width: 599px) {
+  .analiza-dijagram--siroki { display: none; }
+  .analiza-dijagram--uski { display: block; }
+}
+
+/* Koraci (makro "koraci"; ovde samo razmak i boja ilustracije krvi) */
+.analiza-koraci { padding-block: 60px; }
+.analiza-koraci__naslov { margin-bottom: 32px; font-size: 36px; }
+.analiza-ilustracija-krv { fill: var(--crvena-600); }
+
+/* Koliko košta */
+.analiza-cena { padding-block: 40px var(--sekcija); }
+.analiza-cena__kartica {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 20px 48px;
+  padding: 36px 40px; border-radius: var(--zaobljenje); background: var(--ljubicasta-50);
+}
+.analiza-cena__tekst { flex: 1 1 420px; min-width: 0; }
+.analiza-cena__tekst p { color: var(--tekst-blag); }
+.analiza-cena__naslov { margin-bottom: 10px; font-family: var(--font-naslov); font-size: 30px; line-height: 1.15; color: var(--ljubicasta-800); }
+.analiza-cena__dugme { padding: 15px 24px; }
+
+/* --- Srodne analize ---------------------------------------------------------- */
+.analiza-srodne { padding-block: 88px; background: var(--ljubicasta-50); }
+.analiza-srodne__naslov { margin-bottom: 28px; font-size: 36px; }
+.analiza-srodne__lista { list-style: none; border-bottom: 1px solid var(--ljubicasta-200); }
+.analiza-srodne__lista li { border-top: 1px solid var(--ljubicasta-200); }
+.analiza-srodne__link {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 20px 0; color: var(--ljubicasta-800); text-decoration: none;
+}
+.analiza-srodne__link:hover { color: var(--ljubicasta-600); }
+.analiza-srodne__tekst { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 24px; }
+.analiza-srodne__naziv { font-family: var(--font-naslov); font-size: 24px; line-height: 1.2; }
+.analiza-srodne__opis { color: var(--tekst-blag); }
+.analiza-srodne__strelica { display: none; color: var(--ljubicasta-600); }
+
+/* --- Kontakt (slanje nalaza) -------------------------------------------------- */
+.analiza-kontakt { background: var(--ljubicasta-800); color: var(--bela); }
+.analiza-kontakt__unutra { display: flex; flex-wrap: wrap; gap: 40px 72px; padding-block: 88px; }
+.analiza-kontakt__uvod { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.analiza-kontakt__naslov { font-family: var(--font-naslov); font-size: 44px; line-height: 1.08; }
+.analiza-kontakt__tekst { max-width: 400px; color: var(--tekst-na-tamnom); }
+.analiza-kontakt__forma { flex: 1 1 520px; min-width: 0; align-self: flex-start; }
+
+/* --- Mali laptop i tablet (960–1100px): manji hero naslov ------------------ */
+@media (max-width: 1100px) {
+  .analiza-hero__naslov { font-size: 60px; }
+  .analiza-objasnjenje { column-gap: 48px; }
+}
+
+/* ==========================================================================
+   MOBILNI (ispod 960px)
+   ========================================================================== */
+@media (max-width: 959px) {
+  .analiza { --analiza-mreza: 340px; }
+  .analiza__h2 { font-size: 30px; }
+  .analiza #kontakt, .analiza__panel { scroll-margin-top: 0; }   /* traka nije prilepljena na mobilnom */
+
+  /* Hero */
+  .analiza-hero__mreza { right: -160px; top: -60px; opacity: .55; }
+  .analiza-hero__unutra { padding-block: 20px 30px; }
+  .analiza-hero__putanja { margin-bottom: 22px; }
+  .analiza-hero__nadnaslov { margin-bottom: 6px; font-size: 14px; }
+  .analiza-hero__naslov { font-size: 44px; letter-spacing: -0.4px; }
+  .analiza-hero__tekst { margin-top: 14px; font-size: 16px; }
+  .analiza-hero__podaci { grid-template-columns: 1fr 1fr; gap: 16px 14px; margin-top: 22px; padding: 18px 0 0; }
+  .analiza-hero__podaci dd { margin-top: 3px; font-size: 15px; }
+  .analiza-hero__unutra > :last-child:not(dl) { margin-bottom: 0; }
+  .analiza__panel > section:first-child, .analiza__panel > div:first-child { padding-top: 28px; }
+
+  /* Prekidač: tabovi preko cele širine, bez prilepljivanja i bez dugmeta (dugme je u donjoj traci) */
+  .analiza-prekidac { position: static; }
+  .analiza-prekidac__unutra { display: block; }
+  .analiza-prekidac__tab { flex: 1; min-height: 44px; padding: 0 10px; }
+  .analiza-prekidac__dugme { display: none; }
+
+  /* Za lekare */
+  .analiza-tehnicki { display: block; padding-block: 28px 10px; }
+  .analiza-tehnicki__uvod .analiza__h2 { margin-bottom: 10px; }
+  .analiza-tehnicki__tekst { margin-bottom: 16px; font-size: 15px; }
+  .analiza-tehnicki__tabela > div { display: block; padding: 12px 0; }
+  .analiza-tehnicki__tabela dt { font-size: 13.5px; }
+  .analiza-tehnicki__tabela dd { margin-top: 2px; font-size: 15.5px; }
+
+  .analiza-kartice { display: flex; flex-direction: column; gap: 14px; padding-block: 20px 0; }
+  .analiza-kartica--puna { padding: 22px 20px; }
+  .analiza-kartica--izvestaj { box-shadow: 0 10px 26px rgba(47, 21, 68, .06); }
+  .analiza-kartica__telo { padding: 20px; }
+  .analiza-kartica__naslov { margin-bottom: 12px; font-size: 19px; }
+  .analiza-kartica__lista { font-size: 15px; }
+  .analiza-kartica__napomena { margin-top: 14px; }
+  .analiza-kartica__traka {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 12px 20px; background: var(--ljubicasta-800); color: var(--tekst-na-tamnom);
+    font-size: 12.5px; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .analiza-kartica__tacke { display: flex; gap: 5px; }
+  .analiza-kartica__tacke span { width: 8px; height: 8px; border-radius: 50%; background: var(--ljubicasta-400); }
+  .analiza-kartica__tacke span:first-child { background: var(--crvena-600); }
+  .analiza-kartica__tacke span:nth-child(2) { background: var(--ljubicasta-500); }
+  .analiza-kartica__lista--kvacice { list-style: none; padding-left: 0; }
+  .analiza-kartica__lista--kvacice li { display: flex; gap: 10px; align-items: flex-start; }
+  .analiza-kartica__lista--kvacice svg { display: block; flex-shrink: 0; margin-top: 3px; color: var(--ljubicasta-600); }
+
+  .analiza-dokumenti { display: block; padding-block: 28px 0; }
+  .analiza-dokumenti__lista .analiza-kartica__naslov { margin-bottom: 10px; }
+  .analiza-dokumenti__stavka { padding: 13px 0; font-size: 15px; }
+  .analiza-dokumenti__oznaka { font-size: 13px; }
+  .analiza-linija { margin-top: 18px; padding: 20px; border-radius: 22px; }
+  .analiza-linija__oznaka { font-size: 14px; }
+  .analiza-linija__broj { margin-top: 4px; font-size: 28px; }
+  .analiza-linija__tekst { margin-top: 8px; font-size: 14px; }
+
+  /* Za pacijente: tekst, pa dijagram, pa preporuka */
+  .analiza-objasnjenje { display: block; padding-block: 28px 0; }
+  .analiza-objasnjenje__tekst .analiza__h2 { margin-bottom: 14px; }
+  .analiza-objasnjenje__pasusi { font-size: 16px; }
+  .analiza-objasnjenje__pasusi > * + * { margin-top: 12px; }
+  .analiza-objasnjenje__dijagram { margin-top: 18px; gap: 12px; padding: 18px 14px; border-radius: 24px; }
+  .analiza-objasnjenje__dijagram figcaption { margin-inline: 4px; font-size: 14px; }
+  .analiza-objasnjenje__dijagram .analiza-dijagram { max-width: 520px; margin-inline: auto; }   /* tablet: crtež ne raste preko mere */
+  .analiza-objasnjenje__preporuka h3 { margin: 22px 0 10px; font-size: 17px; }
+  .analiza-objasnjenje__preporuka ul { font-size: 15px; }
+
+  /* Koraci na mobilnom (kao u skici): redovi sa linijama, opis u kartici ispod koraka */
+  .analiza-koraci { padding-block: 30px 0; }
+  .analiza-koraci__naslov { margin-bottom: 14px; font-size: 28px; }
+  .analiza-koraci .koraci__linija { display: none; }
+  .analiza-koraci .koraci__lista { border-bottom: 1px solid var(--linija); }
+  .analiza-koraci .koraci__stavka { border-top: 1px solid var(--linija); }
+  .analiza-koraci .koraci__dugme { padding: 14px 0; }
+  .analiza-koraci .koraci__broj { width: 40px; height: 40px; font-size: 16px; border-color: var(--ljubicasta-100); }
+  .analiza-koraci .je-otvoren .koraci__broj { border-color: var(--ljubicasta-600); }
+  .analiza-koraci .koraci__naslov { font-size: 21px; line-height: 1.2; color: var(--tekst-blag); }
+  .analiza-koraci .je-otvoren .koraci__naslov { color: var(--ljubicasta-800); }
+  .analiza-koraci .koraci__podnaslov { font-size: 14px; }
+  .analiza-koraci .koraci__lista .koraci__panel {
+    display: flex; flex-direction: column; gap: 10px;
+    margin: 0 0 16px; padding: 18px; border-radius: 22px; background: var(--ljubicasta-50);
+  }
+  .analiza-koraci .koraci__lista .koraci__sadrzaj { gap: 10px; flex-basis: auto; font-size: 15px; color: var(--tekst); }
+  .analiza-koraci .koraci__lista .koraci__oznaka { display: block; font-size: 13px; }
+  .analiza-koraci .koraci__lista .koraci__glava { display: block; font-size: 24px; }
+  .analiza-koraci .koraci__lista .koraci__cinjenice li { font-size: 15px; }
+  /* "Sledeći korak": dugme sa obrubom; tekst je aria-label iz makroa */
+  .analiza-koraci .koraci__lista .koraci__dalje {
+    display: inline-flex; align-self: flex-start; gap: 6px; width: auto; height: auto;
+    margin-top: 4px; padding: 11px 18px;
+    border: 1px solid var(--ljubicasta-600); background: var(--bela); color: var(--ljubicasta-600);
+    box-shadow: none; font-size: 15px; font-weight: 600; border-radius: 999px;
+  }
+  .analiza-koraci .koraci__lista .koraci__dalje::before { content: attr(aria-label); }
+  .analiza-koraci .koraci__lista .koraci__dalje svg { width: 16px; height: 16px; }
+  .analiza-koraci .koraci__lista .koraci__dalje:hover { transform: none; background: var(--ljubicasta-50); }
+
+  .analiza-cena { padding-block: 26px 0; }
+  .analiza-cena__kartica { display: block; padding: 22px 20px; border-radius: 24px; }
+  .analiza-cena__naslov { margin-bottom: 8px; font-size: 26px; }
+  .analiza-cena__tekst p { font-size: 15px; }
+  .analiza-cena__dugme { display: flex; width: 100%; margin-top: 16px; padding: 14px; }
+
+  /* Srodne analize: naziv i opis jedno ispod drugog, strelica desno */
+  .analiza-srodne { margin-top: 34px; padding-block: 30px 32px; }
+  .analiza-srodne__naslov { margin-bottom: 12px; font-size: 28px; }
+  .analiza-srodne__link { padding: 16px 0; }
+  .analiza-srodne__tekst { display: block; }
+  .analiza-srodne__naziv { display: block; font-size: 22px; }
+  .analiza-srodne__opis { display: block; font-size: 14px; }
+  .analiza-srodne__strelica { display: block; }
+
+  /* Kontakt */
+  .analiza-kontakt__unutra { display: block; padding-block: 32px 36px; }
+  .analiza-kontakt__uvod { gap: 10px; }
+  .analiza-kontakt__naslov { font-size: 32px; line-height: 1.1; }
+  .analiza-kontakt__tekst { font-size: 15px; }
+  .analiza-kontakt__forma { margin-top: 18px; }
+}

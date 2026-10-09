@@ -6,6 +6,7 @@
      pokreniMobilniMeni()     meni preko celog ekrana na telefonu
      pokreniKorake()          "stepper" (desktop) / harmonika (mobilni)
      pokreniTabove()          tabovi sa strelicama na tastaturi i #adresom
+     pokreniFajlPolja()       ime izabranog fajla u formama
    Skripte pojedinačnih stranica su u src/assets/js/stranice/.
    ========================================================================== */
 (function () {
@@ -130,12 +131,36 @@
         });
       });
       koraci.querySelectorAll("[data-koraci-dalje]").forEach(function (b) {
-        b.addEventListener("click", function () { izaberi(aktivan + 1); });
+        b.addEventListener("click", function () {
+          if (!MOBILNI.matches) { izaberi(aktivan + 1); return; }
+          // Mobilni: zatvori trenutni korak i otvori sledeći
+          var j = stavke.indexOf(b.closest(".koraci__stavka"));
+          if (j < 0 || j + 1 >= stavke.length) return;
+          [[j, false], [j + 1, true]].forEach(function (p) {
+            stavke[p[0]].classList.toggle("je-otvoren", p[1]);
+            dugmad[p[0]].setAttribute("aria-expanded", p[1] ? "true" : "false");
+            paneli[p[0]].hidden = !p[1];
+          });
+          dugmad[j + 1].focus({ preventScroll: true });
+          if (stavke[j + 1].getBoundingClientRect().top < 0) stavke[j + 1].scrollIntoView({ block: "start" });
+        });
       });
 
       function primeni() { MOBILNI.matches ? prebaciNaMobilni() : prebaciNaDesktop(); }
       MOBILNI.addEventListener("change", primeni);
       primeni();
+    });
+  }
+
+  /* --- Polje za fajl: prikazuje ime izabranog fajla ----------------------- */
+  function pokreniFajlPolja() {
+    document.querySelectorAll("[data-fajl]").forEach(function (f) {
+      var unos = f.querySelector("input[type=file]");
+      var ime = f.querySelector("[data-fajl-ime]");
+      var prazno = ime.textContent;
+      unos.addEventListener("change", function () {
+        ime.textContent = unos.files.length ? Array.prototype.map.call(unos.files, function (x) { return x.name; }).join(", ") : prazno;
+      });
     });
   }
 
@@ -201,6 +226,7 @@
     pokreniMobilniMeni();
     pokreniKorake();
     pokreniTabove();
+    pokreniFajlPolja();
     pokreniMreze();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", pokreni);

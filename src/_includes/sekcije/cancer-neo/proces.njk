@@ -1,0 +1,32 @@
+{#- CANCER NEO · Proces (#proces): koordinator levo (lepljiv na desktopu),
+    vremenska linija od pet koraka desno.
+    Sadržaj: stranice.cancerNeo.proces   ·   Stil: css/stranice/cancer-neo.css (PROCES) -#}
+{%- from "makroi/osnovni.njk" import slika -%}
+{%- set d = stranice.cancerNeo.proces -%}
+<section id="proces" class="neo-proces" aria-labelledby="neo-proces-naslov">
+  <div class="kontejner neo-sekcija neo-dve-kolone">
+    <div class="neo-proces__levo">
+      <p class="neo-nadnaslov">{{ d.nadnaslov }}</p>
+      <h2 id="neo-proces-naslov" class="naslov-l neo-naslov">{{ d.naslov }}</h2>
+      <p class="neo-blag">{{ d.uvod }}</p>
+      <div class="neo-proces__koordinator">
+        {{ slika(d.koordinator.slika, d.koordinator.slikaOpis, "slika--krug neo-proces__foto") }}
+        <span><strong>{{ d.koordinator.ime }}</strong><span>{{ d.koordinator.uloga }}</span></span>
+      </div>
+    </div>
+    <ol class="neo-proces__koraci">
+      {%- for k in d.koraci %}
+      <li class="neo-proces__korak">
+        <span class="neo-proces__broj">{{ loop.index }}</span>
+        <div class="neo-proces__sadrzaj">
+          <div class="neo-proces__naslovi">
+            <h3 class="neo-proces__naslov">{{ k.naslov }}</h3>
+            <span class="neo-proces__oznaka">{{ k.oznaka }}</span>
+          </div>
+          <p class="neo-proces__tekst">{{ k.tekst }}</p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>

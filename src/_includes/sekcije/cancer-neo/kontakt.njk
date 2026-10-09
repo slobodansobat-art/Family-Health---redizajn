@@ -1,0 +1,30 @@
+{#- CANCER NEO · Kontakt (#kontakt): poziv na prvi razgovor + forma
+    Sadržaj: stranice.cancerNeo.kontakt   ·   Stil: css/stranice/cancer-neo.css (KONTAKT)
+    Forma: "cancer-neo-razgovor" (Netlify Forms, posle slanja vodi na /hvala/)
+    Telefon i mejl: podesavanja.kontakt -#}
+{%- from "makroi/komponente.njk" import forma, polje, izbor, saglasnost, posalji with context -%}
+{%- set d = stranice.cancerNeo.kontakt -%}
+{%- set f = d.forma -%}
+{%- set k = podesavanja.kontakt -%}
+<section id="kontakt" class="neo-kontakt neo-tamna" aria-labelledby="neo-kontakt-naslov">
+  <div class="kontejner neo-kontakt__mreza">
+    <div class="neo-kontakt__levo">
+      <p class="neo-nadnaslov">{{ d.nadnaslov }}</p>
+      <h2 id="neo-kontakt-naslov" class="naslov-l neo-naslov">{{ d.naslov }}</h2>
+      <p class="neo-kontakt__tekst">{{ d.tekst }}</p>
+      <div class="neo-kontakt__podaci">
+        <a href="tel:{{ k.mobilniLink }}" class="neo-kontakt__telefon">{{ k.mobilni }}</a>
+        <a href="mailto:{{ k.email }}" class="neo-kontakt__mejl">{{ k.email }}</a>
+      </div>
+    </div>
+    {% call forma("cancer-neo-razgovor", "forma forma--bela neo-kontakt__forma") %}
+      {{ polje("neo-ime", "ime", f.ime, autocomplete="name", obavezno=true) }}
+      {{ polje("neo-tel", "telefon", f.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ izbor("neo-uloga", "uloga", f.uloga, f.ulogaOpcije) }}
+      {{ izbor("neo-blok", "parafinski_blok", f.blok, f.blokOpcije) }}
+      {{ polje("neo-dg", "dijagnoza", f.dijagnoza, klasa="polje--ceo-red") }}
+      {{ saglasnost("neo-ok") }}
+      {{ posalji(f.dugme, "neo-kontakt__posalji") }}
+    {% endcall %}
+  </div>
+</section>

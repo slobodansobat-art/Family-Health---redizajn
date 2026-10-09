@@ -1,0 +1,56 @@
+{#- TRUDNOĆA · hero: naslov, alat "u kojoj ste nedelji trudnoće", fotografija u "mrlji"
+    Sadržaj: stranice.trudnoca.hero i stranice.trudnoca.alat
+    Stil: css/stranice/trudnoca.css · JS: js/stranice/trudnoca.js (alat) -#}
+{%- from "makroi/osnovni.njk" import slika -%}
+{%- set d = stranice.trudnoca.hero -%}
+{%- set a = stranice.trudnoca.alat -%}
+{%- set n = a.podrazumevanaNedelja -%}
+{#- Početni cilj (isti pragovi kao u JS-u: do 14. nedelje testovi, 15–21 škola, od 22. matične) -#}
+{%- set cilj = a.ciljevi.testovi if n < 15 else (a.ciljevi.skola if n < 22 else a.ciljevi.maticne) -%}
+{#- Mehurići: [levo, veličina, trajanje, kašnjenje, boja 1–4] (samo ukras) -#}
+{%- set mehuriciLevo = [[6,16,11,-2,1],[22,10,9,-6,2],[40,22,13,-4,3],[58,8,10,-8,4],[76,14,12,-1,1],[90,11,10,-5,2]] -%}
+{%- set mehuriciDesno = [[8,12,17,-3,2],[20,24,21,-9,3],[34,9,15,-12,4],[50,18,19,-1,1],[63,13,16,-7,2],[76,26,22,-14,3],[88,10,14,-5,4],[94,16,18,-10,1]] -%}
+<section class="trudnoca-hero" aria-labelledby="trudnoca-h1">
+  <div class="trudnoca-hero__mehurici trudnoca-hero__mehurici--levo" aria-hidden="true">
+    {%- for m in mehuriciLevo %}<span class="trudnoca-mehur trudnoca-mehur--{{ m[4] }}" style="--levo: {{ m[0] }}%; --velicina: {{ m[1] }}px; --trajanje: {{ m[2] }}s; --kasnjenje: {{ m[3] }}s"></span>{% endfor %}
+  </div>
+  <div class="trudnoca-hero__mehurici trudnoca-hero__mehurici--desno" aria-hidden="true">
+    {%- for m in mehuriciDesno %}<span class="trudnoca-mehur trudnoca-mehur--{{ m[4] }}" style="--levo: {{ m[0] }}%; --velicina: {{ m[1] }}px; --trajanje: {{ m[2] }}s; --kasnjenje: {{ m[3] }}s"></span>{% endfor %}
+  </div>
+
+  <div class="kontejner trudnoca-hero__mreza">
+    <div class="trudnoca-hero__levo">
+      <h1 id="trudnoca-h1" class="trudnoca-hero__naslov">{{ d.naslov }}</h1>
+      <p class="trudnoca-hero__tekst">{{ d.tekst }}</p>
+
+      {#- Alat: nedelja trudnoće. Bez JS-a polje radi kao običan unos. #}
+      <div class="trudnoca-alat" data-trudnoca-alat>
+        <div class="trudnoca-alat__red">
+          <label for="trudnoca-nedelja" class="trudnoca-alat__pitanje">{{ a.pitanje }}</label>
+          <div class="trudnoca-alat__brojac">
+            <button type="button" class="trudnoca-alat__korak" data-nedelja-manje aria-label="Nedelja manje">−</button>
+            <input id="trudnoca-nedelja" class="trudnoca-alat__unos" type="number" inputmode="numeric" min="4" max="42" value="{{ n }}" data-nedelja-unos>
+            <button type="button" class="trudnoca-alat__korak" data-nedelja-vise aria-label="Nedelja više">+</button>
+          </div>
+        </div>
+        {#- Desktop: dugme vodi na sekciju i prikazuje poruku za tu nedelju #}
+        <div class="trudnoca-alat__dno samo-desktop">
+          <p class="trudnoca-alat__tekst">{{ a.tekst }}</p>
+          <button type="button" class="dugme trudnoca-alat__dugme" data-nedelja-pokazi>{{ a.dugme }}</button>
+        </div>
+        {#- Mobilni: odmah prikazuje šta je sada važno #}
+        <div class="trudnoca-alat__vazno samo-mobilni" data-nedelja-vazno>
+          <p class="trudnoca-alat__vazno-oznaka">{{ a.vaznoOznaka }}</p>
+          <a href="{{ cilj.link }}" class="trudnoca-alat__vazno-link" data-nedelja-cilj><span data-nedelja-cilj-tekst>{{ cilj.tekst }}</span><span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="trudnoca-hero__desno samo-desktop">
+      <span class="trudnoca-hero__mrlja" aria-hidden="true"></span>
+      {{ slika(d.slika, d.slikaOpis, "trudnoca-hero__foto") }}
+    </div>
+  </div>
+
+  <svg class="trudnoca-talas trudnoca-talas--dole" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 60 H1440 V30 C1200 0 960 52 720 28 C480 4 240 50 0 22 Z"></path></svg>
+</section>

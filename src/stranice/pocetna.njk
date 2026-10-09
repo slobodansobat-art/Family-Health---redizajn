@@ -1,0 +1,24 @@
+---
+# Početna stranica: podeljeni hero (Onkogenetika / Trudnoća i beba), partneri,
+# lekar, najnoviji članci sa bloga i kontakt forma.
+# Tekst stranice: src/sadrzaj/stranice/pocetna.json
+# Stil: src/assets/css/stranice/pocetna.css  ·  JS: src/assets/js/stranice/pocetna.js
+kljuc: pocetna
+permalink: /
+zaglavlje:
+  tema: svetla
+  oblast: opsti
+  dugme: { tekst: "Besplatne konsultacije", link: "#kontakt" }
+donjaTraka: { tekst: "Zakažite", link: "/kontakt/#forma" }   # na mobilnom nema forme na početnoj (kao u skici)
+skripte: ["stranice/pocetna.js"]
+---
+{#- Omotač .pocetna: na mobilnom menja redosled sekcija (partneri idu posle lekara)
+    i sakriva kontakt formu (skica za telefon je nema; donja traka vodi na /kontakt/) #}
+<div class="pocetna">
+{% include "sekcije/pocetna/hero.njk" %}
+{% include "sekcije/pocetna/vremenska-linija-mobilni.njk" %}
+{% include "sekcije/pocetna/partneri.njk" %}
+{% include "sekcije/pocetna/lekar.njk" %}
+{% include "sekcije/pocetna/blog.njk" %}
+{% include "sekcije/pocetna/kontakt.njk" %}
+</div>

@@ -35,10 +35,21 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/admin/index.html": "admin/index.html" });
   eleventyConfig.addPassthroughCopy({ "src/admin/config.yml": "admin/config.yml" });
 
+  // --- Delimična izrada (samo za razvoj) -------------------------------------
+  // SAMO="harmony,blog" pravi samo navedene stranice (ime fajla iz src/stranice,
+  // "blog" uključuje i članke). Bez SAMO se pravi ceo sajt.
+  if (process.env.SAMO) {
+    const samo = process.env.SAMO.split(",").map((s) => s.trim());
+    for (const f of fs.readdirSync("src/stranice")) {
+      if (f.endsWith(".njk") && !samo.includes(path.basename(f, ".njk"))) eleventyConfig.ignores.add(`src/stranice/${f}`);
+    }
+    if (!samo.includes("blog")) eleventyConfig.ignores.add("src/sadrzaj/blog/**");
+  }
+
   // --- Pre svake izrade: fontovi i CMS konfiguracija -------------------------
   eleventyConfig.on("eleventy.before", () => {
     kopirajFontove();
-    napraviCmsKonfiguraciju();
+    if (!process.env.SAMO) napraviCmsKonfiguraciju();
   });
 
   // --- Filteri (koriste se u šablonima kao {{ x | ime }}) --------------------
@@ -67,6 +78,8 @@ export default function (eleventyConfig) {
     const bezSidra = String(link).split("#")[0];
     return bezSidra === url;
   });
+  // Ime fajla u ključ podataka: "za-lekare" -> "zaLekare" (kao u _data/stranice.js).
+  eleventyConfig.addFilter("camel", (k) => String(k || "").replace(/-([a-z])/g, (_, s) => s.toUpperCase()));
   // Uzima N elemenata niza.
   eleventyConfig.addFilter("prvih", (niz, n) => (Array.isArray(niz) ? niz.slice(0, n) : []));
 
@@ -84,7 +97,8 @@ export default function (eleventyConfig) {
       .filter((c) => !c.data.sakrij)
       .sort((a, b) => {
         if (!!a.data.predlogTeme !== !!b.data.predlogTeme) return a.data.predlogTeme ? 1 : -1;
-        return new Date(b.data.datum || 0) - new Date(a.data.datum || 0);
+        // Predlozi tema nemaju datum: stabilan redosled po imenu fajla
+        return new Date(b.data.datum || 0) - new Date(a.data.datum || 0) || a.fileSlug.localeCompare(b.fileSlug);
       })
   );
 

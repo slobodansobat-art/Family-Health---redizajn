@@ -1,0 +1,22 @@
+{#- ANALIZA · traka sa tabovima "Za lekare" / "Za pacijente" (prilepljena pri skrolovanju)
+    Prikazuje se samo kada analiza ima sadržaj za obe publike.
+    Tekstovi: stranice.analiza.tabovi · Ponašanje tabova: glavni.js (data-tabovi)
+    Stil: css/stranice/analiza.css (.analiza-prekidac) -#}
+{%- if imaTabove -%}
+{%- set t = z.tabovi or {} -%}
+<div class="analiza-prekidac">
+  <div class="kontejner analiza-prekidac__unutra">
+    <div role="tablist" aria-label="{{ t.oznaka }}" class="analiza-prekidac__tabovi">
+      <button type="button" role="tab" id="analiza-tab-lekari" aria-controls="za-lekare" aria-selected="true" class="analiza-prekidac__tab">{{ t.lekari }}</button>
+      <button type="button" role="tab" id="analiza-tab-pacijenti" aria-controls="za-pacijente" aria-selected="false" class="analiza-prekidac__tab">
+        {%- if t.pacijentiMobilni -%}
+        <span class="samo-desktop">{{ t.pacijenti }}</span><span class="samo-mobilni">{{ t.pacijentiMobilni }}</span>
+        {%- else -%}{{ t.pacijenti }}{%- endif -%}
+      </button>
+    </div>
+    {%- if t.dugme %}
+    <a href="{{ t.dugme.link }}" class="dugme dugme--malo analiza-prekidac__dugme">{{ t.dugme.tekst }}</a>
+    {%- endif %}
+  </div>
+</div>
+{%- endif -%}

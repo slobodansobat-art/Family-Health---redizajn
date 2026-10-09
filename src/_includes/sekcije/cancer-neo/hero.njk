@@ -1,0 +1,38 @@
+{#- CANCER NEO · hero: putanja, naslov, dugmad, kratke činjenice i animacija
+    Sadržaj: stranice.cancerNeo.hero   ·   Stil: css/stranice/cancer-neo.css (HERO)
+    Animacija: ilustracije/cancer-neo/hero-animacija(-mobilni).njk
+    Desktop: tekst levo, animacija desno. Mobilni: animacija između teksta i dugmadi. -#}
+{%- set d = stranice.cancerNeo.hero -%}
+{%- set a = d.animacija -%}
+<section class="neo-hero neo-tamna" aria-labelledby="neo-hero-naslov">
+  <div class="neo-hero__sjaj" aria-hidden="true"></div>
+  <div class="kontejner neo-hero__mreza">
+    <div class="neo-hero__tekst">
+      <nav class="neo-hero__putanja" aria-label="Putanja">
+        {%- for p in d.putanja %}<a href="{{ p.link }}">{{ p.tekst }}</a> <span aria-hidden="true">/</span> {% endfor %}<span aria-current="page">{{ d.trenutna }}</span>
+      </nav>
+      <p class="neo-hero__oznaka"><span class="neo-hero__tacka" aria-hidden="true"></span>{{ d.oznaka }}</p>
+      <h1 id="neo-hero-naslov" class="naslov-xl neo-hero__naslov">{{ d.naslovMd | mdRed | safe }}</h1>
+      <p class="neo-hero__uvod">{{ d.tekst }}</p>
+
+      {#- Animacija na mobilnom (na desktopu je u desnoj koloni) #}
+      <div class="neo-hero__animacija neo-hero__animacija--mobilni samo-mobilni" data-neo-animacija>
+        {% include "ilustracije/cancer-neo/hero-animacija-mobilni.njk" %}
+      </div>
+
+      <div class="neo-hero__dugmad">
+        <a href="{{ d.dugmeGlavno.link }}" class="dugme dugme--zlatno neo-dugme">{{ d.dugmeGlavno.tekst }}</a>
+        <a href="{{ d.dugmeSporedno.link }}" class="dugme neo-dugme neo-dugme--obrub">{{ d.dugmeSporedno.tekst }}</a>
+      </div>
+      <dl class="neo-hero__cinjenice">
+        {%- for c in d.cinjenice %}
+        <div><dt>{{ c.oznaka }}</dt><dd>{{ c.vrednost }}</dd></div>
+        {%- endfor %}
+      </dl>
+    </div>
+
+    <div class="neo-hero__animacija samo-desktop" data-neo-animacija>
+      {% include "ilustracije/cancer-neo/hero-animacija.njk" %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+{
+  "_naziv": "Šablon stranice analize (zajedničko za sve analize)",
+  "_napomena": "Tekstovi koji su isti na stranici svake onko analize. Sadržaj pojedinačne analize je u 'Onko analize' -> analiza -> Stranica.",
+  "putanja": [
+    { "tekst": "Onkogenetika", "link": "/onkogenetika/" },
+    { "tekst": "Sve analize", "link": "/onkogenetika/analize/" }
+  ],
+  "tabovi": {
+    "oznaka": "Prikaz za",
+    "lekari": "Za lekare",
+    "pacijenti": "Za pacijente i porodicu",
+    "pacijentiMobilni": "Za pacijente",
+    "dugme": { "tekst": "Pošaljite nalaz na procenu", "link": "#kontakt" }
+  },
+  "dokumenti": {
+    "naslov": "Dokumenta",
+    "oznakaUskoro": "PDF, uskoro [dodati]",
+    "oznakaFajl": "PDF"
+  },
+  "linija": {
+    "oznaka": "Direktna linija za lekare",
+    "tekst": "Konsultacija o izboru analize za konkretnog pacijenta"
+  },
+  "srodne": {
+    "naslov": "Srodne analize"
+  },
+  "kontakt": {
+    "naslov": "Pošaljite nalaz na besplatnu procenu.",
+    "tekst": "Lekar pregleda nalaz i javlja se istog radnog dana sa preporukom i cenom.",
+    "imeOznaka": "Ime i prezime",
+    "telefonOznaka": "Telefon",
+    "ulogaOznaka": "Javljate se kao",
+    "uloge": ["Pacijent", "Član porodice", "Lekar"],
+    "nalazOznaka": "Nalaz (PDF ili fotografija)",
+    "dugme": "Pošaljite nalaz"
+  }
+}

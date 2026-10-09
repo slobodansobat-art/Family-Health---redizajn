@@ -32,6 +32,10 @@
     "saglasnostTekst": "Saglasan/na sam da Family Health obrađuje moje podatke radi odgovora na upit.",
     "saglasnostNapomena": "[tekst saglasnosti: potvrditi sa pravnikom]"
   },
+  "forme": {
+    "izaberiFajl": "Izaberite fajl",
+    "nijeIzabranFajl": "Nije izabran fajl"
+  },
   "cms": {
     "repo": "slobodansobat-art/familyhealth-sajt",
     "grana": "main"

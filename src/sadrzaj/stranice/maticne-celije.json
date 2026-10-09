@@ -1,0 +1,168 @@
+{
+  "_naziv": "Matične ćelije",
+  "seo": {
+    "naslov": "Matične ćelije iz pupčanika – Cells4Life | Family Health",
+    "opis": "Čuvanje matičnih ćelija iz krvi pupčanika u banci Cells4Life, uz TotiCyte obradu. 1.980 € ili 12 rata po 165 € bez kamate. Izračunajte cenu i rok za odluku."
+  },
+  "hero": {
+    "putanja": { "roditeljTekst": "Trudnoća i beba", "roditeljLink": "/trudnoca-i-beba/", "trenutna": "Matične ćelije" },
+    "naslov": "Matične ćelije se prikupljaju samo jednom, na porođaju.",
+    "tekst": "Krv iz pupčanika bezbolno se prikuplja odmah posle rođenja. Ako se ne sačuva, odlazi zajedno sa posteljicom. Mi je čuvamo u banci Cells4Life, uz TotiCyte obradu koja sačuva i do tri puta više ćelija.",
+    "dugme": { "tekst": "Izračunajte cenu paketa", "link": "#paketi" },
+    "link": { "tekst": "Zakažite besplatne konsultacije", "link": "#kontakt" },
+    "prednosti": [
+      "{cena} ili {brojRata} rata po {rata} bez kamate",
+      "Paket plaćate tek kad stigne sertifikat",
+      "Prikupljanje u svim porodilištima u Srbiji"
+    ],
+    "slika": "",
+    "slikaOpis": "Fotografija novorođenčeta sa postojećeg sajta"
+  },
+  "pismo": {
+    "slika": "",
+    "slikaOpis": "Fotografija dr Antovića",
+    "ime": "dr Aleksandar Antović",
+    "zvanje": "specijalista interne medicine, otac troje dece",
+    "naslov": "Dragi roditelji,",
+    "pasusi": [
+      "uloga koja stoji pred vama je doživotna i najvažnija u životu. Kao otac troje dece želim da vam pomognem da izaberete jedan od najlepših poklona za vaše dete.",
+      "Krv iz pupčane vrpce može se prikupiti samo na porođaju i nikada više. Ako se ne sačuva, postaje medicinski otpad. Malo je stvari u životu koje mogu biti i blago i otpad. Odluka je samo vaša."
+    ],
+    "napomena": "Skraćena verzija pisma sa postojećeg sajta. Pre objave potrebno je odobrenje dr Antovića."
+  },
+  "pitanja": {
+    "naslov": "Pre nego što izaberete banku, postavite ova pitanja.",
+    "uvod": "Svaka banka će vam reći da čuva matične ćelije. Razlika je u odgovorima. Ponesite ovu listu na svaki razgovor, a naše odgovore pogledajte ovde.",
+    "listaNaslov": "Lista pitanja za banku",
+    "procitano": "Pročitano {procitano} od {ukupno}",
+    "odgovorOznaka": "Odgovor Family Health",
+    "redniBroj": "Pitanje {broj} od {ukupno}",
+    "dugmeSledece": "Sledeće pitanje",
+    "stavke": [
+      { "pitanje": "Koliko ćelija će biti sačuvano?", "istaknuto": "do 3×", "istaknutoOpis": "više ćelija u trenutku primene", "odgovor": "TotiCyte obrada uklanja 99,5% crvenih krvnih zrnaca i, prema objavljenim studijama, sačuva i do tri puta više ćelija nego drugi sistemi obrade." },
+      { "pitanje": "Može li uzorak da se koristi više puta?", "istaknuto": "5 delova", "istaknutoOpis": "odmrzava se deo po deo", "odgovor": "Uzorak delimo u pet delova, pa se odmrzava samo onoliko koliko terapija zahteva. Ostatak ostaje sačuvan za kasnije." },
+      { "pitanje": "Gde se čuva i šta ako banka propadne?", "istaknuto": "2 lokacije", "istaknutoOpis": "uz osiguranje za slučaj bankrota", "odgovor": "Banka Cells4Life u Velikoj Britaniji čuva delove uzorka na dve lokacije. Banka i sama potpisuje vaš ugovor i osigurana je za slučaj bankrota." },
+      { "pitanje": "Po kojim standardima radi banka?", "istaknuto": "AABB · HTA", "istaknutoOpis": "međunarodni standard i britanska licenca", "odgovor": "Obrada i čuvanje po standardima AABB, uz licencu britanske agencije HTA." },
+      { "pitanje": "Da li je slanje uzorka iz Srbije zakonito?", "istaknuto": "Dozvola", "istaknutoOpis": "pribavljamo je mi, u vaše ime", "odgovor": "Za iznošenje uzorka iz zemlje potrebna je dozvola. Pribavljamo je mi. Taksa se plaća posebno, a iznos navodimo unapred, bez iznenađenja." },
+      { "pitanje": "Kada i koliko tačno plaćam?", "istaknuto": "12 rata", "istaknutoOpis": "bez kamate, kad stigne sertifikat", "odgovor": "Set od 120 € plaćate pri preuzimanju, a paket tek kada stigne sertifikat, odjednom ili u 12 rata bez kamate. Sve stavke vidite u kalkulatoru ispod." }
+    ]
+  },
+  "rok": {
+    "naslov": "Do kada treba da odlučite?",
+    "tekst": "Krv iz pupčanika može se prikupiti samo na porođaju. Ugovor i set treba da budu spremni pre nego što porođaj počne, a on može da počne i ranije od termina.",
+    "pitanje": "U kojoj ste nedelji trudnoće?",
+    "opisVrednosti": "{nedelja}. nedelja",
+    "najmanje": 12,
+    "najvise": 42,
+    "pocetna": 30,
+    "termin": 40,
+    "preporuceniRok": 36,
+    "skala": [
+      { "nedelja": 12, "tekst": "12." },
+      { "nedelja": 20, "tekst": "20." },
+      { "nedelja": 36, "tekst": "36." },
+      { "nedelja": 42, "tekst": "42. ned." }
+    ],
+    "poruke": [
+      { "doNedelje": 20, "naslov": "Imate dosta vremena.", "tekst": "Do termina je još {preostalo} {nedelja}. Mnogi roditelji odluku donose u drugom trimestru, posle besplatnih konsultacija." },
+      { "doNedelje": 32, "naslov": "Pravo je vreme za odluku.", "tekst": "Do termina je još {preostalo} {nedelja}. Uporedite ponude bez žurbe, a set preuzmite najkasnije do 36. nedelje." },
+      { "doNedelje": 36, "naslov": "Ne odlažite odluku.", "tekst": "Do termina je još {preostalo} {nedelja}. Ugovor i set treba da budu spremni do 36. nedelje, jer porođaj može da počne i ranije." },
+      { "doNedelje": 43, "naslov": "Pozovite nas danas.", "tekst": "I u poslednjim nedeljama možemo da organizujemo ugovor i set, ali je važno da krenemo odmah." }
+    ],
+    "napomena": "[preporučeni rok od 36. nedelje: potvrditi]"
+  },
+  "proces": {
+    "naslov": "Kako izgleda, korak po korak",
+    "uvod": "Vi treba samo da ponesete set u porodilište. Sve ostalo organizujemo mi.",
+    "stavke": [
+      { "podnaslov": "Tokom trudnoće", "naslov": "Konsultacije i ugovor", "glava": "Besplatan razgovor, pa ugovor", "tekst": "Na konsultacijama sa lekarom prolazimo kroz anamnezu, pakete i sva vaša pitanja. Ugovor potpisujete vi, Family Health i banka Cells4Life.", "cinjenice": ["Prvi razgovor je besplatan", "Ugovor potpisuje i sama banka"], "ilustracija": "maticne-celije/ugovor" },
+      { "podnaslov": "Pre porođaja", "naslov": "Preuzimate NanoCool set", "glava": "Set čeka spreman, uz torbu za porodilište", "tekst": "NanoCool set služi za prikupljanje i transport i čuva uzorak na pravoj temperaturi sve do laboratorije. Plaćate ga pri preuzimanju, 120 €.", "cinjenice": ["Set nosite sa sobom u porodilište", "Plaća se pri preuzimanju, pre porođaja"], "ilustracija": "maticne-celije/set", "ilustracijaOznake": ["NanoCool set"] },
+      { "podnaslov": "Porođaj", "naslov": "Prikupljanje krvi", "glava": "Bezbolno, posle presecanja pupčanika", "tekst": "Lekar ili babica prikuplja krv iz pupčanika, dok je još povezan sa posteljicom. Majka i beba ne osećaju ništa, a prikupljanje je moguće i kod carskog reza.", "cinjenice": ["U svim porodilištima u Srbiji", "Moguće i uz odloženo presecanje pupčanika"], "ilustracija": "maticne-celije/kesa" },
+      { "podnaslov": "Isti dan", "naslov": "Kurir i avion", "glava": "Uzorak putuje istog dana", "tekst": "Javite nam se posle porođaja, a kurir preuzima set iz porodilišta. Uzorak avionom putuje u laboratoriju u Engleskoj. Dozvolu za iznošenje uzorka pribavljamo mi.", "cinjenice": ["Transport organizujemo mi", "Dozvola za iznošenje uzorka je uključena u proceduru"], "ilustracija": "maticne-celije/avion", "ilustracijaOznake": ["Srbija", "Engleska"] },
+      { "podnaslov": "Posle obrade", "naslov": "Sertifikat", "glava": "Crno na belo: koliko je ćelija sačuvano", "tekst": "Posle obrade dobijate rezultate analiza i sertifikat o broju i kvalitetu sačuvanih ćelija. Tek tada plaćate paket.", "cinjenice": ["Paket plaćate kad stigne sertifikat", "Odjednom ili u 12 rata bez kamate"], "ilustracija": "maticne-celije/sertifikat" },
+      { "podnaslov": "Godinama", "naslov": "Čuvanje na -196 °C", "glava": "U pet delova, na dve lokacije", "tekst": "Uzorak je podeljen u pet delova i čuva se na -196 °C, na dve lokacije banke Cells4Life. Kada zatreba, odmrzava se samo onoliko koliko je potrebno.", "cinjenice": ["Po standardima AABB, uz licencu HTA", "Besplatan transport do bolnice za primenu"], "ilustracija": "maticne-celije/cuvanje" }
+    ],
+    "poslednje": { "tekst": "Izračunajte cenu paketa", "link": "#paketi" }
+  },
+  "paketi": {
+    "naslov": "Izaberite paket i pogledajte tačnu cenu",
+    "uvod": "Bez skrivenih troškova: ovde vidite sve što plaćate i kada.",
+    "izborNaslov": "Koliko dugo da se uzorak čuva?",
+    "godinaOznaka": "godina",
+    "stavke": [
+      { "godina": 20, "cena": 1980 },
+      { "godina": 25, "cena": 2280 },
+      { "godina": 30, "cena": 2480 },
+      { "godina": 50, "cena": 2980 }
+    ],
+    "toti": {
+      "naziv": "TotiCyte obrada",
+      "cena": 300,
+      "tekst": "Sačuva i do tri puta više ćelija i omogućava obradu malih uzoraka, na primer posle odloženog presecanja pupčanika. Preporučujemo je.",
+      "ukljucenNaPocetku": false
+    },
+    "ukljucenoNaslov": "Šta je uključeno u paket",
+    "ukljuceno": [
+      "Konsultacija sa lekarom i anamneza",
+      "Prikupljanje krvi iz pupčanika u porodilištu",
+      "Transport do laboratorije u Engleskoj",
+      "Analize krvi iz pupčanika i krvi majke",
+      "Obrada u sterilnim sobama klase A [potvrditi]",
+      "Kompjuterski kontrolisano zamrzavanje",
+      "Čuvanje po standardima AABB i HTA",
+      "Rezultati i sertifikat",
+      "Besplatan transport do bolnice za primenu"
+    ],
+    "obracun": {
+      "oznaka": "Vaš paket",
+      "naslovPaketa": "Čuvanje {godina} godina",
+      "dodatakToti": ", uz TotiCyte",
+      "brojRata": 12,
+      "rate": "ili {brojRata} rata po {iznosRate}, bez kamate",
+      "napomena": "uz sve Banca Intesa kartice. Plaća se kad stigne sertifikat.",
+      "doplateNaslov": "Pored paketa",
+      "doplate": [
+        { "naziv": "NanoCool set za prikupljanje i transport", "iznos": 120, "valuta": "EUR", "predznak": "", "napomena": "Plaća se pri preuzimanju seta, pre porođaja." },
+        { "naziv": "Državna taksa za iznošenje uzorka", "iznos": 13140, "valuta": "RSD", "predznak": "oko", "napomena": "Zakonska obaveza za slanje uzorka u inostranstvo. Dozvolu pribavljamo mi, u vaše ime. [tačan naziv dozvole i institucije: potvrditi]" }
+      ],
+      "dugme": { "tekst": "Rezervišite set za porođaj", "link": "#kontakt" }
+    }
+  },
+  "primena": {
+    "naslov": "Za šta se koriste",
+    "tekst": "Matične ćelije iz krvi pupčanika danas se standardno koriste u transplantacijama kod bolesti krvi i imunog sistema. Genetski su identične detetu od koga su uzete, a da li se mogu primeniti zavisi od bolesti i odlučuje lekar. Brat ili sestra imaju oko 25% šanse za potpuno podudaranje. [potvrditi kod lekara]",
+    "bolesti": [
+      "Leukemije i limfomi",
+      "Teške anemije i talasemija",
+      "Nasledne bolesti imunog sistema",
+      "Nasledne metaboličke bolesti",
+      "Bolesti koštane srži",
+      "Pojedini tumori kod dece"
+    ],
+    "napomena": "Primena u regenerativnoj medicini je predmet kliničkih studija. Spisak i formulacije treba da potvrdi lekar pre objave."
+  },
+  "faq": {
+    "naslov": "Česta pitanja",
+    "tekst": "Niste našli odgovor? Pozovite nas na",
+    "pitanja": [
+      { "pitanje": "Da li prikupljanje zavisi od načina porođaja?", "odgovor": "Ne. Lekar ili babica mogu da prikupe krv iz pupčanika i kod prirodnog porođaja i kod carskog reza." },
+      { "pitanje": "Da li je prikupljanje bolno ili rizično?", "odgovor": "Ne. Krv se uzima iz pupčane vrpce posle njenog presecanja, dok je još povezana sa posteljicom. Majka i beba ne osećaju ništa." },
+      { "pitanje": "Da li se krv može prikupiti u svakom porodilištu u Srbiji?", "odgovor": "Da, prikupljanje je moguće u svim porodilištima u Srbiji." },
+      { "pitanje": "Mogu li da odložim presecanje pupčanika?", "odgovor": "Da. TotiCyte obrada omogućava obradu i manjih uzoraka koji ostaju posle odloženog presecanja. Kod drugih tehnologija uzorak tada može biti nedovoljan." },
+      { "pitanje": "Ko sve može da koristi matične ćelije?", "odgovor": "Genetski su identične detetu od koga su uzete, ali kod nekih bolesti, na primer naslednih, lekar se odlučuje za ćelije davaoca. Brat ili sestra imaju oko 25% šanse za potpuno podudaranje, a za ostale članove porodice potrebna je provera kompatibilnosti. [potvrditi kod lekara]" },
+      { "pitanje": "Šta se dešava kada istekne ugovor o čuvanju?", "odgovor": "Ugovor je moguće produžiti na dodatni broj godina. Na temperaturi od -196 °C ćelije se čuvaju decenijama, a studije potvrđuju očuvanost i posle više od 20 godina čuvanja. [izvor dodati]" },
+      { "pitanje": "Kako se uzorak koristi kada zatreba?", "odgovor": "Lekar koji vodi lečenje indikuje primenu, a roditelji šalju zahtev banci. Banka priprema uzorak i besplatno ga transportuje do bolnice." }
+    ]
+  },
+  "kontakt": {
+    "naslov": "Odluku donesite na vreme.",
+    "tekst": "Najbolje u drugom ili početkom trećeg trimestra, da set bude kod vas najkasnije do 36. nedelje. Prvi razgovor je besplatan.",
+    "forma": {
+      "ime": "Ime i prezime",
+      "telefon": "Telefon",
+      "termin": "Očekivani termin porođaja",
+      "paket": "Izabrani paket",
+      "dugme": "Pošaljite, javljamo se istog radnog dana"
+    }
+  }
+}

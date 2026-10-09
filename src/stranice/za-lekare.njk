@@ -1,0 +1,26 @@
+---
+# Stranica za lekare: upućivanje pacijenata (onkologija + ginekolozi).
+# Tekst stranice: src/sadrzaj/stranice/za-lekare.json  (u šablonu: stranice.zaLekare)
+# Sekcije: src/_includes/sekcije/za-lekare/   ·   Stil: css/stranice/za-lekare.css
+kljuc: za-lekare
+permalink: /za-lekare/
+zaglavlje:
+  tema: tamna
+  oblast: onko
+  nazad: /onkogenetika/
+  prekidacMobilni: false
+  linkovi:
+    - { tekst: "Proces", link: "/onkogenetika/#proces" }
+    - { tekst: "Za lekare", link: "/za-lekare/" }
+    - { tekst: "Ginekolozi", link: "#ginekolozi" }
+    - { tekst: "Kontakt", link: "#uputi" }
+  dugme: { tekst: "Uputite pacijenta", link: "#uputi" }
+donjaTraka: { tekst: "Uputite pacijenta", link: "#uputi" }
+---
+{% include "sekcije/za-lekare/hero.njk" %}
+{% include "sekcije/za-lekare/tok.njk" %}
+{% include "sekcije/za-lekare/pomoc.njk" %}
+{% include "sekcije/za-lekare/indikacije.njk" %}
+{% include "sekcije/za-lekare/uzorak.njk" %}
+{% include "sekcije/za-lekare/ginekolozi.njk" %}
+{% include "sekcije/za-lekare/uputi.njk" %}

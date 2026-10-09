@@ -1,0 +1,187 @@
+/* ==========================================================================
+   STRANICA: O NAMA  (/o-nama/)  ·  sekcije: src/_includes/sekcije/o-nama/
+   hero (osnivač) · put uzorka (animirana mapa) · tim · mediji · poziv
+   ========================================================================== */
+
+/* Boje partnera: ista boja za liniju na mapi i tačku u listi */
+.onama-boja-1 { --boja: var(--ljubicasta-600); }
+.onama-boja-2 { --boja: var(--mint-600); }
+.onama-boja-3 { --boja: var(--ljubicasta-500); }
+
+/* Zajednički h2 sekcija na ovoj stranici */
+.onama-naslov { font-family: var(--font-naslov); font-size: 40px; line-height: 1.1; color: var(--ljubicasta-800); }
+
+/* --- Hero: naslov i osnivač ------------------------------------------------ */
+.onama-hero { background: var(--ljubicasta-50); }
+.onama-hero__mreza { display: flex; flex-wrap: wrap; align-items: center; gap: 40px 72px; padding-block: 72px 80px; }
+.onama-hero__tekst { flex: 1.2 1 480px; min-width: 0; }
+.onama-hero__nadnaslov { font-weight: 600; margin-bottom: 14px; }
+.onama-hero__naslov { color: var(--ljubicasta-800); }
+.onama-hero__uvod { margin-top: 22px; font-size: 19px; color: var(--tekst-blag); max-width: 560px; }
+
+.onama-osnivac { flex: 1 1 360px; min-width: 0; display: flex; align-items: center; gap: 22px; }
+.onama-osnivac__foto { flex-shrink: 0; width: 150px; height: 150px; }
+.onama-osnivac__foto.slika--prazna { min-height: 0; padding: 20px; background: var(--ljubicasta-200); font-size: 12px; }
+.onama-osnivac__opis { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.onama-osnivac__ime { font-weight: 600; color: var(--ljubicasta-800); }
+.onama-osnivac__opis > span { font-size: 15px; color: var(--tekst-blag); }
+
+/* --- Put uzorka: tekst i lista levo, mapa desno ----------------------------
+   Prazni redovi (1fr) gore i dole centriraju levu kolonu uz mapu. */
+.onama-put {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  grid-template-rows: 1fr auto auto 1fr;
+  grid-template-areas: ". mapa" "tekst mapa" "lista mapa" ". mapa";
+  column-gap: 64px;
+  padding-block: 88px 40px;
+}
+.onama-put__tekst { grid-area: tekst; }
+.onama-put__naslov { font-size: 42px; margin-bottom: 14px; }
+.onama-put__tekst p { margin-bottom: 22px; }
+.onama-put__mapa {
+  grid-area: mapa; min-width: 0; align-self: center;
+  background: var(--ljubicasta-25); border: 1px solid var(--linija-svetla); border-radius: 32px; padding: 20px;
+}
+
+.onama-partneri { grid-area: lista; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.onama-partner { display: flex; align-items: baseline; gap: 14px; }
+.onama-partner__tacka { flex-shrink: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--boja); }
+.onama-partner__naziv { font-weight: 600; color: var(--ljubicasta-800); }
+
+/* Mapa (SVG iz ilustracije/o-nama/mapa.njk) */
+.onama-mapa { display: block; width: 100%; height: auto; overflow: visible; }
+.onama-mapa__tacke { fill: var(--ljubicasta-100); }
+.onama-mapa__put {
+  fill: none; stroke: var(--boja); stroke-width: 3; stroke-dasharray: 8 6;
+  animation: onama-put 1.6s linear infinite;              /* crtice "putuju" ka laboratoriji */
+}
+.onama-mapa__start { fill: var(--ljubicasta-800); }
+.onama-mapa__talas {
+  fill: none; stroke: var(--ljubicasta-800); stroke-width: 2; opacity: 0;
+  transform-box: fill-box; transform-origin: center;
+  animation: onama-talas 2.4s ease-out infinite;          /* talas oko Beograda */
+}
+.onama-mapa__cilj { fill: var(--boja); }
+.onama-mapa__grad { font-family: var(--font-tekst); font-size: 13px; fill: var(--ljubicasta-800); }
+.onama-mapa__grad--start { font-size: 14px; font-weight: 600; }
+
+@keyframes onama-put { to { stroke-dashoffset: -28; } }
+@keyframes onama-talas {
+  0% { transform: scale(1); opacity: .5; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+/* Bez pokreta: talas se ne prikazuje, linije stoje (globalno pravilo gasi animacije) */
+@media (prefers-reduced-motion: reduce) { .onama-mapa__talas { display: none; } }
+
+/* --- Tim ------------------------------------------------------------------- */
+.onama-tim { padding-block: 60px 88px; }
+.onama-tim__naslov { margin-bottom: 10px; }
+.onama-tim__uvod { max-width: 560px; margin-bottom: 32px; }
+.onama-tim__lista { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
+.onama-clan { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.onama-clan__foto { aspect-ratio: 1 / 1; border-radius: var(--zaobljenje); }
+/* Prazno mesto za fotografiju: natpis dole levo, boje se smenjuju */
+.onama-clan__foto.slika--prazna {
+  min-height: 0; padding: 16px; align-items: flex-end; justify-content: flex-start; text-align: left;
+  background: var(--ljubicasta-150); font-size: 13px;
+}
+.onama-clan:nth-child(even) .onama-clan__foto.slika--prazna { background: var(--ljubicasta-50); }
+.onama-clan__ime { font-weight: 600; color: var(--ljubicasta-800); }
+.onama-clan__uloga { margin-top: -8px; font-size: 15px; color: var(--tekst-blag); }
+
+/* --- Mediji ---------------------------------------------------------------- */
+.onama-mediji { padding-bottom: 88px; }
+.onama-mediji__naslov { margin-bottom: 10px; }
+.onama-mediji__uvod { max-width: 620px; margin-bottom: 28px; }
+.onama-mediji__skrol:focus-visible { outline-offset: 4px; border-radius: 24px; }
+.onama-mediji__lista { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.onama-mediji__stavka { min-width: 0; }
+.onama-nastup {
+  display: flex; flex-direction: column; gap: 10px; height: 100%;
+  padding: 22px; border: 1px solid var(--linija); border-radius: 24px;
+  color: inherit; text-decoration: none;
+}
+.onama-nastup--link { transition: border-color .2s ease, box-shadow .2s ease; }
+.onama-nastup--link:hover { color: inherit; border-color: var(--ljubicasta-300); box-shadow: var(--senka); }
+.onama-nastup__kadar { aspect-ratio: 16 / 9; border-radius: 16px; }
+.onama-nastup__kadar.slika--prazna { min-height: 0; padding: 12px; background: var(--ljubicasta-150); font-size: 13px; }
+.onama-nastup__kanal { font-size: 13px; font-weight: 600; color: var(--ljubicasta-600); }
+.onama-nastup__naslov { font-family: var(--font-naslov); font-size: 21px; line-height: 1.2; color: var(--ljubicasta-800); }
+.onama-nastup__detalji { font-size: 14px; color: var(--tekst-blag); }
+
+/* --- Poziv ----------------------------------------------------------------- */
+.onama-poziv { padding-bottom: 96px; }
+.onama-poziv__kartica {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px;
+  background: var(--ljubicasta-800); color: var(--bela); border-radius: 32px; padding: 40px;
+}
+.onama-poziv__naslov { font-family: var(--font-naslov); font-size: 34px; line-height: 1.15; max-width: 620px; }
+.onama-poziv__dugme { padding: 15px 24px; }
+
+/* ==========================================================================
+   MALI LAPTOP / TABLET u desktop rasporedu (960–1100px): manji razmaci
+   ========================================================================== */
+@media (min-width: 960px) and (max-width: 1100px) {
+  .onama-put { column-gap: 40px; }
+  .onama-put__naslov { font-size: 36px; }
+  .onama-mediji__lista { gap: 14px; }
+  .onama-nastup { padding: 18px; }
+}
+
+/* ==========================================================================
+   MOBILNI (ispod 960px)
+   ========================================================================== */
+@media (max-width: 959px) {
+  .onama-naslov { font-size: 28px; line-height: 1.12; }
+
+  .onama-hero__mreza { display: block; padding-block: 22px 32px; }
+  .onama-hero__nadnaslov { font-size: 14px; margin-bottom: 10px; }
+  .onama-hero__uvod { margin-top: 14px; font-size: 15px; }
+  .onama-osnivac { margin-top: 22px; gap: 16px; }
+  .onama-osnivac__foto { width: 96px; height: 96px; }
+  .onama-osnivac__foto.slika--prazna { padding: 12px; font-size: 11px; }
+  .onama-osnivac__opis { gap: 4px; }
+  .onama-osnivac__opis > span { font-size: 14px; }
+
+  /* Put uzorka: tekst, mapa, lista jedno ispod drugog */
+  .onama-put {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: "tekst" "mapa" "lista";
+    padding-block: 34px 10px;
+  }
+  .onama-put__naslov { font-size: 28px; margin-bottom: 10px; }
+  .onama-put__tekst p { font-size: 15px; margin-bottom: 18px; }
+  .onama-put__mapa { border-radius: 26px; padding: 12px 15px; }
+  .onama-partneri { margin-top: 18px; gap: 12px; font-size: 15px; }
+  .onama-partner { gap: 12px; }
+
+  .onama-tim { padding-block: 34px 10px; }
+  .onama-tim__naslov { margin-bottom: 8px; }
+  .onama-tim__uvod { font-size: 15px; margin-bottom: 20px; }
+  .onama-tim__lista { grid-template-columns: 1fr 1fr; gap: 20px 14px; }
+  .onama-clan { gap: 8px; }
+  .onama-clan__foto { border-radius: 22px; }
+  .onama-clan__foto.slika--prazna { padding: 12px; }
+  .onama-clan__uloga { font-size: 13.5px; }
+
+  /* Mediji: vodoravni niz do ivice ekrana */
+  .onama-mediji { padding-block: 34px 10px; }
+  .onama-mediji__naslov { margin-bottom: 8px; }
+  .onama-mediji__uvod { font-size: 15px; margin-bottom: 18px; }
+  .onama-mediji__skrol {
+    margin-inline: calc(var(--margina) * -1); padding: 0 var(--margina) 6px;
+    overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity; scroll-padding-inline: var(--margina);
+  }
+  .onama-mediji__skrol::-webkit-scrollbar { display: none; }
+  .onama-mediji__lista { display: flex; gap: 12px; }
+  .onama-mediji__stavka { flex-shrink: 0; width: 264px; scroll-snap-align: start; }
+  .onama-nastup { padding: 18px; }
+  .onama-nastup__naslov { font-size: 20px; }
+
+  .onama-poziv { padding-block: 30px 40px; }
+  .onama-poziv__kartica { flex-direction: column; align-items: stretch; gap: 18px; border-radius: 26px; padding: 26px 20px; }
+  .onama-poziv__naslov { font-size: 27px; }
+  .onama-poziv__dugme { padding: 14px; }
+}

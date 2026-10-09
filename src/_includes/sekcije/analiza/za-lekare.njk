@@ -1,0 +1,96 @@
+{#- ANALIZA · panel "Za lekare": tehnički podaci, uzorak, izveštaj, dokumenta, direktna linija
+    Sadržaj: analiza.stranica.zaLekare (+ stranice.analiza.dokumenti/linija)
+    Telefon i radno vreme: podesavanja.kontakt
+    Stil: css/stranice/analiza.css (.analiza-tehnicki, .analiza-kartice, .analiza-dokumenti) -#}
+{%- from "makroi/osnovni.njk" import kvacica -%}
+{%- if imaLekare -%}
+{%- set l = L -%}
+<div class="analiza__panel" id="za-lekare"{% if imaTabove %} role="tabpanel" aria-labelledby="analiza-tab-lekari"{% endif %}>
+
+  {#- Tehnički podaci: uvod levo, tabela desno #}
+  {%- if imaTehnicke %}
+  {%- set d = l.tehnicki %}
+  <section class="kontejner analiza-tehnicki" aria-labelledby="analiza-tehnicki-naslov">
+    <div class="analiza-tehnicki__uvod">
+      <h2 id="analiza-tehnicki-naslov" class="analiza__h2">{{ d.naslov }}</h2>
+      {%- if d.tekst %}<p class="analiza-tehnicki__tekst">{{ d.tekst }}</p>{% endif %}
+    </div>
+    {%- if d.stavke.length %}
+    <dl class="analiza-tehnicki__tabela">
+      {%- for st in d.stavke %}
+      <div><dt>{{ st.oznaka }}</dt><dd>{{ st.vrednost }}</dd></div>
+      {%- endfor %}
+    </dl>
+    {%- endif %}
+  </section>
+  {%- endif %}
+
+  {#- Uzorak + šta sadrži izveštaj (dve kartice) #}
+  {%- if imaUzorak or imaIzvestaj %}
+  <div class="kontejner analiza-kartice">
+    {%- if imaUzorak %}
+    {%- set d = l.uzorak %}
+    <section class="analiza-kartica analiza-kartica--puna" aria-labelledby="analiza-uzorak-naslov">
+      <h2 id="analiza-uzorak-naslov" class="analiza-kartica__naslov">{{ d.naslov }}</h2>
+      <ul class="analiza-kartica__lista">
+        {%- for st in d.stavke %}
+        <li>{% if st.istaknuto %}<strong>{{ st.istaknuto }}</strong> {% endif %}{{ st.tekst }}</li>
+        {%- endfor %}
+      </ul>
+      {%- if d.napomena %}<p class="analiza-kartica__napomena">{{ d.napomena }}</p>{% endif %}
+    </section>
+    {%- endif %}
+    {%- if imaIzvestaj %}
+    {%- set d = l.izvestaj %}
+    <section class="analiza-kartica analiza-kartica--izvestaj" aria-labelledby="analiza-izvestaj-naslov">
+      {#- Traka "primer nalaza" (vidi se samo na mobilnom, kao u skici) #}
+      <div class="analiza-kartica__traka" aria-hidden="true"><span>{{ analiza.naziv }}</span><span class="analiza-kartica__tacke"><span></span><span></span><span></span></span></div>
+      <div class="analiza-kartica__telo">
+        <h2 id="analiza-izvestaj-naslov" class="analiza-kartica__naslov">{{ d.naslov }}</h2>
+        <ul class="analiza-kartica__lista analiza-kartica__lista--kvacice">
+          {%- for st in d.stavke %}
+          <li>{{ kvacica() }}<span>{{ st }}</span></li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </section>
+    {%- endif %}
+  </div>
+  {%- endif %}
+
+  {#- Dokumenta (PDF) + direktna linija za lekare (linija se prikazuje i kad nema dokumenata) #}
+  {%- if imaDokumente or z.linija.oznaka %}
+  {%- set zd = z.dokumenti or {} %}
+  <section class="kontejner analiza-dokumenti{% if not imaDokumente %} analiza-dokumenti--samo-linija{% endif %}"{% if imaDokumente %} aria-labelledby="analiza-dokumenti-naslov"{% else %} aria-label="{{ z.linija.oznaka }}"{% endif %}>
+    {%- if imaDokumente %}
+    <div class="analiza-dokumenti__lista">
+      <h2 id="analiza-dokumenti-naslov" class="analiza-kartica__naslov">{{ l.dokumenti.naslov or zd.naslov }}</h2>
+      <ul>
+        {%- for st in l.dokumenti.stavke %}
+        <li>
+          {%- if st.fajl %}
+          {#- PDF je dodat u CMS-u: link za preuzimanje #}
+          <a href="{{ st.fajl }}" class="analiza-dokumenti__stavka analiza-dokumenti__stavka--link" download>{{ st.tekst }} <span class="analiza-dokumenti__oznaka">{{ zd.oznakaFajl }}</span></a>
+          {%- elif st.link %}
+          <a href="{{ st.link }}" class="analiza-dokumenti__stavka analiza-dokumenti__stavka--link">{{ st.tekst }} <span aria-hidden="true">→</span></a>
+          {%- else %}
+          {#- PDF još ne postoji: neaktivna stavka "uskoro" #}
+          <span class="analiza-dokumenti__stavka" aria-disabled="true">{{ st.tekst }} <span class="analiza-dokumenti__oznaka">{{ zd.oznakaUskoro }}</span></span>
+          {%- endif %}
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- endif %}
+    {%- if z.linija.oznaka %}
+    <div class="analiza-linija">
+      <p class="analiza-linija__oznaka">{{ z.linija.oznaka }}</p>
+      <a href="tel:{{ podesavanja.kontakt.mobilniLink }}" class="analiza-linija__broj">{{ podesavanja.kontakt.mobilni }}</a>
+      <p class="analiza-linija__tekst">{{ z.linija.tekst }}, {{ podesavanja.kontakt.radnoVremeDugo | lower }}</p>
+    </div>
+    {%- endif %}
+  </section>
+  {%- endif %}
+
+</div>
+{%- endif -%}

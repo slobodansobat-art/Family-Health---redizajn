@@ -1,0 +1,25 @@
+{#- ZA LEKARE · uvodni deo (hero) sa onko mrežom, dugmetom i direktnom linijom
+    Sadržaj: stranice.zaLekare.hero  ·  telefon: podesavanja.kontakt.mobilni
+    Stil: css/stranice/za-lekare.css (.lekari-hero) -#}
+{%- set d = stranice.zaLekare.hero -%}
+{%- set k = podesavanja.kontakt -%}
+<section class="lekari-hero" aria-labelledby="lekari-hero-naslov">
+  <div class="lekari-hero__mreza" aria-hidden="true">{% onkoMreza "lekari" %}</div>
+  <div class="kontejner lekari-hero__unutra">
+    <nav class="lekari-hero__putanja" aria-label="Putanja">
+      <a href="{{ d.putanjaRoditeljLink }}">{{ d.putanjaRoditelj }}</a> <span aria-hidden="true">/</span> <span aria-current="page">{{ d.putanjaTrenutna }}</span>
+    </nav>
+    <p class="lekari-hero__nadnaslov">{{ d.nadnaslov }}</p>
+    <h1 id="lekari-hero-naslov" class="naslov-xl lekari-hero__naslov">{{ d.naslov }}</h1>
+    <p class="lekari-hero__tekst">{{ d.tekst }}</p>
+    <div class="lekari-hero__akcije">
+      <a href="{{ d.dugme.link }}" class="dugme dugme--belo lekari-hero__dugme">{{ d.dugme.tekst }}</a>
+      <a href="tel:{{ k.mobilniLink }}" class="lekari-hero__telefon"><span>{{ d.telefonOznaka }}</span> <strong>{{ k.mobilni }}</strong></a>
+    </div>
+    <dl class="lekari-hero__cinjenice">
+      {%- for c in d.cinjenice %}
+      <div><dt>{{ c.oznaka }}</dt><dd>{{ c.vrednost }}</dd></div>
+      {%- endfor %}
+    </dl>
+  </div>
+</section>

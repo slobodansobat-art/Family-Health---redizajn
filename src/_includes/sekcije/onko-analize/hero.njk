@@ -1,0 +1,19 @@
+{#- ONKO ANALIZE · hero: putanja, naslov, uvod, pretraga + animirana mreža
+    Sadržaj: stranice.onkoAnalize.hero   ·   Stil: css/stranice/onko-analize.css
+    Pretragu pokreće js/stranice/onko-analize.js -#}
+{%- set d = stranice.onkoAnalize.hero -%}
+<section class="analize-hero" aria-labelledby="analize-naslov">
+  <div class="analize-hero__mreza" aria-hidden="true">{% onkoMreza "analize" %}</div>
+  <div class="kontejner analize-hero__unutra">
+    <nav class="analize-putanja" aria-label="Putanja">
+      <a href="{{ d.putanjaNazad.link }}">{{ d.putanjaNazad.tekst }}</a> <span aria-hidden="true">/</span> <span aria-current="page">{{ d.putanjaOvde }}</span>
+    </nav>
+    <h1 id="analize-naslov" class="analize-hero__naslov">{{ d.naslov }}</h1>
+    <p class="analize-hero__tekst">{{ d.tekst }}</p>
+    <div class="analize-pretraga" role="search">
+      <label for="analize-pretraga" class="sr-only">{{ d.pretragaOznaka }}</label>
+      <svg class="analize-pretraga__ikonica" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+      <input id="analize-pretraga" name="pretraga" type="search" class="analize-pretraga__unos" autocomplete="off" placeholder="{{ d.pretragaPlaceholder }}" data-analize-pretraga data-placeholder-mobilni="{{ d.pretragaPlaceholderMobilni }}" aria-controls="analize-lista">
+    </div>
+  </div>
+</section>

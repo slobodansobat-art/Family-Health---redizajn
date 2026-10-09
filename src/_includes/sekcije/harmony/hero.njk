@@ -1,0 +1,68 @@
+{#- HARMONY · uvod (hero): naslov, činjenice, okrugla slika, mehurići u pozadini
+    Sadržaj: stranice.harmony.hero (+ najniža cena iz stranice.harmony.paketi)
+    Stil: css/stranice/harmony.css (.harmony-hero) -#}
+{%- from "makroi/osnovni.njk" import slika -%}
+{%- set d = stranice.harmony.hero -%}
+{%- set najniza = (stranice.harmony.paketi.stavke | sort(false, true, "cena") | first).cena -%}
+<section class="harmony-hero" aria-labelledby="harmony-hero-naslov">
+  {#- Mehurići (ukras): levo se dižu do visine naslova, desno skoro do vrha.
+      Položaj, veličina i brzina su podaci u CSS promenljivama. #}
+  <div class="harmony-hero__mehurici harmony-hero__mehurici--levo" aria-hidden="true">
+    <span class="harmony-mehur harmony-mehur--a" style="--x: 6%; --v: 16px; --trajanje: 11s; --kasnjenje: -2s"></span>
+    <span class="harmony-mehur harmony-mehur--b" style="--x: 22%; --v: 10px; --trajanje: 9s; --kasnjenje: -6s"></span>
+    <span class="harmony-mehur harmony-mehur--c" style="--x: 40%; --v: 22px; --trajanje: 13s; --kasnjenje: -4s"></span>
+    <span class="harmony-mehur harmony-mehur--d" style="--x: 58%; --v: 8px; --trajanje: 10s; --kasnjenje: -8s"></span>
+    <span class="harmony-mehur harmony-mehur--a" style="--x: 76%; --v: 14px; --trajanje: 12s; --kasnjenje: -1s"></span>
+    <span class="harmony-mehur harmony-mehur--b" style="--x: 90%; --v: 11px; --trajanje: 10s; --kasnjenje: -5s"></span>
+  </div>
+  <div class="harmony-hero__mehurici harmony-hero__mehurici--desno" aria-hidden="true">
+    <span class="harmony-mehur harmony-mehur--c" style="--x: 8%; --v: 12px; --trajanje: 17s; --kasnjenje: -3s"></span>
+    <span class="harmony-mehur harmony-mehur--a" style="--x: 20%; --v: 24px; --trajanje: 21s; --kasnjenje: -9s"></span>
+    <span class="harmony-mehur harmony-mehur--d" style="--x: 34%; --v: 9px; --trajanje: 15s; --kasnjenje: -12s"></span>
+    <span class="harmony-mehur harmony-mehur--b" style="--x: 50%; --v: 18px; --trajanje: 19s; --kasnjenje: -1s"></span>
+    <span class="harmony-mehur harmony-mehur--c" style="--x: 63%; --v: 13px; --trajanje: 16s; --kasnjenje: -7s"></span>
+    <span class="harmony-mehur harmony-mehur--a" style="--x: 76%; --v: 26px; --trajanje: 22s; --kasnjenje: -14s"></span>
+    <span class="harmony-mehur harmony-mehur--d" style="--x: 88%; --v: 10px; --trajanje: 14s; --kasnjenje: -5s"></span>
+    <span class="harmony-mehur harmony-mehur--b" style="--x: 94%; --v: 16px; --trajanje: 18s; --kasnjenje: -10s"></span>
+  </div>
+
+  <div class="kontejner harmony-hero__unutra">
+    <nav class="harmony-hero__putanja" aria-label="Putanja">
+      {%- for p in d.putanja %}
+      <a href="{{ p.link }}" class="harmony-hero__putanja-link">{{ p.tekst }}</a> <span aria-hidden="true" class="harmony-hero__putanja-crta">/</span>
+      {%- endfor %}
+      <span aria-current="page">{{ d.putanjaTrenutna }}</span>
+    </nav>
+
+    <div class="harmony-hero__mreza">
+      <div class="harmony-hero__tekst">
+        <p class="harmony-hero__nadnaslov"><span class="harmony-hero__tacka" aria-hidden="true"></span>{{ d.nadnaslov }}</p>
+        <h1 id="harmony-hero-naslov" class="harmony-hero__naslov">{{ d.naslov }}</h1>
+        <p class="harmony-hero__uvod">{{ d.tekst }}</p>
+        <p class="harmony-hero__vadjenje">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-6h4v6"></path></svg>
+          <span>{{ d.vadjenje }}</span>
+        </p>
+        <div class="harmony-hero__akcije">
+          <a href="{{ d.dugmeLink }}" class="dugme dugme--mint harmony-hero__dugme">{{ d.dugmeTekst }} {{ najniza | evra }}</a>
+          <a href="{{ d.sporedniLink.link }}" class="harmony-hero__sporedni">{{ d.sporedniLink.tekst }}</a>
+        </div>
+        <dl class="harmony-hero__cinjenice">
+          {%- for c in d.cinjenice %}
+          <div><dt>{{ c.oznaka }}</dt><dd>{{ c.vrednost }}</dd></div>
+          {%- endfor %}
+        </dl>
+      </div>
+
+      <div class="harmony-hero__slika">
+        <span class="harmony-hero__mrlja" aria-hidden="true"></span>
+        {{ slika(d.slika, d.slikaOpis, "slika--krug harmony-hero__foto", ucitavanje = "eager") }}
+      </div>
+    </div>
+
+    <p class="harmony-hero__fusnota">{{ d.fusnota }}</p>
+  </div>
+
+  {#- Talas na dnu (prelaz u belu sekciju) #}
+  <svg class="harmony-hero__talas" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 60 H1440 V30 C1200 0 960 52 720 28 C480 4 240 50 0 22 Z"></path></svg>
+</section>

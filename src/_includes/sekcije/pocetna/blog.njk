@@ -1,0 +1,30 @@
+{#- POČETNA · "Sa bloga": 3 najnovija članka (bez predloga tema)
+    Članci: collections.blog (src/sadrzaj/blog/*.md, najnoviji prvi)
+    Naslov i link "Svi članci": stranice.pocetna.blog   ·   Stil: css/stranice/pocetna.css
+    Ako nema nijednog napisanog članka, sekcija se ne prikazuje. -#}
+{%- set d = stranice.pocetna.blog -%}
+{#- Skupljamo prva 3 članka koji nisu "predlog teme" #}
+{%- set clanci = [] -%}
+{%- for c in collections.blog -%}
+  {%- if not c.data.predlogTeme and clanci.length < 3 %}{% set _dodat = clanci.push(c) %}{% endif -%}
+{%- endfor -%}
+{%- if clanci.length %}
+<section class="pocetna-blog" aria-labelledby="pocetna-blog-naslov">
+  <div class="kontejner">
+    <div class="pocetna-blog__vrh">
+      <h2 id="pocetna-blog-naslov" class="pocetna-blog__naslov">{{ d.naslov }}</h2>
+      <a href="{{ d.sviClanci.link }}" class="pocetna-blog__svi">{{ d.sviClanci.tekst }}</a>
+    </div>
+    <ul class="pocetna-blog__lista">
+      {%- for c in clanci %}
+      <li>
+        <a href="{{ c.url }}">
+          <span class="pocetna-blog__clanak">{{ c.data.naslov }}</span>
+          <span class="pocetna-blog__meta">{{ c.data.kategorija }}{% if c.data.datum %}, <time datetime="{{ c.data.datum | isoDatum }}">{{ c.data.datum | mesecGodina }}</time>{% endif %}</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{%- endif %}

@@ -1,0 +1,32 @@
+---
+# Cancer Neo: premium usluga (personalizovana vakcina protiv tumora).
+# Ima sopstvenu paletu (tamna noć + zlatna + slonovača) i hero animaciju.
+# Sadržaj: src/sadrzaj/stranice/cancer-neo.json
+# Stil: src/assets/css/stranice/cancer-neo.css  ·  JS: src/assets/js/stranice/cancer-neo.js
+kljuc: cancer-neo
+permalink: /onkogenetika/cancer-neo/
+zaglavlje:
+  tema: noc
+  oblast: onko
+  nazad: /onkogenetika/analize/
+  prekidacMobilni: false
+  linkovi:
+    - { tekst: "Proces", link: "#proces" }
+    - { tekst: "Da li je za vas", link: "#za-vas" }
+    - { tekst: "Za lekare", link: "/za-lekare/" }
+  dugme: { tekst: "Razgovor sa lekarom", link: "#kontakt" }
+donjaTraka: { tekst: "Razgovor sa lekarom", link: "#kontakt", zlatna: true }
+skripte: ["stranice/cancer-neo.js"]
+# Ime fajla sa crticom (cancer-neo) layout ne nalazi preko kljuca, pa SEO
+---
+{#- Omotač .neo nosi boje stranice (promenljive --neo-*) -#}
+<div class="neo">
+{% include "sekcije/cancer-neo/hero.njk" %}
+{% include "sekcije/cancer-neo/zasto.njk" %}
+{% include "sekcije/cancer-neo/kako-deluje.njk" %}
+{% include "sekcije/cancer-neo/proces.njk" %}
+{% include "sekcije/cancer-neo/za-vas.njk" %}
+{% include "sekcije/cancer-neo/paket.njk" %}
+{% include "sekcije/cancer-neo/faq.njk" %}
+{% include "sekcije/cancer-neo/kontakt.njk" %}
+</div>

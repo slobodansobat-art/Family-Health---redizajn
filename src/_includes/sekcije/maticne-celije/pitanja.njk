@@ -1,0 +1,52 @@
+{#- MATIČNE ĆELIJE · "Pre nego što izaberete banku": lista pitanja + odgovor Family Health
+    Klik na pitanje (ne prelaz mišem) prikazuje odgovor desno i štiklira pitanje kao pročitano.
+    Bez JS-a vide se svi odgovori, jedan ispod drugog.
+    Sadržaj: stranice.maticneCelije.pitanja
+    Stil: css/stranice/maticne-celije.css (.mc-pitanja)   ·   JS: js/stranice/maticne-celije.js -#}
+{%- from "makroi/osnovni.njk" import kvacica -%}
+{%- set d = stranice.maticneCelije.pitanja -%}
+{%- set ukupno = d.stavke | length -%}
+<section class="kontejner mc-pitanja" aria-labelledby="mc-pitanja-naslov" data-mc-pitanja>
+  <h2 id="mc-pitanja-naslov" class="mc-pitanja__naslov">{{ d.naslov }}</h2>
+  <p class="mc-pitanja__uvod">{{ d.uvod }}</p>
+
+  <div class="mc-pitanja__mreza">
+    {#- Leva kartica: lista pitanja kao u svesci #}
+    <div class="mc-pitanja__lista">
+      <div class="mc-pitanja__glava">
+        <p class="mc-pitanja__lista-naslov">{{ d.listaNaslov }}</p>
+        <p class="mc-pitanja__brojac" data-mc-procitano data-sablon="{{ d.procitano }}">{{ d.procitano | replace("{procitano}", 1) | replace("{ukupno}", ukupno) }}</p>
+      </div>
+      <ul class="mc-pitanja__stavke">
+        {%- for s in d.stavke %}
+        <li>
+          <button type="button" class="mc-pitanja__pitanje{% if loop.first %} je-procitano{% endif %}" aria-pressed="{{ 'true' if loop.first else 'false' }}" aria-controls="mc-odgovor-{{ loop.index }}" data-mc-pitanje="{{ loop.index0 }}">
+            <span class="mc-pitanja__kvadrat" aria-hidden="true">{{ kvacica(14) }}</span>
+            <span>{{ s.pitanje }}</span>
+          </button>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+
+    {#- Desna kartica: odgovor izabranog pitanja #}
+    <div class="mc-pitanja__kartica">
+      <svg class="mc-pitanja__mrlja" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path d="M310 60c50 40 70 120 40 190s-120 110-190 90S40 260 50 180 120 40 190 30s70-10 120 30z"></path></svg>
+      <div class="mc-pitanja__odgovori" aria-live="polite">
+        {%- for s in d.stavke %}
+        <div class="mc-pitanja__odgovor" id="mc-odgovor-{{ loop.index }}" data-mc-odgovor>
+          <p class="mc-pitanja__oznaka">{{ d.odgovorOznaka }}</p>
+          <p class="mc-pitanja__ponovljeno">{{ s.pitanje }}</p>
+          <p class="mc-pitanja__istaknuto">{{ s.istaknuto }}</p>
+          <p class="mc-pitanja__istaknuto-opis">{{ s.istaknutoOpis }}</p>
+          <p class="mc-pitanja__tekst">{{ s.odgovor }}</p>
+        </div>
+        {%- endfor %}
+      </div>
+      <div class="mc-pitanja__dno" data-mc-dno hidden>
+        <span class="mc-pitanja__redni" data-mc-redni data-sablon="{{ d.redniBroj }}">{{ d.redniBroj | replace("{broj}", 1) | replace("{ukupno}", ukupno) }}</span>
+        <button type="button" class="mc-pitanja__sledece" data-mc-sledece>{{ d.dugmeSledece }}</button>
+      </div>
+    </div>
+  </div>
+</section>

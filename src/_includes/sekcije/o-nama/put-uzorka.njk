@@ -1,0 +1,28 @@
+{#- O NAMA · put uzorka: Beograd -> partnerske laboratorije (animirana mapa)
+    Sadržaj: stranice.oNama.put   ·   Mapa: ilustracije/o-nama/mapa.njk
+    Stil: css/stranice/o-nama.css
+    Raspored: desktop tekst i lista levo, mapa desno; mobilni tekst, mapa, lista. -#}
+{%- from "ilustracije/o-nama/mapa.njk" import mapa -%}
+{%- set d = stranice.oNama.put -%}
+<section class="kontejner onama-put" aria-labelledby="onama-put-naslov">
+  <div class="onama-put__tekst">
+    <h2 id="onama-put-naslov" class="onama-naslov onama-put__naslov">{{ d.naslov }}</h2>
+    <p class="blag">{{ d.tekst }}</p>
+  </div>
+
+  {#- Mapa: šira za desktop, uspravna za telefon #}
+  <div class="onama-put__mapa">
+    <div class="samo-desktop">{{ mapa(d, "desktop") }}</div>
+    <div class="samo-mobilni">{{ mapa(d, "mobilni") }}</div>
+  </div>
+
+  {#- Partneri; boja tačke odgovara liniji na mapi #}
+  <ul class="onama-partneri">
+    {%- for p in d.partneri %}
+    <li class="onama-partner">
+      <span class="onama-partner__tacka onama-boja-{{ loop.index }}" aria-hidden="true"></span>
+      <span><strong class="onama-partner__naziv">{{ p.naziv }}</strong> <span class="blag">· {{ p.opis }}</span></span>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>

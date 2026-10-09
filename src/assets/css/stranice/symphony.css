@@ -1,0 +1,371 @@
+/* ==========================================================================
+   STRANICA: SYMPHONY  (/trudnoca-i-beba/symphony/)
+   Sekcije: src/_includes/sekcije/symphony/  ·  JS: js/stranice/symphony.js
+   Redosled: hero, kariogram, poređenje, nalaz, proces, cena, faq, kontakt.
+   Mobilni raspored je na kraju fajla (ispod 960px).
+   ========================================================================== */
+
+/* Boje samo za ovu stranicu */
+.stranica-symphony {
+  --symphony-neaktivan: #E3DCEB;         /* hromozom koji test ne pregleda */
+  --symphony-neaktivan-tekst: #6E6680;   /* broj takvog hromozoma */
+  --symphony-na-ljubicastoj: #EBDDF5;    /* blag tekst u ljubičastoj sekciji */
+}
+.symphony-naslov { color: var(--ljubicasta-800); }
+
+/* --- Putanja (breadcrumb) ------------------------------------------------- */
+.symphony-putanja { position: relative; font-size: 14px; color: var(--tekst-blag); margin-bottom: 36px; }
+.symphony-putanja a { color: var(--tekst-blag); }
+
+/* --- HERO ----------------------------------------------------------------- */
+.symphony-hero { position: relative; overflow: hidden; background: var(--ljubicasta-50); }
+.symphony-hero__unutra { position: relative; padding-top: 40px; padding-bottom: 110px; }
+
+/* Mehurići koji se dižu (ukras) */
+.symphony-hero__mehurici { position: absolute; bottom: 0; width: 50%; overflow: hidden; pointer-events: none; }
+.symphony-hero__mehurici--levo { left: 0; height: 64%; }
+.symphony-hero__mehurici--desno { right: 0; height: 100%; }
+.symphony-hero__mehurici span {
+  position: absolute; top: 100%; left: var(--levo);
+  width: var(--velicina); height: var(--velicina); border-radius: 50%; background: var(--boja);
+  animation: symphony-uspon var(--trajanje) linear var(--kasnjenje) infinite;
+}
+@keyframes symphony-uspon {
+  0% { top: calc(100% + 30px); transform: scale(.85); opacity: 0; }
+  12% { opacity: .9; }
+  78% { opacity: .9; }
+  100% { top: -30px; transform: scale(1.1); opacity: 0; }
+}
+
+/* Raspored: tekst levo (svaki element u svom redu), fotografija desno */
+.symphony-hero__mreza {
+  position: relative;
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  column-gap: 64px; row-gap: 22px; align-items: start;
+}
+.symphony-hero__mreza > * { grid-column: 1; }
+.symphony-hero__nadnaslov { display: inline-flex; align-items: center; gap: 8px; color: var(--ljubicasta-600); font-weight: 600; font-size: 15px; }
+.symphony-hero__tacka { width: 10px; height: 10px; border-radius: 50%; background: var(--ljubicasta-600); flex-shrink: 0; }
+.symphony-hero__naslov {
+  font-family: var(--font-naslov); font-weight: 400; color: var(--ljubicasta-800);
+  font-size: clamp(48px, 4.8vw, 68px); line-height: 1.02; max-width: 620px;
+}
+.symphony-hero__tekst { font-size: 19px; color: var(--tekst-blag); max-width: 520px; }
+.symphony-hero__vadjenje {
+  justify-self: start; display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 18px 10px 12px; background: var(--bela); border-radius: 999px;
+  color: var(--ljubicasta-800); font-weight: 600;
+}
+.symphony-hero__vadjenje svg { flex-shrink: 0; color: var(--ljubicasta-600); }
+.symphony-hero__akcije { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 6px; }
+.symphony-hero__dugme { padding: 16px 26px; }
+.symphony-hero__link { color: var(--ljubicasta-800); }
+.symphony-hero__cinjenice {
+  margin: 18px 0 0; padding-top: 22px; border-top: 1px solid var(--ljubicasta-300);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px 28px;
+}
+.symphony-hero__cinjenice dt { font-size: 13px; color: var(--tekst-blag); }
+.symphony-hero__cinjenice dd { margin: 2px 0 0; font-family: var(--font-naslov); font-size: 26px; color: var(--ljubicasta-800); line-height: 1.3; }
+
+/* Fotografija u "mrlji" koja polako menja oblik */
+.symphony-hero__foto {
+  grid-column: 2; grid-row: 1 / span 6; align-self: center;
+  position: relative; display: flex; justify-content: center; min-width: 0;
+}
+.symphony-hero__mrlja, .symphony-hero__oblik { animation: symphony-mrlja 14s ease-in-out infinite; border-radius: 58% 42% 52% 48% / 46% 56% 44% 54%; }
+.symphony-hero__mrlja { position: absolute; top: -10px; width: 400px; height: 380px; max-width: 110%; background: var(--ljubicasta-150); }
+.symphony-hero__oblik { position: relative; width: 360px; height: 340px; max-width: 100%; overflow: hidden; animation-delay: -5s; }
+.symphony-hero__slika { width: 100%; height: 100%; }
+.symphony-hero__oblik .slika--prazna { padding: 40px; }
+@keyframes symphony-mrlja {
+  0%, 100% { border-radius: 58% 42% 52% 48% / 46% 56% 44% 54%; }
+  33% { border-radius: 44% 56% 40% 60% / 58% 42% 58% 42%; }
+  66% { border-radius: 52% 48% 62% 38% / 40% 60% 46% 54%; }
+}
+.symphony-hero__talas { position: absolute; left: 0; bottom: 0; width: 100%; height: 60px; fill: var(--bela); }
+
+/* --- KARIOGRAM -------------------------------------------------------------- */
+.symphony-kariogram { padding-top: 80px; padding-bottom: 40px; }
+.symphony-kariogram__glava { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px 40px; margin-bottom: 30px; }
+.symphony-kariogram__uvod { max-width: 620px; display: flex; flex-direction: column; gap: 12px; }
+
+/* Izbor režima (dugmad sa aria-pressed) */
+.symphony-kariogram__rezimi { display: flex; flex-wrap: wrap; gap: 4px; padding: 5px; background: var(--ljubicasta-50); border-radius: 999px; }
+.symphony-kariogram__rezim {
+  --akcent: var(--ljubicasta-600);
+  padding: 11px 18px; border: 0; border-radius: 999px; background: transparent;
+  color: var(--ljubicasta-800); font-size: 15px; font-weight: 600; line-height: 1.3;
+  transition: background .25s ease, color .25s ease;
+}
+.symphony-kariogram__rezim--mint { --akcent: var(--mint-600); }
+.symphony-kariogram__rezim:hover { background: var(--bela); }
+.symphony-kariogram__rezim[aria-pressed="true"] { background: var(--akcent); color: var(--bela); }
+
+/* Okvir sa hromozomima; boja zavisi od režima */
+.symphony-kariogram__okvir {
+  --akcent: var(--ljubicasta-600);
+  background: var(--ljubicasta-25); border: 1px solid var(--linija-svetla);
+  border-radius: 32px; padding: 36px 32px 28px;
+}
+.symphony-kariogram__okvir--mint { --akcent: var(--mint-600); }
+.symphony-kariogram__slika { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; gap: 22px 18px; }
+
+/* Jedan hromozom = par crtica + broj. Visina crtice prati veličinu (--duzina) */
+.symphony-hromozom { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 34px; }
+.symphony-hromozom__par { position: relative; display: flex; gap: 3px; align-items: flex-end; height: 86px; }
+.symphony-hromozom__par > span:not(.symphony-hromozom__traka) {
+  display: block; width: 11px; height: calc(16px + var(--duzina) * .28px);
+  border-radius: 6px; background: var(--symphony-neaktivan);
+  transition: background .35s ease;
+}
+.symphony-hromozom.je-pokriven .symphony-hromozom__par > span:not(.symphony-hromozom__traka) { background: var(--akcent); }
+/* Oznaka mikrodelecije (npr. 22q11.2 u paketu Harmony Plus) */
+.symphony-hromozom__traka {
+  display: none; position: absolute; left: -3px; right: -3px; bottom: 30%; height: 4px;
+  border-radius: 2px; background: var(--bela); box-shadow: 0 0 0 2px var(--akcent);
+}
+.symphony-hromozom.je-oznacen .symphony-hromozom__traka { display: block; }
+.symphony-hromozom__broj { font-size: 12px; font-weight: 600; color: var(--symphony-neaktivan-tekst); transition: color .35s ease; }
+.symphony-hromozom.je-pokriven .symphony-hromozom__broj,
+.symphony-hromozom.je-oznacen .symphony-hromozom__broj { color: var(--akcent); }
+
+.symphony-kariogram__rezultat {
+  margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--linija-svetla);
+  display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: baseline; justify-content: space-between;
+}
+.symphony-kariogram__sazetak { font-family: var(--font-naslov); font-size: 26px; line-height: 1.25; color: var(--akcent); }
+.symphony-kariogram__opis { color: var(--tekst-blag); font-size: 15px; max-width: 520px; }
+
+.symphony-kariogram__stavke { list-style: none; margin-top: 34px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px 32px; }
+.symphony-kariogram__stavka { border-top: 2px solid var(--ljubicasta-600); padding-top: 14px; }
+.symphony-kariogram__stavka--sporedno { border-top-color: var(--ljubicasta-400); }
+.symphony-kariogram__stavka strong { display: block; font-weight: 600; color: var(--ljubicasta-800); }
+.symphony-kariogram__stavka span { color: var(--tekst-blag); font-size: 15px; }
+
+/* --- POREĐENJE: Harmony ili Symphony ------------------------------------- */
+.symphony-poredjenje { padding-block: 60px; }
+.symphony-poredjenje__naslov { margin-bottom: 12px; }
+.symphony-poredjenje__uvod { max-width: 640px; margin-bottom: 30px; }
+.symphony-poredjenje__omotac { overflow-x: auto; }
+.symphony-tabela { width: 100%; min-width: 720px; border-collapse: separate; border-spacing: 0; font-size: 16px; }
+.symphony-tabela th, .symphony-tabela td { text-align: left; vertical-align: top; }
+.symphony-tabela thead th { padding: 18px; font-family: var(--font-naslov); font-weight: 400; font-size: 24px; border-radius: 20px 20px 0 0; }
+.symphony-tabela thead .symphony-tabela__prazno { width: 22%; padding: 14px 18px; }
+.symphony-tabela thead .symphony-tabela__harmony { background: var(--mint-50); color: var(--mint-900); }
+.symphony-tabela thead .symphony-tabela__harmony a { color: var(--mint-900); }
+.symphony-tabela thead .symphony-tabela__symphony { background: var(--ljubicasta-50); color: var(--ljubicasta-800); }
+.symphony-tabela tbody th { padding: 16px 18px; font-weight: 600; color: var(--ljubicasta-800); border-top: 1px solid var(--linija-svetla); }
+.symphony-tabela tbody td { padding: 16px 18px; }
+.symphony-tabela tbody .symphony-tabela__harmony { background: var(--mint-50); border-top: 1px solid var(--mint-150); }
+.symphony-tabela tbody .symphony-tabela__symphony { background: var(--ljubicasta-50); border-top: 1px solid var(--ljubicasta-100); }
+.symphony-poredjenje__zakljucak { margin-top: 22px; }
+
+/* --- NALAZ ------------------------------------------------------------------ */
+.symphony-nalaz { background: var(--ljubicasta-50); }
+.symphony-nalaz__mreza { display: flex; flex-wrap: wrap; gap: 40px 72px; align-items: flex-start; padding-block: 96px; }
+.symphony-nalaz__levo { flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+.symphony-nalaz__tekst { color: var(--tekst); }
+.symphony-nalaz__povisen { margin-top: 10px; background: var(--bela); border-radius: 24px; padding: 26px 28px; display: flex; flex-direction: column; gap: 10px; }
+.symphony-nalaz__povisen-naslov { font-family: var(--font-naslov); font-size: 24px; line-height: 1.2; color: var(--ljubicasta-800); }
+
+/* Primer nalaza */
+.symphony-primer { flex: 1 1 420px; min-width: 0; background: var(--bela); border-radius: 28px; padding: 30px; box-shadow: 0 20px 50px rgba(47, 21, 68, .08); }
+.symphony-primer__glava { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 2px solid var(--ljubicasta-800); }
+.symphony-primer__naslov { font-weight: 600; color: var(--ljubicasta-800); }
+.symphony-primer__oznaka { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: var(--ljubicasta-50); color: var(--ljubicasta-600); font-weight: 600; white-space: nowrap; }
+.symphony-primer__lista { margin: 0; }
+.symphony-primer__red { display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--linija-svetla); font-size: 15px; }
+.symphony-primer__red dt { color: var(--tekst); }
+.symphony-primer__red dd { margin: 0; font-weight: 600; text-align: right; }
+.symphony-primer__vrednost--nizak { color: var(--mint-600); }
+.symphony-primer__vrednost--istaknuto { color: var(--ljubicasta-600); }
+
+/* --- PROCES ----------------------------------------------------------------- */
+.symphony-proces { padding-top: 80px; padding-bottom: 20px; }
+.symphony-proces__naslov { margin-bottom: 28px; }
+.symphony-proces__lista { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.symphony-proces__korak { background: var(--ljubicasta-25); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 8px; }
+.symphony-proces__korak--istaknuto { background: var(--ljubicasta-50); }
+.symphony-proces__ikonica { color: var(--ljubicasta-600); flex-shrink: 0; }
+.symphony-proces__broj { display: none; }
+.symphony-proces__tekst { display: flex; flex-direction: column; gap: 8px; }
+.symphony-proces__tekst strong { font-weight: 600; color: var(--ljubicasta-800); }
+.symphony-proces__tekst span { color: var(--tekst-blag); font-size: 15px; }
+
+/* --- CENA ------------------------------------------------------------------- */
+.symphony-cena-sekcija { padding-block: 40px; }
+.symphony-cena { background: var(--ljubicasta-50); border-radius: 32px; padding: 34px 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px 40px; }
+.symphony-cena__opis { flex: 1 1 320px; min-width: 0; }
+.symphony-cena__opis p { margin-top: 4px; }
+.symphony-cena__naslov { font-family: var(--font-naslov); font-size: 32px; line-height: 1.15; color: var(--ljubicasta-800); }
+.symphony-cena__iznos { flex: 0 1 auto; }
+.symphony-cena__broj { font-family: var(--font-naslov); font-size: 44px; line-height: 1; color: var(--ljubicasta-600); }
+.symphony-cena__rate { margin-top: 8px; font-size: 15px; font-weight: 600; color: var(--ljubicasta-600); }
+.symphony-cena__iznos .mali-tekst { margin-top: 2px; }
+.symphony-cena__dugme { padding: 16px 26px; }
+
+/* --- ČESTA PITANJA (izgled makroa faq prilagođen skici) ------------------- */
+.symphony-faq { display: flex; flex-wrap: wrap; gap: 32px 72px; align-items: flex-start; padding-top: 60px; padding-bottom: 100px; }
+.symphony-faq__levo { flex: .7 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.symphony-faq__pitanja { flex: 1.3 1 520px; min-width: 0; }
+.symphony-faq .faq__pitanje { font-family: var(--font-tekst); font-size: 18px; font-weight: 500; padding: 20px 0; gap: 20px; }
+.symphony-faq .faq__ikonica { width: 32px; height: 32px; border-radius: 50%; background: var(--ljubicasta-50); align-items: center; justify-content: center; }
+.symphony-faq .faq__odgovor { max-width: 680px; padding-bottom: 22px; }
+
+/* --- KONTAKT ---------------------------------------------------------------- */
+.symphony-kontakt { position: relative; overflow: hidden; background: var(--ljubicasta-600); color: var(--bela); }
+.symphony-kontakt__mrlja { position: absolute; right: -120px; bottom: -160px; width: 520px; height: 520px; fill: var(--ljubicasta-550); }
+.symphony-kontakt__mreza { position: relative; display: flex; flex-wrap: wrap; gap: 40px 72px; padding-block: 88px; }
+.symphony-kontakt__levo { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.symphony-kontakt__naslov { font-family: var(--font-naslov); font-style: italic; font-size: 46px; line-height: 1.08; }
+.symphony-kontakt__tekst { color: var(--symphony-na-ljubicastoj); max-width: 380px; }
+.symphony-kontakt__telefoni { display: flex; flex-direction: column; gap: 4px; margin-top: 10px; }
+.symphony-kontakt__telefoni a { color: var(--bela); font-size: 22px; text-decoration: none; }
+.symphony-kontakt__telefoni a:hover { text-decoration: underline; }
+.symphony-kontakt__forma { flex: 1 1 520px; min-width: 0; }
+.symphony-kontakt__zakljucano { background: var(--ljubicasta-25); }
+
+/* Bez pokreta: mehurići se ne prikazuju, mrlje stoje */
+@media (prefers-reduced-motion: reduce) {
+  .symphony-hero__mehurici { display: none; }
+  .symphony-hero__mrlja, .symphony-hero__oblik { animation: none; }
+}
+
+/* ==========================================================================
+   MOBILNI (ispod 960px)
+   ========================================================================== */
+@media (max-width: 959px) {
+  .symphony-putanja { font-size: 13px; margin-bottom: 14px; }
+
+  /* Hero: jedna kolona, fotografija između teksta i dugmeta */
+  .symphony-hero__unutra { padding-top: 20px; padding-bottom: 34px; }
+  .symphony-hero__mehurici--levo, .symphony-hero__talas { display: none; }
+  .symphony-hero__mehurici--desno { width: 100%; }
+  .symphony-hero__mreza { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  .symphony-hero__nadnaslov { font-size: 14px; align-self: flex-start; }
+  .symphony-hero__tacka { width: 9px; height: 9px; }
+  .symphony-hero__naslov { font-size: 38px; line-height: 1.05; margin-top: 10px; }
+  .symphony-hero__tekst { font-size: 15px; margin-top: 12px; }
+  .symphony-hero__vadjenje { display: flex; margin-top: 16px; padding: 10px 14px 10px 12px; border-radius: 18px; font-size: 14px; }
+  .symphony-hero__vadjenje svg { width: 20px; height: 20px; }
+  .symphony-hero__foto { order: 1; margin-top: 22px; }
+  .symphony-hero__mrlja { display: none; }
+  .symphony-hero__oblik { width: 250px; height: 220px; }
+  .symphony-hero__oblik .slika--prazna { padding: 30px; font-size: 13px; }
+  .symphony-hero__akcije { order: 2; flex-direction: column; align-items: stretch; gap: 12px; margin-top: 22px; }
+  .symphony-hero__dugme { padding: 15px; }
+  .symphony-hero__link { text-align: center; font-size: 15px; }
+  .symphony-hero__cinjenice { order: 3; margin-top: 20px; padding-top: 16px; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+  .symphony-hero__cinjenice > div:nth-child(3) { grid-column: 1 / -1; }
+  .symphony-hero__cinjenice dt { font-size: 12px; }
+  .symphony-hero__cinjenice dd { font-size: 20px; }
+
+  /* Naslovi sekcija */
+  .symphony-naslov.naslov-l, .symphony-naslov.naslov-m { font-size: 28px; line-height: 1.1; }
+
+  /* Kariogram: mreža 12 x 2, manji hromozomi */
+  .symphony-kariogram { padding-top: 32px; padding-bottom: 0; }
+  .symphony-kariogram__glava { display: block; margin-bottom: 0; }
+  .symphony-kariogram__uvod { gap: 8px; }
+  .symphony-kariogram__uvod p { font-size: 15px; }
+  .symphony-kariogram__rezimi { margin-top: 16px; flex-wrap: nowrap; padding: 4px; gap: 2px; }
+  .symphony-kariogram__rezim { flex: 1 1 auto; padding: 10px 6px; font-size: 13px; white-space: nowrap; }
+  .symphony-kariogram__okvir { margin-top: 12px; border-radius: 24px; padding: 20px 14px 16px; }
+  .symphony-kariogram__slika { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px 2px; align-items: end; }
+  .symphony-hromozom { width: auto; gap: 5px; }
+  .symphony-hromozom__par { gap: 2px; height: 62px; }
+  .symphony-hromozom__par > span:not(.symphony-hromozom__traka) { width: 8px; height: calc(10px + var(--duzina) * .2px); border-radius: 4px; }
+  .symphony-hromozom__traka { height: 3px; }
+  .symphony-hromozom__broj { font-size: 11px; }
+  .symphony-kariogram__rezultat { display: block; margin-top: 18px; padding-top: 14px; }
+  .symphony-kariogram__sazetak { font-size: 22px; }
+  .symphony-kariogram__opis { margin-top: 4px; font-size: 14px; }
+  .symphony-kariogram__stavke { display: flex; flex-direction: column; gap: 16px; margin-top: 22px; }
+  .symphony-kariogram__stavka { padding-top: 10px; }
+  .symphony-kariogram__stavka span { font-size: 14px; }
+
+  /* Poređenje: tabela postaje niz kartica */
+  .symphony-poredjenje { padding-top: 36px; padding-bottom: 0; }
+  .symphony-poredjenje__naslov { margin-bottom: 8px; }
+  .symphony-poredjenje__uvod { font-size: 15px; margin-bottom: 0; }
+  .symphony-poredjenje__napomena {
+    margin-top: 14px; padding: 12px 14px; border-radius: 16px; font-size: 14px;
+    background: var(--upozorenje-pozadina); border: 1px solid var(--upozorenje-ivica); color: var(--upozorenje-tekst);
+  }
+  .symphony-poredjenje__napomena strong { font-weight: 600; }
+  .symphony-poredjenje__omotac { overflow: visible; }
+  .symphony-tabela, .symphony-tabela thead, .symphony-tabela tbody { display: block; min-width: 0; }
+  .symphony-tabela thead tr { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
+  .symphony-tabela thead .symphony-tabela__prazno { display: none; }
+  .symphony-tabela thead th { padding: 10px 12px; border-radius: 14px; font-size: 20px; line-height: 1.3; }
+  .symphony-tabela thead th a { text-decoration: none; }
+  .symphony-tabela tbody { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+  .symphony-tabela tbody tr { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; border: 1px solid var(--linija-svetla); border-radius: 18px; padding: 12px; }
+  .symphony-tabela tbody th { grid-column: 1 / -1; padding: 0; border: 0; font-size: 15px; }
+  .symphony-tabela tbody td { padding: 8px 10px; border-radius: 12px; border: 0 !important; font-size: 14px; color: var(--tekst); }
+  .symphony-tabela tbody td::before {
+    content: attr(data-kolona); display: block; margin-bottom: 2px;
+    font-size: 11px; font-weight: 600; letter-spacing: .4px; text-transform: uppercase;
+  }
+  .symphony-tabela tbody .symphony-tabela__harmony::before { color: var(--mint-900); }
+  .symphony-tabela tbody .symphony-tabela__symphony::before { color: var(--ljubicasta-650); }
+  .symphony-poredjenje__zakljucak { margin-top: 16px; font-size: 15px; }
+
+  /* Nalaz: primer nalaza ide pre okvira "Ako je rizik povišen" */
+  .symphony-nalaz { margin-top: 36px; }
+  .symphony-nalaz__mreza { display: flex; flex-direction: column; flex-wrap: nowrap; gap: 0; padding-block: 32px 34px; }
+  .symphony-nalaz__levo { display: contents; }
+  .symphony-nalaz__levo h2 { margin-bottom: 10px; }
+  .symphony-nalaz__tekst { font-size: 15px; }
+  .symphony-primer { flex: none; margin-top: 18px; border-radius: 22px; padding: 18px; box-shadow: 0 14px 34px rgba(47, 21, 68, .08); }
+  .symphony-primer__glava { gap: 10px; padding-bottom: 12px; }
+  .symphony-primer__naslov { font-size: 15px; }
+  .symphony-primer__oznaka { font-size: 11.5px; padding: 4px 9px; }
+  .symphony-primer__red { gap: 12px; padding: 11px 0; font-size: 14px; }
+  .symphony-primer__red dd { flex-shrink: 0; }
+  .symphony-nalaz__povisen { order: 1; margin-top: 14px; border-radius: 22px; padding: 18px; gap: 6px; }
+  .symphony-nalaz__povisen-naslov { font-size: 22px; }
+  .symphony-nalaz__povisen p { font-size: 15px; }
+
+  /* Proces: redni broj umesto ikonice */
+  .symphony-proces { padding-top: 34px; padding-bottom: 0; }
+  .symphony-proces__naslov { margin-bottom: 14px; }
+  .symphony-proces__lista { display: flex; flex-direction: column; gap: 8px; }
+  .symphony-proces__korak { flex-direction: row; align-items: flex-start; gap: 14px; border-radius: 18px; padding: 14px 16px; }
+  .symphony-proces__ikonica { display: none; }
+  .symphony-proces__broj {
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    width: 32px; height: 32px; border-radius: 50%; background: var(--ljubicasta-600); color: var(--bela);
+    font-weight: 600; font-size: 14px;
+  }
+  .symphony-proces__tekst { display: block; }
+  .symphony-proces__tekst strong { display: block; }
+  .symphony-proces__tekst span { font-size: 14px; }
+
+  /* Cena */
+  .symphony-cena-sekcija { padding-top: 26px; padding-bottom: 0; }
+  .symphony-cena { display: block; border-radius: 26px 26px 26px 90px; padding: 24px 20px 30px; }
+  .symphony-cena__naslov { font-size: 26px; }
+  .symphony-cena__opis p { font-size: 14px; }
+  .symphony-cena__broj { margin-top: 14px; font-size: 50px; line-height: .9; }
+  .symphony-cena__iznos .mali-tekst { font-size: 13px; }
+  .symphony-cena__dugme { margin-top: 16px; min-height: 0; padding: 13px 20px; font-size: 15px; }
+
+  /* Česta pitanja */
+  .symphony-faq { display: block; padding-top: 36px; padding-bottom: 38px; }
+  .symphony-faq__levo { gap: 6px; margin-bottom: 14px; }
+  .symphony-faq__levo p { font-size: 15px; }
+  .symphony-faq .faq__pitanje { font-size: 16px; padding: 16px 0; gap: 14px; }
+  .symphony-faq .faq__ikonica { width: 30px; height: 30px; }
+  .symphony-faq .faq__odgovor { padding-bottom: 18px; }
+
+  /* Kontakt */
+  .symphony-kontakt__mrlja { display: none; }
+  .symphony-kontakt__mreza { display: block; padding-block: 30px 34px; }
+  .symphony-kontakt__levo { gap: 8px; }
+  .symphony-kontakt__naslov { font-size: 32px; line-height: 1.1; }
+  .symphony-kontakt__tekst { font-size: 15px; }
+  .symphony-kontakt__telefoni { flex-direction: row; flex-wrap: wrap; gap: 4px 18px; margin-top: 2px; }
+  .symphony-kontakt__telefoni a { font-size: 19px; }
+  .symphony-kontakt__forma { margin-top: 16px; }
+}

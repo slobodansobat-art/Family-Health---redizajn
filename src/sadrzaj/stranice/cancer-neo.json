@@ -1,0 +1,185 @@
+{
+  "_naziv": "Cancer Neo (personalizovana vakcina)",
+  "seo": {
+    "naslov": "Cancer Neo – personalizovana vakcina protiv tumora | Family Health",
+    "opis": "Cancer Neo: personalizovana vakcina protiv tumora. Sekvenciranje egzoma tumora i zdravog tkiva i izbor neoantigena za peptidnu vakcinu, uz lečenje koje vodi vaš onkolog."
+  },
+  "hero": {
+    "putanja": [
+      { "tekst": "Onkogenetika", "link": "/onkogenetika/" },
+      { "tekst": "Analize", "link": "/onkogenetika/analize/" }
+    ],
+    "trenutna": "Cancer Neo",
+    "oznaka": "Cancer Neo · Premium",
+    "naslovMd": "Vakcina dizajnirana prema genetskom zapisu *vašeg* tumora.",
+    "tekst": "Sekvenciramo egzom tumora i zdravog tkiva, pronalazimo promene koje postoje samo u ćelijama tumora i prema njima biramo peptide za personalizovanu vakcinu. Ona uči imuni sistem da prepozna baš te ćelije.",
+    "dugmeGlavno": { "tekst": "Zakažite razgovor sa lekarom", "link": "#kontakt" },
+    "dugmeSporedno": { "tekst": "Da li je za mene?", "link": "#za-vas" },
+    "cinjenice": [
+      { "oznaka": "Uzorak", "vrednost": "Tkivo tumora i krv" },
+      { "oznaka": "Analiza", "vrednost": "4–6 nedelja" },
+      { "oznaka": "Uz lečenje", "vrednost": "Koje vodi onkolog" },
+      { "oznaka": "Cena", "vrednost": "Na upit [potvrditi]" }
+    ],
+    "animacija": {
+      "opis": "Animacija: na površini ćelije tumora označava se šest neoantigena, a za svaki se bira peptid za vakcinu",
+      "oznakaPeptidi": "IZABRANI PEPTIDI",
+      "oznakaCelija": "ĆELIJA TUMORA",
+      "peptidi": ["KLMDVTRAY", "SPLEGHIVF", "RYFNEQWLA", "GLTDKIHAM", "YVSEPLRKA", "FAQNWTRLV"]
+    }
+  },
+  "zasto": {
+    "nadnaslov": "Zašto je drugačija",
+    "naslov": "Nijedna dva tumora nisu ista. Ni dve vakcine.",
+    "uvod": "Standardne terapije su iste za sve pacijente sa istom dijagnozom. Cancer Neo polazi od promena koje postoje samo kod vas.",
+    "kartice": [
+      { "naslov": "Samo za jednog pacijenta", "tekst": "Vakcina se dizajnira prema mutacijama pronađenim baš u vašem tumoru. Ne postoji gotova verzija koja se izdaje sa police." },
+      { "naslov": "Ceo egzom, ne panel", "tekst": "Pregledamo oko 20.000 gena tumora i zdravog tkiva, da bismo pronašli sve promene koje imuni sistem može da prepozna." },
+      { "naslov": "Uz lečenje, ne umesto njega", "tekst": "Vakcina dopunjuje terapiju koju vodi vaš onkolog. Izveštaj i sve sledeće korake dogovaramo zajedno sa njim." }
+    ]
+  },
+  "kakoDeluje": {
+    "nadnaslov": "Kako deluje",
+    "naslov": "Vakcina pokazuje imunom sistemu šta tačno da traži.",
+    "uvod": "Ćelije tumora nose promene koje zdrave ćelije nemaju. Kada imuni sistem nauči da ih prepozna, može da napadne tumor, a da poštedi zdravo tkivo.",
+    "oznakaKoraka": "Korak",
+    "koraci": [
+      {
+        "naslov": "Pronalazimo neoantigene",
+        "tekst": "Poređenjem tumora i zdravog tkiva izdvajamo promene koje postoje samo na ćelijama tumora.",
+        "ilustracija": "cancer-neo/neoantigeni",
+        "ilustracijaOpis": "Ćelija tumora sa označenim neoantigenima na površini",
+        "oznake": ["neoantigeni, samo na tumoru"]
+      },
+      {
+        "naslov": "Vakcina uči imuni sistem",
+        "tekst": "Peptidi iz vakcine predstavljaju te promene T ćelijama, koje uče da ih prepoznaju.",
+        "ilustracija": "cancer-neo/vakcina-uci",
+        "ilustracijaOpis": "Peptidi iz vakcine pokazuju imunom sistemu metu, a T ćelije uče da je prepoznaju",
+        "oznake": ["peptidi iz vakcine", "T ćelije uče metu"]
+      },
+      {
+        "naslov": "Imuni sistem prepoznaje tumor",
+        "tekst": "T ćelije traže istu metu na ćelijama tumora i usmeravaju imuni odgovor na njih.",
+        "ilustracija": "cancer-neo/prepoznavanje",
+        "ilustracijaOpis": "T ćelija prepoznaje neoantigen na ćeliji tumora i napada je",
+        "oznake": ["imuni odgovor usmeren na tumor"]
+      }
+    ]
+  },
+  "proces": {
+    "nadnaslov": "Proces",
+    "naslov": "Od uzorka do vakcine.",
+    "uvod": "Ceo put vodi jedan koordinator, koji vam se javlja posle svakog koraka.",
+    "koordinator": {
+      "ime": "[Ime koordinatora: dodati]",
+      "uloga": "Lični koordinator za Cancer Neo",
+      "slika": "",
+      "slikaOpis": "Mesto za fotografiju koordinatora"
+    },
+    "koraci": [
+      { "naslov": "Razgovor sa lekarom", "oznaka": "Besplatno", "tekst": "Naš lekar pregleda dijagnozu i dosadašnje lečenje i procenjuje da li je Cancer Neo realna opcija. Razgovaramo i sa vašim onkologom." },
+      { "naslov": "Uzorak", "oznaka": "Logistiku preuzimamo mi", "tekst": "Parafinski blok tumora preuzimamo iz patologije, uz vaše ovlašćenje. Krv, kao zdravo tkivo, vadimo u ordinaciji ili kod vas kući." },
+      { "naslov": "Sekvenciranje egzoma", "oznaka": "4–6 nedelja", "tekst": "U laboratoriji u Nemačkoj [naziv: potvrditi] sekvencira se egzom tumora i zdravog tkiva i određuje HLA tip, koji pokazuje šta vaš imuni sistem može da prepozna." },
+      { "naslov": "Izbor neoantigena", "oznaka": "Bioinformatička analiza", "tekst": "Od svih pronađenih promena biraju se one sa najvećom verovatnoćom imunog odgovora, i za njih se dizajniraju peptidi." },
+      { "naslov": "Izrada i primena vakcine", "oznaka": "U dogovoru sa onkologom", "tekst": "Vakcina se izrađuje prema izveštaju i primenjuje u dogovoru sa vašim onkologom. [ko izrađuje vakcinu i gde se primenjuje: potvrditi]" }
+    ]
+  },
+  "zaVas": {
+    "nadnaslov": "Da li je za vas",
+    "naslov": "Tri pitanja pre razgovora.",
+    "uvod": "Odgovori vam pomažu da znate šta da očekujete. Konačnu procenu uvek daju lekari.",
+    "pitanja": [
+      "Imate dijagnozu solidnog tumora (na primer pluća, debelog creva, dojke, kože)?",
+      "Postoji sačuvano tkivo tumora iz biopsije ili operacije (parafinski blok)?",
+      "Vaš onkolog zna da razmatrate personalizovanu vakcinu?"
+    ],
+    "da": "Da",
+    "ne": "Ne",
+    "dugme": { "tekst": "Zakažite razgovor sa lekarom", "link": "#kontakt" },
+    "napomena": "Ovo nije medicinska procena i ne čuvamo vaše odgovore.",
+    "rezultati": {
+      "nepotpun": {
+        "tamna": false,
+        "oznaka": "Vaš rezultat",
+        "naslov": "Odgovorite na sva tri pitanja.",
+        "tekst": "Ostalo je još {n} pitanja.",
+        "tekstJedno": "Ostalo je još {n} pitanje.",
+        "dugme": false
+      },
+      "kandidat": {
+        "tamna": true,
+        "oznaka": "Mogući kandidat",
+        "naslov": "Cancer Neo bi mogao da bude opcija za vas.",
+        "tekst": "Sledeći korak je razgovor sa našim lekarom, koji pregleda nalaz patologije i dosadašnje lečenje, pa zajedno sa vašim onkologom procenjuje da li analiza ima smisla.",
+        "dugme": true
+      },
+      "nijeSolidan": {
+        "tamna": false,
+        "oznaka": "Razgovarajmo",
+        "naslov": "Cancer Neo je namenjen solidnim tumorima.",
+        "tekst": "Za druge vrste bolesti postoje druge analize. Pozovite nas, pa vam lekar predlaže šta ima smisla u vašem slučaju.",
+        "dugme": true
+      },
+      "bezTkiva": {
+        "tamna": false,
+        "oznaka": "Razgovarajmo",
+        "naslov": "Bez tkiva tumora vakcina se ne može dizajnirati.",
+        "tekst": "Ponekad tkivo postoji, a pacijent to ne zna: čuva ga patologija bolnice. Proveravamo to umesto vas, a ako ga nema, razgovaramo o drugim mogućnostima.",
+        "dugme": true
+      },
+      "bezOnkologa": {
+        "tamna": false,
+        "oznaka": "Pre sledećeg koraka",
+        "naslov": "Važno je da onkolog bude uključen.",
+        "tekst": "Vakcina se primenjuje uz lečenje koje vodi onkolog. Možemo da mu pošaljemo sve informacije, ili da razgovaramo zajedno.",
+        "dugme": true
+      }
+    }
+  },
+  "paket": {
+    "nadnaslov": "Šta dobijate",
+    "naslov": "Sve na jednom mestu, uz jednu osobu koja vas vodi.",
+    "cenaOznaka": "Cena",
+    "cena": "Na upit",
+    "cenaNapomena": "Cenu dobijate posle prvog razgovora, kada znamo šta je za vas potrebno. [cena i mogućnost plaćanja na rate: potvrditi]",
+    "dugme": { "tekst": "Zakažite razgovor sa lekarom", "link": "#kontakt" },
+    "stavke": [
+      "Lični koordinator tokom celog procesa",
+      "Razgovor sa lekarom pre i posle analize",
+      "Preuzimanje tkiva iz patologije i vađenje krvi",
+      "Sekvenciranje egzoma tumora i zdravog tkiva",
+      "HLA tipizacija",
+      "Izveštaj sa izabranim neoantigenima i dizajnom peptida",
+      "Razgovor sa vašim onkologom o rezultatima"
+    ]
+  },
+  "faq": {
+    "nadnaslov": "Česta pitanja",
+    "naslov": "Pre nego što odlučite.",
+    "direktnaLinija": "Direktna linija:",
+    "pitanja": [
+      { "pitanje": "Da li vakcina zamenjuje hemioterapiju ili imunoterapiju?", "odgovor": "Ne. Personalizovana vakcina dopunjuje lečenje koje vodi vaš onkolog i ne zamenjuje standardnu terapiju." },
+      { "pitanje": "Za koje tumore je Cancer Neo?", "odgovor": "Za solidne tumore kod kojih postoji dovoljno tumorskog tkiva za analizu. Da li je za vas, procenjuje lekar na prvom razgovoru. [indikacije: potvrditi]" },
+      { "pitanje": "Šta ako nemam sačuvano tkivo?", "odgovor": "Tkivo iz biopsije ili operacije obično čuva patologija bolnice. Proveravamo to umesto vas. Ako tkiva nema, lekar predlaže druge mogućnosti." },
+      { "pitanje": "Koliko traje ceo proces?", "odgovor": "Analiza i izbor neoantigena traju 4 do 6 nedelja od prijema uzorka. Rok za izradu vakcine dogovaramo posle izveštaja. [potvrditi]" },
+      { "pitanje": "Kako se vakcina podnosi?", "odgovor": "[formulaciju o bezbednosti i mogućim neželjenim reakcijama potvrditi sa lekarom]" },
+      { "pitanje": "Ko primenjuje vakcinu?", "odgovor": "[ko izrađuje i ko primenjuje vakcinu, i gde: potvrditi]" }
+    ]
+  },
+  "kontakt": {
+    "nadnaslov": "Prvi korak",
+    "naslov": "Prvi razgovor je sa lekarom, i besplatan je.",
+    "tekst": "Ostavite broj, a lekar vas zove istog radnog dana. Ako imate nalaz patologije, priložite ga posle razgovora.",
+    "forma": {
+      "ime": "Ime i prezime",
+      "telefon": "Telefon",
+      "uloga": "Javljate se kao",
+      "ulogaOpcije": ["Pacijent", "Član porodice", "Lekar"],
+      "blok": "Postoji li parafinski blok tumora?",
+      "blokOpcije": ["Da", "Ne", "Ne znam"],
+      "dijagnoza": "Dijagnoza, ukratko (nije obavezno)",
+      "dugme": "Zakažite razgovor sa lekarom"
+    }
+  }
+}

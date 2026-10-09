@@ -51,7 +51,7 @@
 .zaglavlje__sekundarni .zaglavlje__telefon { color: var(--bela); font-weight: 600; }
 
 /* --- Glavni red ----------------------------------------------------------- */
-.zaglavlje__glavni { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 32px; padding-block: 20px; }
+.zaglavlje__glavni { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 24px; padding-block: 20px; }
 
 /* Logo */
 .logo { display: flex; flex-direction: column; text-decoration: none; color: var(--z-logo, var(--tekst-blag)); flex-shrink: 0; }
@@ -76,7 +76,7 @@
 .zaglavlje__oblast.je-aktivna { background: var(--z-aktivna); color: var(--z-aktivna-tekst); font-weight: 600; }
 
 /* Meni oblasti */
-.zaglavlje__meni { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-left: auto; font-size: 15px; }
+.zaglavlje__meni { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; white-space: nowrap; margin-left: auto; font-size: 15px; }
 .zaglavlje__link { color: var(--z-tekst); text-decoration: none; }
 .zaglavlje__link:hover { color: var(--z-link-aktivan); text-decoration: underline; text-underline-offset: 4px; }
 .zaglavlje__link.je-aktivan { color: var(--z-link-aktivan); font-weight: 600; }

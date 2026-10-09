@@ -1,0 +1,136 @@
+{
+  "_naziv": "Za lekare",
+  "seo": {
+    "naslov": "Za lekare – upućivanje pacijenata | Family Health",
+    "opis": "Uputite pacijenta na genetsku analizu tumora ili prenatalni test. Logistiku uzorka, transport i izveštaj preuzimamo mi. Direktna linija za lekare."
+  },
+  "hero": {
+    "putanjaRoditelj": "Onkogenetika",
+    "putanjaRoditeljLink": "/onkogenetika/",
+    "putanjaTrenutna": "Za lekare",
+    "nadnaslov": "Za onkologe, hirurge i patologe",
+    "naslov": "Vi postavljate indikaciju. Mi preuzimamo sve ostalo.",
+    "tekst": "Genetska analiza tumora za vašeg pacijenta, od preuzimanja uzorka iz patologije do izveštaja sa predlogom ciljane terapije. Logistiku, papirologiju i razgovor sa pacijentom preuzimamo mi.",
+    "dugme": { "tekst": "Uputite pacijenta", "link": "#uputi" },
+    "telefonOznaka": "Direktna linija",
+    "cinjenice": [
+      { "oznaka": "Laboratorija", "vrednost": "CeGaT, Tibingen, Nemačka" },
+      { "oznaka": "Rezultat", "vrednost": "3 do 4 nedelje za većinu analiza" },
+      { "oznaka": "Logistika", "vrednost": "Uzorak iz patologije preuzimamo mi" },
+      { "oznaka": "Izveštaj", "vrednost": "Stiže vama i pacijentu" }
+    ]
+  },
+  "tok": {
+    "naslov": "Vaš deo su dva koraka. Sve između je naše.",
+    "uvod": "Od uputa do izveštaja, ovako se deli posao.",
+    "oznakaVi": "Vi, lekar",
+    "oznakaMi": "Family Health",
+    "oznakaVasKorak": "Vaš korak",
+    "oznakaNasKorak": "Naš korak",
+    "koraci": [
+      { "naslov": "Indikacija", "vasTekst": "Uput ili poziv, uz kratku anamnezu i patohistološki nalaz", "nasTekst": "Kontaktiramo pacijenta, besplatna procena i cena pre bilo kakve obaveze" },
+      { "naslov": "Uzorak", "vasTekst": "", "nasTekst": "Preuzimamo kalup iz patologije i vadimo krv, u ordinaciji ili kod pacijenta kući" },
+      { "naslov": "Analiza", "vasTekst": "", "nasTekst": "Transport u laboratoriju CeGaT u Tibingenu i sekvenciranje, 3 do 4 nedelje" },
+      { "naslov": "Izveštaj", "vasTekst": "", "nasTekst": "Izveštaj sa varijantama, TMB, MSI i predlogom terapije šaljemo vama i pacijentu" },
+      { "naslov": "Odluka", "vasTekst": "Odluka o terapiji, na osnovu izveštaja", "nasTekst": "Po potrebi, drugo mišljenje konzilijuma nemačkih onkologa" }
+    ]
+  },
+  "pomoc": {
+    "nadnaslov": "Za vas, ne samo za pacijenta",
+    "naslov": "Pomažemo i vama.",
+    "tekst": "Genetska analiza tumora ne treba da vam oduzme vreme. Sve što nije medicinska odluka preuzimamo mi.",
+    "dugmeTelefon": "Direktna linija:",
+    "stavke": [
+      { "ikonica": "razgovor", "naslov": "Razgovor sa pacijentom preuzimamo mi", "tekst": "Objašnjavamo analizu, cenu i proceduru, pa vi u ambulanti ne trošite vreme na to." },
+      { "ikonica": "dokument", "naslov": "Papirologija je na nama", "tekst": "Ovlašćenje za preuzimanje bloka iz patologije i dozvole za slanje uzorka u inostranstvo." },
+      { "ikonica": "kamion", "naslov": "Logistika uzorka", "tekst": "Od patologije do laboratorije u Nemačkoj, uz praćenje statusa do izveštaja." },
+      { "ikonica": "lupa", "naslov": "Pomoć pri izboru analize", "tekst": "Za konkretnog pacijenta, telefonom, pre nego što izdate uput." },
+      { "ikonica": "ljudi", "naslov": "Tumačenje izveštaja", "tekst": "Konsultacija o nalazu, a po potrebi i mišljenje konzilijuma nemačkih onkologa." },
+      { "ikonica": "knjiga", "naslov": "Stručni materijali", "tekst": "Spiskovi gena u panelima, uputstva za uzorak i primeri izveštaja. [edukacije za lekare: potvrditi]" }
+    ]
+  },
+  "indikacije": {
+    "naslov": "Koja analiza, za koju indikaciju",
+    "linkSve": { "tekst": "Sve analize →", "link": "/onkogenetika/analize/" },
+    "kolonaSituacija": "Klinička situacija",
+    "kolonaAnaliza": "Analiza",
+    "kolonaUzorak": "Uzorak",
+    "kolonaRezultat": "Rezultat",
+    "oznakaPremium": "Premium",
+    "redovi": [
+      { "situacija": "Uznapredovali solidni tumor, izbor ciljane terapije", "analiza": "Cancer Precision", "link": "/onkogenetika/analize/cancer-precision/", "uzorak": "Tkivo i krv", "rezultat": "3–4 nedelje", "premium": false },
+      { "situacija": "Poznat tip tumora, ciljano pitanje", "analiza": "Cancer Essential", "link": "/onkogenetika/analize/", "uzorak": "Tkivo [potvrditi]", "rezultat": "oko 3 nedelje", "premium": false },
+      { "situacija": "Tkivo nije dostupno ili je biopsija rizična", "analiza": "Cancer Detect", "link": "/onkogenetika/analize/", "uzorak": "Krv, 3 × 10 ml", "rezultat": "3–4 nedelje", "premium": false },
+      { "situacija": "Praćenje posle operacije ili terapije", "analiza": "MRD praćenje", "link": "/onkogenetika/analize/", "uzorak": "Tkivo i krv, zatim krv", "rezultat": "na 3–4 meseca", "premium": false },
+      { "situacija": "Kandidat za personalizovanu vakcinu", "analiza": "Cancer Neo", "link": "/onkogenetika/cancer-neo/", "uzorak": "Tkivo i krv", "rezultat": "4–6 nedelja", "premium": true },
+      { "situacija": "Postojeći nalaz, potrebno tumačenje", "analiza": "Cancer Advice", "link": "/onkogenetika/analize/", "uzorak": "Postojeći nalazi", "rezultat": "[potvrditi]", "premium": false }
+    ]
+  },
+  "uzorak": {
+    "naslov": "Šta je potrebno od uzorka",
+    "stavke": [
+      { "ikonica": "kalup", "naslov": "Tkivo tumora", "tekst": "Parafinski kalup ili pločice, sa najmanje 20% tumorskih ćelija. Preuzimanje iz patologije organizujemo mi." },
+      { "ikonica": "kap", "naslov": "Krv, kao zdravo tkivo", "tekst": "1–2 ml u EDTA epruveti. Vadimo je mi, u ordinaciji ili kod pacijenta kući." },
+      { "ikonica": "epruveta", "naslov": "Tečna biopsija", "tekst": "3 epruvete po 10 ml krvi, u posebnim epruvetama za slobodnu DNK. [potvrditi: epruvete obezbeđujemo mi]" }
+    ]
+  },
+  "izvestaj": {
+    "naslov": "Izveštaj, Cancer Precision",
+    "oznaka": "Primer, ne pravi izveštaj",
+    "podnaslov": "Varijante od terapijskog značaja",
+    "kolonaGen": "Gen, varijanta",
+    "kolonaUdeo": "Udeo (VAF)",
+    "kolonaTerapija": "Ciljana terapija",
+    "varijante": [
+      { "gen": "EGFR p.L858R", "udeo": "34%", "terapija": "osimertinib" },
+      { "gen": "PIK3CA p.H1047R", "udeo": "12%", "terapija": "kliničke studije" }
+    ],
+    "pokazatelji": [
+      { "oznaka": "TMB", "vrednost": "4 mut/Mb" },
+      { "oznaka": "MSI", "vrednost": "stabilan" },
+      { "oznaka": "HRD", "vrednost": "negativan" }
+    ],
+    "napomena": "Uz izveštaj, po potrebi, i mišljenje konzilijuma onkologa (Cancer Advice)."
+  },
+  "ginekolozi": {
+    "nadnaslov": "Za ginekologe",
+    "naslov": "Prenatalni testovi i matične ćelije, uz vas.",
+    "tekst": "Vaša pacijentkinja dobija test iz krvi bez rizika za trudnoću, a vi nalaz koji tumačite zajedno sa ultrazvukom. Prenatalni test ne zamenjuje kombinovani (double) test, već ga dopunjuje.",
+    "dugmad": [
+      { "tekst": "Harmony test", "link": "/trudnoca-i-beba/harmony/", "glavno": true },
+      { "tekst": "Symphony test", "link": "/trudnoca-i-beba/symphony/", "glavno": false },
+      { "tekst": "Matične ćelije", "link": "/maticne-celije/", "glavno": false }
+    ],
+    "stavke": [
+      { "ikonica": "obrazac", "naslov": "Uput i materijal za pacijentkinje", "tekst": "Uputni obrazac i letak za čekaonicu šaljemo vam besplatno. [materijal: dodati]" },
+      { "ikonica": "kap", "naslov": "Vađenje krvi organizujemo mi", "tekst": "U našoj ordinaciji ili kod pacijentkinje kući, a dolazak ne naplaćujemo." },
+      { "ikonica": "kvacica", "naslov": "Nalaz stiže i vama", "tekst": "Uz saglasnost pacijentkinje, nalaz šaljemo i ginekologu koji je uputio. [način dostave: potvrditi]" },
+      { "ikonica": "razgovor", "naslov": "Podrška kod povišenog rizika", "tekst": "Naš lekar je dostupan za razgovor o nalazu i sledećim koracima, uz genetsko savetovanje." }
+    ]
+  },
+  "uputi": {
+    "naslov": "Uputite pacijenta.",
+    "tekst": "Mi kontaktiramo pacijenta, dogovaramo uzorak i javljamo vam se kad izveštaj stigne.",
+    "dokumentiOznaka": "Dokumenti za lekare",
+    "dokumenti": [
+      { "naziv": "Uputni obrazac", "fajl": "", "status": "PDF, uskoro [dodati]" },
+      { "naziv": "Uputstvo za pripremu uzorka", "fajl": "", "status": "PDF, uskoro [dodati]" },
+      { "naziv": "Spisak gena u panelima", "fajl": "", "status": "PDF, uskoro [dodati]" }
+    ],
+    "dokumentPreuzmi": "PDF, preuzmite",
+    "telefonOznaka": "Direktna linija za lekare",
+    "forma": {
+      "imeLekara": "Ime lekara",
+      "ustanova": "Ustanova",
+      "telefon": "Vaš telefon",
+      "analiza": "Analiza",
+      "analize": ["Nisam siguran, predložite", "Cancer Precision", "Cancer Essential", "Cancer Detect", "MRD praćenje", "Cancer Neo", "Cancer Advice", "Harmony", "Symphony", "Matične ćelije"],
+      "pacijent": "Kontakt pacijenta",
+      "pacijentPrimer": "Ime i telefon",
+      "prilog": "Prilog: uput ili patohistološki nalaz (opciono)",
+      "prilogPomoc": "PDF ili fotografija, do 8 MB",
+      "saglasnostPacijenta": "Pacijent je saglasan da ga Family Health kontaktira.",
+      "dugme": "Pošaljite uput"
+    }
+  }
+}

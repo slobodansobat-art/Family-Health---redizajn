@@ -125,10 +125,18 @@
 {%- endmacro %}
 
 {% macro fajlPolje(id, ime, oznaka, pomoc = "PDF ili fotografija, do 8 MB", klasa = "") -%}
+{#- Pravo polje za fajl je skriveno (ali dostupno tastaturi); vidi se dugme na srpskom
+    i ime izabranog fajla (glavni.js, pokreniFajlPolja). Tekstovi: podesavanja.forme -#}
 <div class="polje {{ klasa }}">
-  <label for="{{ id }}" class="polje__oznaka">{{ oznaka }}</label>
-  <input id="{{ id }}" name="{{ ime }}" type="file" class="unos unos--fajl" accept=".pdf,.jpg,.jpeg,.png,.heic" aria-describedby="{{ id }}-pomoc">
+  <span class="polje__oznaka" id="{{ id }}-oznaka">{{ oznaka }}</span>
+  <div class="fajl" data-fajl>
+    <input id="{{ id }}" name="{{ ime }}" type="file" class="fajl__unos" accept=".pdf,.jpg,.jpeg,.png,.heic" aria-labelledby="{{ id }}-oznaka"{% if pomoc %} aria-describedby="{{ id }}-pomoc"{% endif %}>
+    <label for="{{ id }}" class="fajl__dugme">{{ podesavanja.forme.izaberiFajl }}</label>
+    <span class="fajl__ime" data-fajl-ime aria-live="polite">{{ podesavanja.forme.nijeIzabranFajl }}</span>
+  </div>
+  {%- if pomoc %}
   <span class="polje__pomoc" id="{{ id }}-pomoc">{{ pomoc }}</span>
+  {%- endif %}
 </div>
 {%- endmacro %}
 

@@ -1,0 +1,12 @@
+{#- MATIČNE ĆELIJE · "Kako izgleda, korak po korak" (zajednički makro koraci)
+    Desktop: lista koraka levo, opis sa ilustracijom desno. Mobilni: harmonika.
+    Ilustracije: src/_includes/ilustracije/maticne-celije/
+    Sadržaj: stranice.maticneCelije.proces
+    Stil: css/komponente/koraci.css + css/stranice/maticne-celije.css (.mc-proces) -#}
+{%- from "makroi/komponente.njk" import koraci with context -%}
+{%- set d = stranice.maticneCelije.proces -%}
+<section class="kontejner mc-proces" aria-labelledby="mc-proces-naslov">
+  <h2 id="mc-proces-naslov" class="mc-proces__naslov">{{ d.naslov }}</h2>
+  <p class="mc-proces__uvod">{{ d.uvod }}</p>
+  {{ koraci("mc-koraci", d.stavke, "ljubicasta", d.poslednje) }}
+</section>

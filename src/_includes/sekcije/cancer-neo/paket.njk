@@ -1,0 +1,24 @@
+{#- CANCER NEO · "Šta dobijate": tamna kartica sa cenom i spiskom usluga
+    Sadržaj: stranice.cancerNeo.paket   ·   Stil: css/stranice/cancer-neo.css (PAKET) -#}
+{%- set d = stranice.cancerNeo.paket -%}
+<section class="neo-paket" aria-labelledby="neo-paket-naslov">
+  <div class="kontejner neo-paket__omotac">
+    <div class="neo-paket__kartica neo-tamna">
+      <span class="neo-paket__krug neo-paket__krug--veliki" aria-hidden="true"></span>
+      <span class="neo-paket__krug neo-paket__krug--mali" aria-hidden="true"></span>
+      <div class="neo-paket__levo">
+        <p class="neo-nadnaslov">{{ d.nadnaslov }}</p>
+        <h2 id="neo-paket-naslov" class="naslov-l neo-naslov">{{ d.naslov }}</h2>
+        <p class="neo-paket__cena-oznaka">{{ d.cenaOznaka }}</p>
+        <p class="neo-paket__cena">{{ d.cena }}</p>
+        <p class="neo-paket__napomena">{{ d.cenaNapomena }}</p>
+        <a href="{{ d.dugme.link }}" class="dugme dugme--zlatno neo-dugme neo-paket__dugme">{{ d.dugme.tekst }}</a>
+      </div>
+      <ul class="neo-paket__stavke">
+        {%- for s in d.stavke %}
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12l5 5L20 6"></path></svg><span>{{ s }}</span></li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

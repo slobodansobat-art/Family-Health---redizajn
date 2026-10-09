@@ -1,0 +1,57 @@
+{#- MATIČNE ĆELIJE · "Do kada treba da odlučite?": slajder nedelje trudnoće + poruka
+    Slajder radi mišem, tastaturom (strelice, Home/End) i dodirom; −/+ menjaju za jednu nedelju.
+    Poruka zavisi od nedelje (pragovi "doNedelje" u JSON-u). Bez JS-a vidi se poruka za početnu nedelju.
+    Sadržaj: stranice.maticneCelije.rok
+    Stil: css/stranice/maticne-celije.css (.mc-rok)   ·   JS: js/stranice/maticne-celije.js -#}
+{%- set d = stranice.maticneCelije.rok -%}
+{%- set raspon = d.najvise - d.najmanje -%}
+
+{#- Padež reči "nedelja" (isto kao FH.nedelja u glavni.js) -#}
+{%- macro padez(n) -%}
+{%- set m10 = n % 10 -%}{%- set m100 = n % 100 -%}
+{%- if m10 == 1 and m100 != 11 -%}nedelja{%- elif m10 >= 2 and m10 <= 4 and (m100 < 12 or m100 > 14) -%}nedelje{%- else -%}nedelja{%- endif -%}
+{%- endmacro -%}
+
+{#- Početna poruka (za prikaz bez JS-a) -#}
+{%- set w = d.pocetna -%}
+{%- set preostalo = d.termin - w if d.termin > w else 0 -%}
+{%- set odgovarajuce = [] -%}
+{%- for p in d.poruke -%}{%- if w < p.doNedelje -%}{%- set _ = odgovarajuce.push(p) -%}{%- endif -%}{%- endfor -%}
+{%- set poruka = odgovarajuce[0] or (d.poruke | last) -%}
+
+<section class="kontejner mc-rok" aria-labelledby="mc-rok-naslov">
+  <div class="mc-rok__kartica">
+    <div class="mc-rok__uvod">
+      <h2 id="mc-rok-naslov" class="mc-rok__naslov">{{ d.naslov }}</h2>
+      <p class="mc-rok__tekst">{{ d.tekst }}</p>
+    </div>
+
+    <div class="mc-rok__alat" data-mc-rok style="--rok: {{ ((d.preporuceniRok - d.najmanje) / raspon * 100) | round(2) }}%">
+      <div class="mc-rok__red">
+        <p id="mc-rok-pitanje" class="mc-rok__pitanje">{{ d.pitanje }}</p>
+        <div class="mc-rok__brojac">
+          <button type="button" class="mc-rok__korak" data-mc-rok-minus aria-label="Nedelja manje">−</button>
+          <output class="mc-rok__vrednost" for="mc-rok-klizac" aria-labelledby="mc-rok-pitanje" aria-live="polite" data-mc-rok-vrednost>{{ w }}.</output>
+          <button type="button" class="mc-rok__korak" data-mc-rok-plus aria-label="Nedelja više">+</button>
+        </div>
+      </div>
+
+      <div class="mc-rok__klizac">
+        <div class="mc-rok__staza" aria-hidden="true"><span></span><span></span></div>
+        <input id="mc-rok-klizac" class="mc-rok__unos" type="range" min="{{ d.najmanje }}" max="{{ d.najvise }}" step="1" value="{{ w }}" aria-labelledby="mc-rok-pitanje" aria-valuetext="{{ d.opisVrednosti | replace('{nedelja}', w) }}" data-mc-rok-klizac data-sablon="{{ d.opisVrednosti }}">
+        <div class="mc-rok__skala" aria-hidden="true">
+          {%- for s in d.skala %}
+          <span class="{% if loop.first %}je-prva{% elif loop.last %}je-poslednja{% endif %}{% if s.nedelja == d.preporuceniRok %} je-rok{% endif %}" style="--x: {{ ((s.nedelja - d.najmanje) / raspon * 100) | round(2) }}%">{{ s.tekst }}</span>
+          {%- endfor %}
+        </div>
+      </div>
+
+      <div class="mc-rok__poruka" data-mc-rok-poruka>
+        <p class="mc-rok__poruka-naslov">{{ poruka.naslov }}</p>
+        <p class="mc-rok__poruka-tekst">{{ poruka.tekst | replace("{preostalo}", preostalo) | replace("{nedelja}", padez(preostalo)) }}</p>
+      </div>
+      <p class="mc-rok__napomena">{{ d.napomena }}</p>
+    </div>
+  </div>
+</section>
+<script type="application/json" id="mc-rok-podaci">{{ d | uJson | safe }}</script>

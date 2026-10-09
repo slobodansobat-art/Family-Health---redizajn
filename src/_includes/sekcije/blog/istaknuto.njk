@@ -1,0 +1,28 @@
+{#- BLOG · naslov stranice + istaknut članak (velika kartica sa fotografijom)
+    Istaknut je prvi članak sa "istaknuto: true" (CMS: "Istaknut članak na vrhu
+    bloga"); ako ga nema, najnoviji napisan članak. Predlozi tema se preskaču.
+    Sadržaj: stranice.blog.hero + collections.blog   ·   Stil: css/stranice/blog.css -#}
+{%- from "makroi/osnovni.njk" import slika -%}
+{%- set d = stranice.blog.hero -%}
+{%- set kandidati = [] -%}
+{%- for c in collections.blog -%}
+  {%- if not c.data.predlogTeme and c.data.istaknuto %}{% set _x = kandidati.push(c) %}{% endif -%}
+{%- endfor -%}
+{%- for c in collections.blog -%}
+  {%- if not c.data.predlogTeme %}{% set _x = kandidati.push(c) %}{% endif -%}
+{%- endfor -%}
+{%- set istaknut = kandidati[0] -%}
+<section class="kontejner blog-istaknuto" aria-labelledby="blog-naslov">
+  <h1 id="blog-naslov" class="blog-istaknuto__naslov">{{ d.naslov }}</h1>
+  {%- if istaknut %}
+  <a href="{{ istaknut.url }}" class="blog-istaknuto__kartica">
+    {{ slika(istaknut.data.slika, istaknut.data.slikaOpis, "blog-istaknuto__slika") }}
+    <span class="blog-istaknuto__tekst">
+      <span class="blog-istaknuto__oznaka">{{ istaknut.data.kategorija }} · {{ d.oznakaIstaknuto }}</span>
+      <h2 class="blog-istaknuto__clanak">{{ istaknut.data.naslov }}</h2>
+      <span class="blog-istaknuto__opis">{{ istaknut.data.opis }}</span>
+      <span class="blog-istaknuto__dalje">{{ d.dalje }}</span>
+    </span>
+  </a>
+  {%- endif %}
+</section>

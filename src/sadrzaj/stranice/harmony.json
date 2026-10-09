@@ -1,0 +1,179 @@
+{
+  "_naziv": "Harmony (prenatalni test)",
+  "seo": {
+    "naslov": "Harmony prenatalni test – cena i paketi | Family Health",
+    "opis": "Harmony test kompanije Roche: precizan skrining za trizomije 21, 18 i 13 iz krvi majke, od 390 €. Rezultat za 3 do 5 radnih dana."
+  },
+  "hero": {
+    "putanja": [
+      { "tekst": "Trudnoća i beba", "link": "/trudnoca-i-beba/" },
+      { "tekst": "Prenatalni testovi", "link": "/trudnoca-i-beba/#testovi" }
+    ],
+    "putanjaTrenutna": "Harmony",
+    "nadnaslov": "Neinvazivni prenatalni test kompanije Roche",
+    "naslov": "Harmony test, iz jedne epruvete krvi.",
+    "tekst": "Već od 10. nedelje trudnoće, bez ikakvog rizika za bebu, saznajte da li postoji povećan rizik za najčešće hromozomske poremećaje. Rezultat za 3 do 5 radnih dana.",
+    "vadjenje": "Krv vadimo u našoj ordinaciji ili kod vas kući, a dolazak ne naplaćujemo",
+    "dugmeTekst": "Izaberite paket, od",
+    "dugmeLink": "#paketi",
+    "sporedniLink": { "tekst": "Pitajte lekara koji test vam treba", "link": "#kontakt" },
+    "cinjenice": [
+      { "oznaka": "Od", "vrednost": "10. nedelje" },
+      { "oznaka": "Rezultat", "vrednost": "3 do 5 radnih dana" },
+      { "oznaka": "Otkriva Daunov sindrom", "vrednost": "više od 99%*" }
+    ],
+    "fusnota": "* Stopa otkrivanja za trizomiju 21, uz manje od 0,1% lažno pozitivnih rezultata. Izvor: Roche.",
+    "slika": "",
+    "slikaOpis": "Fotografija trudnice sa postojećeg sajta"
+  },
+  "razlike": {
+    "naslov": "Šta Harmony radi drugačije",
+    "uvodMd": "Svi neinvazivni testovi rade se iz krvi majke. Razlika je u tome šta laboratorija čita: Harmony ide u dubinu za najčešće poremećaje, a [Symphony](/trudnoca-i-beba/symphony/) u širinu, kroz ceo genom.",
+    "stavke": [
+      { "naslov": "Ciljana, dubinska analiza", "tekst": "Hromozomi 13, 18 i 21 čine manje od 10% genoma. Harmony ne čita ceo genom, nego ciljano i dublje analizira baš hromozome koji se ispituju (DANSR tehnologija, analiza na mikročipu)." },
+      { "naslov": "Udeo DNK bebe se meri u svakom uzorku", "tekst": "Uz pomoć SNP tehnologije meri se koliki deo slobodne DNK potiče od bebe, i taj podatak ulazi u izračunavanje rizika (FORTE algoritam) i u nalaz. Ako DNK bebe nema dovoljno, ne dobijate nepouzdan rezultat, nego novo vađenje krvi." },
+      { "naslov": "Manje od 0,1% lažno pozitivnih rezultata", "tekst": "U studiji NEXT, kod visokog rizika za Daunov sindrom nalaz se potvrdio u 81% slučajeva. Kod kombinovanog skrininga u prvom trimestru (kombinovani test: krv i ultrazvuk) taj procenat je bio 3,4%. Manje lažnih uzbuna znači i manje nepotrebnih amniocenteza." },
+      { "naslov": "Najviše proučavan neinvazivni test", "tekst": "78 objavljenih stručnih studija sa više od 330.000 žena, kod jednoplodnih i blizanačkih trudnoća i trudnoća iz vantelesne oplodnje." }
+    ],
+    "izvor": "Izvor: Roche, materijali za zdravstvene radnike o Harmony testu (podaci o studijama zaključno sa decembrom 2023).",
+    "dijagram": {
+      "opis": "Poređenje: analiza celog genoma raspoređuje očitavanja na sve hromozome, a Harmony ih usmerava na hromozome 13, 18, 21, X i Y",
+      "sirokiNaslov": "Symphony, analiza celog genoma",
+      "sirokiOpis": "širi pregled: očitavanja na sva 24 hromozoma",
+      "ciljaniNaslov": "Harmony, ciljana analiza",
+      "ciljaniOpis": "dubinska analiza hromozoma koji se ispituju"
+    },
+    "merac": {
+      "opis": "Udeo DNK bebe meri se u svakom uzorku; ako je premali, radi se novo vađenje krvi umesto nepouzdanog rezultata",
+      "naslov": "Udeo DNK bebe u uzorku: meri se, ne pretpostavlja",
+      "premalo": "premalo: novo vađenje",
+      "dovoljno": "dovoljno: izdaje se nalaz, udeo upisan u nalaz"
+    }
+  },
+  "paketi": {
+    "naslov": "Četiri paketa, po obimu ispitivanja",
+    "uvod": "Svaki sledeći paket ispituje sve što i prethodni, plus još nešto. Ako niste sigurni koji vam treba, lekar će vam pomoći u izboru.",
+    "izabranPaket": "Harmony Kvartet",
+    "stavke": [
+      { "naziv": "Harmony Solo", "cena": 390, "opis": "Trizomija 21 (Daunov sindrom)", "oznaka": "Osnovni" },
+      { "naziv": "Harmony Trio", "cena": 490, "opis": "Trizomije 13, 18 i 21", "oznaka": "Tri najčešće trizomije" },
+      { "naziv": "Harmony Kvartet", "cena": 590, "opis": "Trizomije 13, 18 i 21 i polne aneuploidije", "oznaka": "Najčešći izbor" },
+      { "naziv": "Harmony Plus", "cena": 690, "opis": "Kvartet i DiGeorge mikrodelecija", "oznaka": "Najširi Harmony" }
+    ],
+    "izabraliSte": "Izabrali ste",
+    "rate": {
+      "broj": 3,
+      "kartica": "ili 3 ×",
+      "izbor": "ili 3 rate po",
+      "izborKraj": ", bez kamate",
+      "banka": "uz sve Banca Intesa kartice"
+    },
+    "dugme": { "tekst": "Zakažite vađenje krvi", "link": "#kontakt" },
+    "napomenaMobilniMd": "**Kombinovani (double) test se radi uvek.** Prenatalni test ga dopunjuje, ali ne zamenjuje.",
+    "symphonyMd": "Treba vam širi pregled, svih hromozoma i većih mikrodelecija? [Pogledajte Symphony test](/trudnoca-i-beba/symphony/)"
+  },
+  "koraci": {
+    "naslov": "Kako izgleda testiranje",
+    "uvod": "Od poziva do nalaza, bez odlaska u laboratoriju.",
+    "stavke": [
+      {
+        "naslov": "Zakazivanje",
+        "podnaslov": "Telefonom ili preko forme",
+        "oznaka": "",
+        "glava": "Dogovaramo termin i mesto",
+        "tekst": "Pozovite nas ili ostavite broj u formi, pa se javljamo da dogovorimo dan i vreme, i da li krv vadimo kod vas kući ili u našoj ordinaciji. Potreban je nalaz ultrazvuka koji potvrđuje nedelju trudnoće i da li je trudnoća jednoplodna.",
+        "cinjenice": ["Test je moguć od 10. nedelje, uz kombinovani test", "Pripremite poslednji nalaz ultrazvuka", "Pomažemo vam da izaberete paket"],
+        "ilustracija": "harmony/zakazivanje"
+      },
+      {
+        "naslov": "Vađenje krvi",
+        "podnaslov": "Kod kuće ili kod nas",
+        "oznaka": "Besplatno",
+        "glava": "Kod vas kući ili u našoj ordinaciji",
+        "tekst": "Birate šta vam odgovara: dođete u našu ordinaciju, ili naš medicinski tehničar dolazi kod vas u dogovoreno vreme, pa ne morate nigde da idete. Uzima se jedna epruveta venske krvi, a sve traje nekoliko minuta.",
+        "cinjenice": ["Dolazak na kućnu adresu ne naplaćujemo", "Ne morate biti našte", "Moguće i uz terapiju heparinom"],
+        "ilustracija": "harmony/vadjenje"
+      },
+      {
+        "naslov": "Analiza u laboratoriji",
+        "podnaslov": "DNK bebe iz krvi majke",
+        "oznaka": "",
+        "glava": "Kako test vidi DNK bebe",
+        "tekst": "U krvi trudnice kruže sitni delovi DNK. Većina potiče od majke, a oko 10% od posteljice, i taj deo odgovara DNK bebe. Laboratorija u Nemačkoj izdvaja i broji te delove: ako nekog hromozoma ima više nego što treba, test to pokazuje.",
+        "cinjenice": ["Bez ikakvog rizika za bebu", "Uzorak transportujemo mi", "Analiza testom kompanije Roche"],
+        "ilustracija": "harmony/analiza"
+      },
+      {
+        "naslov": "Rezultat",
+        "podnaslov": "Za 3 do 5 radnih dana",
+        "oznaka": "",
+        "glava": "Nalaz za 3 do 5 radnih dana",
+        "tekst": "Rezultat stiže za 3 do 5 radnih dana od prijema uzorka u laboratoriju. Nalaz dobijate [način dostave: potvrditi], a ako imate pitanja o nalazu, pozovite nas.",
+        "cinjenice": ["Rezultat tumači vaš ginekolog", "Kod povećanog rizika objašnjavamo sledeće korake"],
+        "ilustracija": "harmony/rezultat"
+      }
+    ],
+    "poslednje": { "tekst": "Zakažite vađenje krvi", "link": "#kontakt" },
+    "ilustracije": {
+      "dnkMajke": "DNK majke",
+      "dnkBebe": "DNK bebe, oko 10%",
+      "besplatanDolazak": "0 €"
+    }
+  },
+  "rezultati": {
+    "naslov": "Šta znači rezultat",
+    "uvod": "Harmony je skrining test: pokazuje verovatnoću, a ne postavlja dijagnozu. Postoje tri moguća ishoda.",
+    "tabOznaka": "Mogući rezultati",
+    "sledeciOznaka": "Sledeći korak:",
+    "stavke": [
+      { "oznaka": "Nizak rizik", "naslov": "Nizak rizik", "tekst": "Verovatnoća za ispitivane hromozomske poremećaje je veoma mala. Test ipak ne isključuje poremećaj u potpunosti.", "sledece": "Trudnoća se dalje vodi uobičajeno. Test ne zamenjuje ultrazvuk, koji otkriva i druge, fizičke promene." },
+      { "oznaka": "Visok rizik", "naslov": "Visok rizik", "tekst": "Verovatnoća za neki od ispitivanih poremećaja je veća od uobičajene. To još nije dijagnoza: skrining test može dati i lažno pozitivan rezultat.", "sledece": "Nalaz se potvrđuje dijagnostičkom metodom, najčešće amniocentezom, uz genetsko savetovanje. U slučaju pozitivnog rezultata laboratorija pokriva troškove amniocenteze [potvrditi]." },
+      { "oznaka": "Bez rezultata", "naslov": "Bez rezultata", "tekst": "U malom broju slučajeva test ne može da izda rezultat, najčešće zato što u krvi ima premalo DNK bebe.", "sledece": "Preporučuje se ponovno vađenje krvi i testiranje [da li je ponovljeni test besplatan: potvrditi], ili druga dijagnostička metoda." }
+    ]
+  },
+  "poredjenje": {
+    "naslov": "Harmony u poređenju sa drugim metodama",
+    "uvod": "Ove tri metode se ne isključuju, već idu jedna za drugom. Harmony je dodatna, preciznija provera hromozoma, a ne zamena za kombinovani test.",
+    "napomenaMd": "**Kombinovani (double) test se radi uvek, pre prenatalnog testa.** Ultrazvuk u okviru kombinovanog testa pregleda razvoj bebe (nuhalni nabor, organe, rast), a to test iz krvi ne može da zameni. Harmony se radi uz njega, da bi se rizik za hromozomske poremećaje proverio mnogo preciznije.",
+    "osobinaOznaka": "Osobina",
+    "_kolone": "Redosled kolona je odluka klijenta: 1. kombinovani test, 2. Harmony (istaknut), 3. amniocenteza. Stil: obavezan | istaknut | opcioni.",
+    "kolone": [
+      { "oznaka": "Korak 1 · obavezan", "naziv": "Kombinovani (double) test", "stil": "obavezan" },
+      { "oznaka": "Korak 2 · preporučen", "naziv": "Harmony", "stil": "istaknut" },
+      { "oznaka": "Korak 3 · samo ako je potrebno", "naziv": "Amniocenteza", "stil": "opcioni" }
+    ],
+    "redovi": [
+      { "naziv": "Uloga", "vrednosti": ["Osnovni pregled: ultrazvuk bebe i analiza krvi", "Precizna provera rizika za hromozomske poremećaje", "Potvrda kada je rizik povišen"] },
+      { "naziv": "Vrsta", "vrednosti": ["Skrining: krv i ultrazvuk", "Skrining iz krvi majke", "Dijagnostika"] },
+      { "naziv": "Otkriva Daunov sindrom", "vrednosti": ["Oko 85% [potvrditi]", "Više od 99%", "Postavlja dijagnozu"] },
+      { "naziv": "Pregleda razvoj bebe ultrazvukom", "vrednosti": ["Da", "Ne, zato ne zamenjuje kombinovani test", "Ne"] },
+      { "naziv": "Rizik za trudnoću", "vrednosti": ["Bez rizika", "Bez rizika", "Mali rizik od pobačaja [tačan procenat: potvrditi]"] },
+      { "naziv": "Kada se radi", "vrednosti": ["Od 11. do 14. nedelje [potvrditi]", "Od 10. nedelje, uz kombinovani test", "Obično od 15. nedelje, kada je potrebna"] }
+    ]
+  },
+  "faq": {
+    "naslov": "Česta pitanja",
+    "poziv": "Niste našli odgovor? Pozovite nas na",
+    "pitanja": [
+      { "pitanje": "Da li Harmony zamenjuje kombinovani (double) test?", "odgovor": "Ne. Kombinovani (double) test se radi uvek, pre prenatalnog testa. Njegov ultrazvučni deo pregleda razvoj bebe, a to test iz krvi ne može da zameni. Harmony se radi uz njega, da bi se rizik za hromozomske poremećaje proverio preciznije." },
+      { "pitanje": "Da li treba da uradim Harmony test ako imam manje od 35 godina?", "odgovor": "Stručna udruženja preporučuju da se test ponudi svakoj trudnici. Većina beba sa Daunovim sindromom rodi se kod majki mlađih od 35 godina, iako je rizik veći posle 35." },
+      { "pitanje": "Kako se pripremiti za vađenje krvi?", "odgovor": "Nije potrebna posebna priprema. Ne morate biti našte, jer hrana, piće i doba dana ne utiču na genetski test. Pripremite poslednji nalaz ultrazvuka, a krv vadimo u našoj ordinaciji ili kod vas kući, a dolazak ne naplaćujemo." },
+      { "pitanje": "Imam blizance. Mogu li da uradim test?", "odgovor": "Da, za trizomije 21, 18 i 13. Kod blizanaca se umesto pola svake bebe utvrđuje samo da li je prisutan Y hromozom [potvrditi]. Polne aneuploidije i DiGeorge mikrodelecija ne mogu se ispitati kod blizanačke trudnoće." },
+      { "pitanje": "Trudnoća je začeta vantelesnom oplodnjom. Da li je test moguć?", "odgovor": "Da, i kod trudnoća začetih vantelesnom oplodnjom, uključujući one sa doniranom jajnom ćelijom." },
+      { "pitanje": "Primam heparin. Da li to utiče na test?", "odgovor": "Test je moguće uraditi i uz terapiju heparinom." },
+      { "pitanje": "Mogu li da saznam pol bebe?", "odgovor": "Da, pol bebe se određuje u paketima Kvartet i Plus. [potvrditi za pakete Solo i Trio]" },
+      { "pitanje": "Da li dobar rezultat znači da je beba potpuno zdrava?", "odgovor": "Ne u potpunosti. Test ispituje samo određene hromozomske poremećaje i postoji veoma mala mogućnost lažno negativnog rezultata. Zato redovni ultrazvučni pregledi ostaju važni." }
+    ]
+  },
+  "kontakt": {
+    "naslov": "Zakažite vađenje krvi.",
+    "tekst": "Javljamo vam se istog radnog dana sa terminom i uputstvom.",
+    "polja": {
+      "ime": "Ime i prezime",
+      "telefon": "Telefon",
+      "paket": "Paket",
+      "nedelja": "Nedelja trudnoće"
+    },
+    "posalji": "Pošaljite, javljamo se istog radnog dana"
+  }
+}

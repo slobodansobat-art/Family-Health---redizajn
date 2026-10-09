@@ -1,0 +1,33 @@
+{#- TRUDNOĆA · kontakt forma (sidro #kontakt), Netlify forma "trudnoca-kontakt"
+    Sadržaj: stranice.trudnoca.kontakt, telefoni iz podesavanja.kontakt
+    Stil: css/stranice/trudnoca.css
+    Polje "Nedelja trudnoće" popunjava alat iz hero sekcije (trudnoca.js),
+    a korisnik ga može i sam izmeniti. Pisano ručno jer makro polje() nema min/max. -#}
+{%- from "makroi/komponente.njk" import forma, polje, izbor, saglasnost, posalji with context -%}
+{%- set d = stranice.trudnoca.kontakt -%}
+{%- set f = d.forma -%}
+{%- set kt = podesavanja.kontakt -%}
+<section id="kontakt" class="trudnoca-kontakt" aria-labelledby="trudnoca-kontakt-naslov">
+  <svg class="trudnoca-kontakt__mrlja" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path d="M310 60c50 40 70 120 40 190s-120 110-190 90S40 260 50 180 120 40 190 30s70-10 120 30z"></path></svg>
+  <div class="kontejner trudnoca-kontakt__mreza">
+    <div class="trudnoca-kontakt__levo">
+      <h2 id="trudnoca-kontakt-naslov" class="trudnoca-naslov-kurziv trudnoca-kontakt__naslov">{{ d.naslov }}</h2>
+      <p class="trudnoca-kontakt__tekst">{{ d.tekst }}</p>
+      <div class="trudnoca-kontakt__telefoni">
+        <a href="tel:{{ kt.telefonLink }}">{{ kt.telefon }}</a>
+        <a href="tel:{{ kt.mobilniLink }}">{{ kt.mobilni }}</a>
+      </div>
+    </div>
+    {% call forma("trudnoca-kontakt", "forma forma--bela trudnoca-kontakt__forma") %}
+      {{ polje("tk-ime", "ime", f.ime, autocomplete="name", obavezno=true) }}
+      {{ polje("tk-tel", "telefon", f.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ izbor("tk-tema", "tema", f.tema, f.teme) }}
+      <div class="polje">
+        <label for="tk-nedelja" class="polje__oznaka">{{ f.nedelja }}</label>
+        <input id="tk-nedelja" name="nedelja" type="number" inputmode="numeric" min="4" max="42" class="unos" data-nedelja-forma>
+      </div>
+      {{ saglasnost("tk-ok") }}
+      {{ posalji(f.posalji) }}
+    {% endcall %}
+  </div>
+</section>

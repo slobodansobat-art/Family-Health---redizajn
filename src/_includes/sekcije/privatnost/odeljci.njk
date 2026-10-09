@@ -1,0 +1,44 @@
+{#- PRIVATNOST · naslov, datum izmene i odeljci politike
+    Desktop: sadržaj (lepljiv, levo) + svi odeljci jedan ispod drugog.
+    Mobilni: harmonika, otvoren je jedan po jedan odeljak (js/stranice/privatnost.js
+    pretvara naslove u dugmad). Bez JS-a su svi odeljci otvoreni i čitljivi.
+    Sidro odeljka (npr. /politika-privatnosti/#kolacici) je tehničko polje "_sidro";
+    ako ga nema (nov odeljak iz CMS-a), sidro je "odeljak-<broj>".
+    Sadržaj: stranice.privatnost   ·   Kontakt: podesavanja.kontakt
+    Stil: css/stranice/privatnost.css -#}
+{%- set u = stranice.privatnost.uvod -%}
+{%- set d = stranice.privatnost.odeljci -%}
+{%- set kt = podesavanja.kontakt -%}
+<div class="kontejner privatnost">
+  <h1 class="privatnost__naslov">{{ u.naslov }}</h1>
+  <p class="privatnost__uvod">{{ u.izmena }} {{ u.napomena }}</p>
+
+  <div class="privatnost__mreza">
+    <nav class="privatnost-sadrzaj samo-desktop" aria-labelledby="privatnost-sadrzaj-naslov">
+      <p id="privatnost-sadrzaj-naslov" class="privatnost-sadrzaj__naslov">{{ d.naslovSadrzaja }}</p>
+      <ul class="privatnost-sadrzaj__lista">
+        {%- for o in d.stavke %}
+        <li><a href="#{{ o._sidro or ('odeljak-' + loop.index) }}">{{ o.naslov }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+
+    <div class="privatnost__odeljci" data-privatnost-odeljci>
+      {%- for o in d.stavke %}
+      {%- set sidro = o._sidro or ('odeljak-' + loop.index) %}
+      <section class="privatnost-odeljak" id="{{ sidro }}" aria-labelledby="{{ sidro }}-naslov" data-odeljak>
+        <h2 class="privatnost-odeljak__naslov" id="{{ sidro }}-naslov" data-odeljak-naslov>{{ loop.index }}. {{ o.naslov }}</h2>
+        <div class="privatnost-odeljak__omot" id="{{ sidro }}-tekst" data-odeljak-tekst>
+          <div class="privatnost-odeljak__tekst tekst-md">
+            {%- if o.kontaktUvod %}
+            <p>{{ o.kontaktUvod }} <a href="mailto:{{ kt.email }}">{{ kt.email }}</a> {{ o.kontaktVeza }} {{ kt.adresa }}, {{ kt.mesto }}. {{ o.tekstMd | mdRed | safe }}</p>
+            {%- else %}
+            {{ o.tekstMd | md | safe }}
+            {%- endif %}
+          </div>
+        </div>
+      </section>
+      {%- endfor %}
+    </div>
+  </div>
+</div>

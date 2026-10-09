@@ -1,0 +1,123 @@
+{#- POČETNA · podeljeni hero: Onkogenetika (levo) i Trudnoća i beba (desno)
+    Desktop (od 960px): deo se širi na prelaz mišem, klik, dodir ili fokus
+    (tastatura), a vraća se kad miš izađe, fokus ode ili se pritisne Escape.
+    Prošireni deo pokazuje dodatni sadržaj (pitanja / vremenska linija).
+    Bez JS-a oba dela ostaju u osnovnom stanju (svi glavni linkovi rade).
+    Mobilni: dve kartice jedna ispod druge, bez širenja.
+    Sadržaj: stranice.pocetna.hero   ·   Stil: css/stranice/pocetna.css
+    Ponašanje: js/stranice/pocetna.js ([data-pocetna-hero]) -#}
+{%- from "makroi/osnovni.njk" import slika -%}
+{%- set d = stranice.pocetna.hero -%}
+{%- set o = d.onko -%}
+{%- set t = d.trudnoca -%}
+<section class="pocetna-hero" aria-labelledby="pocetna-naslov">
+  <div class="kontejner">
+    {#- Samo mobilni: prekidač oblasti ispod zaglavlja (kao u skici Mobile).
+        Zaglavlje ga prikazuje samo na stranicama oblasti, zato je ovde.
+        Linkovi: navigacija.oblasti #}
+    <nav class="pocetna-hero__oblasti samo-mobilni" aria-label="Oblasti">
+      {%- for o in navigacija.oblasti %}
+      <a href="{{ o.link }}">{{ o.tekst }}</a>
+      {%- endfor %}
+    </nav>
+    <h1 id="pocetna-naslov" class="pocetna-hero__naslov-strane">{{ d.naslov }}</h1>
+
+    <div class="pocetna-hero__podela" data-pocetna-hero>
+
+      {#- ===== Onkogenetika ===== #}
+      <div class="pocetna-hero__deo pocetna-hero__deo--onko" data-deo="onko">
+        <div class="pocetna-hero__mreza" aria-hidden="true" data-pocetna-mreza>{% onkoMreza "pocetna" %}</div>
+
+        {#- Osnovni sadržaj #}
+        <div class="pocetna-hero__osnovno">
+          <p class="pocetna-hero__nadnaslov">{{ o.nadnaslov }}</p>
+          <h2 class="pocetna-hero__naslov">{{ o.naslov }}</h2>
+          <p class="pocetna-hero__tekst">{{ o.tekst }}</p>
+          {#- Samo mobilni: kratki linkovi ka analizama #}
+          <ul class="pocetna-hero__cipovi samo-mobilni">
+            {%- for c in o.cipoviMobilni %}
+            <li><a href="{{ c.link }}" class="pocetna-hero__cip{% if c.premium %} pocetna-hero__cip--premium{% endif %}">{{ c.tekst }}</a></li>
+            {%- endfor %}
+          </ul>
+          <div class="pocetna-hero__akcije">
+            <a href="{{ o.dugme.link }}" class="dugme dugme--belo">{{ o.dugme.tekst }}</a>
+            <a href="tel:{{ podesavanja.kontakt.mobilniLink }}" class="pocetna-hero__telefon samo-desktop">{{ podesavanja.kontakt.mobilni }}</a>
+          </div>
+        </div>
+
+        {#- Dodatni sadržaj (vidi se kad je deo proširen) #}
+        <div class="pocetna-hero__dodatno samo-desktop">
+          <p class="pocetna-hero__dodatno-naslov">{{ o.pitanjaNaslov }}</p>
+          <ul class="pocetna-hero__pitanja">
+            {%- for p in o.pitanja %}
+            <li><a href="{{ p.link }}">{{ p.tekst }}{% if p.oznaka %} <span class="oznaka-premium pocetna-hero__premium">{{ p.oznaka }}</span>{% endif %}</a></li>
+            {%- endfor %}
+          </ul>
+          <a href="{{ o.zaLekare.link }}" class="pocetna-hero__za-lekare">{{ o.zaLekare.tekst }}</a>
+        </div>
+
+        {#- Sklopljeno stanje (kad je proširen drugi deo) #}
+        <div class="pocetna-hero__sklopljeno samo-desktop" aria-hidden="true">
+          <span class="pocetna-hero__sklopljeno-nadnaslov">{{ o.sklopljenoNadnaslov }}</span>
+          <span class="pocetna-hero__sklopljeno-naslov">{{ o.sklopljenoNaslov }}</span>
+        </div>
+      </div>
+
+      {#- ===== Trudnoća i beba ===== #}
+      <div class="pocetna-hero__deo pocetna-hero__deo--trudnoca" data-deo="trudnoca">
+        {#- Ćelije koje lagano plutaju naviše (samo desktop) #}
+        <div class="pocetna-hero__mehurici samo-desktop" aria-hidden="true">
+          <span style="--levo: 12%; --velicina: 18px; --boja: var(--ljubicasta-300); --trajanje: 15s; --kasnjenje: -2s"></span>
+          <span style="--levo: 34%; --velicina: 10px; --boja: var(--ljubicasta-400); --trajanje: 12s; --kasnjenje: -7s"></span>
+          <span style="--levo: 52%; --velicina: 26px; --boja: var(--ljubicasta-100); --trajanje: 19s; --kasnjenje: -4s"></span>
+          <span style="--levo: 70%; --velicina: 12px; --boja: var(--ljubicasta-400); --trajanje: 13s; --kasnjenje: -10s"></span>
+          <span style="--levo: 84%; --velicina: 20px; --boja: var(--ljubicasta-300); --trajanje: 17s; --kasnjenje: -1s"></span>
+          <span style="--levo: 24%; --velicina: 8px; --boja: var(--ljubicasta-500); --trajanje: 11s; --kasnjenje: -5s"></span>
+          <span style="--levo: 92%; --velicina: 9px; --boja: var(--ljubicasta-500); --trajanje: 14s; --kasnjenje: -8s"></span>
+        </div>
+        {#- Ukrasni oblik u uglu (samo mobilni) #}
+        <svg class="pocetna-hero__oblik samo-mobilni" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path d="M310 60c50 40 70 120 40 190s-120 110-190 90S40 260 50 180 120 40 190 30s70-10 120 30z"></path></svg>
+
+        {#- Osnovni sadržaj #}
+        <div class="pocetna-hero__osnovno">
+          <p class="pocetna-hero__nadnaslov">{{ t.nadnaslov }}</p>
+          <h2 class="pocetna-hero__naslov">{{ t.naslov }}</h2>
+          {{ slika(t.slika, t.slikaOpis, "pocetna-hero__porodica") }}
+          {#- Samo mobilni: linkovi ka testovima #}
+          <ul class="pocetna-hero__lista samo-mobilni">
+            {%- for l in t.linkoviMobilni %}
+            <li><a href="{{ l.link }}">{{ l.tekst }}<span aria-hidden="true">→</span></a></li>
+            {%- endfor %}
+          </ul>
+          <div class="pocetna-hero__akcije">
+            <a href="{{ t.dugme.link }}" class="dugme">{{ t.dugme.tekst }}</a>
+            <span class="pocetna-hero__napomena samo-desktop">{{ t.napomena }}</span>
+          </div>
+        </div>
+
+        {#- Dodatni sadržaj: vremenska linija koja se iscrtava #}
+        <div class="pocetna-hero__dodatno samo-desktop">
+          <p class="pocetna-hero__dodatno-naslov">{{ t.linijaNaslov }}</p>
+          <div class="pocetna-hero__linija">
+            <svg class="pocetna-hero__putanja" width="20" height="400" viewBox="0 0 20 400" aria-hidden="true" focusable="false"><path d="M10 4 C 2 80, 18 140, 10 210 S 2 330, 10 396"></path></svg>
+            <ol>
+              {%- for s in t.linija %}
+              <li>
+                <span class="pocetna-hero__tacka{% if s.prazanKrug %} pocetna-hero__tacka--prazna{% endif %}" aria-hidden="true"></span>
+                <a href="{{ s.link }}"><span class="pocetna-hero__period">{{ s.period }}</span><strong>{{ s.tekst }}</strong></a>
+              </li>
+              {%- endfor %}
+            </ol>
+          </div>
+        </div>
+
+        {#- Sklopljeno stanje #}
+        <div class="pocetna-hero__sklopljeno samo-desktop" aria-hidden="true">
+          <span class="pocetna-hero__sklopljeno-nadnaslov">{{ t.sklopljenoNadnaslov }}</span>
+          <span class="pocetna-hero__sklopljeno-naslov">{{ t.sklopljenoNaslov }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+{#- POČETNA · partneri: traka koja polako klizi (desktop), niz čipova (mobilni)
+    Svaki partner: { naziv, logo }. Prazan logo = prikazuje se naziv.
+    Lista se ponavlja 4 puta da bi klizanje bilo bez prekida; kopije su
+    skrivene od čitača ekrana (aria-hidden).
+    Sadržaj: stranice.pocetna.partneri   ·   Stil: css/stranice/pocetna.css
+    Dugme Zaustavi/Pokreni: js/stranice/pocetna.js ([data-pocetna-traka]) -#}
+{%- set d = stranice.pocetna.partneri -%}
+{%- macro partner(p) -%}
+<li class="pocetna-partneri__stavka">
+  {%- if p.logo %}<img src="{{ p.logo }}" alt="{{ p.naziv }}" class="pocetna-partneri__logo" loading="lazy" decoding="async">
+  {%- else %}<span class="pocetna-partneri__naziv">{{ p.naziv }}</span>{% endif -%}
+</li>
+{%- endmacro -%}
+<section class="pocetna-partneri" aria-labelledby="pocetna-partneri-naslov" data-pocetna-traka>
+  <div class="kontejner">
+    <div class="pocetna-partneri__vrh">
+      <span class="pocetna-partneri__naslov-red">
+        <span id="pocetna-partneri-naslov">{{ d.naslov }}</span>
+        <button type="button" class="pocetna-partneri__pauza" aria-pressed="false" data-tekst-zaustavi="{{ d.dugmeZaustavi }}" data-tekst-pokreni="{{ d.dugmePokreni }}" hidden>{{ d.dugmeZaustavi }}</button>
+      </span>
+      <span class="pocetna-partneri__napomena samo-desktop">{{ d.napomena }}</span>
+    </div>
+    <div class="pocetna-partneri__okvir">
+      <div class="pocetna-partneri__traka">
+        <ul class="pocetna-partneri__grupa" aria-label="{{ d.naslov }}">
+          {%- for p in d.lista %}{{ partner(p) }}{% endfor %}
+        </ul>
+        {%- for k in range(3) %}
+        <ul class="pocetna-partneri__grupa pocetna-partneri__grupa--kopija" aria-hidden="true">
+          {%- for p in d.lista %}{{ partner(p) }}{% endfor %}
+        </ul>
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+</section>

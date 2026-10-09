@@ -1,0 +1,106 @@
+{
+  "_naziv": "Onkogenetika: sve analize (katalog)",
+  "seo": {
+    "naslov": "Sve onkogenetske analize | Family Health",
+    "opis": "Katalog genetskih analiza tumora: Cancer Precision, tečna biopsija, MRD praćenje, nasledni tumori, Cancer Neo i druge. Filtrirajte po cilju i vrsti uzorka."
+  },
+  "hero": {
+    "putanjaNazad": {
+      "tekst": "Onkogenetika",
+      "link": "/onkogenetika/"
+    },
+    "putanjaOvde": "Sve analize",
+    "naslov": "Sve analize, od izbora terapije do praćenja.",
+    "tekst": "Izaberite šta vam treba ili kakav uzorak imate. Ako niste sigurni, pošaljite nalaz, a naš lekar predlaže analizu besplatno.",
+    "pretragaOznaka": "Pretražite analize",
+    "pretragaPlaceholder": "Pretražite po nazivu, npr. MRD ili tečna biopsija",
+    "pretragaPlaceholderMobilni": "Pretražite po nazivu, npr. MRD"
+  },
+  "katalog": {
+    "naslov": "Lista analiza",
+    "ciljeviNaslov": "Šta vam treba",
+    "ciljevi": [
+      {
+        "kod": "sve",
+        "naziv": "Sve"
+      },
+      {
+        "kod": "ter",
+        "naziv": "Izbor terapije"
+      },
+      {
+        "kod": "bez",
+        "naziv": "Kada nema tkiva"
+      },
+      {
+        "kod": "pra",
+        "naziv": "Praćenje"
+      },
+      {
+        "kod": "nas",
+        "naziv": "Nasledni rizik"
+      },
+      {
+        "kod": "imu",
+        "naziv": "Vakcina"
+      },
+      {
+        "kod": "tum",
+        "naziv": "Tumačenje nalaza"
+      }
+    ],
+    "uzorakNaslov": "Uzorak",
+    "uzorci": [
+      {
+        "kod": "sve",
+        "naziv": "Svi"
+      },
+      {
+        "kod": "tkivo",
+        "naziv": "Tkivo tumora"
+      },
+      {
+        "kod": "krv",
+        "naziv": "Krv"
+      }
+    ],
+    "brojac": "Prikazano {prikazano} od {ukupno} analiza",
+    "kolonaAnaliza": "Analiza",
+    "kolonaUzorak": "Uzorak",
+    "kolonaRezultat": "Rezultat",
+    "premium": "Premium",
+    "dugmeDetalji": "Detalji",
+    "dugmeDetaljiDopuna": "o analizi",
+    "dugmePitajte": "Pitajte nas",
+    "dugmePitajteLink": "#kontakt",
+    "prazno": "Nijedna analiza ne odgovara izboru.",
+    "praznoDugme": "Prikažite sve",
+    "dopuna": "Mesto za ostale analize iz ponude Family Health [spisak dodati]. Svaka dobija isti red u listi i svoju stranicu po obrascu Cancer Precision."
+  },
+  "nedoumica": {
+    "naslov": "Ne znate koja analiza je prava?",
+    "tekst": "To je najčešće pitanje i ne morate sami da ga rešite. Pošaljite postojeći nalaz, a lekar predlaže analizu i javlja se sa cenom, bez obaveze.",
+    "dugme": {
+      "tekst": "Pošaljite nalaz",
+      "link": "#kontakt"
+    },
+    "link": {
+      "tekst": "Lekar ste? Uputstva za uzorak",
+      "link": "/za-lekare/"
+    }
+  },
+  "kontakt": {
+    "naslov": "Pošaljite nalaz na besplatnu procenu.",
+    "tekst": "Lekar pregleda nalaz i javlja se istog radnog dana sa preporukom i cenom.",
+    "poljeIme": "Ime i prezime",
+    "poljeTelefon": "Telefon",
+    "poljeUloga": "Javljate se kao",
+    "uloge": [
+      "Pacijent",
+      "Član porodice",
+      "Lekar"
+    ],
+    "poljeNalaz": "Nalaz (PDF ili fotografija)",
+    "dugme": "Pošaljite nalaz"
+  }
+}

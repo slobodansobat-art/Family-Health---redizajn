@@ -1,0 +1,20 @@
+{#- O NAMA · hero: naslov, uvod i osnivač (fotografija + kratak opis)
+    Sadržaj: stranice.oNama.hero   ·   Stil: css/stranice/o-nama.css -#}
+{%- from "makroi/osnovni.njk" import slika -%}
+{%- set d = stranice.oNama.hero -%}
+<section class="onama-hero" aria-labelledby="onama-naslov">
+  <div class="kontejner onama-hero__mreza">
+    <div class="onama-hero__tekst">
+      <p class="nadnaslov onama-hero__nadnaslov">{{ d.nadnaslov }}</p>
+      <h1 id="onama-naslov" class="naslov-xl onama-hero__naslov">{{ d.naslov }}</h1>
+      <p class="onama-hero__uvod">{{ d.tekst }}</p>
+    </div>
+    <figure class="onama-osnivac">
+      {{ slika(d.osnivac.slika, d.osnivac.slikaOpis, "slika--krug onama-osnivac__foto", ucitavanje="eager") }}
+      <figcaption class="onama-osnivac__opis">
+        <strong class="onama-osnivac__ime">{{ d.osnivac.ime }}</strong>
+        <span>{{ d.osnivac.opis }}</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+{#- ==========================================================================
+    IKONICE STRANICE "ZA LEKARE" (linijske, 24x24, boja iz CSS-a: currentColor)
+    Uvoz:   {% from "ilustracije/za-lekare/ikonice.njk" import ikonica %}
+    Upotreba: {{ ikonica("razgovor", 26) }}
+    Imena: razgovor, dokument, kamion, lupa, ljudi, knjiga, kalup, kap,
+           epruveta, obrazac, kvacica  (polje "ikonica" u JSON-u stranice)
+    ========================================================================== -#}
+{% macro ikonica(ime, velicina = 26) -%}
+<svg class="lekari-ikonica lekari-ikonica--{{ ime }}" width="{{ velicina }}" height="{{ velicina }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+{%- if ime == "razgovor" -%}
+<path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"></path>
+{%- elif ime == "dokument" -%}
+<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M8 13h8M8 17h5"></path>
+{%- elif ime == "kamion" -%}
+<rect x="1" y="7" width="15" height="10" rx="2"></rect><path d="M16 10h4l3 3v4h-7"></path><circle cx="6" cy="18" r="2"></circle><circle cx="19" cy="18" r="2"></circle>
+{%- elif ime == "lupa" -%}
+<circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path><path d="M11 8v6M8 11h6"></path>
+{%- elif ime == "ljudi" -%}
+<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.9"></path><path d="M16 3.1a4 4 0 0 1 0 7.8"></path>
+{%- elif ime == "knjiga" -%}
+<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+{%- elif ime == "kalup" -%}
+<rect x="4" y="6" width="16" height="12" rx="2"></rect><path d="M4 10h16"></path>
+{%- elif ime == "kap" -%}
+<path d="M12 3c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"></path>
+{%- elif ime == "epruveta" -%}
+<path d="M9 3h6"></path><path d="M10 3v15a2 2 0 0 0 4 0V3"></path><path d="M10 11h4" stroke-width="5"></path>
+{%- elif ime == "obrazac" -%}
+<rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M9 8h6M9 12h6M9 16h4"></path>
+{%- elif ime == "kvacica" -%}
+<path d="M4 12l5 5L20 6"></path>
+{%- endif -%}
+</svg>
+{%- endmacro %}

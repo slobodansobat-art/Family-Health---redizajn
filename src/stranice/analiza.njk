@@ -1,0 +1,60 @@
+---js
+// =============================================================================
+// ŠABLON STRANICE ONKO ANALIZE (uzor: Cancer Precision)
+// -----------------------------------------------------------------------------
+// Svaka analiza iz src/sadrzaj/analize/<slug>.json koja ima "imaStranicu": true
+// (i nema "posebanLink") dobija stranicu /onkogenetika/analize/<slug>/.
+// Sadržaj stranice:  analiza.stranica  (u CMS-u: Onko analize -> Stranica)
+// Zajednički tekstovi (tabovi, kontakt forma...): src/sadrzaj/stranice/analiza.json
+// Sekcija se prikazuje samo ako analiza ima podatke za nju.
+// Stil: src/assets/css/stranice/analiza.css · JS: src/assets/js/stranice/analiza.js
+// =============================================================================
+const pagination = {
+  data: "analize",
+  size: 1,
+  alias: "analiza",
+  before: (analize) => analize.filter((a) => a.imaStranicu && !a.posebanLink),
+};
+const permalink = (data) => `/onkogenetika/analize/${data.analiza.slug}/`;
+const telo = "analiza";
+const zaglavlje = { tema: "tamna", oblast: "onko", nazad: "/onkogenetika/analize/" };
+const donjaTraka = { tekst: "Pošaljite nalaz", link: "#kontakt" };
+const skripte = ["stranice/analiza.js"];
+const eleventyComputed = {
+  // SEO iz analiza.stranica.seo; ako ga nema: naziv i kratak opis analize
+  seo: (data) => {
+    const a = data.analiza || {};
+    const seo = (a.stranica && a.stranica.seo) || {};
+    return { naslov: seo.naslov || `${a.naziv} | Family Health`, opis: seo.opis || a.opis || "" };
+  },
+};
+---
+{%- set s = analiza.stranica or {} -%}
+{%- set z = stranice.analiza or {} -%}
+{#- Koje publike imaju sadržaj; tabovi se prikazuju samo kad postoje obe -#}
+{#- (CMS može da sačuva prazna polja, zato se proverava stvarni sadržaj) -#}
+{%- set L = s.zaLekare or {} -%}
+{%- set P = s.zaPacijente or {} -%}
+{%- set imaTehnicke = L.tehnicki.naslov or L.tehnicki.stavke.length -%}
+{%- set imaUzorak = L.uzorak.naslov or L.uzorak.stavke.length -%}
+{%- set imaIzvestaj = L.izvestaj.naslov or L.izvestaj.stavke.length -%}
+{%- set imaDokumente = L.dokumenti.stavke.length -%}
+{%- set imaObjasnjenje = P.objasnjenje.naslov or P.objasnjenje.tekstMd -%}
+{%- set imaDijagram = P.dijagram.tumor -%}
+{%- set imaKorake = P.koraci.stavke.length -%}
+{%- set imaCenu = P.cena.naslov -%}
+{%- set imaLekare = imaTehnicke or imaUzorak or imaIzvestaj or imaDokumente -%}
+{%- set imaPacijente = imaObjasnjenje or imaDijagram or imaKorake or imaCenu -%}
+{%- set imaTabove = imaLekare and imaPacijente -%}
+<div class="analiza">
+  {% include "sekcije/analiza/hero.njk" %}
+
+  {#- Tabovi "Za lekare" / "Za pacijente" + sve ispod njih (da traka sa tabovima ostane prilepljena) #}
+  <div class="analiza__telo" data-tabovi>
+    {% include "sekcije/analiza/prekidac.njk" %}
+    {% include "sekcije/analiza/za-lekare.njk" %}
+    {% include "sekcije/analiza/za-pacijente.njk" %}
+    {% include "sekcije/analiza/srodne.njk" %}
+    {% include "sekcije/analiza/kontakt.njk" %}
+  </div>
+</div>

@@ -176,9 +176,9 @@ section[id], [id].sidro { scroll-margin-top: 24px; }
 .preskoci {
   position: absolute; left: 16px; top: -60px; z-index: 200;
   padding: 10px 16px; background: var(--bela); color: var(--ljubicasta-800);
-  border-radius: 999px; font-weight: 600; text-decoration: none; box-shadow: var(--senka);
+  border-radius: 999px; font-weight: 600; text-decoration: none;
 }
-.preskoci:focus { top: 8px; }
+.preskoci:focus { top: 8px; box-shadow: var(--senka); }
 
 /* --- Animacije ulaska (izbor taba, filtera...) ---------------------------- */
 @keyframes pojava { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }

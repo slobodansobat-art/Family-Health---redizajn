@@ -1,0 +1,29 @@
+{#- POČETNA · kontakt: telefoni, adresa i forma "pocetna-kontakt"
+    Sadržaj: stranice.pocetna.kontakt   ·   Kontakt podaci: podesavanja.kontakt
+    Stil: css/stranice/pocetna.css (forma: css/komponente/forme.css) -#}
+{%- from "makroi/komponente.njk" import forma, polje, izbor, saglasnost, posalji with context -%}
+{%- set d = stranice.pocetna.kontakt -%}
+{%- set k = podesavanja.kontakt -%}
+<section id="kontakt" class="pocetna-kontakt" aria-labelledby="pocetna-kontakt-naslov">
+  <svg class="pocetna-kontakt__oblik" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path d="M310 60c50 40 70 120 40 190s-120 110-190 90S40 260 50 180 120 40 190 30s70-10 120 30z"></path></svg>
+  <div class="kontejner pocetna-kontakt__mreza">
+    <div class="pocetna-kontakt__levo">
+      <h2 id="pocetna-kontakt-naslov" class="pocetna-kontakt__naslov">{{ d.naslov }}</h2>
+      <p class="pocetna-kontakt__tekst">{{ d.tekst }}</p>
+      <div class="pocetna-kontakt__podaci">
+        <a href="tel:{{ k.telefonLink }}" class="pocetna-kontakt__telefon">{{ k.telefon }}</a>
+        <a href="tel:{{ k.mobilniLink }}" class="pocetna-kontakt__telefon">{{ k.mobilni }}</a>
+        <a href="mailto:{{ k.email }}" class="pocetna-kontakt__email">{{ k.email }}</a>
+      </div>
+      <p class="pocetna-kontakt__adresa">{{ k.adresa }}, {{ k.mesto }}. {{ k.radnoVremeDugo }}</p>
+    </div>
+    {% call forma("pocetna-kontakt", "forma forma--bela pocetna-kontakt__forma") %}
+      {{ polje("pc-ime", "ime", d.forma.ime, autocomplete="name", obavezno=true) }}
+      {{ polje("pc-tel", "telefon", d.forma.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ izbor("pc-tema", "tema", d.forma.tema, d.forma.teme) }}
+      {{ izbor("pc-vreme", "vreme", d.forma.vreme, d.forma.vremena) }}
+      {{ saglasnost("pc-ok") }}
+      {{ posalji(d.forma.posalji) }}
+    {% endcall %}
+  </div>
+</section>

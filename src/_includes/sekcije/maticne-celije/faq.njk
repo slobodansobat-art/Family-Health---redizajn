@@ -1,0 +1,14 @@
+{#- MATIČNE ĆELIJE · česta pitanja (makro faq; telefon iz podesavanja.kontakt)
+    Sadržaj: stranice.maticneCelije.faq
+    Stil: css/komponente/faq.css + css/stranice/maticne-celije.css (.mc-faq) -#}
+{%- from "makroi/komponente.njk" import faq with context -%}
+{%- set d = stranice.maticneCelije.faq -%}
+<section class="kontejner mc-faq" aria-labelledby="mc-faq-naslov">
+  <div class="mc-faq__levo">
+    <h2 id="mc-faq-naslov" class="mc-faq__naslov">{{ d.naslov }}</h2>
+    <p class="mc-faq__tekst">{{ d.tekst }} <a href="tel:{{ podesavanja.kontakt.telefonLink }}">{{ podesavanja.kontakt.telefon }}</a>.</p>
+  </div>
+  <div class="mc-faq__pitanja">
+    {{ faq("mc-faq", d.pitanja, "ljubicasta") }}
+  </div>
+</section>

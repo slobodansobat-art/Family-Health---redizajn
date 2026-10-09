@@ -1,0 +1,25 @@
+---
+# Stranica testa Harmony (neinvazivni prenatalni test, Roche).
+# Sadržaj: src/sadrzaj/stranice/harmony.json · Stil: css/stranice/harmony.css
+# Interakcija (izbor paketa, oznaka na koraku): js/stranice/harmony.js
+kljuc: harmony
+permalink: /trudnoca-i-beba/harmony/
+zaglavlje:
+  tema: mint
+  oblast: trudnoca
+  nazad: /trudnoca-i-beba/
+donjaTraka: { tekst: "Zakažite vađenje krvi", link: "#kontakt" }
+skripte: ["stranice/harmony.js"]
+---
+{#- Omotač .harmony nosi boje stranice; na mobilnom menja redosled sekcija
+    (paketi odmah posle uvoda, kao u mobilnoj skici). -#}
+<div class="harmony">
+{% include "sekcije/harmony/hero.njk" %}
+{% include "sekcije/harmony/razlike.njk" %}
+{% include "sekcije/harmony/paketi.njk" %}
+{% include "sekcije/harmony/koraci.njk" %}
+{% include "sekcije/harmony/rezultati.njk" %}
+{% include "sekcije/harmony/poredjenje.njk" %}
+{% include "sekcije/harmony/faq.njk" %}
+{% include "sekcije/harmony/kontakt.njk" %}
+</div>

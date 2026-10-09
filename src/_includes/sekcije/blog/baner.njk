@@ -1,0 +1,11 @@
+{#- BLOG · mesto za reklamni baner (970 × 250 desktop, 320 × 100 mobilni)
+    Sadržaj: stranice.blog.baner   ·   Stil: css/stranice/blog.css (.blog-baner) -#}
+{%- set d = stranice.blog.baner -%}
+<div class="kontejner blog-baner-omotac">
+  <aside class="blog-baner blog-baner--siroki" aria-label="{{ d.oznaka }}">
+    <span class="blog-baner__oznaka">{{ d.oznaka }}</span>
+    <span class="blog-baner__naslov">{{ d.naslov }}</span>
+    <span class="blog-baner__opis samo-desktop">{{ d.opis }}</span>
+    <span class="blog-baner__opis samo-mobilni">{{ d.opisMobilni or d.opis }}</span>
+  </aside>
+</div>

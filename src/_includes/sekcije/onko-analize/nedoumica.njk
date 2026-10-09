@@ -1,0 +1,17 @@
+{#- ONKO ANALIZE · "Ne znate koja analiza je prava?" (lavanda kartica)
+    Sadržaj: stranice.onkoAnalize.nedoumica   ·   Stil: css/stranice/onko-analize.css -#}
+{%- set d = stranice.onkoAnalize.nedoumica -%}
+<section class="analize-nedoumica" aria-labelledby="analize-nedoumica-naslov">
+  <div class="kontejner">
+    <div class="analize-nedoumica__kartica">
+      <div class="analize-nedoumica__tekst">
+        <h2 id="analize-nedoumica-naslov" class="analize-nedoumica__naslov">{{ d.naslov }}</h2>
+        <p>{{ d.tekst }}</p>
+      </div>
+      <div class="analize-nedoumica__akcije">
+        <a href="{{ d.dugme.link }}" class="dugme analize-nedoumica__dugme">{{ d.dugme.tekst }}</a>
+        <a href="{{ d.link.link }}" class="analize-nedoumica__link">{{ d.link.tekst }}</a>
+      </div>
+    </div>
+  </div>
+</section>

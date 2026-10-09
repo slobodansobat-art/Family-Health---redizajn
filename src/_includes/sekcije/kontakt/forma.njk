@@ -1,0 +1,66 @@
+{#- KONTAKT · forma sa izborom teme (Netlify forma "kontakt-upit", adresa #forma)
+    Sadržaj: stranice.kontakt.forma   ·   Stil: css/stranice/kontakt.css
+    Ponašanje: js/stranice/kontakt.js
+      - tema je deo forme: radio dugmad (name="tema") izgledaju kao čipovi
+      - svaka tema ima svoje dodatno polje (data-za-temu); polja drugih tema
+        se sakrivaju i isključuju (disabled), pa se ne šalju
+      - bez JavaScript-a sva dodatna polja su vidljiva -#}
+{%- from "makroi/komponente.njk" import forma, polje, tekstPolje, fajlPolje, saglasnost, posalji with context -%}
+{%- set d = stranice.kontakt.forma -%}
+{%- set izabrana = d.izabranaTema or 0 -%}
+<section id="forma" class="kontakt-upit" aria-labelledby="kontakt-forma-naslov">
+  <div class="kontejner">
+    {% call forma("kontakt-upit", "kontakt-upit__okvir", true) %}
+      <div class="kontakt-upit__uvod">
+        <h2 id="kontakt-forma-naslov" class="kontakt-upit__naslov">{{ d.naslov }}</h2>
+        <p class="kontakt-upit__tekst">{{ d.tekst }}</p>
+
+        {#- Izbor teme: radio dugmad stilizovana kao čipovi #}
+        <fieldset class="kontakt-teme" data-kontakt-teme>
+          <legend class="sr-only">{{ d.temaOznaka }}</legend>
+          {%- for t in d.teme %}
+          <label class="kontakt-tema">
+            <input type="radio" name="tema" value="{{ t.oznaka }}" data-tema-polje="{{ t._polje }}"{% if loop.index0 == izabrana %} checked{% endif %}>
+            <span>{{ t.oznaka }}</span>
+          </label>
+          {%- endfor %}
+        </fieldset>
+
+        {#- Kratko uputstvo za izabranu temu (JS menja koji se vidi) #}
+        <div class="kontakt-upit__saveti" aria-live="polite">
+          {%- for t in d.teme %}
+          <p class="kontakt-upit__savet" data-savet="{{ t._polje }}"{% if loop.index0 != izabrana %} hidden{% endif %}>{{ t.savet }}</p>
+          {%- endfor %}
+        </div>
+      </div>
+
+      <div class="forma forma--bela kontakt-upit__polja">
+        {{ polje("kontakt-ime", "ime", d.poljeIme, autocomplete="name", obavezno=true) }}
+        {{ polje("kontakt-tel", "telefon", d.poljeTelefon, tip="tel", autocomplete="tel", obavezno=true) }}
+
+        {#- Dodatna polja: po jedno za svaku temu #}
+        <div class="kontakt-upit__dodatno" data-za-temu="nalaz">
+          {{ fajlPolje("kontakt-nalaz", "nalaz", d.poljeNalaz, pomoc="") }}
+        </div>
+        <div class="kontakt-upit__dodatno" data-za-temu="nedelja">
+          {#- Ručno (makro polje nema min/max): nedelja trudnoće od 4 do 42 #}
+          <div class="polje">
+            <label for="kontakt-nedelja" class="polje__oznaka">{{ d.poljeNedelja }}</label>
+            <input id="kontakt-nedelja" name="nedelja" type="number" inputmode="numeric" min="4" max="42" class="unos">
+          </div>
+        </div>
+        <div class="kontakt-upit__dodatno" data-za-temu="termin">
+          {{ polje("kontakt-termin", "termin", d.poljeTermin, tip="date") }}
+        </div>
+        <div class="kontakt-upit__dodatno" data-za-temu="poruka">
+          {{ tekstPolje("kontakt-poruka", "poruka", d.poljePoruka, 3) }}
+        </div>
+
+        {{ saglasnost("kontakt-ok") }}
+        {{ posalji(d.dugme) }}
+      </div>
+    {% endcall %}
+
+    <p class="kontakt-upit__lekari">{{ d.lekariMd | mdRed | safe }}</p>
+  </div>
+</section>

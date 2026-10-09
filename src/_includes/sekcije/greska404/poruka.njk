@@ -1,0 +1,24 @@
+{#- GREŠKA 404 · poruka, poziv telefonom, dugme na početnu i četiri oblasti
+    Desktop: tekst levo, kartice oblasti desno (2 × 2). Mobilni: lista sa strelicama,
+    dugme ispod liste (redosled se menja kroz CSS).
+    Sadržaj: stranice.greska404.poruka   ·   Telefon: podesavanja.kontakt
+    Stil: css/stranice/greska404.css -#}
+{%- set d = stranice.greska404.poruka -%}
+<section class="kontejner greska" aria-labelledby="greska-naslov">
+  <div class="greska__tekst">
+    <p class="greska__broj" aria-hidden="true">{{ d.broj }}</p>
+    <h1 id="greska-naslov" class="greska__naslov">{{ d.naslov }}</h1>
+    <p class="greska__opis">{{ d.tekst }}<span class="greska__poziv"> {{ d.poziv }} <a href="tel:{{ podesavanja.kontakt.telefonLink }}">{{ podesavanja.kontakt.telefon }}</a>.</span></p>
+  </div>
+  <ul class="greska__oblasti">
+    {%- for o in d.oblasti %}
+    <li>
+      <a href="{{ o.link }}" class="greska__oblast">
+        <span class="greska__oblast-naziv">{{ o.naziv }} <span class="greska__strelica" aria-hidden="true">→</span></span>
+        {%- if o.opis %}<span class="greska__oblast-opis">{{ o.opis }}</span>{% endif %}
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+  <a href="{{ d.dugme.link }}" class="dugme greska__dugme">{{ d.dugme.tekst }}</a>
+</section>

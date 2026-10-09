@@ -1,0 +1,23 @@
+{#- CANCER NEO · "Zašto je drugačija": tri kartice sa rednim brojem
+    Sadržaj: stranice.cancerNeo.zasto   ·   Stil: css/stranice/cancer-neo.css (ZAŠTO) -#}
+{%- set d = stranice.cancerNeo.zasto -%}
+<section class="neo-zasto" aria-labelledby="neo-zasto-naslov">
+  <div class="kontejner neo-sekcija">
+    <div class="neo-zasto__vrh">
+      <div class="neo-zaglavlje">
+        <p class="neo-nadnaslov">{{ d.nadnaslov }}</p>
+        <h2 id="neo-zasto-naslov" class="naslov-l neo-naslov">{{ d.naslov }}</h2>
+      </div>
+      <p class="neo-zasto__uvod">{{ d.uvod }}</p>
+    </div>
+    <ol class="neo-zasto__kartice">
+      {%- for k in d.kartice %}
+      <li class="neo-zasto__kartica">
+        <span class="neo-zasto__broj" aria-hidden="true">{{ "0" + loop.index if loop.index < 10 else loop.index }}</span>
+        <h3 class="neo-zasto__naslov">{{ k.naslov }}</h3>
+        <p class="neo-zasto__tekst">{{ k.tekst }}</p>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>

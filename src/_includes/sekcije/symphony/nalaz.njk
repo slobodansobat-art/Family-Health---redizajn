@@ -1,0 +1,31 @@
+{#- SYMPHONY · "Kako izgleda nalaz": opis nalaza + primer nalaza (kartica)
+    Sadržaj: stranice.symphony.nalaz   ·   Stil: css/stranice/symphony.css -#}
+{%- set d = stranice.symphony.nalaz -%}
+<section class="symphony-nalaz" aria-labelledby="symphony-nalaz">
+  <div class="kontejner symphony-nalaz__mreza">
+    <div class="symphony-nalaz__levo">
+      <h2 id="symphony-nalaz" class="naslov-l symphony-naslov">{{ d.naslov }}</h2>
+      <p class="symphony-nalaz__tekst">{{ d.tekst }}</p>
+      <div class="symphony-nalaz__povisen">
+        <h3 class="symphony-nalaz__povisen-naslov">{{ d.povisen.naslov }}</h3>
+        <p class="blag">{{ d.povisen.tekst }}</p>
+      </div>
+    </div>
+
+    {#- Primer nalaza (izmišljen, samo za ilustraciju) -#}
+    <div class="symphony-primer">
+      <div class="symphony-primer__glava">
+        <span class="symphony-primer__naslov">{{ d.primer.naslov }}</span>
+        <span class="symphony-primer__oznaka">{{ d.primer.oznaka }}</span>
+      </div>
+      <dl class="symphony-primer__lista">
+        {%- for r in d.primer.redovi %}
+        <div class="symphony-primer__red">
+          <dt>{{ r.stavka }}</dt>
+          <dd class="{{ 'symphony-primer__vrednost--istaknuto' if r.istaknuto else 'symphony-primer__vrednost--nizak' }}">{{ r.vrednost }}</dd>
+        </div>
+        {%- endfor %}
+      </dl>
+    </div>
+  </div>
+</section>

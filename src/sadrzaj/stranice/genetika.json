@@ -1,0 +1,72 @@
+{
+  "_naziv": "Ostale genetske analize",
+  "seo": {
+    "naslov": "Ostale genetske analize | Family Health",
+    "opis": "Genetske analize za planiranje porodice, plodnost i vantelesnu oplodnju, preventivni paneli i egzom. Besplatne konsultacije sa lekarom."
+  },
+  "hero": {
+    "nadnaslov": "Ostale genetske analize",
+    "naslov": "Genetika za planiranje porodice, plodnost i prevenciju.",
+    "tekst": "Krenite od situacije u kojoj ste. Pre svake analize imate besplatnu konsultaciju, da ne radite ništa što vam ne treba."
+  },
+  "situacije": {
+    "naslov": "Šta od ovoga važi za vas?",
+    "dugme": { "tekst": "Besplatne konsultacije", "link": "/kontakt/#forma" },
+    "oznakaUzorak": "Uzorak:",
+    "oznakaRezultat": "Rezultat:",
+    "stavke": [
+      {
+        "oznaka": "Planiramo trudnoću",
+        "naslov": "Pre trudnoće: da li ste nosioci?",
+        "uvod": "Zdravi roditelji mogu da nose istu recesivnu mutaciju i da je prenesu detetu. Panel proverava oba partnera pre trudnoće, a nalaz prati detaljno genetsko savetovanje.",
+        "testovi": [
+          { "naziv": "Panel za planiranje porodice", "oznaka": "1.944 recesivna gena", "opis": "Posebno cistična fibroza i spinalna mišićna atrofija (SMA). Preporučuje se kod srodnih partnera, istog porekla ili bolesti u porodici.", "uzorak": "krv oba partnera", "rezultat": "3–4 nedelje" }
+        ]
+      },
+      {
+        "oznaka": "Teško ostvarujemo trudnoću",
+        "naslov": "Genetski uzroci neplodnosti",
+        "uvod": "Kada se uzrok ne vidi standardnim pregledima, genetski panel može da ga pronađe. Izbor panela zavisi od anamneze, a kod muškarca i od spermograma.",
+        "testovi": [
+          { "naziv": "Paneli plodnosti za žene", "oznaka": "4 panela, do 132 gena", "opis": "Prevremena insuficijencija jajnika, nerazvijeni jajnici, ponovljeni spontani pobačaji i potpuni panel.", "uzorak": "krv", "rezultat": "3–4 nedelje" },
+          { "naziv": "Paneli plodnosti za muškarce", "oznaka": "6 panela, do 167 gena", "opis": "Azoospermija, oligozoospermija, astenozoospermija, teratozoospermija i potpuni panel.", "uzorak": "krv", "rezultat": "3–4 nedelje" },
+          { "naziv": "Endokrini paneli", "oznaka": "3 panela", "opis": "Kongenitalna hipotireoza, hipogonadotropni hipogonadizam (i Kalmanov sindrom), deficit hormona hipofize.", "uzorak": "krv", "rezultat": "3–4 nedelje" }
+        ]
+      },
+      {
+        "oznaka": "Radimo vantelesnu oplodnju",
+        "naslov": "Genetika embriona pre transfera",
+        "uvod": "Kod vantelesne oplodnje embrioni se mogu proveriti pre vraćanja u matericu, kako bi se izbegli oni sa hromozomskim odstupanjima.",
+        "testovi": [
+          { "naziv": "PGT-A", "oznaka": "broj hromozoma embriona", "opis": "Za parove u postupku vantelesne oplodnje. Udeo embriona sa odstupanjima raste sa godinama majke.", "uzorak": "biopsija embriona", "rezultat": "[potvrditi]" },
+          { "naziv": "PGD", "oznaka": "poznata promena u porodici", "opis": "Kada jedan ili oba partnera nose poznatu hromozomsku ili genetsku promenu, embrioni se proveravaju baš na nju.", "uzorak": "biopsija embriona", "rezultat": "[potvrditi]" }
+        ]
+      },
+      {
+        "oznaka": "Ultrazvuk je pokazao odstupanje",
+        "naslov": "Prenatalni trio egzom",
+        "uvod": "Kada ultrazvuk pokaže strukturnu promenu kod bebe, analiza egzoma oba roditelja i bebe traži genetski uzrok.",
+        "testovi": [
+          { "naziv": "Prenatalni trio egzom (ExomeXtra)", "oznaka": "oko 23.000 gena", "opis": "Egzomi oba roditelja i bebe, uz mitohondrijsku DNK, sa pokrivenošću 100×.", "uzorak": "krv roditelja i plodova voda", "rezultat": "[potvrditi]" }
+        ]
+      },
+      {
+        "oznaka": "Želim da znam svoje rizike",
+        "naslov": "Preventivna genetika",
+        "uvod": "Paneli za nasledne rizike, da se prevencija i lečenje planiraju na vreme. Pre analize preporučujemo razgovor sa genetičarem.",
+        "testovi": [
+          { "naziv": "Preventivni paneli, 12 modula", "oznaka": "mogu se kombinovati", "opis": "Tumori, kardiovaskularne bolesti, tromboze, gvožđe i bakar, hiperholesterolemija, oči, maligna hipertermija, metabolizam lekova, dijabetes, urođene greške metabolizma, bubrezi i ACMG panel.", "uzorak": "[potvrditi]", "rezultat": "[potvrditi]" }
+        ]
+      },
+      {
+        "oznaka": "Sumnja na genetsku bolest",
+        "naslov": "Opšta genetika i sekvenciranje egzoma",
+        "uvod": "Kada lekar sumnja na genetsku bolest, a ciljani testovi ne daju odgovor, analiza celog egzoma pregleda sve gene koji kodiraju proteine.",
+        "testovi": [
+          { "naziv": "Sekvenciranje celog egzoma", "oznaka": "[opis dodati]", "opis": "[Opis, indikacije i laboratorija: dodati sa postojećeg sajta.]", "uzorak": "krv", "rezultat": "[potvrditi]" }
+        ]
+      }
+    ],
+    "ostaloMd": "Tražite onkogenetiku, prenatalni test ili matične ćelije? [Onkogenetika](/onkogenetika/) · [Trudnoća i beba](/trudnoca-i-beba/)"
+  }
+}

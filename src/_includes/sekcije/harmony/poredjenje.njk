@@ -1,0 +1,61 @@
+{#- HARMONY · "Harmony u poređenju sa drugim metodama"
+    Redosled kolona (odluka klijenta): 1. kombinovani (double) test, 2. Harmony
+    (istaknut, u sredini), 3. amniocenteza. Redosled = redosled u JSON-u (kolone).
+    Desktop (od 960px): tabela. Mobilni: ista tri stuba kao kartice, istim redom.
+    Napomena da se kombinovani test radi uvek stoji istaknuta iznad oba prikaza.
+    Sadržaj: stranice.harmony.poredjenje   ·   Stil: css/stranice/harmony.css (.harmony-poredjenje) -#}
+{%- set d = stranice.harmony.poredjenje -%}
+<section class="harmony-poredjenje" aria-labelledby="harmony-poredjenje-naslov">
+  <div class="kontejner">
+    <h2 id="harmony-poredjenje-naslov" class="naslov-m harmony-naslov">{{ d.naslov }}</h2>
+    <p class="harmony-poredjenje__uvod">{{ d.uvod }}</p>
+
+    <div class="napomena harmony-poredjenje__napomena" role="note">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"></circle><path d="M12 7v6"></path><path d="M12 17h.01"></path></svg>
+      <p>{{ d.napomenaMd | mdRed | safe }}</p>
+    </div>
+
+    {#- Desktop: tabela (kolona sa stilom "istaknut" dobija zelenu pozadinu) #}
+    <div class="harmony-poredjenje__omotac samo-desktop">
+      <table class="harmony-tabela">
+        <thead>
+          <tr>
+            <th scope="col" class="harmony-tabela__osobina"><span class="sr-only">{{ d.osobinaOznaka }}</span></th>
+            {%- for k in d.kolone %}
+            <th scope="col" class="harmony-tabela__kolona harmony-tabela__kolona--{{ k.stil }}">
+              <span class="harmony-korak harmony-korak--{{ k.stil }}">{{ k.oznaka }}</span>
+              <span class="harmony-tabela__naziv">{{ k.naziv }}</span>
+            </th>
+            {%- endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {%- for r in d.redovi %}
+          <tr>
+            <th scope="row">{{ r.naziv }}</th>
+            {%- for v in r.vrednosti %}
+            <td class="harmony-tabela__kolona--{{ d.kolone[loop.index0].stil }}">{{ v }}</td>
+            {%- endfor %}
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {#- Mobilni: jedna kartica po metodi, istim redom kao kolone tabele #}
+    <ol class="harmony-poredjenje__kartice samo-mobilni">
+      {%- for k in d.kolone %}
+      {%- set i = loop.index0 %}
+      <li class="harmony-metoda harmony-metoda--{{ k.stil }}">
+        <span class="harmony-korak harmony-korak--{{ k.stil }}">{{ k.oznaka }}</span>
+        <h3 class="harmony-metoda__naziv">{{ k.naziv }}</h3>
+        <dl class="harmony-metoda__lista">
+          {%- for r in d.redovi %}
+          <div><dt>{{ r.naziv }}</dt><dd>{{ r.vrednosti[i] }}</dd></div>
+          {%- endfor %}
+        </dl>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>

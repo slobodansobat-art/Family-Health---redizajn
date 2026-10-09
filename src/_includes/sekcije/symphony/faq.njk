@@ -1,0 +1,13 @@
+{#- SYMPHONY · česta pitanja (makro faq; telefon iz podesavanja.kontakt)
+    Sadržaj: stranice.symphony.faq   ·   Stil: css/komponente/faq.css + css/stranice/symphony.css -#}
+{%- from "makroi/komponente.njk" import faq with context -%}
+{%- set d = stranice.symphony.faq -%}
+<section class="kontejner symphony-faq" aria-labelledby="symphony-faq">
+  <div class="symphony-faq__levo">
+    <h2 id="symphony-faq" class="naslov-l symphony-naslov">{{ d.naslov }}</h2>
+    <p class="blag">{{ d.uvod }} <a href="tel:{{ podesavanja.kontakt.telefonLink }}">{{ podesavanja.kontakt.telefon }}</a>.</p>
+  </div>
+  <div class="symphony-faq__pitanja">
+    {{ faq("symphony-faq", d.pitanja, "ljubicasta") }}
+  </div>
+</section>

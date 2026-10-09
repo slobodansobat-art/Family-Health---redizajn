@@ -1,0 +1,421 @@
+/* ==========================================================================
+   STRANICA: HARMONY  (/trudnoca-i-beba/harmony/)
+   Sekcije: src/_includes/sekcije/harmony/  ·  JS: js/stranice/harmony.js
+   Redosled (desktop): hero, razlike, paketi, koraci, rezultati, poređenje,
+   česta pitanja, kontakt. Na mobilnom paketi idu odmah posle uvoda.
+   Mobilni raspored je na kraju fajla (ispod 960px).
+   ========================================================================== */
+
+/* Boje samo za ovu stranicu (omotač .harmony u src/stranice/harmony.njk) */
+.harmony {
+  --harmony-mint-meka: #B9E0D8;        /* fotografija, mehurići, ilustracije */
+  --harmony-mehur: #2A9D8F;            /* tamniji mehurić, tačka u nadnaslovu */
+  --harmony-linija: #CDE6E0;           /* linije na zelenoj pozadini */
+  --harmony-premalo: #E8D9C9;          /* merač: premalo DNK bebe */
+  --harmony-opciono: #F1EEF5;          /* oznaka "samo ako je potrebno" */
+  --harmony-na-ljubicastoj: #EBDDF5;   /* blag tekst u ljubičastoj sekciji */
+}
+.harmony-naslov { color: var(--mint-900); }
+/* Manji naslovi sekcija (u skici 40px) */
+.harmony .naslov-m.harmony-naslov { font-size: clamp(28px, 2.9vw, 40px); line-height: 1.1; }
+
+/* --- HERO ----------------------------------------------------------------- */
+.harmony-hero { position: relative; overflow: hidden; background: var(--mint-50); }
+.harmony-hero__unutra { position: relative; padding-top: 40px; padding-bottom: 110px; }
+
+/* Mehurići (ukras): levo se dižu do visine naslova, desno skoro do vrha */
+.harmony-hero__mehurici { position: absolute; bottom: 0; width: 50%; overflow: hidden; pointer-events: none; }
+.harmony-hero__mehurici--levo { left: 0; height: 64%; }
+.harmony-hero__mehurici--desno { right: 0; height: 100%; }
+.harmony-mehur {
+  position: absolute; top: 100%; left: var(--x);
+  width: var(--v); height: var(--v); border-radius: 50%;
+  animation: harmony-uspon var(--trajanje) linear var(--kasnjenje) infinite;
+}
+.harmony-mehur--a { background: var(--mint-200); }
+.harmony-mehur--b { background: var(--ljubicasta-400); }
+.harmony-mehur--c { background: var(--harmony-mint-meka); }
+.harmony-mehur--d { background: var(--harmony-mehur); }
+@keyframes harmony-uspon {
+  0% { top: calc(100% + 30px); transform: scale(.85); opacity: 0; }
+  12% { opacity: .9; }
+  78% { opacity: .9; }
+  100% { top: -30px; transform: scale(1.1); opacity: 0; }
+}
+/* Oblik fotografije koji se polako menja */
+@keyframes harmony-oblik {
+  0%, 100% { border-radius: 58% 42% 52% 48% / 46% 56% 44% 54%; }
+  33% { border-radius: 44% 56% 40% 60% / 58% 42% 58% 42%; }
+  66% { border-radius: 52% 48% 62% 38% / 40% 60% 46% 54%; }
+}
+
+.harmony-hero__putanja { font-size: 14px; color: var(--tekst-blag); margin-bottom: 36px; }
+.harmony-hero__putanja a { color: var(--tekst-blag); }
+
+.harmony-hero__mreza { display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: center; }
+.harmony-hero__tekst { flex: 1.15 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+.harmony-hero__nadnaslov { display: inline-flex; align-items: center; gap: 8px; color: var(--mint-600); font-weight: 600; font-size: 15px; }
+.harmony-hero__tacka { width: 10px; height: 10px; border-radius: 50%; background: var(--harmony-mehur); flex-shrink: 0; }
+.harmony-hero__naslov {
+  font-family: var(--font-naslov); font-weight: 400; color: var(--mint-900);
+  font-size: clamp(48px, 4.8vw, 68px); line-height: 1.02; max-width: 600px;
+}
+.harmony-hero__uvod { font-size: 19px; color: var(--tekst-blag); max-width: 500px; }
+.harmony-hero__vadjenje {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 18px 10px 12px; background: var(--bela); border-radius: 999px;
+  color: var(--mint-900); font-weight: 600;
+}
+.harmony-hero__vadjenje svg { flex-shrink: 0; color: var(--mint-600); }
+.harmony-hero__akcije { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 6px; }
+.harmony-hero__dugme { padding: 16px 26px; }
+.harmony-hero__sporedni { color: var(--mint-900); }
+.harmony-hero__sporedni:hover { color: var(--mint-600); }
+.harmony-hero__cinjenice {
+  margin: 18px 0 0; padding-top: 22px; border-top: 1px solid var(--harmony-linija);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px 28px;
+}
+.harmony-hero__cinjenice dt { font-size: 13px; color: var(--tekst-blag); }
+.harmony-hero__cinjenice dd { margin: 2px 0 0; font-family: var(--font-naslov); font-size: 26px; line-height: 1.2; color: var(--mint-900); }
+
+.harmony-hero__slika { flex: 1 1 360px; min-width: 0; position: relative; display: flex; justify-content: center; }
+.harmony-hero__mrlja {
+  position: absolute; top: -10px; width: 400px; height: 380px; max-width: 110%;
+  background: var(--mint-200); animation: harmony-oblik 14s ease-in-out infinite;
+}
+.harmony-hero__foto {
+  position: relative; width: 360px; height: 340px; max-width: 100%; aspect-ratio: auto;
+  animation: harmony-oblik 14s ease-in-out -5s infinite;
+}
+.harmony-hero__foto.slika--prazna { background: var(--harmony-mint-meka); color: var(--mint-900); padding: 40px; }
+.harmony-hero__fusnota { margin-top: 28px; font-size: 13px; color: var(--tekst-blag); max-width: 760px; }
+.harmony-hero__talas { position: absolute; left: 0; bottom: 0; width: 100%; height: 60px; fill: var(--bela); }
+
+/* --- ŠTA HARMONY RADI DRUGAČIJE ------------------------------------------- */
+.harmony-razlike { padding-block: 72px 24px; }
+.harmony-razlike__mreza { display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: flex-start; }
+.harmony-razlike__tekst { flex: 1 1 440px; min-width: 0; }
+.harmony-razlike__tekst .harmony-naslov { margin-bottom: 12px; }
+.harmony-razlike__uvod { margin-bottom: 30px; color: var(--tekst-blag); max-width: 520px; }
+.harmony-razlike__lista { list-style: none; display: flex; flex-direction: column; gap: 22px; }
+.harmony-razlike__lista li { display: flex; gap: 18px; }
+.harmony-razlike__lista strong { display: block; font-weight: 600; color: var(--mint-900); }
+.harmony-razlike__lista strong + span { color: var(--tekst-blag); }
+.harmony-broj {
+  flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+  background: var(--mint-600); color: var(--bela); font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+}
+.harmony-razlike__izvor { margin-top: 26px; font-size: 13px; color: var(--tekst-blag); }
+
+.harmony-razlike__panel {
+  flex: 1 1 420px; min-width: 0; background: var(--mint-50); border-radius: 32px;
+  padding: 30px 26px; display: flex; flex-direction: column; gap: 26px;
+}
+.harmony-razlike__crta { height: 1px; background: var(--harmony-linija); }
+.harmony-dijagram, .harmony-merac { max-width: 100%; height: auto; }
+.harmony-dijagram text, .harmony-merac text { font-family: var(--font-tekst); }
+.harmony-dijagram__naslov { font-size: 14px; font-weight: 600; fill: var(--tekst-blag); }
+.harmony-dijagram__opis { font-size: 13px; fill: var(--tekst-blag); }
+.harmony-dijagram__broj { font-size: 11px; fill: var(--tekst-blag); }
+.harmony-dijagram__naslov--mint, .harmony-dijagram__opis--mint, .harmony-dijagram__broj--mint { fill: var(--mint-900); }
+.harmony-dijagram__sve { fill: var(--ljubicasta-400); }
+.harmony-dijagram__ciljani { fill: var(--mint-600); }
+.harmony-dijagram__ostali { fill: var(--mint-150); }
+.harmony-merac__staza { fill: var(--mint-150); }
+.harmony-merac__ispuna { fill: var(--mint-600); opacity: .9; }
+.harmony-merac__premalo { fill: var(--harmony-premalo); }
+.harmony-merac__granica { stroke: var(--mint-900); stroke-width: 2; }
+.harmony-merac__oznaka { font-size: 12px; fill: var(--tekst-blag); }
+.harmony-merac__oznaka--mint { fill: var(--mint-900); }
+
+/* --- PAKETI ----------------------------------------------------------------- */
+.harmony-paketi { padding-block: 80px 60px; }
+.harmony-paketi .harmony-naslov { margin-bottom: 12px; }
+.harmony-paketi__uvod { margin-bottom: 36px; color: var(--tekst-blag); max-width: 620px; }
+.harmony-paketi__izbor { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+
+/* Kartica paketa (dugme; izabrana ima aria-pressed="true") */
+.harmony-paket {
+  display: flex; flex-direction: column; gap: 6px; padding: 24px 22px; text-align: left;
+  background: var(--bela); color: var(--tekst); border: 2px solid var(--mint-150); border-radius: 24px;
+  transition: background .25s ease, border-color .25s ease;
+}
+.harmony-paket:hover { border-color: var(--mint-300); }
+.harmony-paket[aria-pressed="true"] { background: var(--mint-50); border-color: var(--mint-600); }
+.harmony-paket__radio { display: none; }
+.harmony-paket__oznaka { font-size: 13px; font-weight: 600; color: var(--mint-600); }
+.harmony-paket__glavno { display: flex; flex-direction: column; gap: 6px; }
+.harmony-paket__naziv { font-family: var(--font-naslov); font-size: 30px; line-height: 1.05; color: var(--mint-900); }
+.harmony-paket__opis { font-size: 15px; color: var(--tekst-blag); min-height: 46px; }
+.harmony-paket__cena { margin-top: 8px; font-family: var(--font-naslov); font-size: 28px; line-height: 1.2; color: var(--mint-600); }
+.harmony-paket__rata { font-size: 13px; color: var(--tekst-blag); }
+
+/* Zbir izabranog paketa */
+.harmony-paketi__zbir {
+  margin-top: 20px; padding: 24px 28px; border-radius: 28px; background: var(--mint-50);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 16px 36px;
+}
+.harmony-paketi__zbir-opis { flex: 1 1 340px; min-width: 0; }
+.harmony-paketi__zbir-oznaka { font-size: 14px; color: var(--tekst-blag); }
+.harmony-paketi__zbir-naziv { margin-top: 2px; font-family: var(--font-naslov); font-size: 28px; line-height: 1.2; color: var(--mint-900); }
+.harmony-paketi__zbir-tekst { margin-top: 2px; font-size: 15px; color: var(--tekst-blag); }
+.harmony-paketi__zbir-cena { flex: 0 1 auto; }
+.harmony-paketi__zbir-iznos { font-family: var(--font-naslov); font-size: 40px; line-height: 1; color: var(--mint-600); }
+.harmony-paketi__zbir-rata { margin-top: 8px; font-size: 15px; font-weight: 600; color: var(--mint-600); }
+.harmony-paketi__zbir-banka { margin-top: 2px; font-size: 14px; color: var(--tekst-blag); }
+.harmony-paketi__dugme { padding: 15px 24px; }
+.harmony-paketi__symphony { margin-top: 18px; color: var(--tekst-blag); }
+.harmony-paketi__napomena {
+  margin-top: 12px; padding: 12px 14px; border-radius: 16px; font-size: 14px;
+  background: var(--upozorenje-pozadina); border: 1px solid var(--upozorenje-ivica); color: var(--upozorenje-tekst);
+}
+.harmony-paketi__napomena strong { font-weight: 600; }
+
+/* --- KORACI (dopune zajedničke komponente) -------------------------------- */
+.harmony-koraci { padding-block: 80px; }
+.harmony-koraci .harmony-naslov { margin-bottom: 10px; }
+.harmony-koraci__uvod { margin-bottom: 40px; color: var(--tekst-blag); max-width: 560px; }
+/* Ilustracije su velike (260 × 230) i imaju svoj krug u pozadini */
+.harmony-koraci .koraci__ilustracija {
+  flex: 1 1 240px; width: auto; height: auto; border-radius: 0; background: none;
+  display: flex; justify-content: center;
+}
+.harmony-koraci .koraci__ilustracija svg { width: 260px; max-width: 100%; max-height: none; height: auto; }
+.harmony-koraci .koraci__sadrzaj { flex: 1.2 1 260px; }
+.harmony-koraci .koraci__glava { font-size: 32px; line-height: 1.12; }
+.harmony-koraci .koraci__podnaslov { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+/* Dugme na poslednjem koraku je ljubičasto, kao u skici */
+.harmony-koraci .koraci__poslednje { background: var(--ljubicasta-600); }
+.harmony-koraci .koraci__poslednje:hover { background: var(--ljubicasta-650); }
+.harmony-koraci__oznaka {
+  padding: 2px 10px; border-radius: 999px; background: var(--ljubicasta-600); color: var(--bela);
+  font-size: 13px; font-weight: 600; line-height: 1.5;
+}
+
+/* Boje ilustracija (SVG u src/_includes/ilustracije/harmony/) */
+.harmony-ilu .hi-f-tamna { fill: var(--mint-900); }
+.harmony-ilu .hi-f-mint { fill: var(--mint-600); }
+.harmony-ilu .hi-f-mint-svetla { fill: var(--mint-300); }
+.harmony-ilu .hi-f-mint-meka { fill: var(--harmony-mint-meka); }
+.harmony-ilu .hi-f-krug { fill: var(--mint-200); }
+.harmony-ilu .hi-f-pozadina { fill: var(--mint-50); }
+.harmony-ilu .hi-f-bela { fill: var(--bela); }
+.harmony-ilu .hi-f-ljubicasta { fill: var(--ljubicasta-600); }
+.harmony-ilu .hi-f-lavanda { fill: var(--ljubicasta-400); }
+.harmony-ilu .hi-f-krv { fill: var(--crvena-600); }
+.harmony-ilu .hi-f-tekst { fill: var(--tekst); }
+.harmony-ilu .hi-s-tamna { stroke: var(--mint-900); }
+.harmony-ilu .hi-s-mint { stroke: var(--mint-600); }
+.harmony-ilu .hi-s-lavanda { stroke: var(--ljubicasta-400); }
+.harmony-ilu .hi-s-bela { stroke: var(--bela); }
+.harmony-ilu .hi-tekst { font-family: var(--font-tekst); font-size: 13px; }
+.harmony-ilu .hi-serif { font-family: var(--font-naslov); font-size: 24px; }
+
+/* --- ŠTA ZNAČI REZULTAT (tabovi) ------------------------------------------ */
+.harmony-rezultati { background: var(--mint-50); }
+.harmony-rezultati__mreza { display: flex; flex-wrap: wrap; gap: 32px 72px; align-items: flex-start; padding-block: 96px; }
+.harmony-rezultati__levo { flex: .8 1 340px; min-width: 0; }
+.harmony-rezultati__levo .harmony-naslov { margin-bottom: 14px; }
+.harmony-rezultati__uvod { color: var(--tekst-blag); }
+.harmony-rezultati__desno { flex: 1.2 1 520px; min-width: 0; }
+.harmony-rezultati__tabovi { display: flex; flex-wrap: wrap; gap: 8px; }
+.harmony-rezultati__tab {
+  padding: 11px 20px; border-radius: 999px; border: 2px solid var(--harmony-linija);
+  background: var(--bela); color: var(--mint-900); font-weight: 600;
+  transition: background .25s ease, border-color .25s ease, color .25s ease;
+}
+.harmony-rezultati__tab:hover { border-color: var(--mint-600); }
+.harmony-rezultati__tab[aria-selected="true"] { background: var(--mint-600); border-color: var(--mint-600); color: var(--bela); }
+.harmony-rezultati__panel { margin-top: 18px; padding: 30px 32px; border-radius: 28px; background: var(--bela); }
+.harmony-rezultati__naslov { margin-bottom: 10px; font-family: var(--font-naslov); font-size: 26px; line-height: 1.2; color: var(--mint-900); }
+.harmony-rezultati__sledece { margin-top: 14px; font-size: 15px; color: var(--tekst-blag); }
+.harmony-rezultati__sledece strong { font-weight: 600; color: var(--mint-900); }
+
+/* --- POREĐENJE SA DRUGIM METODAMA ----------------------------------------- */
+.harmony-poredjenje { padding-block: 96px 60px; }
+.harmony-poredjenje .harmony-naslov { margin-bottom: 12px; }
+.harmony-poredjenje__uvod { margin-bottom: 28px; color: var(--tekst-blag); max-width: 680px; }
+.harmony-poredjenje__napomena { max-width: 860px; margin-bottom: 36px; }
+.harmony-poredjenje__omotac { overflow-x: auto; }
+
+/* Oznaka koraka (Korak 1 · obavezan ...) */
+.harmony-korak {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  font-family: var(--font-tekst); font-size: 12px; font-weight: 600; line-height: 1.5;
+}
+.harmony-korak--obavezan { background: var(--ljubicasta-800); color: var(--bela); }
+.harmony-korak--istaknut { background: var(--mint-600); color: var(--bela); }
+.harmony-korak--opcioni { background: var(--harmony-opciono); color: var(--tekst-blag); }
+
+/* Tabela (desktop) */
+.harmony-tabela { width: 100%; min-width: 720px; border-collapse: separate; border-spacing: 0; font-size: 15px; }
+.harmony-tabela th, .harmony-tabela td { text-align: left; }
+.harmony-tabela thead th { padding: 16px; vertical-align: bottom; }
+.harmony-tabela thead .harmony-tabela__osobina { width: 22%; padding: 12px 12px 12px 0; }
+.harmony-tabela .harmony-korak { margin-bottom: 8px; }
+.harmony-tabela__naziv { display: block; font-family: var(--font-naslov); font-weight: 400; font-size: 24px; line-height: 1.15; color: var(--tekst); }
+.harmony-tabela tbody th { padding: 14px 12px 14px 0; font-weight: 400; color: var(--tekst-blag); border-top: 1px solid var(--linija); vertical-align: top; }
+.harmony-tabela tbody td { padding: 14px 16px; border-top: 1px solid var(--linija); vertical-align: top; }
+.harmony-tabela tbody tr:last-child > * { border-bottom: 1px solid var(--linija); }
+/* Istaknuta kolona: Harmony */
+.harmony-tabela .harmony-tabela__kolona--istaknut { background: var(--mint-50); }
+.harmony-tabela thead .harmony-tabela__kolona--istaknut { border-radius: 20px 20px 0 0; }
+.harmony-tabela thead .harmony-tabela__kolona--istaknut .harmony-tabela__naziv { color: var(--mint-900); }
+.harmony-tabela tbody .harmony-tabela__kolona--istaknut { border-color: var(--mint-150); }
+.harmony-tabela tbody tr:last-child .harmony-tabela__kolona--istaknut { border-radius: 0 0 20px 20px; }
+
+/* Kartice (mobilni) */
+.harmony-poredjenje__kartice { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.harmony-metoda { padding: 18px; border: 1px solid var(--linija); border-radius: 22px; background: var(--bela); }
+.harmony-metoda--istaknut { background: var(--mint-50); border: 2px solid var(--mint-600); }
+.harmony-metoda__naziv { margin-top: 8px; font-family: var(--font-naslov); font-size: 22px; line-height: 1.2; color: var(--tekst); }
+.harmony-metoda--istaknut .harmony-metoda__naziv { color: var(--mint-900); }
+.harmony-metoda__lista { margin: 10px 0 0; }
+.harmony-metoda__lista > div { padding: 10px 0; border-top: 1px solid var(--linija); }
+.harmony-metoda--istaknut .harmony-metoda__lista > div { border-color: var(--harmony-linija); }
+.harmony-metoda__lista dt { font-size: 13px; color: var(--tekst-blag); }
+.harmony-metoda__lista dd { margin: 2px 0 0; font-size: 15px; }
+
+/* --- ČESTA PITANJA ----------------------------------------------------------- */
+.harmony-faq__mreza { display: flex; flex-wrap: wrap; gap: 32px 72px; align-items: flex-start; padding-block: 60px 100px; }
+.harmony-faq__levo { flex: .7 1 300px; min-width: 0; }
+.harmony-faq__levo .harmony-naslov { margin-bottom: 14px; }
+.harmony-faq__poziv { color: var(--tekst-blag); }
+.harmony-faq__pitanja { flex: 1.3 1 520px; min-width: 0; }
+/* U skici su pitanja u običnom fontu, sa "+" u zelenom krugu */
+.harmony-faq .faq__pitanje { padding: 20px 0; font-family: var(--font-tekst); font-size: 18px; font-weight: 500; line-height: 1.4; }
+.harmony-faq .faq__ikonica { width: 32px; height: 32px; border-radius: 50%; background: var(--mint-50); align-items: center; justify-content: center; }
+.harmony-faq .faq__odgovor { max-width: 680px; padding-bottom: 22px; }
+
+/* --- KONTAKT -------------------------------------------------------------- */
+.harmony-kontakt { position: relative; overflow: hidden; background: var(--ljubicasta-600); color: var(--bela); }
+.harmony-kontakt__mrlja { position: absolute; right: -120px; bottom: -160px; width: 520px; height: 520px; fill: var(--ljubicasta-550); }
+.harmony-kontakt__mreza { position: relative; display: flex; flex-wrap: wrap; gap: 40px 72px; padding-block: 88px; }
+.harmony-kontakt__levo { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.harmony-kontakt__naslov { font-family: var(--font-naslov); font-style: italic; font-size: 46px; line-height: 1.08; }
+.harmony-kontakt__tekst { color: var(--harmony-na-ljubicastoj); max-width: 380px; }
+.harmony-kontakt__telefoni { display: flex; flex-direction: column; gap: 4px; margin-top: 10px; }
+.harmony-kontakt__telefoni a { color: var(--bela); font-size: 22px; text-decoration: none; }
+.harmony-kontakt__telefoni a:hover { text-decoration: underline; }
+.harmony-kontakt__forma { flex: 1 1 520px; min-width: 0; }
+.harmony-kontakt__zakljucano { background: var(--ljubicasta-25); }
+
+/* --- Smanjeni pokreti: bez mehurića i promene oblika ---------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .harmony-hero__mehurici { display: none; }
+  .harmony-hero__mrlja, .harmony-hero__foto { animation: none; border-radius: 58% 42% 52% 48% / 46% 56% 44% 54%; }
+}
+
+/* ==========================================================================
+   MOBILNI (ispod 960px), po mobilnoj skici
+   ========================================================================== */
+@media (max-width: 959px) {
+  /* Redosled: paketi odmah posle uvoda */
+  .harmony { display: flex; flex-direction: column; }
+  .harmony > * { order: 2; }
+  .harmony > .harmony-hero { order: 0; }
+  .harmony > .harmony-paketi { order: 1; }
+
+  .harmony .naslov-l.harmony-naslov, .harmony .naslov-m.harmony-naslov { font-size: 28px; line-height: 1.12; }
+
+  /* Hero */
+  .harmony-hero__unutra { padding-top: 14px; padding-bottom: 34px; }
+  .harmony-hero__mehurici--levo { display: none; }
+  .harmony-hero__mehurici--desno { width: 100%; }
+  .harmony-hero__putanja { font-size: 13px; margin-bottom: 12px; }
+  .harmony-hero__mreza { display: block; }
+  .harmony-hero__tekst { gap: 12px; }
+  .harmony-hero__nadnaslov { font-size: 14px; }
+  .harmony-hero__naslov { font-size: 40px; line-height: 1.03; }
+  .harmony-hero__uvod { font-size: 15px; }
+  .harmony-hero__vadjenje { margin-top: 4px; gap: 8px; padding: 9px 14px 9px 10px; font-size: 14px; line-height: 1.35; }
+  .harmony-hero__vadjenje svg { width: 20px; height: 20px; }
+  .harmony-hero__akcije, .harmony-hero__cinjenice, .harmony-hero__fusnota, .harmony-hero__talas, .harmony-hero__mrlja { display: none; }
+  .harmony-hero__slika { margin-top: 22px; }
+  .harmony-hero__foto { width: 250px; height: 220px; }
+  .harmony-hero__foto.slika--prazna { padding: 30px; font-size: 13px; }
+
+  /* Paketi: lista sa radio-oznakom, cena desno */
+  .harmony-paketi { padding-block: 30px 0; }
+  .harmony-paketi .harmony-naslov { margin-bottom: 8px; }
+  .harmony-paketi__uvod { margin-bottom: 14px; font-size: 15px; }
+  .harmony-paketi__izbor { display: flex; flex-direction: column; gap: 8px; }
+  .harmony-paket { flex-direction: row; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 18px; }
+  .harmony-paket__radio {
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--mint-600);
+  }
+  .harmony-paket__radio::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: transparent; }
+  .harmony-paket[aria-pressed="true"] .harmony-paket__radio::after { background: var(--mint-600); }
+  .harmony-paket__oznaka, .harmony-paket__rata { display: none; }
+  .harmony-paket__glavno { flex: 1; min-width: 0; gap: 0; }
+  .harmony-paket__naziv { font-size: 20px; line-height: 1.3; }
+  .harmony-paket__opis { font-size: 13px; min-height: 0; line-height: 1.4; }
+  .harmony-paket__cena { margin-top: 0; font-family: var(--font-tekst); font-size: 16px; font-weight: 600; white-space: nowrap; }
+  .harmony-paketi__zbir { margin-top: 12px; padding: 16px 18px; border-radius: 22px; }
+  .harmony-paketi__zbir-opis, .harmony-paketi__zbir-iznos, .harmony-paketi__dugme { display: none; }
+  .harmony-paketi__zbir-rata { margin-top: 0; font-size: 14px; }
+  .harmony-paketi__zbir-banka { font-size: 12px; }
+  .harmony-paketi__symphony { margin-top: 12px; font-size: 14px; }
+
+  /* Razlike: samo lista (dijagrami su na malom ekranu nečitljivi) */
+  .harmony-razlike { padding-block: 34px 0; }
+  .harmony-razlike__mreza { display: block; }
+  .harmony-razlike__tekst .harmony-naslov { margin-bottom: 8px; }
+  .harmony-razlike__uvod { margin-bottom: 14px; font-size: 15px; }
+  .harmony-razlike__lista { gap: 14px; font-size: 15px; }
+  .harmony-razlike__lista li { gap: 12px; }
+  .harmony-broj { width: 30px; height: 30px; font-size: 14px; }
+  .harmony-razlike__izvor { margin-top: 14px; }
+  .harmony-razlike__panel { display: none; }
+
+  /* Koraci */
+  .harmony-koraci { padding-block: 34px 0; }
+  .harmony-koraci .harmony-naslov { margin-bottom: 6px; }
+  .harmony-koraci__uvod { margin-bottom: 12px; font-size: 15px; }
+  .harmony-koraci__oznaka { font-size: 12px; padding: 1px 8px; }
+  /* U harmonici samo tekst, bez ilustracije (kao u mobilnoj skici) */
+  .harmony-koraci .koraci__lista .koraci__ilustracija { display: none; }
+
+  /* Rezultati */
+  .harmony-rezultati { background: none; }
+  .harmony-rezultati__mreza { display: block; padding-block: 34px 0; }
+  .harmony-rezultati__levo .harmony-naslov { margin-bottom: 6px; }
+  .harmony-rezultati__uvod { margin-bottom: 14px; font-size: 15px; }
+  .harmony-rezultati__tabovi {
+    flex-wrap: nowrap; overflow-x: auto;
+    margin-inline: calc(var(--margina) * -1); padding-inline: var(--margina);
+  }
+  .harmony-rezultati__tab { flex-shrink: 0; padding: 10px 16px; border-width: 1px; border-color: var(--mint-600); font-size: 15px; }
+  .harmony-rezultati__panel { margin-top: 12px; padding: 18px; border-radius: 22px; background: var(--mint-50); }
+  .harmony-rezultati__naslov { margin-bottom: 6px; font-size: 22px; }
+  .harmony-rezultati__tekst { font-size: 15px; }
+  .harmony-rezultati__sledece { margin-top: 10px; font-size: 14px; }
+
+  /* Poređenje: kartice */
+  .harmony-poredjenje { padding-block: 34px 0; }
+  .harmony-poredjenje .harmony-naslov { margin-bottom: 8px; }
+  .harmony-poredjenje__uvod { margin-bottom: 14px; font-size: 15px; }
+  .harmony-poredjenje__napomena { margin-bottom: 14px; padding: 14px 16px; gap: 12px; border-radius: 16px; font-size: 14px; }
+  .harmony-poredjenje__napomena > svg { width: 22px; height: 22px; }
+
+  /* Česta pitanja (pitanja u serifu, kao u mobilnoj skici) */
+  .harmony-faq__mreza { display: block; padding-block: 34px 0; }
+  .harmony-faq__levo .harmony-naslov { margin-bottom: 6px; }
+  .harmony-faq__poziv { margin-bottom: 12px; font-size: 15px; }
+  .harmony-faq .faq__pitanje { padding: 16px 0; font-family: var(--font-naslov); font-size: 19px; font-weight: 400; line-height: 1.3; }
+  .harmony-faq .faq__ikonica { width: auto; height: auto; background: none; }
+  .harmony-faq .faq__odgovor { padding-bottom: 16px; }
+
+  /* Kontakt */
+  .harmony-kontakt { margin-top: 34px; }
+  .harmony-kontakt__mrlja { display: none; }
+  .harmony-kontakt__mreza { display: block; padding-block: 30px 34px; }
+  .harmony-kontakt__levo { gap: 8px; }
+  .harmony-kontakt__naslov { font-size: 32px; line-height: 1.1; font-style: normal; }
+  .harmony-kontakt__tekst { font-size: 15px; }
+  .harmony-kontakt__telefoni { flex-direction: row; flex-wrap: wrap; gap: 4px 18px; margin-top: 2px; }
+  .harmony-kontakt__telefoni a { font-size: 19px; }
+  .harmony-kontakt__forma { margin-top: 16px; }
+}

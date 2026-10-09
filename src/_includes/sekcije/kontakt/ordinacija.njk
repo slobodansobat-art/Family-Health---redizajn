@@ -1,0 +1,40 @@
+{#- KONTAKT · ordinacija: radno vreme + statična mapa
+    Sadržaj: stranice.kontakt.ordinacija (tekst, oznake, slika mape)
+             podesavanja.kontakt (radno vreme, subota, parking, adresa, mapaLink)
+             podesavanja.vadjenjeKrvi.podrucje (područje dolaska)
+    Google mapa se NE ugrađuje (traži saglasnost za kolačiće): ovde je statična
+    slika (ili crtež dok slika ne stigne) i link ka Google mapama.
+    Stil: css/stranice/kontakt.css -#}
+{%- set d = stranice.kontakt.ordinacija -%}
+{%- set k = podesavanja.kontakt -%}
+{#- "8–16 h" iz "Radnim danima 8–16h" (dok u podešavanjima ne postoji posebno polje radnoVremeSati) -#}
+{%- set radniDan = k.radnoVremeSati or (k.radnoVreme | replace("Radnim danima", "") | trim | replace(r/(\d)h$/, "$1 h")) -%}
+<section class="kontejner kontakt-ordinacija" aria-labelledby="kontakt-ordinacija-naslov">
+  <div class="kontakt-ordinacija__levo">
+    <h2 id="kontakt-ordinacija-naslov" class="kontakt-ordinacija__naslov">{{ d.naslov }}</h2>
+    <p class="blag">{{ d.tekst }}</p>
+    <dl class="kontakt-vreme">
+      <div class="kontakt-vreme__red"><dt>{{ d.oznakaRadniDan }}</dt><dd>{{ radniDan }}</dd></div>
+      <div class="kontakt-vreme__red"><dt>{{ d.oznakaSubota }}</dt><dd>{{ k.subota }}</dd></div>
+      <div class="kontakt-vreme__red"><dt>{{ d.oznakaKucnaPoseta }}</dt><dd>{{ podesavanja.vadjenjeKrvi.podrucje }}</dd></div>
+      <div class="kontakt-vreme__red"><dt>{{ d.oznakaParking }}</dt><dd>{{ k.parking }}</dd></div>
+    </dl>
+  </div>
+
+  <div class="kontakt-mapa">
+    {%- if d.slikaMape %}
+    <img src="{{ d.slikaMape }}" alt="{{ d.slikaMapeOpis }}" class="kontakt-mapa__slika" loading="lazy" decoding="async">
+    {%- else %}
+    {#- Crtež ulica dok firma ne doda statičnu sliku mape #}
+    <div class="kontakt-mapa__slika kontakt-mapa__slika--crtez" role="img" aria-label="{{ d.mapaOpis }}">
+      <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        <g class="kontakt-mapa__ulica"><path d="M-20 90 L 640 150"></path><path d="M120 -20 L 220 360"></path><path d="M-20 260 C 200 230, 380 300, 640 250"></path><path d="M420 -20 L 380 360"></path></g>
+        <g class="kontakt-mapa__ulica kontakt-mapa__ulica--mala"><path d="M-20 200 L 640 210"></path><path d="M300 -20 L 290 360"></path></g>
+        <path class="kontakt-mapa__pin" d="M300 112 c-18 0 -30 13 -30 30 c0 22 30 50 30 50 s30 -28 30 -50 c0 -17 -12 -30 -30 -30 z"></path><circle class="kontakt-mapa__pin-sredina" cx="300" cy="142" r="10"></circle>
+      </svg>
+      <span class="kontakt-mapa__napomena">{{ d.mapaNapomena }}</span>
+    </div>
+    {%- endif %}
+    <a href="{{ k.mapaLink }}" target="_blank" rel="noopener" class="kontakt-mapa__link">{{ k.adresa }} · {{ d.mapaLinkTekst }}<span class="sr-only"> {{ d.mapaNoviProzor }}</span></a>
+  </div>
+</section>

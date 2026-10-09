@@ -1,0 +1,26 @@
+{#- ČLANAK · "Pročitajte još": do 3 napisana članka, prvo iz iste kategorije,
+    pa najnoviji ostali. Predlozi tema se ne prikazuju (nemaju stranicu).
+    Sadržaj: collections.blog + stranice.blog.clanak.srodniNaslov   ·   Stil: css/stranice/blog.css -#}
+{%- set t = stranice.blog.clanak -%}
+{%- set srodni = [] -%}
+{%- for c in collections.blog -%}
+  {%- if c.url and c.url != page.url and c.data.kategorija == kategorija and srodni.length < 3 %}{% set _x = srodni.push(c) %}{% endif -%}
+{%- endfor -%}
+{%- for c in collections.blog -%}
+  {%- if c.url and c.url != page.url and c.data.kategorija != kategorija and srodni.length < 3 %}{% set _x = srodni.push(c) %}{% endif -%}
+{%- endfor -%}
+{%- if srodni.length %}
+<section class="kontejner clanak-srodni" aria-labelledby="clanak-srodni-naslov">
+  <h2 id="clanak-srodni-naslov" class="clanak-srodni__naslov">{{ t.srodniNaslov }}</h2>
+  <ul class="clanak-srodni__lista">
+    {%- for c in srodni %}
+    <li>
+      <a href="{{ c.url }}" class="clanak-srodni__kartica">
+        <span class="clanak-srodni__kategorija">{{ c.data.kategorija }}</span>
+        <span class="clanak-srodni__clanak">{{ c.data.naslov }}</span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}

@@ -1,0 +1,42 @@
+{#- ZA LEKARE · "Vaš deo / naš deo": tok od uputa do odluke
+    Desktop: lekar levo, Family Health desno, brojevi koraka na liniji u sredini.
+    Mobilni: koraci jedan ispod drugog, sa oznakom "Vaš korak" / "Naš korak".
+    Korak bez "vasTekst" je samo naš (i obrnuto).
+    Sadržaj: stranice.zaLekare.tok  ·  Stil: css/stranice/za-lekare.css (.lekari-tok) -#}
+{%- set d = stranice.zaLekare.tok -%}
+<section class="lekari-tok" aria-labelledby="lekari-tok-naslov">
+  <div class="kontejner">
+    <div class="lekari-tok__zaglavlje">
+      <h2 id="lekari-tok-naslov" class="naslov-l lekari-tok__glavni-naslov">{{ d.naslov }}</h2>
+      <p class="blag">{{ d.uvod }}</p>
+    </div>
+    <div class="lekari-tok__telo">
+      <div class="lekari-tok__legenda" aria-hidden="true">
+        <span class="lekari-tok__strana lekari-tok__strana--vi">{{ d.oznakaVi }}</span>
+        <span class="lekari-tok__strana lekari-tok__strana--mi">{{ d.oznakaMi }}</span>
+      </div>
+      <ol class="lekari-tok__lista">
+        {%- for s in d.koraci %}
+        <li class="lekari-tok__korak{% if s.vasTekst and not s.nasTekst %} lekari-tok__korak--samo-vas{% endif %}">
+          <span class="lekari-tok__broj">{{ loop.index }}</span>
+          <h3 class="lekari-tok__naslov">{{ s.naslov }}</h3>
+          {%- if s.vasTekst %}
+          <div class="lekari-tok__oblak lekari-tok__oblak--vas">
+            <span class="lekari-tok__ko">{{ d.oznakaVasKorak }}</span>
+            <p class="lekari-tok__mali-naslov" aria-hidden="true">{{ s.naslov }}</p>
+            <p class="lekari-tok__tekst">{{ s.vasTekst }}</p>
+          </div>
+          {%- endif %}
+          {%- if s.nasTekst %}
+          <div class="lekari-tok__oblak lekari-tok__oblak--nas">
+            <span class="lekari-tok__ko">{{ d.oznakaNasKorak }}</span>
+            <p class="lekari-tok__mali-naslov" aria-hidden="true">{{ s.naslov }}</p>
+            <p class="lekari-tok__tekst">{{ s.nasTekst }}</p>
+          </div>
+          {%- endif %}
+        </li>
+        {%- endfor %}
+      </ol>
+    </div>
+  </div>
+</section>

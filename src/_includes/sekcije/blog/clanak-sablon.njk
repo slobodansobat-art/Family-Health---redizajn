@@ -1,0 +1,31 @@
+---
+layout: layouts/osnova.njk
+---
+{#- ==========================================================================
+    ŠABLON ČLANKA BLOGA (svi src/sadrzaj/blog/*.md koji nisu predlog teme)
+    --------------------------------------------------------------------------
+    Podešavanja (adresa, zaglavlje, SEO, skripta): src/sadrzaj/blog/blog.11tydata.js
+    Tekstovi šablona (putanja, "U ovom članku", baneri, kalkulator):
+      src/sadrzaj/stranice/blog.json -> clanak, kalkulator
+    Redosled: tekst članka (sa sadržajem) -> baner -> kalkulator (ako je
+    uključen u CMS-u) -> "Pročitajte još".
+    Stil: css/stranice/blog.css (klase clanak-*)  ·  JS: js/stranice/blog.js (kalkulator)
+    ========================================================================== -#}
+{#- Naslovima "##" iz teksta članka dodajemo id (clanak-deo-1, -2...) da bi
+    sadržaj ("U ovom članku") mogao da vodi na njih. -#}
+{%- set delovi = content.split("<h2>") -%}
+{%- set deloviTela = [delovi[0]] -%}
+{%- set naslovi = [] -%}
+{%- for deo in delovi.slice(1) -%}
+  {%- set _x = naslovi.push(deo.split("</h2>")[0]) -%}
+  {%- set _x = deloviTela.push('<h2 id="clanak-deo-' + loop.index + '">' + deo) -%}
+{%- endfor -%}
+{%- set tekstClanka = deloviTela | join("") -%}
+<div class="clanak">
+{% include "sekcije/blog/clanak-tekst.njk" %}
+{% include "sekcije/blog/clanak-baner.njk" %}
+{%- if kalkulatorTrudnoce %}
+{% include "sekcije/blog/clanak-kalkulator.njk" %}
+{%- endif %}
+{% include "sekcije/blog/clanak-srodni.njk" %}
+</div>

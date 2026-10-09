@@ -1,0 +1,77 @@
+{#- MATIČNE ĆELIJE · kalkulator paketa (#paketi)
+    Izbor dužine čuvanja + prekidač TotiCyte -> ukupna cena i rata u obračunu desno.
+    Početno stanje (prvi paket, TotiCyte po "ukljucenNaPocetku") računa se ovde, pa je
+    cena tačna i bez JS-a i ista kao u heroju.
+    Desktop: izbor i "šta je uključeno" levo, obračun desno. Mobilni: izbor, obračun, pa lista.
+    Sadržaj: stranice.maticneCelije.paketi
+    Stil: css/stranice/maticne-celije.css (.mc-paketi)   ·   JS: js/stranice/maticne-celije.js -#}
+{%- from "makroi/osnovni.njk" import kvacica -%}
+{%- set d = stranice.maticneCelije.paketi -%}
+{%- set o = d.obracun -%}
+{%- set prvi = d.stavke[0] -%}
+{%- set saToti = d.toti.ukljucenNaPocetku -%}
+{%- set ukupno = prvi.cena + (d.toti.cena if saToti else 0) -%}
+{%- set naslovPaketa = o.naslovPaketa | replace("{godina}", prvi.godina) + (o.dodatakToti if saToti else "") -%}
+<section id="paketi" class="kontejner mc-paketi" aria-labelledby="mc-paketi-naslov" data-mc-paketi>
+  <h2 id="mc-paketi-naslov" class="mc-paketi__naslov">{{ d.naslov }}</h2>
+  <p class="mc-paketi__uvod">{{ d.uvod }}</p>
+
+  <div class="mc-paketi__mreza">
+    {#- Izbor paketa i TotiCyte #}
+    <div class="mc-paketi__izbor">
+      <fieldset class="mc-paketi__grupa">
+        <legend class="mc-paketi__legenda">{{ d.izborNaslov }}</legend>
+        <div class="mc-paketi__opcije">
+          {%- for p in d.stavke %}
+          <button type="button" class="mc-paketi__opcija" aria-pressed="{{ 'true' if loop.first else 'false' }}" data-mc-paket="{{ loop.index0 }}">
+            <span class="mc-paketi__godine">{{ p.godina }}</span>
+            <span class="mc-paketi__godine-oznaka">{{ d.godinaOznaka }}</span>
+            <span class="mc-paketi__cena">{{ p.cena | evra }}</span>
+          </button>
+          {%- endfor %}
+        </div>
+      </fieldset>
+
+      <div class="mc-paketi__toti">
+        <button type="button" class="mc-prekidac" role="switch" aria-checked="{{ 'true' if saToti else 'false' }}" aria-labelledby="mc-toti-naziv" aria-describedby="mc-toti-opis" data-mc-toti><span class="mc-prekidac__dugme"></span></button>
+        <div>
+          <p id="mc-toti-naziv" class="mc-paketi__toti-naziv">{{ d.toti.naziv }}, +{{ d.toti.cena | evra }}</p>
+          <p id="mc-toti-opis" class="mc-paketi__toti-tekst">{{ d.toti.tekst }}</p>
+        </div>
+      </div>
+    </div>
+
+    {#- Šta je uključeno (na mobilnom ispod obračuna) #}
+    <div class="mc-paketi__ukljuceno">
+      <p class="mc-paketi__ukljuceno-naslov">{{ d.ukljucenoNaslov }}</p>
+      <ul class="mc-paketi__lista">
+        {%- for u in d.ukljuceno %}
+        <li>{{ kvacica(16) }}<span>{{ u }}</span></li>
+        {%- endfor %}
+      </ul>
+    </div>
+
+    {#- Obračun #}
+    <div class="mc-paketi__obracun" aria-live="polite">
+      <p class="mc-paketi__obracun-oznaka">{{ o.oznaka }}</p>
+      <p class="mc-paketi__obracun-naslov" data-mc-naslov>{{ naslovPaketa }}</p>
+      <div class="mc-paketi__iznos">
+        <p class="mc-paketi__ukupno" data-mc-ukupno>{{ ukupno | evra }}</p>
+        <p class="mc-paketi__rate" data-mc-rate>{{ o.rate | replace("{brojRata}", o.brojRata) | replace("{iznosRate}", (ukupno / o.brojRata) | evra) }}</p>
+        <p class="mc-paketi__napomena">{{ o.napomena }}</p>
+      </div>
+      <p class="mc-paketi__obracun-oznaka">{{ o.doplateNaslov }}</p>
+      <dl class="mc-paketi__doplate">
+        {%- for x in o.doplate %}
+        <div class="mc-paketi__doplata">
+          <dt>{{ x.naziv }}</dt>
+          <dd class="mc-paketi__doplata-iznos">{% if x.predznak %}{{ x.predznak }} {% endif %}{% if x.valuta == "EUR" %}{{ x.iznos | evra }}{% else %}{{ x.iznos | evra | replace(" €", "") }} {{ x.valuta }}{% endif %}</dd>
+          <dd class="mc-paketi__doplata-napomena">{{ x.napomena }}</dd>
+        </div>
+        {%- endfor %}
+      </dl>
+      <a href="{{ o.dugme.link }}" class="dugme mc-paketi__dugme">{{ o.dugme.tekst }}</a>
+    </div>
+  </div>
+</section>
+<script type="application/json" id="mc-paketi-podaci">{{ d | uJson | safe }}</script>

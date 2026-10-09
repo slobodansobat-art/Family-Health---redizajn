@@ -1,0 +1,16 @@
+{#- GENETIKA · hero: naslov + animirani DNK heliks na dnu
+    Sadržaj: stranice.genetika.hero   ·   Stil: css/stranice/genetika.css
+    Heliks: src/_includes/ilustracije/genetika/heliks.njk -#}
+{%- from "ilustracije/genetika/heliks.njk" import heliks -%}
+{%- set d = stranice.genetika.hero -%}
+<section class="genetika-hero" aria-labelledby="genetika-naslov">
+  <div class="kontejner genetika-hero__unutra">
+    <p class="nadnaslov genetika-hero__nadnaslov">{{ d.nadnaslov }}</p>
+    <h1 id="genetika-naslov" class="naslov-xl genetika-hero__naslov">{{ d.naslov }}</h1>
+    <p class="genetika-hero__tekst">{{ d.tekst }}</p>
+  </div>
+  {#- Desktop: široka traka; mobilni: niža traka sa manjim talasom.
+      Crtež je širi od ekrana i ne razvlači se (tablet vidi veći deo trake). #}
+  {{ heliks(1440, 120, 34, 24, "samo-desktop") }}
+  {{ heliks(960, 90, 26, 20, "samo-mobilni") }}
+</section>

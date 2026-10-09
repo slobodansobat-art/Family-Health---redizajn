@@ -1,0 +1,46 @@
+{#- ZA LEKARE · zahtevi za uzorak (levo) i primer izveštaja (desno)
+    Sadržaj: stranice.zaLekare.uzorak, stranice.zaLekare.izvestaj
+    Ikonice: ilustracije/za-lekare/ikonice.njk  ·  Stil: css/stranice/za-lekare.css (.lekari-uzorak) -#}
+{%- from "ilustracije/za-lekare/ikonice.njk" import ikonica -%}
+{%- set d = stranice.zaLekare.uzorak -%}
+{%- set iz = stranice.zaLekare.izvestaj -%}
+<section class="lekari-uzorak" aria-labelledby="lekari-uzorak-naslov">
+  <div class="kontejner lekari-uzorak__mreza">
+    <div class="lekari-uzorak__levo">
+      <h2 id="lekari-uzorak-naslov" class="naslov-m lekari-uzorak__naslov">{{ d.naslov }}</h2>
+      <ul class="lekari-uzorak__lista">
+        {%- for s in d.stavke %}
+        <li class="lekari-kartica">
+          {{ ikonica(s.ikonica, 34) }}
+          <span><strong>{{ s.naslov }}</strong><span>{{ s.tekst }}</span></span>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+
+    {#- Primer izveštaja (ilustracija, ne pravi nalaz) #}
+    <figure class="lekari-izvestaj" aria-labelledby="lekari-izvestaj-naslov">
+      <div class="lekari-izvestaj__vrh">
+        <span id="lekari-izvestaj-naslov" class="lekari-izvestaj__naslov">{{ iz.naslov }}</span>
+        <span class="lekari-izvestaj__oznaka">{{ iz.oznaka }}</span>
+      </div>
+      <p class="lekari-izvestaj__podnaslov">{{ iz.podnaslov }}</p>
+      <table class="lekari-izvestaj__tabela">
+        <thead>
+          <tr><th scope="col">{{ iz.kolonaGen }}</th><th scope="col">{{ iz.kolonaUdeo }}</th><th scope="col">{{ iz.kolonaTerapija }}</th></tr>
+        </thead>
+        <tbody>
+          {%- for v in iz.varijante %}
+          <tr><th scope="row">{{ v.gen }}</th><td>{{ v.udeo }}</td><td>{{ v.terapija }}</td></tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+      <dl class="lekari-izvestaj__pokazatelji">
+        {%- for p in iz.pokazatelji %}
+        <div><dt>{{ p.oznaka }}</dt><dd>{{ p.vrednost }}</dd></div>
+        {%- endfor %}
+      </dl>
+      <p class="lekari-izvestaj__napomena">{{ iz.napomena }}</p>
+    </figure>
+  </div>
+</section>

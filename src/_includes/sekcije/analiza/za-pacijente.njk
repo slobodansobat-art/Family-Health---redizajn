@@ -1,0 +1,59 @@
+{#- ANALIZA · panel "Za pacijente": objašnjenje + dijagram, koraci, cena
+    Sadržaj: analiza.stranica.zaPacijente
+    Koraci: makro "koraci" (makroi/komponente.njk), ilustracije u ilustracije/analiza/
+    Stil: css/stranice/analiza.css (.analiza-objasnjenje, .analiza-koraci, .analiza-cena) -#}
+{%- from "makroi/komponente.njk" import koraci with context -%}
+{%- if imaPacijente -%}
+{%- set p = P -%}
+{#- Kad postoje oba taba, ovaj panel je u HTML-u skriven (hidden); prikazuje ga klik na tab #}
+<div class="analiza__panel" id="za-pacijente"{% if imaTabove %} role="tabpanel" aria-labelledby="analiza-tab-pacijenti" hidden{% endif %}>
+
+  {#- Šta analiza pokazuje (tekst levo, dijagram desno; na mobilnom dijagram ide posle teksta) #}
+  {%- if imaObjasnjenje or imaDijagram %}
+  {%- set d = p.objasnjenje or {} %}
+  <section class="kontejner analiza-objasnjenje{% if not imaDijagram %} analiza-objasnjenje--bez-dijagrama{% endif %}" aria-labelledby="analiza-objasnjenje-naslov">
+    <div class="analiza-objasnjenje__tekst">
+      <h2 id="analiza-objasnjenje-naslov" class="analiza__h2">{{ d.naslov }}</h2>
+      {%- if d.tekstMd %}<div class="tekst-md analiza-objasnjenje__pasusi">{{ d.tekstMd | md | safe }}</div>{% endif %}
+    </div>
+    {%- if imaDijagram %}
+    {%- set dg = p.dijagram %}
+    <figure class="analiza-objasnjenje__dijagram">
+      {% include "ilustracije/analiza/dijagram.njk" %}
+      {%- if dg.napomena %}<figcaption>{{ dg.napomena }}</figcaption>{% endif %}
+    </figure>
+    {%- endif %}
+    {%- if d.preporuka.length %}
+    <div class="analiza-objasnjenje__preporuka">
+      <h3>{{ d.preporukaNaslov }}</h3>
+      <ul>
+        {%- for st in d.preporuka %}<li>{{ st }}</li>{% endfor %}
+      </ul>
+    </div>
+    {%- endif %}
+  </section>
+  {%- endif %}
+
+  {#- Šta je potrebno od vas (koraci) #}
+  {%- if imaKorake %}
+  <section class="kontejner analiza-koraci" aria-labelledby="analiza-koraci-naslov">
+    <h2 id="analiza-koraci-naslov" class="analiza__h2 analiza-koraci__naslov">{{ p.koraci.naslov }}</h2>
+    {{ koraci("analiza-koraci", p.koraci.stavke, "ljubicasta", p.koraci.poslednje if p.koraci.poslednje.tekst else null) }}
+  </section>
+  {%- endif %}
+
+  {#- Koliko košta #}
+  {%- if imaCenu %}
+  <section class="kontejner analiza-cena" aria-labelledby="analiza-cena-naslov">
+    <div class="analiza-cena__kartica">
+      <div class="analiza-cena__tekst">
+        <h2 id="analiza-cena-naslov" class="analiza-cena__naslov">{{ p.cena.naslov }}</h2>
+        {%- if p.cena.tekst %}<p>{{ p.cena.tekst }}</p>{% endif %}
+      </div>
+      {%- if p.cena.dugme.tekst %}<a href="{{ p.cena.dugme.link }}" class="dugme analiza-cena__dugme">{{ p.cena.dugme.tekst }}</a>{% endif %}
+    </div>
+  </section>
+  {%- endif %}
+
+</div>
+{%- endif -%}

@@ -1,0 +1,18 @@
+{#- MATIČNE ĆELIJE · "Za šta se koriste": tekst + spisak bolesti + napomena
+    Desktop: lista sa tačkama u dve kolone. Mobilni: bolesti kao "čipovi".
+    Sadržaj: stranice.maticneCelije.primena   ·   Stil: css/stranice/maticne-celije.css (.mc-primena) -#}
+{%- set d = stranice.maticneCelije.primena -%}
+<section class="kontejner mc-primena" aria-labelledby="mc-primena-naslov">
+  <div class="mc-primena__levo">
+    <h2 id="mc-primena-naslov" class="mc-primena__naslov">{{ d.naslov }}</h2>
+    <p class="mc-primena__tekst">{{ d.tekst }}</p>
+  </div>
+  <div class="mc-primena__desno">
+    <ul class="mc-primena__bolesti">
+      {%- for b in d.bolesti %}
+      <li>{{ b }}</li>
+      {%- endfor %}
+    </ul>
+    <p class="mc-primena__napomena">{{ d.napomena }}</p>
+  </div>
+</section>

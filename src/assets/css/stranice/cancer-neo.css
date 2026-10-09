@@ -1,0 +1,381 @@
+/* ==========================================================================
+   STRANICA: CANCER NEO  (/onkogenetika/cancer-neo/)  ·  sekcije: src/_includes/sekcije/cancer-neo/
+   Premium izgled: tamna noć + zlatna + slonovača (namerno drugačije od ostalih analiza).
+   Redosled: hero (+ animacija) · zašto · kako deluje · proces · za vas · paket · faq · kontakt
+   ========================================================================== */
+.neo {
+  /* boje stranice (dopuna tokena --neo-*, --zlatna-*, --slonovaca) */
+  --neo-kartica: #1E1229;        /* kartice na tamnoj pozadini */
+  --neo-linija: #3A2850;         /* linije na tamnoj pozadini */
+  --neo-tekst: #CFC4DA;          /* tekst na tamnoj pozadini */
+  --neo-tekst-hero: #D9CFE3;     /* uvod u heru */
+  --neo-oznaka: #9C8DB0;         /* male oznake na tamnom */
+  --neo-putanja: #BDAFCB;        /* putanja, natpisi u animaciji */
+  --neo-broj: #B08A45;           /* redni brojevi (01, 02...) */
+  --neo-zlatna-tamna: #7A5B22;   /* tekst na svetlo zlatnoj oznaci */
+  --neo-zlatna-meka: #F3EBDC;    /* svetlo zlatna pozadina */
+  --neo-ivica: #EDE5D6;          /* ivice kartica na slonovači */
+  --neo-ivica-dugmeta: #D8C8A6;  /* ivica dugmadi Da/Ne i FAQ ikonice */
+  --neo-foto: #E9DFCB;           /* mesto za fotografiju */
+  --neo-hover: #FAF5EA;          /* prelaz mišem u FAQ */
+  --neo-zlatna-svetla: #F3E6C8;  /* tekst peptida */
+  --neo-zlatna-ivica: rgba(216, 184, 120, .5);
+
+  background: var(--slonovaca);
+}
+
+/* --- Zajedničko za sve sekcije stranice ----------------------------------- */
+.neo-tamna { background: var(--neo-900); color: var(--bela); }
+.neo-sekcija { padding-block: 100px; }
+.neo-zaglavlje { display: flex; flex-direction: column; gap: 12px; }
+.neo-nadnaslov {
+  font-size: 13px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase;
+  color: var(--zlatna-700);
+}
+.neo-tamna .neo-nadnaslov { color: var(--zlatna-500); }
+.neo-naslov { font-size: 46px; line-height: 1.08; color: var(--neo-900); }
+.neo-tamna .neo-naslov { color: var(--bela); }
+.neo-blag { color: var(--tekst-blag); }
+.neo-dugme { min-height: 52px; padding: 16px 26px; }
+.neo-dugme--obrub { background: transparent; color: var(--bela); font-weight: 400; box-shadow: inset 0 0 0 1px rgba(216, 184, 120, .6); }
+.neo-dugme--obrub:hover { background: rgba(216, 184, 120, .1); color: var(--bela); }
+/* Dve kolone: uža leva (naslov), šira desna (sadržaj) */
+.neo-dve-kolone { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 40px 72px; }
+.neo-dve-kolone > :first-child { flex: 0.8 1 320px; min-width: 0; }
+.neo-dve-kolone > :last-child { flex: 1.2 1 520px; min-width: 0; }
+
+/* --- HERO -------------------------------------------------------------------- */
+.neo-hero { position: relative; overflow: hidden; }
+.neo-hero__sjaj { position: absolute; inset: 0; background: radial-gradient(900px 500px at 78% 40%, rgba(102, 45, 145, .35), transparent 70%); pointer-events: none; }
+.neo-hero__mreza { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 32px 48px; padding-block: 64px 88px; }
+.neo-hero__tekst { flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+.neo-hero__putanja { font-size: 14px; color: var(--neo-putanja); }
+.neo-hero__putanja a { color: var(--neo-putanja); }
+.neo-hero__putanja a:hover { color: var(--bela); }
+.neo-hero__oznaka {
+  display: inline-flex; align-self: flex-start; align-items: center; gap: 10px;
+  padding: 6px 14px; border: 1px solid var(--neo-zlatna-ivica); border-radius: 999px;
+  font-size: 13px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--zlatna-500);
+}
+.neo-hero__tacka { width: 6px; height: 6px; border-radius: 50%; background: var(--zlatna-500); }
+.neo-hero__naslov { max-width: 600px; }
+.neo-hero__naslov em { font-style: italic; color: var(--zlatna-500); }
+.neo-hero__uvod { max-width: 540px; font-size: 19px; color: var(--neo-tekst-hero); }
+.neo-hero__dugmad { display: flex; flex-wrap: wrap; gap: 12px 16px; margin-top: 6px; }
+.neo-hero__cinjenice {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 640px; margin: 18px 0 0; border-top: 1px solid var(--neo-linija);
+}
+.neo-hero__cinjenice > div { padding: 16px 16px 0; border-left: 1px solid var(--neo-linija); }
+.neo-hero__cinjenice > div:first-child { padding-left: 0; border-left: 0; }
+.neo-hero__cinjenice > div:last-child { padding-right: 0; }
+.neo-hero__cinjenice dt { font-size: 13px; color: var(--neo-oznaka); }
+.neo-hero__cinjenice dd { margin: 4px 0 0; font-size: 15px; }
+/* Osnove kolona su nešto uže nego u skici, da tekst i animacija ostanu jedno
+   pored drugog i na malom laptopu (1024px); na 1440px širine su iste kao u skici. */
+.neo-hero__animacija { flex: 1 1 380px; min-width: 0; max-width: 560px; }
+
+/* --- HERO ANIMACIJA (ilustracije/cancer-neo/hero-animacija*.njk) -----------
+   Krug od 12 s: šest neoantigena se redom pali (zlatno), od svakog se iscrtava
+   nit do izabranog peptida, a zatim sve polako nestaje i krug počinje ponovo.
+   Vreme svakog elementa: --kasnjenje (u šablonu), dužina niti: --duzina. */
+.neo-animacija { display: block; width: 100%; height: auto; overflow: visible; }
+.neo-animacija--desktop { --centar: 230px 280px; --pomak-peptida: -10px; }
+.neo-animacija--mobilni { --centar: 104px 158px; --pomak-peptida: -8px; }
+.neo-animacija__skener { transform-box: view-box; transform-origin: var(--centar); animation: neo-okret 6s linear infinite; }
+.neo-animacija__disanje { transform-box: view-box; transform-origin: var(--centar); animation: neo-disanje 7s ease-in-out infinite; }
+.neo-animacija__marker { fill: #4A3A5E; animation: neo-paljenje 12s ease-in-out infinite; animation-delay: var(--kasnjenje); }
+.neo-animacija__oreol { opacity: 0; transform-box: fill-box; transform-origin: center; animation: neo-oreol 12s ease-out infinite; animation-delay: var(--kasnjenje); }
+.neo-animacija__nit { stroke-dasharray: var(--duzina); stroke-dashoffset: var(--duzina); opacity: .85; animation: neo-nit 12s ease-in-out infinite; animation-delay: var(--kasnjenje); }
+.neo-animacija__peptid { opacity: 0; animation: neo-peptid 12s ease-out infinite; animation-delay: var(--kasnjenje); }
+.neo-animacija__sekvenca { font-family: var(--font-mono); font-size: 13px; letter-spacing: 1.5px; fill: var(--neo-zlatna-svetla); }
+.neo-animacija__natpis { font-family: var(--font-tekst); font-size: 12px; letter-spacing: 1.6px; fill: var(--neo-putanja); }
+.neo-animacija__natpis--celija { fill: #8F80A3; }
+.neo-animacija--mobilni .neo-animacija__sekvenca { font-size: 12px; letter-spacing: 1.2px; }
+.neo-animacija--mobilni .neo-animacija__natpis { font-size: 11px; letter-spacing: 1.4px; }
+.neo-animacija--mobilni .neo-animacija__natpis--celija { fill: var(--neo-oznaka); }
+/* Animacija stoji dok nije na ekranu (klasu dodaje js/stranice/cancer-neo.js) */
+.je-pauzirana .neo-animacija * { animation-play-state: paused; }
+
+@keyframes neo-okret { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes neo-disanje { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.015); } }
+@keyframes neo-paljenje { 0%, 4% { fill: #4A3A5E; } 9%, 82% { fill: #D8B878; } 92%, 100% { fill: #4A3A5E; } }
+@keyframes neo-oreol { 0%, 4% { opacity: 0; transform: scale(.4); } 9% { opacity: 1; transform: scale(1); } 20% { opacity: 0; transform: scale(1.9); } 100% { opacity: 0; } }
+@keyframes neo-nit { 0%, 4% { stroke-dashoffset: var(--duzina); opacity: .85; } 14%, 82% { stroke-dashoffset: 0; opacity: .85; } 92%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes neo-peptid { 0%, 6% { opacity: 0; transform: translateX(var(--pomak-peptida)); } 12%, 82% { opacity: 1; transform: none; } 92%, 100% { opacity: 0; transform: none; } }
+
+/* --- ZAŠTO JE DRUGAČIJA ------------------------------------------------------ */
+.neo-zasto { background: var(--slonovaca); }
+.neo-zasto .neo-sekcija { padding-bottom: 96px; }
+.neo-zasto__vrh { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 48px; margin-bottom: 40px; }
+.neo-zasto__vrh .neo-zaglavlje { max-width: 620px; }
+.neo-zasto__uvod { max-width: 420px; color: var(--tekst-blag); }
+.neo-zasto__kartice { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.neo-zasto__kartica {
+  display: flex; flex-direction: column; gap: 12px; padding: 32px 28px 30px;
+  background: var(--bela); border: 1px solid var(--neo-ivica); border-radius: 28px;
+}
+.neo-zasto__broj { font-family: var(--font-naslov); font-style: italic; font-size: 44px; line-height: 1; color: var(--neo-broj); }
+.neo-zasto__naslov { font-family: var(--font-naslov); font-size: 26px; line-height: 1.15; color: var(--neo-900); }
+.neo-zasto__tekst { color: var(--tekst-blag); }
+
+/* --- KAKO DELUJE (tamna) ----------------------------------------------------- */
+.neo-deluje__zaglavlje { max-width: 680px; margin-bottom: 44px; }
+.neo-deluje__uvod { color: var(--neo-tekst); }
+.neo-deluje__koraci { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.neo-deluje__korak { display: flex; flex-direction: column; gap: 16px; }
+.neo-deluje__slika {
+  display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3; padding: 18px;
+  background: var(--neo-kartica); border: 1px solid var(--neo-linija); border-radius: 28px;
+}
+.neo-ilustracija { width: 100%; height: 100%; }
+.neo-ilustracija__oznaka { font-family: var(--font-tekst); font-size: 12px; fill: var(--neo-putanja); }
+.neo-deluje__oznaka { font-size: 13px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--zlatna-500); }
+.neo-deluje__naslov { font-family: var(--font-naslov); font-size: 26px; line-height: 1.15; }
+.neo-deluje__tekst { color: var(--neo-tekst); }
+
+/* --- PROCES (#proces) -------------------------------------------------------- */
+.neo-proces { background: var(--slonovaca); }
+.neo-proces .neo-dve-kolone { gap: 40px 80px; }
+.neo-proces__levo { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 24px; }
+.neo-proces__koordinator {
+  display: flex; align-items: center; gap: 14px; margin-top: 10px; padding: 16px 18px;
+  background: var(--bela); border: 1px solid var(--neo-ivica); border-radius: 22px;
+}
+.neo-proces__koordinator strong { display: block; font-weight: 600; color: var(--neo-900); }
+.neo-proces__koordinator span span { font-size: 14px; color: var(--tekst-blag); }
+.neo-proces__foto { flex-shrink: 0; width: 56px; height: 56px; }
+.neo-proces__foto.slika--prazna { min-height: 0; padding: 0; background: var(--neo-foto); }
+.neo-proces__foto .slika__opis { display: none; }  /* opis je u aria-label; krug je premali za tekst */
+.neo-proces__koraci { list-style: none; }
+.neo-proces__korak { position: relative; display: flex; gap: 24px; padding-bottom: 36px; }
+.neo-proces__korak:last-child { padding-bottom: 0; }
+/* Zlatna linija između brojeva (ne ide posle poslednjeg koraka) */
+.neo-proces__korak:not(:last-child)::before {
+  content: ""; position: absolute; left: 27px; top: 60px; bottom: -8px; width: 2px;
+  background: linear-gradient(var(--zlatna-500), #E8DCC4);
+}
+.neo-proces__broj {
+  flex-shrink: 0; width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--neo-900); color: var(--zlatna-500);
+  font-family: var(--font-naslov); font-style: italic; font-size: 24px;
+}
+.neo-proces__sadrzaj { flex: 1; min-width: 0; padding-top: 6px; }
+.neo-proces__naslovi { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.neo-proces__naslov { font-family: var(--font-naslov); font-size: 27px; line-height: 1.15; color: var(--neo-900); }
+.neo-proces__oznaka {
+  padding: 3px 12px; border-radius: 999px; background: var(--neo-zlatna-meka); color: var(--neo-zlatna-tamna);
+  font-size: 13px; font-weight: 600;
+}
+.neo-proces__tekst { max-width: 560px; margin-top: 8px; color: var(--tekst-blag); }
+
+/* --- DA LI JE ZA VAS (#za-vas): upitnik --------------------------------------- */
+.neo-zavas { background: var(--bela); }
+.neo-zavas .naslov-l { font-size: 44px; }
+.neo-zavas__levo { gap: 14px; }
+.neo-zavas__desno { display: flex; flex-direction: column; gap: 14px; }
+.neo-zavas__pitanje {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;
+  padding: 20px 22px; border: 1px solid var(--neo-ivica); border-radius: 22px; background: var(--slonovaca);
+}
+.neo-zavas__tekst { flex: 1 1 280px; font-size: 17px; color: var(--neo-900); }
+.neo-zavas__broj { margin-right: 8px; font-family: var(--font-naslov); font-style: italic; color: var(--neo-broj); }
+.neo-zavas__odgovori { display: flex; gap: 8px; }
+.neo-zavas__dugme {
+  min-width: 72px; height: 44px; padding: 0 18px; border-radius: 999px;
+  border: 1px solid var(--neo-ivica-dugmeta); background: var(--bela); color: var(--neo-900); font-weight: 600;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.neo-zavas__dugme:hover { border-color: var(--neo-900); }
+.neo-zavas__dugme[aria-pressed="true"] { background: var(--neo-900); border-color: var(--neo-900); color: var(--bela); }
+.neo-zavas__rezultat {
+  margin-top: 6px; padding: 26px 28px; border-radius: 26px;
+  background: var(--neo-zlatna-meka); color: var(--neo-900);
+}
+.neo-zavas__rezultat-oznaka { font-size: 13px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--neo-zlatna-tamna); }
+.neo-zavas__rezultat-naslov { margin-top: 8px; font-family: var(--font-naslov); font-size: 26px; line-height: 1.2; }
+.neo-zavas__rezultat-tekst { margin-top: 8px; opacity: .9; }
+.neo-zavas__rezultat-dugme { margin-top: 16px; padding: 14px 22px; }
+/* Tamna varijanta: kada su svi odgovori "Da" (mogući kandidat) */
+.neo-zavas__rezultat--tamna { background: var(--neo-900); color: var(--bela); }
+.neo-zavas__rezultat--tamna .neo-zavas__rezultat-oznaka { color: var(--zlatna-500); }
+.neo-zavas__napomena { margin-top: 4px; font-size: 14px; color: var(--tekst-blag); }
+
+/* --- PAKET ("Šta dobijate") --------------------------------------------------- */
+.neo-paket { background: var(--slonovaca); }
+.neo-paket__omotac { padding-block: 100px; }
+.neo-paket__kartica {
+  position: relative; overflow: hidden; display: flex; flex-wrap: wrap; gap: 40px 72px;
+  padding: 56px; border-radius: 40px;
+}
+.neo-paket__krug { position: absolute; border-radius: 50%; pointer-events: none; }
+.neo-paket__krug--veliki { right: -120px; top: -120px; width: 420px; height: 420px; border: 1px solid rgba(216, 184, 120, .25); }
+.neo-paket__krug--mali { right: -60px; top: -60px; width: 300px; height: 300px; border: 1px solid rgba(216, 184, 120, .18); }
+.neo-paket__levo { position: relative; flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.neo-paket .naslov-l { font-size: 44px; }
+.neo-paket__cena-oznaka { margin-top: 18px; font-size: 14px; color: var(--neo-oznaka); }
+.neo-paket__cena { font-family: var(--font-naslov); font-size: 48px; line-height: 1; color: var(--zlatna-500); }
+.neo-paket__napomena { font-size: 15px; color: var(--neo-tekst); }
+.neo-paket__dugme { align-self: flex-start; margin-top: 12px; }
+.neo-paket__stavke { position: relative; align-self: flex-start; flex: 1 1 420px; min-width: 0; list-style: none; font-size: 17px; border-bottom: 1px solid var(--neo-linija); }
+.neo-paket__stavke li { display: flex; align-items: flex-start; gap: 14px; padding: 13px 0; border-top: 1px solid var(--neo-linija); }
+.neo-paket__stavke svg { flex-shrink: 0; margin-top: 2px; color: var(--zlatna-500); }
+
+/* --- ČESTA PITANJA (zajednički makro faq, tema "zlatna") ----------------------- */
+.neo-faq { background: var(--bela); }
+.neo-faq .neo-dve-kolone { gap: 32px 72px; }
+.neo-faq .neo-dve-kolone > :first-child { flex: 0.7 1 300px; }
+.neo-faq .neo-dve-kolone > :last-child { flex: 1.3 1 560px; }
+.neo-faq .naslov-l { font-size: 44px; }
+.neo-faq__levo { gap: 14px; }
+.neo-faq__telefon { color: var(--neo-zlatna-tamna); }
+.neo-faq .faq { --f-linija: var(--neo-ivica); }
+.neo-faq .faq__pitanje { padding: 22px 8px; font-size: 22px; transition: background .2s ease; }
+.neo-faq .faq__pitanje:hover { background: var(--neo-hover); color: var(--neo-900); }
+.neo-faq .faq__ikonica {
+  width: 32px; height: 32px; align-items: center; justify-content: center;
+  border: 1px solid var(--neo-ivica-dugmeta); border-radius: 50%; color: var(--neo-zlatna-tamna);
+}
+.neo-faq .faq__ikonica svg { width: 16px; height: 16px; }
+.neo-faq .faq__odgovor { max-width: 640px; padding: 0 8px 22px; }
+
+/* --- KONTAKT (#kontakt) -------------------------------------------------------- */
+.neo-kontakt__mreza { display: flex; flex-wrap: wrap; gap: 40px 72px; padding-block: 96px; }
+.neo-kontakt__levo { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.neo-kontakt__tekst { max-width: 400px; color: var(--neo-tekst); }
+.neo-kontakt__podaci { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin-top: 10px; }
+.neo-kontakt__telefon { color: var(--bela); font-size: 24px; text-decoration: none; }
+.neo-kontakt__telefon:hover { color: var(--zlatna-500); }
+.neo-kontakt__mejl { color: var(--zlatna-500); }
+.neo-kontakt__mejl:hover { color: var(--bela); }
+.neo-kontakt__forma { flex: 1 1 520px; min-width: 0; align-self: flex-start; }
+.neo-kontakt__posalji { background: var(--neo-900); }
+.neo-kontakt__posalji:hover { background: var(--neo-700); }
+
+/* --- Smanjeni pokreti: animacije stoje, vidi se krajnje stanje ----------------- */
+@media (prefers-reduced-motion: reduce) {
+  .neo-animacija__skener, .neo-animacija__disanje, .neo-animacija__oreol { animation: none; }
+  .neo-animacija__marker { animation: none; fill: var(--zlatna-500); }
+  .neo-animacija__nit { animation: none; stroke-dashoffset: 0; }
+  .neo-animacija__peptid { animation: none; opacity: 1; }
+  .neo-zavas__dugme, .neo-faq .faq__pitanje { transition: none; }
+}
+
+/* ==========================================================================
+   MOBILNI (ispod 960px)
+   ========================================================================== */
+@media (max-width: 959px) {
+  .neo-sekcija { padding-block: 44px; }
+  .neo-zaglavlje { gap: 10px; }
+  .neo-nadnaslov { font-size: 12.5px; letter-spacing: 1.6px; }
+  .neo-naslov, .neo-zavas .naslov-l, .neo-faq .naslov-l { font-size: 32px; line-height: 1.1; }
+  .neo-dve-kolone, .neo-proces .neo-dve-kolone, .neo-faq .neo-dve-kolone { gap: 0; }
+  .neo-dve-kolone > :first-child, .neo-dve-kolone > :last-child,
+  .neo-faq .neo-dve-kolone > :first-child, .neo-faq .neo-dve-kolone > :last-child { flex-basis: 100%; }
+  .neo-blag { font-size: 15px; }
+
+  /* Hero */
+  .neo-hero__sjaj { background: radial-gradient(420px 360px at 70% 55%, rgba(102, 45, 145, .38), transparent 70%); }
+  .neo-hero__mreza { display: block; padding-block: 10px 34px; }
+  .neo-hero__tekst { gap: 14px; }
+  .neo-hero__putanja { font-size: 13px; }
+  .neo-hero__oznaka { gap: 8px; padding: 5px 12px; font-size: 12px; letter-spacing: 1.4px; }
+  .neo-hero__naslov { font-size: 40px; line-height: 1.05; letter-spacing: -0.4px; }
+  .neo-hero__uvod { font-size: 16px; }
+  .neo-hero__animacija--mobilni { flex: none; max-width: none; margin: 6px -4px 0; }
+  /* Tablet: animacija ne raste preko 520px, centrirana */
+  @media (min-width: 600px) { .neo-hero__animacija--mobilni { max-width: 520px; margin-inline: auto; } }
+  .neo-hero__dugmad { flex-direction: column; gap: 14px; margin-top: 0; }
+  .neo-hero__dugmad .neo-dugme { width: 100%; padding: 15px; }
+  .neo-hero__cinjenice { grid-template-columns: 1fr 1fr; max-width: none; margin-top: 8px; }
+  .neo-hero__cinjenice > div,
+  .neo-hero__cinjenice > div:first-child,
+  .neo-hero__cinjenice > div:last-child { padding: 12px 0; border-left: 0; }
+  .neo-hero__cinjenice > div:nth-child(even) { padding-left: 14px; border-left: 1px solid var(--neo-linija); }
+  .neo-hero__cinjenice > div:nth-child(n + 3) { border-top: 1px solid var(--neo-linija); }
+  .neo-hero__cinjenice dd { margin-top: 2px; }
+
+  /* Zašto */
+  .neo-zasto .neo-sekcija { padding-block: 40px 44px; }
+  .neo-zasto__vrh { display: block; margin-bottom: 0; }
+  .neo-zasto__uvod { max-width: none; margin-top: 12px; font-size: 15px; }
+  .neo-zasto__kartice { display: flex; flex-direction: column; gap: 12px; margin-top: 22px; }
+  .neo-zasto__kartica { gap: 8px; padding: 22px 20px; border-radius: 24px; }
+  .neo-zasto__broj { font-size: 38px; }
+  .neo-zasto__naslov { font-size: 23px; }
+  .neo-zasto__tekst { font-size: 15px; }
+
+  /* Kako deluje */
+  .neo-deluje .neo-sekcija { padding-bottom: 48px; }
+  .neo-deluje__zaglavlje { margin-bottom: 26px; }
+  .neo-deluje__uvod { margin-top: 2px; font-size: 15px; }
+  .neo-deluje__koraci { display: flex; flex-direction: column; gap: 34px; }
+  .neo-deluje__korak { gap: 10px; }
+  .neo-deluje__slika { padding: 14px; border-radius: 24px; }
+  .neo-deluje__oznaka { margin-top: 6px; font-size: 12.5px; }
+  .neo-deluje__naslov { font-size: 24px; }
+  .neo-deluje__tekst { font-size: 15px; }
+  /* Tablet: tri ilustracije u redu, da ne budu prevelike */
+  @media (min-width: 700px) { .neo-deluje__koraci { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; } }
+
+  /* Proces */
+  .neo-proces__levo { position: static; gap: 10px; }
+  .neo-proces__levo .neo-blag { margin-top: 2px; }
+  .neo-proces__koordinator { margin-top: 6px; padding: 14px 16px; border-radius: 20px; }
+  .neo-proces__foto { width: 52px; height: 52px; }
+  .neo-proces__koraci { margin-top: 28px; }
+  .neo-proces__korak { gap: 16px; padding-bottom: 28px; }
+  .neo-proces__korak:not(:last-child)::before { left: 21px; top: 48px; bottom: 0; }
+  .neo-proces__broj { width: 44px; height: 44px; font-size: 21px; }
+  .neo-proces__sadrzaj { padding-top: 4px; }
+  .neo-proces__naslovi { display: block; }
+  .neo-proces__naslov { font-size: 23px; }
+  .neo-proces__oznaka { display: inline-block; margin-top: 6px; padding: 3px 11px; font-size: 12.5px; }
+  .neo-proces__tekst { font-size: 15px; }
+
+  /* Za vas */
+  .neo-zavas__levo { gap: 10px; }
+  .neo-zavas__levo .neo-blag { margin-top: 2px; }
+  .neo-zavas__desno { gap: 12px; margin-top: 20px; }
+  .neo-zavas__pitanje { flex-direction: column; align-items: stretch; gap: 14px; padding: 18px; }
+  .neo-zavas__tekst { flex: none; font-size: 16px; }
+  .neo-zavas__broj { color: var(--zlatna-700); }
+  .neo-zavas__odgovori .neo-zavas__dugme { flex: 1; height: 48px; }
+  .neo-zavas__rezultat { margin-top: 4px; padding: 22px 20px; border-radius: 24px; }
+  .neo-zavas__rezultat-oznaka { font-size: 12.5px; }
+  .neo-zavas__rezultat-naslov { font-size: 23px; }
+  .neo-zavas__rezultat-tekst { font-size: 15px; }
+  .neo-zavas__rezultat-dugme { display: flex; width: 100%; padding: 14px; }
+  .neo-zavas__napomena { margin-top: 2px; }
+
+  /* Paket */
+  .neo-paket__omotac { padding-block: 8px 44px; }
+  .neo-paket__kartica { display: block; padding: 30px 22px; border-radius: 30px; }
+  .neo-paket__krug--veliki { right: -110px; top: -110px; width: 260px; height: 260px; }
+  .neo-paket__krug--mali { right: -60px; top: -60px; width: 170px; height: 170px; }
+  .neo-paket__levo { gap: 12px; }
+  .neo-paket .naslov-l { font-size: 30px; line-height: 1.1; }
+  .neo-paket__cena-oznaka { margin-top: 10px; }
+  .neo-paket__cena { font-size: 42px; }
+  .neo-paket__dugme { align-self: stretch; margin-top: 6px; padding: 15px; }
+  .neo-paket__stavke { margin-top: 24px; font-size: 16px; }
+  .neo-paket__stavke li { gap: 12px; padding: 12px 0; }
+
+  /* Česta pitanja */
+  .neo-faq__levo { gap: 10px; }
+  .neo-faq__levo .neo-blag { margin-top: 0; }
+  .neo-faq__desno { margin-top: 18px; }
+  .neo-faq .faq__pitanje { padding: 16px 0; font-size: 19px; }
+  .neo-faq .faq__pitanje:hover { background: transparent; }
+  .neo-faq .faq__ikonica { width: 30px; height: 30px; }
+  .neo-faq .faq__odgovor { padding: 0 0 16px; }
+
+  /* Kontakt */
+  .neo-kontakt__mreza { display: block; padding-block: 40px; }
+  .neo-kontakt__levo { gap: 10px; }
+  .neo-kontakt__tekst { max-width: none; margin-top: 2px; font-size: 15px; }
+  .neo-kontakt__podaci { gap: 2px; margin-top: 4px; }
+  .neo-kontakt__telefon { font-size: 22px; }
+  .neo-kontakt__forma { margin-top: 20px; }
+}

@@ -1,0 +1,63 @@
+{#- BLOG · "Svi članci": filter tema (čipovi) + lista svih članaka
+    Napisani članci su linkovi; predlozi tema (predlogTeme: true) nemaju svoju
+    stranicu, pa su obična stavka sa oznakom "[predlog teme]".
+    Bez JS-a: čipovi su skriveni i vidi se cela lista. JS (js/stranice/blog.js)
+    prikazuje čipove i filtrira po data-kategorija.
+    Sadržaj: stranice.blog.lista + collections.blog   ·   Stil: css/stranice/blog.css -#}
+{%- set d = stranice.blog.lista -%}
+{#- Redosled: napisani članci (najnoviji prvi, kao u collections.blog), pa predlozi
+    tema grupisani po redosledu tema iz filtera (d.kategorije), u temi po imenu fajla.
+    Tako redosled ne zavisi od datuma fajlova na serveru. -#}
+{%- set clanci = [] -%}
+{%- for c in collections.blog -%}
+  {%- if not c.data.predlogTeme %}{% set _x = clanci.push(c) %}{% endif -%}
+{%- endfor -%}
+{%- set predlozi = collections.blog | sort(false, false, "fileSlug") -%}
+{%- for k in d.kategorije -%}
+  {%- for c in predlozi -%}
+    {%- if c.data.predlogTeme and c.data.kategorija == k %}{% set _x = clanci.push(c) %}{% endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- for c in predlozi -%}
+  {%- if c.data.predlogTeme and not (c.data.kategorija in d.kategorije) %}{% set _x = clanci.push(c) %}{% endif -%}
+{%- endfor -%}
+<section class="kontejner blog-lista" aria-labelledby="blog-lista-naslov" data-blog-lista>
+  <div class="blog-lista__vrh">
+    <h2 id="blog-lista-naslov" class="blog-lista__naslov">{{ d.naslov }}</h2>
+    <div class="cipovi cipovi--skrol blog-lista__filter" role="group" aria-label="{{ d.oznakaFiltera }}" data-blog-filter hidden>
+      <button type="button" class="cip" aria-pressed="true" data-kategorija="">{{ d.sve }}</button>
+      {%- for k in d.kategorije %}
+      <button type="button" class="cip" aria-pressed="false" data-kategorija="{{ k }}">{{ k }}</button>
+      {%- endfor %}
+    </div>
+  </div>
+  <ul class="blog-lista__stavke" data-blog-stavke>
+    {%- for c in clanci %}
+    <li class="blog-stavka{% if c.data.predlogTeme %} blog-stavka--predlog{% endif %}" data-kategorija="{{ c.data.kategorija }}">
+      {%- set unutra %}
+        <span class="blog-stavka__kategorija">{{ c.data.kategorija }}</span>
+        <span class="blog-stavka__sredina">
+          <span class="blog-stavka__naslov">{{ c.data.naslov }}</span>
+          {%- if c.data.opis %}<span class="blog-stavka__opis">{{ c.data.opis }}</span>{% endif %}
+        </span>
+        <span class="blog-stavka__meta">
+          {%- if c.data.predlogTeme -%}
+            {{ d.oznakaPredloga }}
+          {%- elif c.data.datum -%}
+            <time datetime="{{ c.data.datum | isoDatum }}">{{ c.data.datum | mesecGodina }}</time>
+          {%- endif -%}
+          {%- if c.data.vremeCitanja %} · {{ c.data.vremeCitanja }}{% endif -%}
+        </span>
+      {%- endset %}
+      {%- if c.url %}
+      <a href="{{ c.url }}" class="blog-stavka__unutra">{{ unutra | safe }}</a>
+      {%- else %}
+      <div class="blog-stavka__unutra">{{ unutra | safe }}</div>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- if d.napomena %}
+  <p class="blog-lista__napomena">{{ d.napomena }}</p>
+  {%- endif %}
+</section>

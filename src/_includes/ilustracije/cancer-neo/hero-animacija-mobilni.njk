@@ -1,0 +1,148 @@
+{#- CANCER NEO · hero animacija (mobilni, ispod 960px)
+    Ista animacija kao desktop, zbijenija kompozicija (ćelija levo, peptidi desno).
+    Tekstovi: stranice.cancerNeo.hero.animacija (promenljiva "a") -#}
+<svg class="neo-animacija neo-animacija--mobilni" viewBox="0 0 360 312" role="img" aria-label="{{ a.opis }}" focusable="false">
+  {# Prelivi: unutrašnjost ćelije i zlatni sjaj iza nje #}
+  <defs>
+    <radialGradient id="neo-celija-m" cx="45%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#3A2452"></stop>
+      <stop offset="100%" stop-color="#1C1027"></stop>
+    </radialGradient>
+    <radialGradient id="neo-sjaj-m" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D8B878" stop-opacity="0.16"></stop>
+      <stop offset="100%" stop-color="#D8B878" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+  <circle cx="104" cy="158" r="146" fill="url(#neo-sjaj-m)"></circle>
+  {# Ćelija tumora (lagano "diše"): opna, sitne čestice, jezgro i receptori #}
+  <g class="neo-animacija__disanje">
+    <path d="M189.3 158.0 Q189.3 158.0 182.8 178.8 Q176.2 199.7 160.8 214.6 Q145.3 229.6 124.7 231.8 Q104.0 234.0 82.9 232.5 Q61.9 231.0 45.5 216.1 Q29.1 201.2 27.4 179.6 Q25.7 158.0 30.0 137.9 Q34.4 117.8 49.0 102.8 Q63.5 87.8 83.7 79.1 Q104.0 70.3 123.9 79.7 Q143.7 89.2 157.3 104.3 Q170.9 119.4 180.1 138.7 Z" fill="url(#neo-celija-m)" stroke="#6E5A85" stroke-width="1.3"></path>
+    <circle cx="132.3" cy="197.4" r="1.8" fill="#7B6496" fill-opacity="0.35"></circle><circle cx="64.3" cy="148.9" r="1.5" fill="#7B6496" fill-opacity="0.7"></circle><circle cx="63.8" cy="156.1" r="1.2" fill="#7B6496" fill-opacity="0.35"></circle><circle cx="151.0" cy="180.0" r="1.2" fill="#7B6496" fill-opacity="0.7"></circle>
+    <circle cx="128.0" cy="112.3" r="1.2" fill="#7B6496" fill-opacity="0.35"></circle><circle cx="53.7" cy="129.1" r="1.2" fill="#7B6496" fill-opacity="0.7"></circle><circle cx="157.9" cy="175.3" r="1.2" fill="#7B6496" fill-opacity="0.35"></circle><circle cx="141.3" cy="199.4" r="1.5" fill="#7B6496" fill-opacity="0.35"></circle>
+    <circle cx="54.2" cy="134.2" r="1.8" fill="#7B6496" fill-opacity="0.7"></circle><circle cx="65.6" cy="136.4" r="1.8" fill="#7B6496" fill-opacity="0.35"></circle><circle cx="56.2" cy="143.2" r="1.2" fill="#7B6496" fill-opacity="0.7"></circle><circle cx="115.0" cy="196.8" r="1.8" fill="#7B6496" fill-opacity="0.7"></circle>
+    <circle cx="83.7" cy="205.6" r="1.8" fill="#7B6496" fill-opacity="0.5"></circle><circle cx="104.5" cy="207.6" r="1.2" fill="#7B6496" fill-opacity="0.7"></circle><circle cx="158.5" cy="188.8" r="1.5" fill="#7B6496" fill-opacity="0.7"></circle><circle cx="74.2" cy="202.8" r="1.5" fill="#7B6496" fill-opacity="0.5"></circle>
+    <circle cx="155.4" cy="183.4" r="1.8" fill="#7B6496" fill-opacity="0.5"></circle><circle cx="80.2" cy="194.5" r="1.5" fill="#7B6496" fill-opacity="0.5"></circle><circle cx="84.5" cy="123.5" r="1.8" fill="#7B6496" fill-opacity="0.7"></circle><circle cx="130.2" cy="100.8" r="1.5" fill="#7B6496" fill-opacity="0.7"></circle>
+    <circle cx="54.7" cy="159.0" r="1.5" fill="#7B6496" fill-opacity="0.35"></circle><circle cx="164.6" cy="136.0" r="1.5" fill="#7B6496" fill-opacity="0.7"></circle><circle cx="158.8" cy="180.0" r="1.8" fill="#7B6496" fill-opacity="0.5"></circle><circle cx="162.4" cy="155.5" r="1.5" fill="#7B6496" fill-opacity="0.5"></circle>
+    <circle cx="150.0" cy="118.5" r="1.5" fill="#7B6496" fill-opacity="0.35"></circle><circle cx="62.4" cy="211.3" r="1.8" fill="#7B6496" fill-opacity="0.35"></circle>
+    <path d="M135.2 158.0 Q135.2 158.0 130.2 168.6 Q125.2 179.2 114.6 182.6 Q104.0 186.0 92.7 183.3 Q81.4 180.6 78.5 169.3 Q75.6 158.0 79.4 147.6 Q83.2 137.2 93.6 131.8 Q104.0 126.5 113.7 132.5 Q123.5 138.5 129.3 148.3 Z" fill="#2A1A38" stroke="#5A4670" stroke-width="1"></path>
+    {# Receptori na opni: sivi su obični, a šest sa --kasnjenje su neoantigeni koji se pale redom #}
+    <g>
+      <line x1="34.4" y1="117.8" x2="24.0" y2="111.8" stroke="#4A3A5E" stroke-width="1.6"></line>
+      <circle cx="24.0" cy="111.8" r="3.4" fill="#4A3A5E"></circle>
+    </g>
+    <g>
+      <line x1="57.9" y1="92.2" x2="51.0" y2="82.4" stroke="#4A3A5E" stroke-width="1.6"></line>
+      <circle cx="51.0" cy="82.4" r="3.4" fill="#4A3A5E"></circle>
+    </g>
+    <g>
+      <line x1="90.1" y1="78.9" x2="88.0" y2="67.1" stroke="#4A3A5E" stroke-width="1.6"></line>
+      <circle cx="88.0" cy="67.1" r="3.4" fill="#4A3A5E"></circle>
+    </g>
+    <g>
+      <line x1="120.7" y1="79.4" x2="123.2" y2="67.7" stroke="#4A3A5E" stroke-width="1.6"></line>
+      <circle cx="123.2" cy="67.7" r="3.4" fill="#4A3A5E"></circle>
+    </g>
+    <g style="--kasnjenje:0.90s">
+      <line x1="150.1" y1="92.2" x2="157.0" y2="82.4" stroke="#6E5A85" stroke-width="1.6"></line>
+      <circle class="neo-animacija__oreol" cx="157.0" cy="82.4" r="8" fill="none" stroke="#D8B878" stroke-width="1.3"></circle>
+      <circle class="neo-animacija__marker" cx="157.0" cy="82.4" r="4.2"></circle>
+    </g>
+    <g style="--kasnjenje:1.75s">
+      <line x1="170.6" y1="113.1" x2="180.5" y2="106.4" stroke="#6E5A85" stroke-width="1.6"></line>
+      <circle class="neo-animacija__oreol" cx="180.5" cy="106.4" r="8" fill="none" stroke="#D8B878" stroke-width="1.3"></circle>
+      <circle class="neo-animacija__marker" cx="180.5" cy="106.4" r="4.2"></circle>
+    </g>
+    <g style="--kasnjenje:2.60s">
+      <line x1="181.9" y1="138.6" x2="193.6" y2="135.7" stroke="#6E5A85" stroke-width="1.6"></line>
+      <circle class="neo-animacija__oreol" cx="193.6" cy="135.7" r="8" fill="none" stroke="#D8B878" stroke-width="1.3"></circle>
+      <circle class="neo-animacija__marker" cx="193.6" cy="135.7" r="4.2"></circle>
+    </g>
+    <g style="--kasnjenje:3.45s">
+      <line x1="183.9" y1="166.4" x2="195.8" y2="167.7" stroke="#6E5A85" stroke-width="1.6"></line>
+      <circle class="neo-animacija__oreol" cx="195.8" cy="167.7" r="8" fill="none" stroke="#D8B878" stroke-width="1.3"></circle>
+      <circle class="neo-animacija__marker" cx="195.8" cy="167.7" r="4.2"></circle>
+    </g>
+    <g style="--kasnjenje:4.30s">
+      <line x1="176.2" y1="193.2" x2="187.0" y2="198.5" stroke="#6E5A85" stroke-width="1.6"></line>
+      <circle class="neo-animacija__oreol" cx="187.0" cy="198.5" r="8" fill="none" stroke="#D8B878" stroke-width="1.3"></circle>
+      <circle class="neo-animacija__marker" cx="187.0" cy="198.5" r="4.2"></circle>
+    </g>
+    <g style="--kasnjenje:5.15s">
+      <line x1="159.8" y1="215.8" x2="168.1" y2="224.4" stroke="#6E5A85" stroke-width="1.6"></line>
+      <circle class="neo-animacija__oreol" cx="168.1" cy="224.4" r="8" fill="none" stroke="#D8B878" stroke-width="1.3"></circle>
+      <circle class="neo-animacija__marker" cx="168.1" cy="224.4" r="4.2"></circle>
+    </g>
+    <g>
+      <line x1="136.7" y1="231.4" x2="141.5" y2="242.3" stroke="#4A3A5E" stroke-width="1.6"></line>
+      <circle cx="141.5" cy="242.3" r="3.4" fill="#4A3A5E"></circle>
+    </g>
+    <g>
+      <line x1="106.8" y1="238.3" x2="107.2" y2="250.3" stroke="#4A3A5E" stroke-width="1.6"></line>
+      <circle cx="107.2" cy="250.3" r="3.4" fill="#4A3A5E"></circle>
+    </g>
+    <g>
+      <line x1="76.5" y1="233.5" x2="72.4" y2="244.8" stroke="#4A3A5E" stroke-width="1.6"></line>
+      <circle cx="72.4" cy="244.8" r="3.4" fill="#4A3A5E"></circle>
+    </g>
+    <g>
+      <line x1="50.3" y1="217.7" x2="42.2" y2="226.6" stroke="#4A3A5E" stroke-width="1.6"></line>
+      <circle cx="42.2" cy="226.6" r="3.4" fill="#4A3A5E"></circle>
+    </g>
+    <g>
+      <line x1="31.2" y1="191.9" x2="20.3" y2="197.0" stroke="#4A3A5E" stroke-width="1.6"></line>
+      <circle cx="20.3" cy="197.0" r="3.4" fill="#4A3A5E"></circle>
+    </g>
+    <g>
+      <line x1="23.7" y1="160.8" x2="11.7" y2="161.2" stroke="#4A3A5E" stroke-width="1.6"></line>
+      <circle cx="11.7" cy="161.2" r="3.4" fill="#4A3A5E"></circle>
+    </g>
+    <g>
+      <line x1="28.5" y1="130.5" x2="17.2" y2="126.4" stroke="#4A3A5E" stroke-width="1.6"></line>
+      <circle cx="17.2" cy="126.4" r="3.4" fill="#4A3A5E"></circle>
+    </g>
+    <g>
+      <line x1="44.3" y1="104.3" x2="35.4" y2="96.2" stroke="#4A3A5E" stroke-width="1.6"></line>
+      <circle cx="35.4" cy="96.2" r="3.4" fill="#4A3A5E"></circle>
+    </g>
+  </g>
+  {# Zlatni skener koji kruži oko ćelije #}
+  <g class="neo-animacija__skener">
+    <circle cx="104" cy="158" r="104.2" fill="none" stroke="#D8B878" stroke-width="1.3" stroke-dasharray="43 654" stroke-linecap="round" stroke-opacity="0.8"></circle>
+    <circle cx="104" cy="158" r="104.2" fill="none" stroke="#D8B878" stroke-opacity="0.12" stroke-width="1"></circle>
+  </g>
+  {# Niti od neoantigena do izabranih peptida #}
+  <path class="neo-animacija__nit" d="M157.0 82.4 Q176.5 54.5 226 58" fill="none" stroke="#D8B878" stroke-width="1.1" style="--kasnjenje:1.15s; --duzina:97"></path>
+  <path class="neo-animacija__nit" d="M180.5 106.4 Q208.7 87.4 226 98" fill="none" stroke="#D8B878" stroke-width="1.1" style="--kasnjenje:2.00s; --duzina:70"></path>
+  <path class="neo-animacija__nit" d="M193.6 135.7 Q226.6 127.4 226 138" fill="none" stroke="#D8B878" stroke-width="1.1" style="--kasnjenje:2.85s; --duzina:57"></path>
+  <path class="neo-animacija__nit" d="M195.8 167.7 Q229.6 171.2 226 178" fill="none" stroke="#D8B878" stroke-width="1.1" style="--kasnjenje:3.70s; --duzina:56"></path>
+  <path class="neo-animacija__nit" d="M187.0 198.5 Q217.5 213.4 226 218" fill="none" stroke="#D8B878" stroke-width="1.1" style="--kasnjenje:4.55s; --duzina:68"></path>
+  <path class="neo-animacija__nit" d="M168.1 224.4 Q191.7 248.9 226 258" fill="none" stroke="#D8B878" stroke-width="1.1" style="--kasnjenje:5.40s; --duzina:91"></path>
+  {# Izabrani peptidi (sekvence aminokiselina) #}
+  <g class="neo-animacija__peptid" style="--kasnjenje:1.50s">
+    <rect x="226" y="45" width="124" height="26" rx="13" fill="#1E1229" stroke="#D8B878" stroke-opacity="0.55"></rect>
+    <text x="288" y="62.5" text-anchor="middle" class="neo-animacija__sekvenca">{{ a.peptidi[0] }}</text>
+  </g>
+  <g class="neo-animacija__peptid" style="--kasnjenje:2.35s">
+    <rect x="226" y="85" width="124" height="26" rx="13" fill="#1E1229" stroke="#D8B878" stroke-opacity="0.55"></rect>
+    <text x="288" y="102.5" text-anchor="middle" class="neo-animacija__sekvenca">{{ a.peptidi[1] }}</text>
+  </g>
+  <g class="neo-animacija__peptid" style="--kasnjenje:3.20s">
+    <rect x="226" y="125" width="124" height="26" rx="13" fill="#1E1229" stroke="#D8B878" stroke-opacity="0.55"></rect>
+    <text x="288" y="142.5" text-anchor="middle" class="neo-animacija__sekvenca">{{ a.peptidi[2] }}</text>
+  </g>
+  <g class="neo-animacija__peptid" style="--kasnjenje:4.05s">
+    <rect x="226" y="165" width="124" height="26" rx="13" fill="#1E1229" stroke="#D8B878" stroke-opacity="0.55"></rect>
+    <text x="288" y="182.5" text-anchor="middle" class="neo-animacija__sekvenca">{{ a.peptidi[3] }}</text>
+  </g>
+  <g class="neo-animacija__peptid" style="--kasnjenje:4.90s">
+    <rect x="226" y="205" width="124" height="26" rx="13" fill="#1E1229" stroke="#D8B878" stroke-opacity="0.55"></rect>
+    <text x="288" y="222.5" text-anchor="middle" class="neo-animacija__sekvenca">{{ a.peptidi[4] }}</text>
+  </g>
+  <g class="neo-animacija__peptid" style="--kasnjenje:5.75s">
+    <rect x="226" y="245" width="124" height="26" rx="13" fill="#1E1229" stroke="#D8B878" stroke-opacity="0.55"></rect>
+    <text x="288" y="262.5" text-anchor="middle" class="neo-animacija__sekvenca">{{ a.peptidi[5] }}</text>
+  </g>
+  {# Natpisi #}
+  <text x="226" y="28" class="neo-animacija__natpis">{{ a.oznakaPeptidi }}</text>
+  <text x="104" y="294" text-anchor="middle" class="neo-animacija__natpis neo-animacija__natpis--celija">{{ a.oznakaCelija }}</text>
+</svg>

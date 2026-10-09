@@ -18,13 +18,23 @@
 .unos:focus { outline: 3px solid var(--ljubicasta-600); outline-offset: 1px; border-color: var(--ljubicasta-600); }
 .unos--izbor { padding: 0 14px; }
 .unos--tekst { height: auto; min-height: 96px; padding: 14px 16px; border-radius: 18px; resize: vertical; }
-.unos--fajl { height: auto; padding: 10px 14px; border-radius: 18px; border-style: dashed; }
+/* Polje za fajl: skriveno pravo polje + dugme na srpskom + ime fajla */
+.fajl { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 8px 14px 8px 8px; border: 1px dashed var(--ivica-polja); border-radius: 18px; background: var(--bela); }
+.fajl__unos { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.fajl__dugme { padding: 8px 16px; border-radius: 999px; background: var(--ljubicasta-100); color: var(--ljubicasta-800); font-size: 14px; font-weight: 600; cursor: pointer; }
+.fajl__dugme:hover { background: var(--ljubicasta-150); }
+.fajl__unos:focus-visible + .fajl__dugme { outline: 3px solid var(--ljubicasta-600); outline-offset: 2px; }
+.fajl__ime { min-width: 0; font-size: 14px; color: var(--tekst-blag); overflow-wrap: anywhere; }
 .unos:user-invalid { border-color: var(--crvena-600); }
 .saglasnost { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--tekst-blag); cursor: pointer; }
 .saglasnost input { width: 20px; height: 20px; margin: 1px 0 0; flex-shrink: 0; accent-color: var(--ljubicasta-600); }
 .saglasnost--tamna { color: #EBDDF5; }
 .saglasnost--tamna a { color: var(--bela); }
 .forma__napomena { font-size: 13px; color: var(--tekst-blag); }
+/* Mali laptop: dve uske kolone seku tekst u padajućim listama */
+@media (min-width: 960px) and (max-width: 1100px) {
+  .forma { grid-template-columns: 1fr; }
+}
 @media (max-width: 959px) {
   .forma { grid-template-columns: 1fr; gap: 12px; }
   .forma--bela { padding: 20px; border-radius: 24px; }

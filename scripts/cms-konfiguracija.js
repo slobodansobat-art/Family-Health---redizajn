@@ -266,6 +266,8 @@ export function napraviCmsKonfiguraciju() {
       },
     },
     local_backend: true,
+    // Jezik CMS-a: hrvatski je najbliži srpskoj latinici (Decap ima srpski samo na ćirilici)
+    locale: "hr",
     site_url: (podesavanja.sajt && podesavanja.sajt.url) || "",
     display_url: (podesavanja.sajt && podesavanja.sajt.url) || "",
     logo_url: "/assets/slike/logo-cms.svg",

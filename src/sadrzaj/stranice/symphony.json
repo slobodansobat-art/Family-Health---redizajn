@@ -1,0 +1,180 @@
+{
+  "_naziv": "Symphony",
+  "seo": {
+    "naslov": "Symphony prenatalni test – svi hromozomi | Family Health",
+    "opis": "Symphony (Illumina VeriSeq NIPT) pregleda svih 46 hromozoma i 241 mikrodeleciju i mikroduplikaciju veću od 7 Mb. Cena 790 €, rezultat za 5 radnih dana."
+  },
+  "hero": {
+    "putanja": [
+      { "tekst": "Trudnoća i beba", "link": "/trudnoca-i-beba/" },
+      { "tekst": "Prenatalni testovi", "link": "/trudnoca-i-beba/#testovi" }
+    ],
+    "putanjaTrenutna": "Symphony",
+    "nadnaslov": "Najširi neinvazivni test koji nudimo",
+    "naslov": "Symphony: svih 46 hromozoma iz jedne epruvete krvi.",
+    "tekst": "Od 10. nedelje trudnoće, bez rizika za bebu. Pored najčešćih trizomija, Symphony pregleda svaki hromozom i 241 mikrodeleciju i mikroduplikaciju.",
+    "vadjenje": "Krv vadimo u našoj ordinaciji ili kod vas kući, a dolazak ne naplaćujemo",
+    "dugme": { "tekst": "Zakažite Symphony, 790 €", "link": "#kontakt" },
+    "link": { "tekst": "Harmony ili Symphony?", "link": "#izbor" },
+    "cinjenice": [
+      { "oznaka": "Od", "vrednost": "10. nedelje" },
+      { "oznaka": "Rezultat", "vrednost": "5 radnih dana" },
+      { "oznaka": "Tehnologija", "vrednost": "Illumina VeriSeq" }
+    ],
+    "slika": "",
+    "slikaOpis": "Fotografija trudnice sa postojećeg sajta"
+  },
+  "kariogram": {
+    "naslov": "Šta Symphony pregleda",
+    "tekst": "Svaki čovek ima 46 hromozoma u 23 para: 22 para su ista kod oba pola (1–22), a 23. par čine polni hromozomi X i Y. Zato kariogram ima 24 različita hromozoma. Uporedite koliko njih pregleda koji test.",
+    "izborOznaka": "Izaberite test",
+    "_napomena": "rezimi: hromozomi = koji su pokriveni (obojeni), oznaceni = na kom hromozomu je označena mikrodelecija; boja: mint ili ljubicasta. Prvi rezim sa podrazumevani=true se prikazuje pri učitavanju.",
+    "rezimi": [
+      {
+        "naziv": "Harmony Kvartet",
+        "boja": "mint",
+        "podrazumevani": false,
+        "hromozomi": ["13", "18", "21", "X", "Y"],
+        "oznaceni": [],
+        "sazetak": "5 od 24 hromozoma",
+        "opis": "Trizomije 13, 18 i 21 i polni hromozomi. Ciljana, dubinska analiza najčešćih poremećaja."
+      },
+      {
+        "naziv": "Harmony Plus",
+        "boja": "mint",
+        "podrazumevani": false,
+        "hromozomi": ["13", "18", "21", "X", "Y"],
+        "oznaceni": ["22"],
+        "sazetak": "5 od 24, plus DiGeorge",
+        "opis": "Kao Kvartet, uz mikrodeleciju 22q11.2 (DiGeorge sindrom) na hromozomu 22."
+      },
+      {
+        "naziv": "Symphony",
+        "boja": "ljubicasta",
+        "podrazumevani": true,
+        "hromozomi": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "X", "Y"],
+        "oznaceni": [],
+        "sazetak": "Sva 24 različita hromozoma",
+        "opis": "Trizomije i monozomije svih hromozoma, polni hromozomi i 241 mikrodelecija i mikroduplikacija veća od 7 Mb."
+      }
+    ],
+    "_napomenaHromozomi": "duzina = približna veličina hromozoma u milionima baza (Mb); koristi se samo za visinu crtice na kariogramu.",
+    "hromozomi": [
+      { "oznaka": "1", "duzina": 248 },
+      { "oznaka": "2", "duzina": 242 },
+      { "oznaka": "3", "duzina": 198 },
+      { "oznaka": "4", "duzina": 190 },
+      { "oznaka": "5", "duzina": 181 },
+      { "oznaka": "6", "duzina": 171 },
+      { "oznaka": "7", "duzina": 159 },
+      { "oznaka": "8", "duzina": 145 },
+      { "oznaka": "9", "duzina": 138 },
+      { "oznaka": "10", "duzina": 134 },
+      { "oznaka": "11", "duzina": 135 },
+      { "oznaka": "12", "duzina": 133 },
+      { "oznaka": "13", "duzina": 114 },
+      { "oznaka": "14", "duzina": 107 },
+      { "oznaka": "15", "duzina": 102 },
+      { "oznaka": "16", "duzina": 90 },
+      { "oznaka": "17", "duzina": 83 },
+      { "oznaka": "18", "duzina": 80 },
+      { "oznaka": "19", "duzina": 59 },
+      { "oznaka": "20", "duzina": 64 },
+      { "oznaka": "21", "duzina": 47 },
+      { "oznaka": "22", "duzina": 51 },
+      { "oznaka": "X", "duzina": 156 },
+      { "oznaka": "Y", "duzina": 57 }
+    ],
+    "stavke": [
+      { "naslov": "Trizomije, hromozomi 1–22", "tekst": "Uključujući Daunov (21), Edvardsov (18) i Patauov sindrom (13), ali i sve ostale.", "sporedno": false },
+      { "naslov": "Monozomije, hromozomi 1–22", "tekst": "Kada nedostaje jedan hromozom iz para, ili njegov veći deo.", "sporedno": false },
+      { "naslov": "Polni hromozomi", "tekst": "Tarnerov (X0), Klinefelterov (XXY) i Jakobsov sindrom (XYY), trostruki X (XXX).", "sporedno": false },
+      { "naslov": "241 mikrodelecija i mikroduplikacija", "tekst": "Nedostajući ili višak delova hromozoma: promene veće od 7 Mb na svim hromozomima, ukupno 241 sindrom prema specifikaciji laboratorije [potvrditi].", "sporedno": false },
+      { "naslov": "Pol bebe", "tekst": "Na vaš zahtev, uz isti nalaz.", "sporedno": true }
+    ]
+  },
+  "poredjenje": {
+    "naslov": "Harmony ili Symphony?",
+    "tekst": "Oba testa su neinvazivna i rade se iz jedne epruvete krvi. Harmony ide u dubinu za najčešće poremećaje, Symphony u širinu, kroz ceo genom.",
+    "napomenaMd": "**Kombinovani (double) test se radi uvek,** pre prenatalnog testa. Njegov ultrazvučni deo pregleda razvoj bebe, a to test iz krvi ne može da zameni.",
+    "kolonaOsobina": "Osobina",
+    "kolonaHarmony": "Harmony",
+    "kolonaHarmonyLink": "/trudnoca-i-beba/harmony/",
+    "kolonaSymphony": "Symphony",
+    "redovi": [
+      { "osobina": "Šta ispituje", "harmony": "Hromozomi 13, 18 i 21; polni hromozomi i DiGeorge, zavisno od paketa", "symphony": "Svih 46 hromozoma i 241 mikrodelecija i mikroduplikacija veća od 7 Mb" },
+      { "osobina": "DiGeorge (22q11.2)", "harmony": "Da, u paketu Plus", "symphony": "Ne, promena je manja od 7 Mb [potvrditi sa laboratorijom]" },
+      { "osobina": "Pristup", "harmony": "Ciljana, dubinska analiza (Roche)", "symphony": "Analiza celog genoma (Illumina VeriSeq NIPT)" },
+      { "osobina": "Rezultat", "harmony": "3 do 5 radnih dana", "symphony": "5 radnih dana" },
+      { "osobina": "Cena", "harmony": "od 390 do 690 €", "symphony": "790 €" },
+      { "osobina": "Kada se bira", "harmony": "Kada želite pouzdan pregled najčešćih hromozomskih poremećaja", "symphony": "Kada želite najširi pregled koji nudimo, ili vam ga lekar preporuči" }
+    ],
+    "zakljucakMd": "Niste sigurni koji vam treba? [Besplatne konsultacije sa našim lekarom](#kontakt), pre nego što se odlučite.",
+    "harmonyLink": { "tekst": "Sve o testu Harmony", "link": "/trudnoca-i-beba/harmony/" }
+  },
+  "nalaz": {
+    "naslov": "Kako izgleda nalaz",
+    "tekst": "Nalaz stiže za 5 radnih dana od prijema uzorka u laboratoriju. Trizomije 21, 18 i 13 i polni hromozomi prikazuju se pojedinačno. Ostali hromozomi prikazuju se zajedno, a pronađena mikrodelecija ili mikroduplikacija sa tačnim mestom na hromozomu i veličinom.",
+    "povisen": {
+      "naslov": "Ako je rizik povišen",
+      "tekst": "Symphony je skrining test, pa se povišen rizik uvek potvrđuje. Sledi genetsko savetovanje, a o metodi potvrde odlučuju ginekolog i genetičar. Zbog moguće razlike između ćelija posteljice i bebe najčešće se preporučuje amniocenteza."
+    },
+    "primer": {
+      "naslov": "Symphony, nalaz",
+      "oznaka": "Primer, ne pravi nalaz",
+      "_napomena": "istaknuto = vrednost ljubičastom bojom (npr. pol bebe), inače zelenom (nizak rizik)",
+      "redovi": [
+        { "stavka": "Trizomija 21", "vrednost": "Nizak rizik", "istaknuto": false },
+        { "stavka": "Trizomija 18", "vrednost": "Nizak rizik", "istaknuto": false },
+        { "stavka": "Trizomija 13", "vrednost": "Nizak rizik", "istaknuto": false },
+        { "stavka": "Polni hromozomi", "vrednost": "Nizak rizik", "istaknuto": false },
+        { "stavka": "Ostali hromozomi 1–22", "vrednost": "Bez odstupanja", "istaknuto": false },
+        { "stavka": "Mikrodelecije i mikroduplikacije > 7 Mb", "vrednost": "Nisu pronađene", "istaknuto": false },
+        { "stavka": "Pol bebe", "vrednost": "Na zahtev", "istaknuto": true }
+      ]
+    }
+  },
+  "proces": {
+    "naslov": "Od poziva do nalaza",
+    "_napomena": "ikonica: telefon | kuca | epruveta | nalaz",
+    "koraci": [
+      { "naslov": "Zakazivanje", "tekst": "Telefonom ili preko forme. Pripremite nalaz ultrazvuka.", "ikonica": "telefon", "istaknuto": false },
+      { "naslov": "Vađenje krvi", "tekst": "U našoj ordinaciji ili kod vas kući, a dolazak ne naplaćujemo.", "ikonica": "kuca", "istaknuto": true },
+      { "naslov": "Analiza celog genoma", "tekst": "Laboratorija analizira slobodnu DNK bebe iz krvi majke.", "ikonica": "epruveta", "istaknuto": false },
+      { "naslov": "Nalaz za 5 radnih dana", "tekst": "Od prijema uzorka u laboratoriju.", "ikonica": "nalaz", "istaknuto": false }
+    ]
+  },
+  "cena": {
+    "naslov": "Symphony",
+    "tekst": "Svi hromozomi 1–22, polni hromozomi i 241 mikrodelecija i mikroduplikacija. Pol bebe na zahtev.",
+    "cena": 790,
+    "brojRata": 3,
+    "rateTekst": "ili {broj} rate po {iznos}, bez kamate",
+    "rateNapomena": "uz sve Banca Intesa kartice",
+    "dugme": { "tekst": "Zakažite vađenje krvi", "link": "#kontakt" }
+  },
+  "faq": {
+    "naslov": "Česta pitanja",
+    "uvod": "Niste našli odgovor? Pozovite nas na",
+    "pitanja": [
+      { "pitanje": "Da li Symphony zamenjuje kombinovani (double) test?", "odgovor": "Ne. Kombinovani (double) test se radi uvek, pre prenatalnog testa. Njegov ultrazvučni deo pregleda razvoj bebe, a to test iz krvi ne može da zameni. Symphony se radi uz njega, da bi se rizik za hromozomske poremećaje proverio preciznije." },
+      { "pitanje": "Koliko je Symphony pouzdan?", "odgovor": "Specifičnost testa je 99,9%, a u oko 0,1% slučajeva uzorak ne daje rezultat i krv se vadi ponovo. [potvrditi podatke sa laboratorijom] Kao i svaki skrining test, povišen rizik se potvrđuje amniocentezom." },
+      { "pitanje": "Mogu li da saznam pol bebe?", "odgovor": "Da. Pol bebe se navodi u nalazu ako ga tražite." },
+      { "pitanje": "Da li Symphony zamenjuje amniocentezu?", "odgovor": "Ne. Symphony je skrining test koji pokazuje verovatnoću. Amniocenteza je dijagnostička metoda i preporučuje se kada je rizik povišen ili ultrazvuk pokaže odstupanje." },
+      { "pitanje": "Da li je test moguć kod blizanaca i posle vantelesne oplodnje?", "odgovor": "[potvrditi sa laboratorijom koje vrste trudnoće Symphony podržava]" },
+      { "pitanje": "Kako se pripremiti za vađenje krvi?", "odgovor": "Nije potrebna posebna priprema i ne morate biti našte. Pripremite poslednji nalaz ultrazvuka, a krv vadimo u našoj ordinaciji ili kod vas kući, a dolazak ne naplaćujemo." }
+    ]
+  },
+  "kontakt": {
+    "naslov": "Zakažite vađenje krvi.",
+    "tekst": "Javljamo vam se istog radnog dana sa terminom i uputstvom.",
+    "forma": {
+      "ime": "Ime i prezime",
+      "telefon": "Telefon",
+      "test": "Test",
+      "testVrednost": "Symphony, 790 €",
+      "nedelja": "Nedelja trudnoće",
+      "dugme": "Pošaljite, javljamo se istog radnog dana"
+    }
+  }
+}

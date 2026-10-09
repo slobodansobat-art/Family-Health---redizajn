@@ -1,0 +1,15 @@
+{#- HARMONY · česta pitanja (makro faq, tema mint; telefon iz podesavanja.kontakt)
+    Sadržaj: stranice.harmony.faq   ·   Stil: css/komponente/faq.css + css/stranice/harmony.css (.harmony-faq) -#}
+{%- from "makroi/komponente.njk" import faq with context -%}
+{%- set d = stranice.harmony.faq -%}
+<section class="harmony-faq" aria-labelledby="harmony-faq-naslov">
+  <div class="kontejner harmony-faq__mreza">
+    <div class="harmony-faq__levo">
+      <h2 id="harmony-faq-naslov" class="naslov-m harmony-naslov">{{ d.naslov }}</h2>
+      <p class="harmony-faq__poziv">{{ d.poziv }} <a href="tel:{{ podesavanja.kontakt.telefonLink }}">{{ podesavanja.kontakt.telefon }}</a>.</p>
+    </div>
+    <div class="harmony-faq__pitanja">
+      {{ faq("harmony-faq", d.pitanja, "mint") }}
+    </div>
+  </div>
+</section>

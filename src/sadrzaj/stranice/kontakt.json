@@ -1,0 +1,64 @@
+{
+  "_naziv": "Kontakt",
+  "seo": {
+    "naslov": "Kontakt i ordinacija | Family Health",
+    "opis": "Ordinacija u Vladimira Popovića 6, Novi Beograd, radnim danima od 8 do 16 h. Telefon 011 43 87 752, mejl info@familyhealth.rs."
+  },
+  "hero": {
+    "naslov": "Tu smo za vas.",
+    "tekst": "Pozovite, pišite ili dođite. Prvi razgovor je besplatan i odgovaramo istog radnog dana.",
+    "kanalTelefon": "Pozovite",
+    "kanalMejl": "Pišite",
+    "kanalOrdinacija": "Dođite u ordinaciju"
+  },
+  "ordinacija": {
+    "naslov": "Ordinacija",
+    "tekst": "U ordinaciji su konsultacije i vađenje krvi. Ako vam je lakše, krv vadimo i kod vas kući, a dolazak ne naplaćujemo.",
+    "oznakaRadniDan": "Radnim danom",
+    "oznakaSubota": "Subotom",
+    "oznakaKucnaPoseta": "Vađenje krvi kod kuće",
+    "oznakaParking": "Parking",
+    "mapaOpis": "Mesto za mapu sa lokacijom ordinacije",
+    "slikaMape": "",
+    "slikaMapeOpis": "Mapa sa lokacijom ordinacije u Vladimira Popovića 6, Novi Beograd",
+    "mapaNapomena": "Statična slika mape, bez kolačića [slika: dodati]",
+    "mapaLinkTekst": "Otvorite u mapama →",
+    "mapaNoviProzor": "(otvara se u novom prozoru)"
+  },
+  "forma": {
+    "naslov": "Javićemo vam se istog radnog dana.",
+    "tekst": "Izaberite temu, pa vas odmah povezujemo sa osobom koja se time bavi.",
+    "temaOznaka": "Tema",
+    "izabranaTema": 1,
+    "teme": [
+      {
+        "oznaka": "Onkogenetika",
+        "savet": "Priložite nalaz, a lekar ga pregleda i javlja se sa predlogom analize i cenom.",
+        "_polje": "nalaz"
+      },
+      {
+        "oznaka": "Prenatalni test",
+        "savet": "Navedite nedelju trudnoće. Dogovaramo termin u ordinaciji ili kod vas kući.",
+        "_polje": "nedelja"
+      },
+      {
+        "oznaka": "Matične ćelije",
+        "savet": "Navedite termin porođaja, da set na vreme bude kod vas.",
+        "_polje": "termin"
+      },
+      {
+        "oznaka": "Nešto drugo",
+        "savet": "Napišite ukratko o čemu se radi, pa vas povezujemo sa pravom osobom.",
+        "_polje": "poruka"
+      }
+    ],
+    "poljeIme": "Ime i prezime",
+    "poljeTelefon": "Telefon",
+    "poljeNalaz": "Nalaz (PDF ili fotografija)",
+    "poljeNedelja": "Nedelja trudnoće",
+    "poljeTermin": "Očekivani termin porođaja",
+    "poljePoruka": "Kratko, o čemu se radi",
+    "dugme": "Pošaljite, javljamo se istog radnog dana",
+    "lekariMd": "Lekar ste? [Direktna linija i uputni obrazac za lekare](/za-lekare/)"
+  }
+}

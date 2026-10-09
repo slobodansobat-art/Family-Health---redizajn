@@ -1,0 +1,20 @@
+{
+  "_naziv": "Stranica ne postoji (404)",
+  "seo": {
+    "naslov": "Stranica nije pronađena | Family Health",
+    "opis": "Stranica koju tražite ne postoji."
+  },
+  "poruka": {
+    "broj": "404",
+    "naslov": "Ova stranica ne postoji.",
+    "tekst": "Možda je link zastareo, ili je stranica premeštena na novom sajtu.",
+    "poziv": "Izaberite oblast ili nas pozovite na",
+    "dugme": { "tekst": "Na početnu stranu", "link": "/" },
+    "oblasti": [
+      { "naziv": "Onkogenetika", "opis": "Genetska analiza tumora", "link": "/onkogenetika/" },
+      { "naziv": "Prenatalni testovi", "opis": "Harmony i Symphony", "link": "/trudnoca-i-beba/#testovi" },
+      { "naziv": "Matične ćelije", "opis": "Čuvanje krvi iz pupčanika", "link": "/maticne-celije/" },
+      { "naziv": "Kontakt", "opis": "Telefon, mejl i ordinacija", "link": "/kontakt/" }
+    ]
+  }
+}

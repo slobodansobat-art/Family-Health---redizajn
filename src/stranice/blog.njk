@@ -1,0 +1,16 @@
+---
+# Blog: istaknut članak, mesto za baner, lista svih članaka sa filterom tema.
+# Sadržaj: src/sadrzaj/stranice/blog.json  ·  članci: src/sadrzaj/blog/*.md
+# Šablon jednog članka: src/_includes/sekcije/blog/clanak-sablon.njk
+# Filter tema: js/stranice/blog.js (bez JS-a se vidi cela lista)
+kljuc: blog
+permalink: /blog/
+zaglavlje:
+  tema: svetla
+  oblast: opsti
+  nazad: /
+skripte: ["stranice/blog.js"]
+---
+{% include "sekcije/blog/istaknuto.njk" %}
+{% include "sekcije/blog/baner.njk" %}
+{% include "sekcije/blog/lista.njk" %}

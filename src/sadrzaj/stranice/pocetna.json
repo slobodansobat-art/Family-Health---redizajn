@@ -1,0 +1,106 @@
+{
+  "_naziv": "Početna",
+  "seo": {
+    "naslov": "Genetske analize, prenatalni testovi i matične ćelije | Family Health",
+    "opis": "Genetske analize tumora, prenatalni testovi Harmony i Symphony i matične ćelije iz pupčanika. Krv vadimo u ordinaciji ili kod vas kući."
+  },
+  "hero": {
+    "naslov": "Family Health je centar za genetsku dijagnostiku. Izaberite oblast koja vas zanima.",
+    "onko": {
+      "nadnaslov": "Onkogenetika, za pacijente i lekare",
+      "naslov": "Genetika tumora koja pomaže da se izabere prava terapija.",
+      "tekst": "Analiza tumorskog tkiva i krvi u nemačkim laboratorijama, uz tumačenje konzilijuma onkologa.",
+      "dugme": { "tekst": "Saznajte šta možemo da uradimo", "link": "/onkogenetika/" },
+      "pitanjaNaslov": "Sa kojim pitanjem dolazite?",
+      "pitanja": [
+        { "tekst": "Koja ciljana terapija može da pomogne?", "link": "/onkogenetika/analize/cancer-precision/", "oznaka": "" },
+        { "tekst": "Tkivo tumora nije dostupno", "link": "/onkogenetika/#situacija-2", "oznaka": "" },
+        { "tekst": "Da li se bolest vratila?", "link": "/onkogenetika/#situacija-3", "oznaka": "" },
+        { "tekst": "Da li je rizik nasledan?", "link": "/onkogenetika/#situacija-4", "oznaka": "" },
+        { "tekst": "Personalizovana vakcina", "link": "/onkogenetika/cancer-neo/", "oznaka": "Premium" }
+      ],
+      "zaLekare": { "tekst": "Lekar ste? Uputstva za slanje uzorka", "link": "/za-lekare/" },
+      "sklopljenoNadnaslov": "Onkogenetika",
+      "sklopljenoNaslov": "Genetika tumora",
+      "cipoviMobilni": [
+        { "tekst": "Ciljana terapija", "link": "/onkogenetika/analize/cancer-precision/", "premium": false },
+        { "tekst": "Tečna biopsija", "link": "/onkogenetika/analize/#cilj-bez", "premium": false },
+        { "tekst": "Personalizovana vakcina", "link": "/onkogenetika/cancer-neo/", "premium": true },
+        { "tekst": "Za lekare", "link": "/za-lekare/", "premium": false }
+      ]
+    },
+    "trudnoca": {
+      "nadnaslov": "Trudnoća i beba",
+      "naslov": "Od 10. nedelje trudnoće do prvog dana bebe.",
+      "slika": "",
+      "slikaOpis": "Fotografija porodice",
+      "dugme": { "tekst": "Testovi i matične ćelije", "link": "/trudnoca-i-beba/" },
+      "napomena": "Plaćanje na rate bez kamate",
+      "linijaNaslov": "Šta je važno, i kada",
+      "linija": [
+        { "period": "10. nedelja", "tekst": "Prenatalni test Harmony ili Symphony, od 390 €", "link": "/trudnoca-i-beba/#testovi", "prazanKrug": false },
+        { "period": "Drugi trimestar", "tekst": "Besplatna škola za trudnice", "link": "/trudnoca-i-beba/#skola", "prazanKrug": true },
+        { "period": "Do 36. nedelje", "tekst": "Odluka o matičnim ćelijama: 1.980 € ili 12 rata po 165 €", "link": "/maticne-celije/", "prazanKrug": false },
+        { "period": "Porođaj", "tekst": "Bezbolno prikupljanje krvi iz pupčanika", "link": "/maticne-celije/", "prazanKrug": false }
+      ],
+      "sklopljenoNadnaslov": "Trudnoća i beba",
+      "sklopljenoNaslov": "Od 10. nedelje do prvog dana bebe",
+      "linkoviMobilni": [
+        { "tekst": "Harmony, od 390 €", "link": "/trudnoca-i-beba/harmony/" },
+        { "tekst": "Symphony, svi hromozomi", "link": "/trudnoca-i-beba/symphony/" },
+        { "tekst": "Matične ćelije, 1.980 € ili 12 rata", "link": "/maticne-celije/" },
+        { "tekst": "Škola za trudnice, besplatna", "link": "/trudnoca-i-beba/#skola" }
+      ]
+    }
+  },
+  "vremenskaLinijaMobilni": {
+    "naslov": "Šta je važno, i kada.",
+    "stavke": [
+      { "period": "11–14. nedelja", "naslov": "Kombinovani (double) test", "tekst": "Obavezan, kod vašeg ginekologa.", "prazanKrug": false },
+      { "period": "Uz kombinovani test", "naslov": "Prenatalni test", "tekst": "Harmony ili Symphony, iz krvi, od 10. nedelje.", "prazanKrug": false },
+      { "period": "Drugi trimestar", "naslov": "Škola za trudnice", "tekst": "Besplatna online predavanja.", "prazanKrug": true },
+      { "period": "Do 36. nedelje", "naslov": "Odluka o matičnim ćelijama", "tekst": "Ugovor i set za porodilište.", "prazanKrug": false },
+      { "period": "Porođaj", "naslov": "Prikupljanje krvi iz pupčanika", "tekst": "Bezbolno za mamu i bebu.", "prazanKrug": false }
+    ]
+  },
+  "partneri": {
+    "naslov": "Partneri i tehnologije sa kojima radimo",
+    "dugmeZaustavi": "Zaustavi",
+    "dugmePokreni": "Pokreni",
+    "napomena": "Uzorci matičnih ćelija čuvaju se po standardima AABB i HTA",
+    "lista": [
+      { "naziv": "Roche", "logo": "" },
+      { "naziv": "Illumina", "logo": "" },
+      { "naziv": "CeGaT", "logo": "" },
+      { "naziv": "Cells4Life", "logo": "" },
+      { "naziv": "TotiCyte", "logo": "" },
+      { "naziv": "Euromedik", "logo": "" }
+    ]
+  },
+  "lekar": {
+    "slika": "",
+    "slikaOpis": "Fotografija dr Aleksandra Antovića",
+    "nadnaslov": "Kompanija u vlasništvu lekara",
+    "citat": "„Kao otac troje dece, želim da vam pomognem da donesete odluku koja će vašem detetu biti podrška ceo život.”",
+    "potpis": "dr Aleksandar Antović, specijalista interne medicine",
+    "medijiTekst": "Gostovao je na RTS-u, N1, TV Prvoj, Euronews Srbija, RTV-u i Tanjugu.",
+    "medijiLink": { "tekst": "Pogledajte nastupe", "link": "/o-nama/#mediji" }
+  },
+  "blog": {
+    "naslov": "Sa bloga",
+    "sviClanci": { "tekst": "Svi članci", "link": "/blog/" }
+  },
+  "kontakt": {
+    "naslov": "Prvi razgovor je besplatan.",
+    "tekst": "Ostavite broj i javljamo vam se istog radnog dana, u vreme koje vam odgovara.",
+    "forma": {
+      "ime": "Ime i prezime",
+      "telefon": "Telefon",
+      "tema": "Šta vas zanima",
+      "teme": ["Onkogenetika", "Prenatalni testovi", "Matične ćelije", "Ostale genetske analize", "Škola za trudnice"],
+      "vreme": "Kada da vas pozovemo",
+      "vremena": ["Pre podne", "Posle podne"],
+      "posalji": "Pošaljite, javljamo se istog radnog dana"
+    }
+  }
+}

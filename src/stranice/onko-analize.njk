@@ -1,0 +1,18 @@
+---
+# Katalog onko analiza sa filterima (cilj, uzorak, pretraga).
+# Tekst stranice: src/sadrzaj/stranice/onko-analize.json
+# Analize (kartice): src/sadrzaj/analize/*.json  (globalni podatak "analize")
+# Filter iz adrese: /onkogenetika/analize/#cilj-ter (ter, bez, pra, nas, imu, tum)
+kljuc: onko-analize
+permalink: /onkogenetika/analize/
+zaglavlje:
+  tema: tamna
+  oblast: onko
+  nazad: /onkogenetika/
+donjaTraka: { tekst: "Pošaljite nalaz", link: "#kontakt" }
+skripte: ["stranice/onko-analize.js"]
+---
+{% include "sekcije/onko-analize/hero.njk" %}
+{% include "sekcije/onko-analize/katalog.njk" %}
+{% include "sekcije/onko-analize/nedoumica.njk" %}
+{% include "sekcije/onko-analize/kontakt.njk" %}

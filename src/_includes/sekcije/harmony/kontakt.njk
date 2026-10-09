@@ -1,0 +1,40 @@
+{#- HARMONY · kontakt: zakazivanje vađenja krvi (forma "harmony-zakazivanje")
+    Polje "Paket" je samo za čitanje: popunjava ga izbor u sekciji Paketi
+    (js/stranice/harmony.js), a bez JS-a u njemu je paket iz "izabranPaket".
+    Polja "Paket" i "Nedelja trudnoće" su pisana ručno, jer makro polje()
+    nema readonly/min/max; klase su iste kao u makrou.
+    Sadržaj: stranice.harmony.kontakt (+ paketi) i podesavanja.kontakt
+    Stil: css/komponente/forme.css + css/stranice/harmony.css (.harmony-kontakt) -#}
+{%- from "makroi/komponente.njk" import forma, polje, saglasnost, posalji with context -%}
+{%- set d = stranice.harmony.kontakt -%}
+{%- set pk = stranice.harmony.paketi -%}
+{%- set k = podesavanja.kontakt -%}
+<section id="kontakt" class="harmony-kontakt" aria-labelledby="harmony-kontakt-naslov">
+  <svg class="harmony-kontakt__mrlja" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path d="M310 60c50 40 70 120 40 190s-120 110-190 90S40 260 50 180 120 40 190 30s70-10 120 30z"></path></svg>
+  <div class="kontejner harmony-kontakt__mreza">
+    <div class="harmony-kontakt__levo">
+      <h2 id="harmony-kontakt-naslov" class="harmony-kontakt__naslov">{{ d.naslov }}</h2>
+      <p class="harmony-kontakt__tekst">{{ d.tekst }}</p>
+      <p class="harmony-kontakt__telefoni">
+        <a href="tel:{{ k.telefonLink }}">{{ k.telefon }}</a>
+        <a href="tel:{{ k.mobilniLink }}">{{ k.mobilni }}</a>
+      </p>
+    </div>
+    {%- call forma("harmony-zakazivanje", "forma forma--bela harmony-kontakt__forma") %}
+      {{ polje("hm-ime", "ime", d.polja.ime, autocomplete="name", obavezno=true) }}
+      {{ polje("hm-tel", "telefon", d.polja.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      <div class="polje">
+        <label for="hm-paket" class="polje__oznaka">{{ d.polja.paket }}</label>
+        {%- for p in pk.stavke %}{% if p.naziv == pk.izabranPaket %}
+        <input id="hm-paket" name="paket" type="text" class="unos harmony-kontakt__zakljucano" value="{{ p.naziv }}, {{ p.cena | evra }}" readonly data-polje-paket>
+        {%- endif %}{% endfor %}
+      </div>
+      <div class="polje">
+        <label for="hm-nedelja" class="polje__oznaka">{{ d.polja.nedelja }}</label>
+        <input id="hm-nedelja" name="nedelja" type="number" inputmode="numeric" min="4" max="42" class="unos">
+      </div>
+      {{ saglasnost("hm-ok") }}
+      {{ posalji(d.posalji) }}
+    {%- endcall %}
+  </div>
+</section>

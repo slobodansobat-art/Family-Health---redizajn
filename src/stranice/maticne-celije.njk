@@ -1,0 +1,26 @@
+---
+# Matične ćelije iz pupčanika (Cells4Life, TotiCyte): pitanja za banku,
+# rok za odluku, koraci, kalkulator paketa sa ratama, česta pitanja, kontakt.
+# Tekst stranice: src/sadrzaj/stranice/maticne-celije.json  (stranice.maticneCelije)
+# Stil: src/assets/css/stranice/maticne-celije.css  ·  JS: src/assets/js/stranice/maticne-celije.js
+kljuc: maticne-celije
+permalink: /maticne-celije/
+zaglavlje:
+  tema: lavanda
+  oblast: trudnoca
+  nazad: /trudnoca-i-beba/
+donjaTraka: { tekst: "Besplatne konsultacije", link: "#kontakt" }
+skripte: ["stranice/maticne-celije.js"]
+---
+{#- Omotač .mc nosi boje stranice (css/stranice/maticne-celije.css) -#}
+<div class="mc">
+{% include "sekcije/maticne-celije/hero.njk" %}
+{% include "sekcije/maticne-celije/pismo.njk" %}
+{% include "sekcije/maticne-celije/pitanja.njk" %}
+{% include "sekcije/maticne-celije/rok.njk" %}
+{% include "sekcije/maticne-celije/proces.njk" %}
+{% include "sekcije/maticne-celije/paketi.njk" %}
+{% include "sekcije/maticne-celije/primena.njk" %}
+{% include "sekcije/maticne-celije/faq.njk" %}
+{% include "sekcije/maticne-celije/kontakt.njk" %}
+</div>

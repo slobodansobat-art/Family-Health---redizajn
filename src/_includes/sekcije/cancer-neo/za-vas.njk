@@ -1,0 +1,36 @@
+{#- CANCER NEO · "Da li je za vas" (#za-vas): tri pitanja Da/Ne i rezultat
+    Sadržaj: stranice.cancerNeo.zaVas   ·   Stil: css/stranice/cancer-neo.css (ZA VAS)
+    Ponašanje: js/stranice/cancer-neo.js (bira rezultat iz zaVas.rezultati).
+    Bez JS-a se vide pitanja i početna poruka. -#}
+{%- set d = stranice.cancerNeo.zaVas -%}
+{%- set r = d.rezultati.nepotpun -%}
+<section id="za-vas" class="neo-zavas" aria-labelledby="neo-zavas-naslov">
+  <div class="kontejner neo-sekcija neo-dve-kolone">
+    <div class="neo-zaglavlje neo-zavas__levo">
+      <p class="neo-nadnaslov">{{ d.nadnaslov }}</p>
+      <h2 id="neo-zavas-naslov" class="naslov-l neo-naslov">{{ d.naslov }}</h2>
+      <p class="neo-blag">{{ d.uvod }}</p>
+    </div>
+    <div class="neo-zavas__desno" data-neo-upitnik>
+      {%- for p in d.pitanja %}
+      <div class="neo-zavas__pitanje" role="group" aria-labelledby="neo-pitanje-{{ loop.index }}">
+        <p id="neo-pitanje-{{ loop.index }}" class="neo-zavas__tekst"><span class="neo-zavas__broj">0{{ loop.index }}</span>{{ p }}</p>
+        <div class="neo-zavas__odgovori">
+          <button type="button" class="neo-zavas__dugme" data-pitanje="{{ loop.index0 }}" data-odgovor="da" aria-pressed="false">{{ d.da }}</button>
+          <button type="button" class="neo-zavas__dugme" data-pitanje="{{ loop.index0 }}" data-odgovor="ne" aria-pressed="false">{{ d.ne }}</button>
+        </div>
+      </div>
+      {%- endfor %}
+
+      {#- Rezultat (JS menja tekst i boju; aria-live čita promenu) #}
+      <div class="neo-zavas__rezultat" aria-live="polite" data-neo-rezultat>
+        <p class="neo-zavas__rezultat-oznaka" data-polje="oznaka">{{ r.oznaka }}</p>
+        <p class="neo-zavas__rezultat-naslov" data-polje="naslov">{{ r.naslov }}</p>
+        <p class="neo-zavas__rezultat-tekst" data-polje="tekst">{{ r.tekst | replace("{n}", d.pitanja | length) }}</p>
+        <a href="{{ d.dugme.link }}" class="dugme dugme--zlatno neo-zavas__rezultat-dugme" data-polje="dugme" hidden>{{ d.dugme.tekst }}</a>
+      </div>
+      <p class="neo-zavas__napomena">{{ d.napomena }}</p>
+      <script type="application/json" id="neo-rezultati">{{ d.rezultati | uJson | safe }}</script>
+    </div>
+  </div>
+</section>

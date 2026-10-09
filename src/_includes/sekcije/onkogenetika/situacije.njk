@@ -1,0 +1,52 @@
+{#- ONKOGENETIKA · izbor situacije ("Sa kojim pitanjem dolazite")
+    Sadržaj: stranice.onkogenetika.situacije   ·   Stil: css/stranice/onkogenetika.css (.onko-situacije)
+    JS: js/stranice/onkogenetika.js
+      Desktop: lista pitanja levo, opis izabrane situacije desno (izbor na klik).
+      Mobilni: harmonika, opis se otvara ispod pitanja.
+      Bez JS-a: svi opisi su vidljivi ispod pitanja.
+    Adresa #situacija-1 … #situacija-6 otvara tu situaciju. -#}
+{%- set d = stranice.onkogenetika.situacije -%}
+{%- from "makroi/osnovni.njk" import strelicaDole -%}
+<section id="situacije" class="onko-situacije" aria-labelledby="onko-situacije-naslov">
+  <div class="kontejner">
+    <div class="zaglavlje-sekcije onko-situacije__zaglavlje">
+      <p class="nadnaslov nadnaslov--velika-slova samo-mobilni">{{ d.nadnaslov }}</p>
+      <h2 id="onko-situacije-naslov" class="naslov-l onko-situacije__naslov">{{ d.naslov }}</h2>
+      <p class="blag onko-situacije__uvod">{{ d.uvod }}</p>
+    </div>
+
+    <div class="onko-situacije__mreza" data-situacije>
+      <div class="onko-situacije__levo">
+        <ul class="onko-situacije__lista">
+          {%- for s in d.stavke %}
+          {%- set n = loop.index %}
+          <li class="onko-situacije__stavka" id="situacija-{{ n }}">
+            <button type="button" class="onko-situacije__dugme" id="situacija-dugme-{{ n }}" aria-controls="situacija-panel-{{ n }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">
+              <span class="onko-situacije__pitanje">{{ s.pitanje }}</span>
+              <span class="onko-situacije__tacka" aria-hidden="true"></span>
+              <span class="onko-situacije__strelica" aria-hidden="true">{{ strelicaDole(16) }}</span>
+            </button>
+            <div class="onko-situacija" id="situacija-panel-{{ n }}" role="region" aria-labelledby="situacija-dugme-{{ n }}">
+              <span class="onko-situacija__analiza">{{ s.analiza }}</span>
+              <p class="onko-situacija__opis">{{ s.opis }}</p>
+              <dl class="onko-situacija__podaci">
+                <div><dt>{{ d.oznakaUzorak }}</dt><dd>{{ s.uzorak }}</dd></div>
+                <div><dt>{{ d.oznakaRezultat }}</dt><dd>{{ s.rezultat }}</dd></div>
+              </dl>
+              <div class="onko-situacija__dugmad">
+                {%- if s.dugme and s.dugme.link %}
+                <a href="{{ s.dugme.link }}" class="dugme dugme--belo onko-situacija__dugme">{{ s.dugme.tekst }}</a>
+                {%- endif %}
+                <a href="{{ d.pitajteLekara.link }}" class="dugme onko-situacija__dugme onko-situacija__dugme--obrub">{{ d.pitajteLekara.tekst }}</a>
+              </div>
+            </div>
+          </li>
+          {%- endfor %}
+        </ul>
+        <a href="{{ d.sveAnalize.link }}" class="onko-situacije__sve">{{ d.sveAnalize.tekst }}<span aria-hidden="true">→</span></a>
+      </div>
+      {#- Desktop: JS ovde premešta opis izabrane situacije #}
+      <div class="onko-situacije__panel" data-situacije-panel></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+{#- ČLANAK · kalkulator nedelje trudnoće i okvirnog termina porođaja
+    Prikazuje se kad je u CMS-u uključeno "Prikaži kalkulator nedelje trudnoće".
+    Računanje: js/stranice/blog.js (lokalni datum, 280 dana od poslednje menstruacije).
+    Bez JS-a se vide polje i prazni rezultati ("—").
+    Sadržaj: stranice.blog.kalkulator   ·   Stil: css/stranice/blog.css -#}
+{%- set k = stranice.blog.kalkulator -%}
+<section id="kalkulator" class="kontejner clanak-kalkulator" aria-labelledby="clanak-kalkulator-naslov" data-kalkulator-trudnoce>
+  <script type="application/json" id="blog-kalkulator-podaci">{{ k | uJson | safe }}</script>
+  <div class="clanak-kalkulator__kartica">
+    <div class="clanak-kalkulator__unos">
+      <h2 id="clanak-kalkulator-naslov" class="clanak-kalkulator__naslov">{{ k.naslov }}</h2>
+      <label for="clanak-lmp" class="clanak-kalkulator__oznaka">{{ k.oznakaPolja }}</label>
+      <input id="clanak-lmp" name="lmp" type="date" class="clanak-kalkulator__polje" data-kalkulator-datum>
+    </div>
+    <div class="clanak-kalkulator__rezultat" aria-live="polite" data-kalkulator-rezultat>
+      <div class="clanak-kalkulator__polje-rezultata">
+        <p class="clanak-kalkulator__mala">{{ k.oznakaNedelja }}</p>
+        <p class="clanak-kalkulator__nedelja" data-kalkulator-nedelja>—</p>
+      </div>
+      <div class="clanak-kalkulator__polje-rezultata">
+        <p class="clanak-kalkulator__mala">{{ k.oznakaTermin }}</p>
+        <p class="clanak-kalkulator__termin" data-kalkulator-termin>—</p>
+      </div>
+      <a href="#kalkulator" class="clanak-kalkulator__sledece" data-kalkulator-link>
+        <span>
+          <span class="clanak-kalkulator__mala clanak-kalkulator__mala--tamna">{{ k.oznakaVazno }}</span>
+          <span class="clanak-kalkulator__preporuka" data-kalkulator-preporuka>{{ k.unesiteDatum }}</span>
+        </span>
+        <span class="clanak-kalkulator__strelica" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+  <p class="clanak-kalkulator__napomena">{{ k.napomena }}</p>
+</section>

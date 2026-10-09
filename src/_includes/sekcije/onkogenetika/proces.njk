@@ -1,0 +1,12 @@
+{#- ONKOGENETIKA · kako izgleda proces (zajednički makro "koraci", tema ljubičasta)
+    Sadržaj: stranice.onkogenetika.proces   ·   Ilustracije: _includes/ilustracije/onkogenetika/
+    Stil: css/komponente/koraci.css + css/stranice/onkogenetika.css (.onko-proces) -#}
+{%- set d = stranice.onkogenetika.proces -%}
+{%- from "makroi/komponente.njk" import koraci with context -%}
+<section id="proces" class="onko-proces" aria-labelledby="onko-proces-naslov">
+  <div class="kontejner">
+    <h2 id="onko-proces-naslov" class="naslov-m onko-proces__naslov">{{ d.naslov }}</h2>
+    {{ koraci("onko-koraci", d.koraci, "ljubicasta", d.poslednjeDugme) }}
+    <p class="onko-proces__napomena">{{ d.napomena }}</p>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+{#- SYMPHONY · cena i plaćanje na rate
+    Iznos rate se računa: cena / brojRata (u tekstu zamenjuje {broj} i {iznos}).
+    Sadržaj: stranice.symphony.cena   ·   Stil: css/stranice/symphony.css -#}
+{%- set d = stranice.symphony.cena -%}
+<section class="kontejner symphony-cena-sekcija" aria-labelledby="symphony-cena">
+  <div class="symphony-cena">
+    <div class="symphony-cena__opis">
+      <h2 id="symphony-cena" class="symphony-cena__naslov">{{ d.naslov }}</h2>
+      <p class="blag">{{ d.tekst }}</p>
+    </div>
+    <div class="symphony-cena__iznos">
+      <p class="symphony-cena__broj">{{ d.cena | evra }}</p>
+      <p class="symphony-cena__rate">{{ d.rateTekst | replace("{broj}", d.brojRata) | replace("{iznos}", (d.cena / d.brojRata) | evra) }}</p>
+      <p class="mali-tekst">{{ d.rateNapomena }}</p>
+    </div>
+    <a href="{{ d.dugme.link }}" class="dugme symphony-cena__dugme">{{ d.dugme.tekst }}</a>
+  </div>
+</section>

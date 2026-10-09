@@ -1,0 +1,35 @@
+{#- SYMPHONY · kontakt: zakazivanje vađenja krvi (forma "symphony-zakazivanje")
+    Polja "Test" (samo za čitanje) i "Nedelja trudnoće" (broj 4–42) pisana su
+    ručno, jer makro polje() nema readonly/min/max; klase su iste kao u makrou.
+    Sadržaj: stranice.symphony.kontakt + podesavanja.kontakt
+    Stil: css/komponente/forme.css + css/stranice/symphony.css -#}
+{%- from "makroi/komponente.njk" import forma, polje, saglasnost, posalji with context -%}
+{%- set d = stranice.symphony.kontakt -%}
+{%- set k = podesavanja.kontakt -%}
+<section id="kontakt" class="symphony-kontakt" aria-labelledby="symphony-kontakt">
+  <svg class="symphony-kontakt__mrlja" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path d="M310 60c50 40 70 120 40 190s-120 110-190 90S40 260 50 180 120 40 190 30s70-10 120 30z"></path></svg>
+  <div class="kontejner symphony-kontakt__mreza">
+    <div class="symphony-kontakt__levo">
+      <h2 id="symphony-kontakt" class="symphony-kontakt__naslov">{{ d.naslov }}</h2>
+      <p class="symphony-kontakt__tekst">{{ d.tekst }}</p>
+      <p class="symphony-kontakt__telefoni">
+        <a href="tel:{{ k.telefonLink }}">{{ k.telefon }}</a>
+        <a href="tel:{{ k.mobilniLink }}">{{ k.mobilni }}</a>
+      </p>
+    </div>
+    {%- call forma("symphony-zakazivanje", "forma forma--bela symphony-kontakt__forma") %}
+      {{ polje("sy-ime", "ime", d.forma.ime, autocomplete="name", obavezno=true) }}
+      {{ polje("sy-tel", "telefon", d.forma.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      <div class="polje">
+        <label for="sy-test" class="polje__oznaka">{{ d.forma.test }}</label>
+        <input id="sy-test" name="test" type="text" class="unos symphony-kontakt__zakljucano" value="{{ d.forma.testVrednost }}" readonly>
+      </div>
+      <div class="polje">
+        <label for="sy-nedelja" class="polje__oznaka">{{ d.forma.nedelja }}</label>
+        <input id="sy-nedelja" name="nedelja" type="number" inputmode="numeric" min="4" max="42" class="unos">
+      </div>
+      {{ saglasnost("sy-ok") }}
+      {{ posalji(d.forma.dugme) }}
+    {%- endcall %}
+  </div>
+</section>

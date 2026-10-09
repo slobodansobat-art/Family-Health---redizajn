@@ -1,0 +1,12 @@
+{#- ČLANAK · mesto za baner između teksta i kalkulatora
+    (desktop 728 × 90, mobilni 300 × 250)
+    Sadržaj: stranice.blog.clanak.banerIspodTeksta   ·   Stil: css/stranice/blog.css -#}
+{%- set b = stranice.blog.clanak.banerIspodTeksta -%}
+<div class="kontejner clanak-baner">
+  <aside class="blog-baner blog-baner--srednji" aria-label="{{ b.oznaka }}">
+    <span class="blog-baner__oznaka">{{ b.oznaka }}</span>
+    <span class="blog-baner__naslov">{{ b.naslov }}</span>
+    <span class="blog-baner__opis samo-desktop">{{ b.opis }}</span>
+    <span class="blog-baner__opis samo-mobilni">{{ b.opisMobilni or b.opis }}</span>
+  </aside>
+</div>

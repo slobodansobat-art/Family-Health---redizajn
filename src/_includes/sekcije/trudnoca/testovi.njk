@@ -1,0 +1,110 @@
+{#- TRUDNOĆA · "Koji prenatalni test vam treba?" (sidro #testovi)
+    Desktop: tabela poređenja (klik na paket u zaglavlju tabele ga bira).
+    Ispod 960px: tabela se ne prikazuje, paketi su kartice (tablet: svih 5 u
+    jednom redu; telefon: red kartica koji se pomera bočno unutar sebe, stranica
+    ne dobija horizontalni skrol).
+    Ispod: izabrani paket sa ukupnom cenom i ratama (JS računa rate preko FH.evra).
+    Sadržaj: stranice.trudnoca.testovi   ·   Stil: css/stranice/trudnoca.css
+    JS: js/stranice/trudnoca.js -#}
+{%- set d = stranice.trudnoca.testovi -%}
+{%- set izabran = (d.podrazumevaniPaketRedniBroj or 1) - 1 -%}
+{%- set sp = d.paketi[izabran] -%}
+{%- set brojHarmony = d.paketi | selectattr("porodica", "equalto", "Harmony") | length -%}
+{%- set brojSymphony = (d.paketi | length) - brojHarmony -%}
+{%- macro punNaziv(p) -%}{{ p.naziv if p.porodica == p.naziv else p.porodica + " " + p.naziv }}{%- endmacro -%}
+{%- macro rata(tekst, p) -%}{{ tekst | replace("{broj}", d.brojRata | string) | replace("{rata}", (p.cena / d.brojRata) | evra) }}{%- endmacro -%}
+<section id="testovi" class="trudnoca-testovi" aria-labelledby="trudnoca-testovi-naslov" data-testovi>
+  <div class="kontejner">
+    {#- Poruka iz alata za nedelju (popunjava JS) #}
+    <div class="trudnoca-poruka-mesto" aria-live="polite" data-poruka="testovi"></div>
+
+    <div class="trudnoca-testovi__vrh">
+      <div class="trudnoca-testovi__uvod">
+        <h2 id="trudnoca-testovi-naslov" class="trudnoca-testovi__naslov">{{ d.naslov }}</h2>
+        <div class="trudnoca-testovi__tekst samo-desktop">{{ d.tekstMd | md | safe }}</div>
+        <p class="trudnoca-testovi__tekst samo-mobilni">{{ d.tekstMobilni }}</p>
+        <p class="trudnoca-testovi__napomena samo-mobilni">{{ d.napomenaMobilniMd | mdRed | safe }}</p>
+      </div>
+      <p class="trudnoca-testovi__harmony samo-desktop">{{ d.harmonyMd | mdRed | safe }}</p>
+    </div>
+
+    {#- Desktop: tabela poređenja #}
+    <div class="trudnoca-tabela-skrol samo-desktop">
+      <table class="trudnoca-tabela">
+        <thead>
+          <tr>
+            <td class="trudnoca-tabela__prazno"></td>
+            <th colspan="{{ brojHarmony }}" scope="colgroup" class="trudnoca-tabela__grupa trudnoca-tabela__grupa--harmony"><span><span class="trudnoca-tabela__tacka" aria-hidden="true"></span>{{ d.grupaHarmony }}</span></th>
+            {%- if brojSymphony %}
+            <th colspan="{{ brojSymphony }}" scope="colgroup" class="trudnoca-tabela__grupa trudnoca-tabela__grupa--symphony"><span><span class="trudnoca-tabela__tacka" aria-hidden="true"></span>{{ d.grupaSymphony }}</span></th>
+            {%- endif %}
+          </tr>
+          <tr>
+            <th scope="col" class="trudnoca-tabela__kolona-oznaka">{{ d.kolonaOznaka }}</th>
+            {%- for p in d.paketi %}
+            <th scope="col" class="trudnoca-tabela__paket trudnoca-tabela__celija--{{ p.porodica | lower }}{% if loop.index0 == izabran %} je-izabrana{% endif %}" data-kolona="{{ loop.index0 }}">
+              <button type="button" class="trudnoca-tabela__dugme" data-paket="{{ loop.index0 }}" aria-pressed="{{ 'true' if loop.index0 == izabran else 'false' }}">
+                <span class="trudnoca-tabela__naziv">{{ p.naziv }}</span>
+                <span class="trudnoca-tabela__cena">{{ p.cena | evra }}</span>
+                <span class="trudnoca-tabela__rata">{{ rata(d.rataKratko, p) }}</span>
+              </button>
+            </th>
+            {%- endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {%- for r in d.redovi %}
+          <tr>
+            <th scope="row">{{ r.oznaka }}</th>
+            {%- for p in d.paketi %}
+            {%- set v = r.vrednosti[loop.index0] %}
+            <td class="trudnoca-tabela__celija--{{ p.porodica | lower }}{% if loop.index0 == izabran %} je-izabrana{% endif %}" data-kolona="{{ loop.index0 }}">
+              {%- if v == "da" %}<svg class="trudnoca-tabela__da" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Da"><path d="M5 12l5 5 9-10"></path></svg>
+              {%- elif v == "ne" or not v %}<span class="trudnoca-tabela__ne" aria-hidden="true">—</span><span class="sr-only">Ne</span>
+              {%- else %}{{ v }}{% endif -%}
+            </td>
+            {%- endfor %}
+          </tr>
+          {%- endfor %}
+          <tr>
+            <th scope="row">{{ d.rezultatOznaka }}</th>
+            {%- for p in d.paketi %}
+            <td class="trudnoca-tabela__celija--{{ p.porodica | lower }}{% if loop.index0 == izabran %} je-izabrana{% endif %}" data-kolona="{{ loop.index0 }}">{{ p.rezultat }}</td>
+            {%- endfor %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {#- Ispod 960px: paketi kao kartice (umesto tabele) #}
+  <div class="trudnoca-paketi samo-mobilni" role="group" aria-label="{{ d.paketiOznaka }}">
+    {%- for p in d.paketi %}
+    <button type="button" class="trudnoca-paket trudnoca-paket--{{ p.porodica | lower }}" data-paket="{{ loop.index0 }}" aria-pressed="{{ 'true' if loop.index0 == izabran else 'false' }}">
+      <span class="trudnoca-paket__porodica">{{ p.porodica }}</span>
+      <span class="trudnoca-paket__naziv">{{ p.naziv }}</span>
+      <span class="trudnoca-paket__cena">{{ p.cena | evra }}</span>
+    </button>
+    {%- endfor %}
+  </div>
+
+  {#- Izabrani paket: ukupna cena i rate jednako vidljive #}
+  <div class="kontejner">
+    <div class="trudnoca-izbor trudnoca-izbor--{{ sp.porodica | lower }}" aria-live="polite" data-izbor>
+      <div class="trudnoca-izbor__opis">
+        <p class="trudnoca-izbor__oznaka samo-desktop">{{ d.izabranoOznaka }}</p>
+        <p class="trudnoca-izbor__naziv" data-izbor-naziv>{{ punNaziv(sp) }}</p>
+        <p class="trudnoca-izbor__tekst" data-izbor-opis>{{ sp.opis }}</p>
+      </div>
+      <div class="trudnoca-izbor__cene">
+        <p class="trudnoca-izbor__cena" data-izbor-cena>{{ sp.cena | evra }}</p>
+        <p class="trudnoca-izbor__rata" data-izbor-rata>{{ rata(d.rataTekst, sp) }}</p>
+        <p class="trudnoca-izbor__banka">{{ d.banka }}<span class="samo-mobilni"> · <span data-izbor-rezultat>{{ d.rezultatTekst | replace("{rezultat}", sp.rezultat) }}</span></span></p>
+      </div>
+      <div class="trudnoca-izbor__dugmad">
+        <a href="#kontakt" class="dugme trudnoca-izbor__zakazi samo-desktop" data-izbor-zakazi>{{ d.dugmeZakazite | replace("{paket}", punNaziv(sp)) }}</a>
+        <a href="{{ sp.link }}" class="dugme trudnoca-izbor__vise" data-izbor-link>{{ d.dugmeVise | replace("{porodica}", sp.porodica) }}</a>
+      </div>
+    </div>
+  </div>
+</section>

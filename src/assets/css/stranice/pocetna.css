@@ -1,0 +1,383 @@
+/* ==========================================================================
+   STRANICA: POČETNA  (/)  ·  sekcije: src/_includes/sekcije/pocetna/
+   Desktop je osnovni stil; mobilni (ispod 960px) je na kraju fajla.
+   ========================================================================== */
+
+/* Boje koje postoje samo na ovoj stranici */
+.pocetna {
+  --pocetna-partner: #5E5870;          /* nazivi partnera */
+  --pocetna-svetli-tekst: #EBDDF5;     /* tekst na ljubičastoj (kontakt) */
+  --pocetna-cip-ivica: #5A3A77;        /* čipovi na tamnoj kartici (mobilni) */
+  --pocetna-cip-zlatni: #F3E6C8;       /* čip "Personalizovana vakcina" */
+}
+
+/* --------------------------------------------------------------------------
+   HERO (podeljen na dva dela: Onkogenetika levo, Trudnoća i beba desno)
+   Stanja dela bira JS (js/stranice/pocetna.js), samo na desktopu:
+     bez klase      osnovno stanje (57% / 43%)
+     .je-prosiren   deo je proširen na 80% i pokazuje dodatni sadržaj
+     .je-sklopljen  deo je sužen na 20% i pokazuje samo kratak naziv
+   Veličine unutar dela su u "cqi" (procenat širine hero-a), da bi raspored
+   radio i na manjim laptopovima (960–1100px).
+   -------------------------------------------------------------------------- */
+.pocetna-hero { padding-top: 8px; }
+.pocetna-hero__naslov-strane {
+  margin: 18px 0 26px; max-width: 720px;
+  font-family: var(--font-naslov); font-size: 22px; line-height: 1.35; color: var(--tekst-blag);
+}
+
+.pocetna-hero__podela {
+  container-type: inline-size;
+  --onko-baza: min(500px, 42cqi);       /* širina osnovnog teksta, onko */
+  --trudnoca-baza: min(420px, 35.2cqi); /* širina osnovnog teksta, trudnoća */
+  display: flex; height: 620px; border-radius: var(--zaobljenje); overflow: hidden;
+}
+.pocetna-hero__deo {
+  position: relative; min-width: 0; overflow: hidden;
+  transition: flex-basis .75s var(--prelaz);
+}
+.pocetna-hero__deo--onko { flex: 0 0 57%; background: var(--ljubicasta-800); color: var(--bela); }
+.pocetna-hero__deo--trudnoca { flex: 0 0 43%; background: var(--ljubicasta-50); color: var(--tekst); }
+.pocetna-hero__deo.je-prosiren { flex-basis: 80%; }
+.pocetna-hero__deo.je-sklopljen { flex-basis: 20%; cursor: pointer; }
+
+/* Tri sloja svakog dela: osnovno, dodatno, sklopljeno */
+.pocetna-hero__osnovno, .pocetna-hero__dodatno, .pocetna-hero__sklopljeno {
+  position: absolute;
+  transition: opacity .45s ease, transform .7s var(--prelaz);
+}
+.pocetna-hero__osnovno { display: flex; flex-direction: column; }
+.pocetna-hero__deo.je-sklopljen .pocetna-hero__osnovno { opacity: 0; pointer-events: none; }
+
+/* Dodatni sadržaj: skriven dok deo nije proširen. "visibility" sprečava da
+   nevidljiv link dobije fokus; JS proširuje deo čim fokus uđe u njega. */
+.pocetna-hero__dodatno {
+  opacity: 0; transform: translateX(40px); visibility: hidden; pointer-events: none;
+  transition: opacity .45s ease, transform .7s var(--prelaz), visibility 0s linear .45s;
+}
+.pocetna-hero__deo.je-prosiren .pocetna-hero__dodatno {
+  opacity: 1; transform: none; visibility: visible; pointer-events: auto; transition-delay: 0s;
+}
+
+/* Sklopljeno: samo kratak naziv pri dnu uskog dela */
+.pocetna-hero__sklopljeno {
+  inset: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px;
+  padding: 36px 30px; opacity: 0; pointer-events: none;
+}
+.pocetna-hero__deo.je-sklopljen .pocetna-hero__sklopljeno { opacity: 1; }
+.pocetna-hero__sklopljeno-nadnaslov { font-size: 14px; }
+.pocetna-hero__sklopljeno-naslov { font-family: var(--font-naslov); font-size: clamp(22px, 2.3cqi, 28px); line-height: 1.1; }
+
+/* Zajedničko za oba dela */
+.pocetna-hero__nadnaslov { font-size: 15px; }
+.pocetna-hero__naslov { font-family: var(--font-naslov); font-weight: 400; }
+.pocetna-hero__akcije { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: auto; }
+.pocetna-hero__akcije .dugme { padding: 15px 24px; }
+
+/* --- Onko deo -------------------------------------------------------------- */
+.pocetna-hero__mreza {
+  position: absolute; right: -130px; top: 30px; width: 560px; height: 560px;
+  transition: transform 1s var(--prelaz);
+}
+.pocetna-hero__deo--onko.je-prosiren .pocetna-hero__mreza { transform: scale(1.18) translateX(-60px); }
+
+.pocetna-hero__deo--onko .pocetna-hero__osnovno { left: 52px; top: 52px; bottom: 44px; width: var(--onko-baza); gap: 22px; }
+.pocetna-hero__deo--onko .pocetna-hero__nadnaslov { color: var(--ljubicasta-400); }
+.pocetna-hero__deo--onko .pocetna-hero__naslov { font-size: clamp(40px, 4.53cqi, 54px); line-height: 1.04; letter-spacing: -.6px; max-width: 470px; }
+.pocetna-hero__tekst { color: var(--ljubicasta-250); font-size: 17px; max-width: 420px; }
+.pocetna-hero__telefon { color: var(--bela); font-size: 15px; }
+.pocetna-hero__telefon:hover { color: var(--ljubicasta-250); }
+
+.pocetna-hero__deo--onko .pocetna-hero__dodatno {
+  left: calc(52px + var(--onko-baza) + 48px); top: 64px;
+  width: min(330px, calc(80cqi - 52px - var(--onko-baza) - 48px - 24px));
+  display: flex; flex-direction: column; gap: 6px;
+}
+.pocetna-hero__deo--onko .pocetna-hero__dodatno-naslov { margin-bottom: 8px; font-size: 15px; color: var(--ljubicasta-400); }
+.pocetna-hero__pitanja { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.pocetna-hero__pitanja a {
+  display: block; padding: 12px 0; border-bottom: 1px solid var(--ljubicasta-700);
+  color: var(--bela); text-decoration: none; font-family: var(--font-naslov); font-size: 20px; line-height: 1.3;
+}
+.pocetna-hero__pitanja a:hover { color: var(--ljubicasta-250); }
+.pocetna-hero__premium { color: var(--zlatna-500); margin-left: 6px; }
+.pocetna-hero__za-lekare { margin-top: 18px; color: var(--ljubicasta-400); font-size: 15px; }
+.pocetna-hero__za-lekare:hover { color: var(--bela); }
+.pocetna-hero__deo--onko .pocetna-hero__sklopljeno-nadnaslov { color: var(--ljubicasta-400); }
+
+/* --- Deo trudnoća i beba ---------------------------------------------------- */
+/* Ćelije koje lagano plutaju naviše (boja, veličina i brzina su u HTML-u) */
+.pocetna-hero__mehurici { position: absolute; inset: 0; overflow: hidden; }
+.pocetna-hero__mehurici span {
+  position: absolute; bottom: -40px; left: var(--levo);
+  width: var(--velicina); height: var(--velicina); border-radius: 50%; background: var(--boja);
+  animation: pocetna-mehur var(--trajanje) linear var(--kasnjenje) infinite;
+}
+@keyframes pocetna-mehur {
+  0% { transform: translateY(0) scale(.85); opacity: 0; }
+  15% { opacity: .9; }
+  100% { transform: translateY(-420px) scale(1.1); opacity: 0; }
+}
+
+.pocetna-hero__deo--trudnoca .pocetna-hero__osnovno { left: 44px; top: 44px; bottom: 40px; width: var(--trudnoca-baza); gap: 18px; }
+.pocetna-hero__deo--trudnoca .pocetna-hero__nadnaslov { color: var(--ljubicasta-600); }
+.pocetna-hero__deo--trudnoca .pocetna-hero__naslov {
+  font-style: italic; font-size: clamp(34px, 3.7cqi, 44px); line-height: 1.08; max-width: 360px; color: var(--ljubicasta-650);
+}
+.pocetna-hero__deo--trudnoca .pocetna-hero__akcije { gap: 12px 20px; }
+.pocetna-hero__napomena { font-size: 14px; color: var(--tekst-blag); }
+
+/* Fotografija porodice u obliku "ćelije" koja lagano menja oblik */
+.pocetna-hero__porodica {
+  align-self: flex-end; flex-shrink: 1; width: min(230px, 19.3cqi); height: 215px; min-height: 0;
+  border-radius: 58% 42% 52% 48% / 46% 56% 44% 54%;
+  animation: pocetna-celija 14s ease-in-out infinite;
+}
+.pocetna-hero__porodica.slika--prazna { background: var(--ljubicasta-300); color: var(--ljubicasta-650); font-size: 13px; padding: 30px; }
+@keyframes pocetna-celija {
+  0%, 100% { border-radius: 58% 42% 52% 48% / 46% 56% 44% 54%; }
+  33% { border-radius: 44% 56% 40% 60% / 58% 42% 58% 42%; }
+  66% { border-radius: 52% 48% 62% 38% / 40% 60% 46% 54%; }
+}
+
+/* Vremenska linija (u proširenom delu); putanja se iscrtava pri širenju */
+.pocetna-hero__deo--trudnoca .pocetna-hero__dodatno {
+  left: calc(44px + var(--trudnoca-baza) + 46px); top: 60px;
+  width: min(400px, calc(80cqi - 44px - var(--trudnoca-baza) - 46px - 24px));
+}
+.pocetna-hero__deo--trudnoca .pocetna-hero__dodatno-naslov {
+  margin-bottom: 18px; font-family: var(--font-naslov); font-style: italic; font-size: 26px; color: var(--ljubicasta-650);
+}
+.pocetna-hero__linija { position: relative; padding-left: 38px; }
+.pocetna-hero__putanja { position: absolute; left: 0; top: 4px; }
+.pocetna-hero__putanja path {
+  fill: none; stroke: var(--ljubicasta-400); stroke-width: 3; stroke-linecap: round;
+  stroke-dasharray: 420; stroke-dashoffset: 420; transition: stroke-dashoffset 1.3s ease .25s;
+}
+.pocetna-hero__deo--trudnoca.je-prosiren .pocetna-hero__putanja path { stroke-dashoffset: 0; }
+.pocetna-hero__linija ol { list-style: none; display: flex; flex-direction: column; gap: 26px; }
+.pocetna-hero__linija li { position: relative; }
+.pocetna-hero__linija a { display: block; color: var(--tekst); text-decoration: none; }
+.pocetna-hero__linija a:hover strong { text-decoration: underline; }
+.pocetna-hero__linija strong { font-weight: 600; }
+.pocetna-hero__period { display: block; font-family: var(--font-naslov); font-style: italic; font-size: 18px; color: var(--ljubicasta-600); }
+.pocetna-hero__tacka { position: absolute; left: -36px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--ljubicasta-600); }
+.pocetna-hero__tacka--prazna { left: -35px; top: 5px; width: 14px; height: 14px; background: var(--ljubicasta-50); border: 3px solid var(--ljubicasta-500); }
+.pocetna-hero__deo--trudnoca .pocetna-hero__sklopljeno-nadnaslov { color: var(--ljubicasta-600); }
+.pocetna-hero__deo--trudnoca .pocetna-hero__sklopljeno-naslov { font-style: italic; color: var(--ljubicasta-650); }
+
+/* --------------------------------------------------------------------------
+   PARTNERI (traka koja klizi; staje na prelaz mišem ili dugmetom)
+   -------------------------------------------------------------------------- */
+.pocetna-partneri__vrh {
+  margin-top: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
+  gap: 6px 24px; color: var(--tekst-blag); font-size: 14px;
+}
+.pocetna-partneri__naslov-red { display: inline-flex; align-items: center; gap: 12px; }
+.pocetna-partneri__pauza {
+  padding: 4px 12px; border: 1px solid var(--ivica-polja); border-radius: 999px;
+  background: var(--bela); color: var(--tekst-blag); font-size: 13px;
+}
+.pocetna-partneri__pauza:hover { border-color: var(--ljubicasta-600); color: var(--ljubicasta-600); }
+.pocetna-partneri__okvir {
+  margin-top: 12px; overflow: hidden;
+  border-top: 1px solid var(--linija-svetla); border-bottom: 1px solid var(--linija-svetla);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.pocetna-partneri__traka { display: flex; width: max-content; animation: pocetna-klizanje 45s linear infinite; }
+.pocetna-partneri__okvir:hover .pocetna-partneri__traka,
+.pocetna-partneri__traka.je-zaustavljena { animation-play-state: paused; }
+@keyframes pocetna-klizanje { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.pocetna-partneri__grupa { display: flex; list-style: none; }
+.pocetna-partneri__stavka {
+  flex-shrink: 0; height: 84px; padding: 0 44px; display: flex; align-items: center; justify-content: center;
+  filter: grayscale(1); opacity: .75; transition: filter .3s ease, opacity .3s ease;
+}
+.pocetna-partneri__stavka:hover { filter: none; opacity: 1; }
+.pocetna-partneri__naziv { font-size: 22px; font-weight: 600; letter-spacing: -.2px; white-space: nowrap; color: var(--pocetna-partner); }
+.pocetna-partneri__logo { max-height: 44px; width: auto; }
+
+/* Smanjeni pokreti: traka stoji, partneri u redovima, bez kopija */
+@media (prefers-reduced-motion: reduce) {
+  .pocetna-partneri__traka { animation: none; width: auto; justify-content: center; }
+  .pocetna-partneri__grupa { flex-wrap: wrap; justify-content: center; }
+  .pocetna-partneri__grupa--kopija, .pocetna-partneri__pauza { display: none; }
+  .pocetna-partneri__okvir { -webkit-mask-image: none; mask-image: none; }
+  .pocetna-hero__mehurici { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   LEKAR
+   -------------------------------------------------------------------------- */
+.pocetna-lekar__mreza { display: flex; flex-wrap: wrap; gap: 48px 80px; align-items: center; padding-block: 110px 90px; }
+.pocetna-lekar__foto-okvir { flex: 0 1 380px; min-width: 280px; position: relative; }
+.pocetna-lekar__krug { position: absolute; left: -30px; top: 30px; width: 300px; height: 300px; border-radius: 50%; background: var(--ljubicasta-50); }
+.pocetna-lekar__foto { position: relative; width: 340px; max-width: 100%; }
+.pocetna-lekar__foto.slika--prazna { background: var(--ljubicasta-200); color: var(--ljubicasta-650); padding: 50px; }
+/* Uži laptop: krug iza fotografije ne sme da izađe van ekrana */
+@media (max-width: 1299px) { .pocetna-lekar__krug { left: -20px; } }
+.pocetna-lekar__citat { flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.pocetna-lekar__nadnaslov { color: var(--ljubicasta-600); font-size: 15px; }
+.pocetna-lekar__citat blockquote {
+  font-family: var(--font-naslov); font-style: italic; font-size: 36px; line-height: 1.25; color: var(--ljubicasta-800);
+}
+.pocetna-lekar__citat figcaption { color: var(--tekst-blag); }
+.pocetna-lekar__mediji { margin-top: 8px; color: var(--tekst-blag); font-size: 15px; }
+
+/* --------------------------------------------------------------------------
+   SA BLOGA
+   -------------------------------------------------------------------------- */
+.pocetna-blog { padding-bottom: 100px; }
+.pocetna-blog__vrh { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 18px; }
+.pocetna-blog__naslov { font-family: var(--font-naslov); font-size: 30px; color: var(--ljubicasta-800); }
+.pocetna-blog__svi { font-size: 15px; }
+.pocetna-blog__lista { list-style: none; border-bottom: 1px solid var(--linija); }
+.pocetna-blog__lista li { border-top: 1px solid var(--linija); }
+.pocetna-blog__lista a {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px;
+  padding: 18px 0; color: var(--tekst); text-decoration: none;
+}
+.pocetna-blog__lista a:hover .pocetna-blog__clanak { color: var(--ljubicasta-600); }
+.pocetna-blog__clanak { font-family: var(--font-naslov); font-size: 22px; line-height: 1.3; transition: color .2s ease; }
+.pocetna-blog__meta { color: var(--tekst-blag); font-size: 14px; }
+
+/* --------------------------------------------------------------------------
+   KONTAKT
+   -------------------------------------------------------------------------- */
+.pocetna-kontakt { position: relative; overflow: hidden; background: var(--ljubicasta-600); color: var(--bela); }
+.pocetna-kontakt__oblik { position: absolute; right: -120px; bottom: -160px; width: 520px; height: 520px; fill: var(--ljubicasta-550); }
+.pocetna-kontakt__mreza { position: relative; display: flex; flex-wrap: wrap; gap: 40px 72px; padding-block: 88px; }
+.pocetna-kontakt__levo { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.pocetna-kontakt__naslov { font-family: var(--font-naslov); font-size: 46px; line-height: 1.08; }
+.pocetna-kontakt__tekst { color: var(--pocetna-svetli-tekst); max-width: 380px; }
+.pocetna-kontakt__podaci { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin-top: 10px; }
+.pocetna-kontakt__telefon { color: var(--bela); font-size: 22px; text-decoration: none; }
+.pocetna-kontakt__telefon:hover { color: var(--bela); text-decoration: underline; }
+.pocetna-kontakt__email, .pocetna-kontakt__email:hover { color: var(--pocetna-svetli-tekst); }
+.pocetna-kontakt__adresa { margin-top: 10px; color: var(--pocetna-svetli-tekst); font-size: 15px; }
+.pocetna-kontakt__forma { flex: 1 1 520px; min-width: 0; }
+
+/* ==========================================================================
+   MOBILNI (ispod 960px): raspored iz Mobile.dc.html
+   ========================================================================== */
+@media (max-width: 959px) {
+  /* Redosled sekcija: hero, vremenska linija, lekar, partneri, blog, kontakt */
+  .pocetna { display: flex; flex-direction: column; }
+  .pocetna-partneri { order: 1; }
+  .pocetna-blog { order: 2; }
+  .pocetna-kontakt { display: none; }   /* skica za telefon nema formu; donja traka vodi na /kontakt/#forma */
+
+  /* Naslov strane ostaje za čitače ekrana i Google, ali se ne vidi */
+  .pocetna-hero { padding-top: 6px; }
+
+  /* Prekidač oblasti (Onkogenetika / Trudnoća i beba) ispod zaglavlja */
+  .pocetna-hero__oblasti { display: flex; margin-bottom: 18px; padding: 4px; background: var(--ljubicasta-50); border-radius: 999px; }
+  .pocetna-hero__oblasti a {
+    flex: 1; padding: 10px 0; border-radius: 999px; text-align: center;
+    color: var(--ljubicasta-800); font-size: 14px; font-weight: 500; text-decoration: none;
+  }
+  .pocetna-hero__oblasti a:hover { color: var(--ljubicasta-800); background: var(--ljubicasta-150); }
+  .pocetna-hero__naslov-strane {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  /* Dva dela postaju dve kartice, jedna ispod druge (bez širenja) */
+  .pocetna-hero__podela { flex-direction: column; gap: 14px; height: auto; border-radius: 0; overflow: visible; container-type: normal; }
+  .pocetna-hero__deo--onko, .pocetna-hero__deo--trudnoca { flex: none; border-radius: 26px; padding: 28px 22px; }
+  .pocetna-hero__deo--onko .pocetna-hero__osnovno,
+  .pocetna-hero__deo--trudnoca .pocetna-hero__osnovno { position: relative; inset: auto; width: auto; gap: 14px; }
+  .pocetna-hero__nadnaslov { font-size: 14px; }
+  .pocetna-hero__akcije { margin-top: 6px; }
+  .pocetna-hero__akcije .dugme { flex: 1 1 100%; padding: 14px; }
+
+  /* Onko kartica */
+  .pocetna-hero__mreza { right: -160px; top: -70px; width: 340px; height: 340px; opacity: .6; }
+  .pocetna-hero__deo--onko .pocetna-hero__naslov { font-size: 34px; line-height: 1.06; letter-spacing: 0; max-width: none; }
+  .pocetna-hero__tekst { font-size: 15px; }
+  .pocetna-hero__cipovi { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+  .pocetna-hero__cip {
+    display: inline-block; padding: 8px 12px; border: 1px solid var(--pocetna-cip-ivica); border-radius: 999px;
+    color: var(--bela); text-decoration: none; font-size: 14px;
+  }
+  .pocetna-hero__cip:hover { color: var(--bela); background: var(--ljubicasta-750); }
+  .pocetna-hero__cip--premium, .pocetna-hero__cip--premium:hover { border-color: var(--zlatna-500); color: var(--pocetna-cip-zlatni); }
+
+  /* Kartica trudnoća */
+  .pocetna-hero__oblik { position: absolute; right: -110px; top: -90px; width: 300px; height: 300px; fill: var(--ljubicasta-150); }
+  .pocetna-hero__deo--trudnoca .pocetna-hero__naslov { font-size: 34px; max-width: none; }
+  .pocetna-hero__porodica { align-self: center; width: 230px; height: 200px; flex-shrink: 0; }
+  .pocetna-hero__porodica.slika--prazna { padding: 28px; }
+  .pocetna-hero__lista { list-style: none; }
+  .pocetna-hero__lista a {
+    display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--ljubicasta-200);
+    color: var(--tekst); text-decoration: none; font-size: 15px;
+  }
+  .pocetna-hero__lista a span { color: var(--ljubicasta-600); }
+
+  /* Vremenska linija (samo mobilni) */
+  .pocetna-linija { margin-top: 34px; }
+  .pocetna-linija__naslov { margin-bottom: 6px; font-family: var(--font-naslov); font-style: italic; font-size: 30px; line-height: 1.1; color: var(--ljubicasta-650); }
+  .pocetna-linija__lista {
+    list-style: none; margin-top: 18px; padding-left: 26px; border-left: 3px solid var(--ljubicasta-400);
+    display: flex; flex-direction: column; gap: 22px;
+  }
+  .pocetna-linija__lista li { position: relative; }
+  .pocetna-linija__lista strong { font-weight: 600; }
+  .pocetna-linija__tacka { position: absolute; left: -37px; top: 4px; width: 18px; height: 18px; border-radius: 50%; background: var(--ljubicasta-600); box-shadow: 0 0 0 5px var(--bela); }
+  .pocetna-linija__tacka--prazna { left: -35px; top: 6px; width: 14px; height: 14px; background: var(--bela); border: 3px solid var(--ljubicasta-500); box-shadow: none; }
+  .pocetna-linija__period { display: block; font-family: var(--font-naslov); font-style: italic; font-size: 19px; color: var(--ljubicasta-650); }
+  .pocetna-linija__tekst { display: block; font-size: 14px; color: var(--tekst-blag); }
+
+  /* Lekar */
+  .pocetna-lekar__mreza { flex-direction: column; align-items: flex-start; gap: 14px; padding-block: 40px 0; }
+  .pocetna-lekar__foto-okvir { flex: none; min-width: 0; }
+  .pocetna-lekar__krug { display: none; }
+  .pocetna-lekar__foto { width: 120px; }
+  .pocetna-lekar__foto.slika--prazna { min-height: 0; padding: 16px; font-size: 12px; }
+  .pocetna-lekar__citat { flex: none; gap: 14px; }
+  .pocetna-lekar__nadnaslov { font-size: 14px; }
+  .pocetna-lekar__citat blockquote { font-size: 24px; line-height: 1.3; }
+  .pocetna-lekar__citat figcaption { font-size: 14px; }
+  .pocetna-lekar__mediji { margin-top: 0; font-size: 14px; }
+
+  /* Partneri: niz čipova koji se pomera prstom */
+  .pocetna-partneri { margin-top: 34px; }
+  .pocetna-partneri > .kontejner { padding-inline: 0; }
+  .pocetna-partneri__vrh { margin: 0 var(--margina) 10px; font-size: 13px; }
+  .pocetna-partneri__pauza { display: none; }
+  .pocetna-partneri__okvir {
+    margin-top: 0; border: 0; overflow-x: auto; scrollbar-width: none;
+    -webkit-mask-image: none; mask-image: none;
+  }
+  .pocetna-partneri__okvir::-webkit-scrollbar { display: none; }
+  .pocetna-partneri__traka { animation: none; padding-inline: var(--margina); }
+  .pocetna-partneri__grupa { gap: 8px; }
+  .pocetna-partneri__grupa--kopija { display: none; }
+  .pocetna-partneri__stavka {
+    height: auto; padding: 10px 16px; border: 1px solid var(--linija); border-radius: 999px;
+    filter: none; opacity: 1;
+  }
+  .pocetna-partneri__naziv { font-size: 16px; letter-spacing: 0; }
+  .pocetna-partneri__logo { max-height: 24px; }
+
+  /* Blog */
+  .pocetna-blog { margin-top: 34px; padding-bottom: 40px; }
+  .pocetna-blog__vrh { flex-wrap: nowrap; margin-bottom: 10px; }
+  .pocetna-blog__naslov { font-size: 26px; }
+  .pocetna-blog__svi { font-size: 14px; white-space: nowrap; }
+  .pocetna-blog__lista a { display: block; padding: 14px 0; }
+  .pocetna-blog__clanak { display: block; font-size: 20px; line-height: 1.2; }
+  .pocetna-blog__meta { font-size: 13px; }
+}
+
+/* Tablet (640–959px): dve kartice hero-a jedna pored druge, dugmad u istoj visini */
+@media (min-width: 640px) and (max-width: 959px) {
+  .pocetna-hero__podela { flex-direction: row; align-items: stretch; }
+  .pocetna-hero__deo--onko, .pocetna-hero__deo--trudnoca { flex: 1 1 0; display: flex; flex-direction: column; }
+  .pocetna-hero__deo--onko .pocetna-hero__osnovno,
+  .pocetna-hero__deo--trudnoca .pocetna-hero__osnovno { flex: 1; }
+  .pocetna-hero__akcije { margin-top: auto; padding-top: 6px; }
+  .pocetna-hero__mreza { top: auto; bottom: 70px; right: -110px; }   /* mreža popunjava prazan deo onko kartice */
+}

@@ -11,7 +11,7 @@
       skripte      dodatni JS fajlovi iz src/assets/js
       seo          { naslov, opis } (ako sadržaj stranice nema svoj "seo")
     ========================================================================== -#}
-{%- set sadrzajStranice = stranice[kljuc] if kljuc else {} -%}
+{%- set sadrzajStranice = stranice[kljuc | camel] if kljuc else {} -%}
 {%- set seoPodaci = seo or sadrzajStranice.seo or {} -%}
 {%- set naslovStranice = seoPodaci.naslov or title or podesavanja.sajt.naziv -%}
 {%- set opisStranice = seoPodaci.opis or "" -%}

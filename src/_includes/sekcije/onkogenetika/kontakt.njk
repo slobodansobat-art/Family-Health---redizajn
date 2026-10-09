@@ -1,0 +1,23 @@
+{#- ONKOGENETIKA · kontakt: slanje nalaza na besplatnu procenu (forma sa prilogom)
+    Sadržaj: stranice.onkogenetika.kontakt   ·   Forma: Netlify "onkogenetika-nalaz"
+    Stil: css/komponente/forme.css + css/stranice/onkogenetika.css (.onko-kontakt) -#}
+{%- set d = stranice.onkogenetika.kontakt -%}
+{%- set f = d.forma -%}
+{%- from "makroi/komponente.njk" import forma, polje, izbor, fajlPolje, saglasnost, posalji with context -%}
+<section id="kontakt" class="onko-kontakt" aria-labelledby="onko-kontakt-naslov">
+  <div class="kontejner onko-kontakt__mreza">
+    <div class="onko-kontakt__levo">
+      <h2 id="onko-kontakt-naslov" class="naslov-l onko-kontakt__naslov">{{ d.naslov }}</h2>
+      <p class="onko-kontakt__tekst">{{ d.tekst }}</p>
+      <p class="onko-kontakt__privatnost">{{ d.privatnost }}</p>
+    </div>
+    {% call forma("onkogenetika-nalaz", "forma forma--bela onko-kontakt__forma", true) %}
+      {{ polje("onko-ime", "ime", f.ime, autocomplete="name", obavezno=true) }}
+      {{ polje("onko-tel", "telefon", f.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ izbor("onko-uloga", "uloga", f.uloga, f.ulogaOpcije) }}
+      {{ fajlPolje("onko-nalaz", "nalaz", f.nalaz, "") }}
+      {{ saglasnost("onko-ok") }}
+      {{ posalji(f.posalji) }}
+    {% endcall %}
+  </div>
+</section>

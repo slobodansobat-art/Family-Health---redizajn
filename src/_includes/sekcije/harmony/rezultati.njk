@@ -1,0 +1,27 @@
+{#- HARMONY · "Šta znači rezultat": tri moguća ishoda kao tabovi
+    Sadržaj: stranice.harmony.rezultati   ·   Stil: css/stranice/harmony.css (.harmony-rezultati)
+    Tabovi: zajednički JS u glavni.js ([data-tabovi]). Bez JS-a vidljiva su sva tri panela. -#}
+{%- set d = stranice.harmony.rezultati -%}
+<section class="harmony-rezultati" aria-labelledby="harmony-rezultati-naslov">
+  <div class="kontejner harmony-rezultati__mreza">
+    <div class="harmony-rezultati__levo">
+      <h2 id="harmony-rezultati-naslov" class="naslov-m harmony-naslov">{{ d.naslov }}</h2>
+      <p class="harmony-rezultati__uvod">{{ d.uvod }}</p>
+    </div>
+
+    <div class="harmony-rezultati__desno" data-tabovi>
+      <div role="tablist" aria-label="{{ d.tabOznaka }}" class="harmony-rezultati__tabovi">
+        {%- for r in d.stavke %}
+        <button type="button" role="tab" class="harmony-rezultati__tab" id="harmony-rezultat-tab-{{ loop.index }}" aria-controls="harmony-rezultat-{{ loop.index }}" aria-selected="{{ 'true' if loop.first else 'false' }}">{{ r.oznaka }}</button>
+        {%- endfor %}
+      </div>
+      {%- for r in d.stavke %}
+      <div role="tabpanel" class="harmony-rezultati__panel" id="harmony-rezultat-{{ loop.index }}" aria-labelledby="harmony-rezultat-tab-{{ loop.index }}" tabindex="0">
+        <h3 class="harmony-rezultati__naslov">{{ r.naslov }}</h3>
+        <p class="harmony-rezultati__tekst">{{ r.tekst }}</p>
+        <p class="harmony-rezultati__sledece"><strong class="samo-mobilni">{{ d.sledeciOznaka }}</strong> {{ r.sledece }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

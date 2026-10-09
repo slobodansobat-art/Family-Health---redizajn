@@ -1,0 +1,215 @@
+{
+  "_naziv": "Onkogenetika",
+  "seo": {
+    "naslov": "Onkogenetika – genetska analiza tumora | Family Health",
+    "opis": "Genetska analiza tumorskog tkiva i krvi u nemačkim laboratorijama, za izbor ciljane terapije, praćenje bolesti i procenu naslednog rizika. Besplatna procena nalaza."
+  },
+  "hero": {
+    "nadnaslov": "Onkogenetika, za pacijente i lekare",
+    "naslov": "Genetika tumora koja pomaže da se izabere prava terapija.",
+    "tekst": "Svaki tumor nosi sopstvene mutacije. Analiziramo ih u nemačkim laboratorijama, a konzilijum onkologa pomaže vašem lekaru da izabere terapiju koja cilja baš njih.",
+    "dugmeGlavno": {
+      "tekst": "Pošaljite nalaz na besplatnu procenu",
+      "link": "#kontakt"
+    },
+    "dugmeSporedno": {
+      "tekst": "Informacije za lekare",
+      "link": "#lekari"
+    },
+    "cinjenice": [
+      "Poređenje tumorskog i zdravog tkiva",
+      "Tečna biopsija kada tkiva nema",
+      "Tumačenje konzilijuma nemačkih onkologa"
+    ]
+  },
+  "situacije": {
+    "nadnaslov": "Sa kojim pitanjem dolazite",
+    "naslov": "Krenite od pitanja koje imate. Analizu predlažemo mi.",
+    "uvod": "Imena testova vam ne moraju ništa značiti. Izaberite situaciju koja liči na vašu.",
+    "oznakaUzorak": "Uzorak",
+    "oznakaRezultat": "Rezultat",
+    "pitajteLekara": {
+      "tekst": "Pitajte lekara da li je ovo za vas",
+      "link": "#kontakt"
+    },
+    "sveAnalize": {
+      "tekst": "Znate koju analizu tražite? Pogledajte sve analize",
+      "link": "/onkogenetika/analize/"
+    },
+    "stavke": [
+      {
+        "pitanje": "Koja ciljana terapija može da pomogne?",
+        "analiza": "Cancer Precision ili Cancer Essential",
+        "opis": "Poredimo tumorsko i zdravo tkivo i za svaku relevantnu promenu navodimo da li postoji ciljani lek ili klinička studija.",
+        "uzorak": "Parafinski kalup tumora i 1–2 ml krvi",
+        "rezultat": "Za 3 do 4 nedelje",
+        "dugme": {
+          "tekst": "Sve o analizi Cancer Precision →",
+          "link": "/onkogenetika/analize/cancer-precision/"
+        }
+      },
+      {
+        "pitanje": "Tkivo tumora nije dostupno.",
+        "analiza": "Tečna biopsija (Cancer Detect)",
+        "opis": "Genetski profil tumora dobijamo iz krvi, kada biopsija nije moguća ili je pacijent u lošem stanju.",
+        "uzorak": "Tri epruvete krvi po 10 ml",
+        "rezultat": "Za 3 do 4 nedelje",
+        "dugme": {
+          "tekst": "",
+          "link": ""
+        }
+      },
+      {
+        "pitanje": "Da li se bolest vratila?",
+        "analiza": "MRD praćenje",
+        "opis": "Tragove tumorske DNK u krvi otkrivamo pre standardnih metoda, uz kontrolu na svaka 3 do 4 meseca.",
+        "uzorak": "Jednom tkivo i krv, zatim samo krv",
+        "rezultat": "[potvrditi]",
+        "dugme": {
+          "tekst": "",
+          "link": ""
+        }
+      },
+      {
+        "pitanje": "Da li je rizik nasledan u porodici?",
+        "analiza": "Genetika naslednih tumora",
+        "opis": "Kod dela pacijenata predispozicija je nasleđena (prema studijama 5–10%, kod nekih tumora i više) [izvor dodati]. Nalaz pomaže i ostalim članovima porodice.",
+        "uzorak": "Uzorak krvi",
+        "rezultat": "[potvrditi]",
+        "dugme": {
+          "tekst": "",
+          "link": ""
+        }
+      },
+      {
+        "pitanje": "Postoji li personalizovana vakcina?",
+        "analiza": "Cancer Neo",
+        "opis": "Analizom egzoma tumora biramo peptide za vakcinu koja pomaže imunom sistemu da prepozna tumor.",
+        "uzorak": "Parafinski blok i krv",
+        "rezultat": "Analiza 4 do 6 nedelja",
+        "dugme": {
+          "tekst": "Sve o analizi Cancer Neo →",
+          "link": "/onkogenetika/cancer-neo/"
+        }
+      },
+      {
+        "pitanje": "Šta rezultati znače za lečenje?",
+        "analiza": "Cancer Advice",
+        "opis": "Konzilijum nemačkih onkologa tumači nalaz i, zajedno sa vašim lekarom, predlaže terapiju.",
+        "uzorak": "Postojeći genetski nalazi",
+        "rezultat": "[potvrditi]",
+        "dugme": {
+          "tekst": "",
+          "link": ""
+        }
+      }
+    ]
+  },
+  "proces": {
+    "naslov": "Kako izgleda proces",
+    "poslednjeDugme": {
+      "tekst": "Pošaljite nalaz na procenu",
+      "link": "#kontakt"
+    },
+    "koraci": [
+      {
+        "naslov": "Razgovor sa lekarom",
+        "podnaslov": "Besplatno",
+        "glava": "Prvo pregledamo nalaz",
+        "tekst": "Pošaljite nalaz ili nas pozovite. Lekar predlaže analizu koja ima smisla za vaš slučaj, uz okvirnu cenu, pre bilo kakve obaveze.",
+        "cinjenice": [
+          "Procena je besplatna",
+          "Javljamo se istog radnog dana"
+        ],
+        "ilustracija": "onkogenetika/razgovor"
+      },
+      {
+        "naslov": "Uzorak",
+        "podnaslov": "Logistiku preuzimamo mi",
+        "glava": "Tkivo iz patologije i krv",
+        "tekst": "Parafinski kalup tumora preuzimamo iz patologije, uz vašu saglasnost. Krv vadimo u ordinaciji ili kod vas kući.",
+        "cinjenice": [
+          "Nije potrebna nova biopsija",
+          "Dolazak na kućnu adresu ne naplaćujemo"
+        ],
+        "ilustracija": "onkogenetika/uzorak"
+      },
+      {
+        "naslov": "Analiza u Nemačkoj",
+        "podnaslov": "Obično 3 do 4 nedelje",
+        "glava": "Sekvenciranje tumora i zdravog tkiva",
+        "tekst": "Uzorci putuju u laboratoriju CeGaT u Tibingenu, gde se porede tumorsko i zdravo tkivo.",
+        "cinjenice": [
+          "Transport organizujemo mi",
+          "Rezultat za 3 do 4 nedelje"
+        ],
+        "ilustracija": "onkogenetika/analiza"
+      },
+      {
+        "naslov": "Izveštaj i preporuka",
+        "podnaslov": "Za vas i vašeg onkologa",
+        "glava": "Predlog ciljane terapije",
+        "tekst": "Izveštaj za svaku relevantnu promenu navodi da li postoji ciljani lek ili klinička studija. Po želji ga tumači konzilijum nemačkih onkologa, zajedno sa vašim lekarom.",
+        "cinjenice": [
+          "Izveštaj dobija i vaš onkolog",
+          "Po želji: Cancer Advice"
+        ],
+        "ilustracija": "onkogenetika/izvestaj"
+      }
+    ],
+    "napomena": "Cena zavisi od vrste analize i panela. Okvirnu cenu dobijate posle besplatne procene nalaza, pre nego što se za bilo šta odlučite."
+  },
+  "lekari": {
+    "nadnaslov": "Za onkologe i patologe",
+    "naslov": "Pošaljite pacijenta, a mi preuzimamo logistiku.",
+    "tekst": "Izveštaj stiže vama i pacijentu, sa listom varijanti od terapijskog značaja, TMB i MSI statusom i predlogom ciljane terapije.",
+    "pomocMd": "**Pomažemo i vama:** razgovor sa pacijentom, papirologiju, logistiku uzorka i tumačenje izveštaja preuzimamo mi.",
+    "uzorakNaslov": "Šta se šalje",
+    "uzorak": [
+      "Parafinski kalup ili pločice, sa najmanje 20% tumora u uzorku",
+      "1–2 ml krvi u EDTA epruveti, kao zdravo tkivo za poređenje",
+      "Za tečnu biopsiju: 3 epruvete po 10 ml krvi"
+    ],
+    "dugme": {
+      "tekst": "Sve za lekare: uput, uzorak, izveštaj →",
+      "link": "/za-lekare/"
+    },
+    "dokumenta": {
+      "naslov": "Dokumenta",
+      "oznakaUskoro": "PDF, uskoro [dodati]",
+      "oznakaPreuzmi": "PDF",
+      "stavke": [
+        {
+          "naziv": "Uputni obrazac",
+          "pdf": ""
+        },
+        {
+          "naziv": "Uputstvo za pripremu uzorka",
+          "pdf": ""
+        },
+        {
+          "naziv": "Spisak gena u panelima",
+          "pdf": ""
+        }
+      ]
+    },
+    "linijaNaslov": "Direktna linija za lekare"
+  },
+  "kontakt": {
+    "naslov": "Pošaljite nalaz na besplatnu procenu.",
+    "tekst": "Lekar pregleda nalaz i javlja vam se istog radnog dana sa predlogom analize i okvirnom cenom.",
+    "privatnost": "Vaši podaci koriste se samo za procenu i ne prosleđuju se nikome bez vaše saglasnosti.",
+    "forma": {
+      "ime": "Ime i prezime",
+      "telefon": "Telefon",
+      "uloga": "Javljate se kao",
+      "ulogaOpcije": [
+        "Pacijent",
+        "Član porodice",
+        "Lekar"
+      ],
+      "nalaz": "Nalaz (PDF ili fotografija)",
+      "posalji": "Pošaljite nalaz"
+    }
+  }
+}

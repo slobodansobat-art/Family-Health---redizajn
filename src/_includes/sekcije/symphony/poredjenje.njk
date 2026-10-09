@@ -1,0 +1,34 @@
+{#- SYMPHONY · "Harmony ili Symphony?": tabela poređenja
+    Desktop: tabela sa tri kolone. Mobilni: ista tabela se kroz CSS prikazuje
+    kao kartice (svaki red je kartica, oznake kolona idu iz data-kolona).
+    Sadržaj: stranice.symphony.poredjenje   ·   Stil: css/stranice/symphony.css -#}
+{%- set d = stranice.symphony.poredjenje -%}
+<section id="izbor" class="symphony-poredjenje kontejner" aria-labelledby="symphony-izbor">
+  <h2 id="symphony-izbor" class="naslov-l symphony-naslov symphony-poredjenje__naslov">{{ d.naslov }}</h2>
+  <p class="blag symphony-poredjenje__uvod">{{ d.tekst }}</p>
+  {#- Napomena o kombinovanom testu: u skici samo na mobilnom -#}
+  <p class="symphony-poredjenje__napomena samo-mobilni">{{ d.napomenaMd | mdRed | safe }}</p>
+
+  <div class="symphony-poredjenje__omotac">
+    <table class="symphony-tabela">
+      <thead>
+        <tr>
+          <th scope="col" class="symphony-tabela__prazno"><span class="sr-only">{{ d.kolonaOsobina }}</span></th>
+          <th scope="col" class="symphony-tabela__harmony"><a href="{{ d.kolonaHarmonyLink }}">{{ d.kolonaHarmony }}</a></th>
+          <th scope="col" class="symphony-tabela__symphony">{{ d.kolonaSymphony }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%- for r in d.redovi %}
+        <tr>
+          <th scope="row">{{ r.osobina }}</th>
+          <td class="symphony-tabela__harmony" data-kolona="{{ d.kolonaHarmony }}">{{ r.harmony }}</td>
+          <td class="symphony-tabela__symphony" data-kolona="{{ d.kolonaSymphony }}">{{ r.symphony }}</td>
+        </tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="blag symphony-poredjenje__zakljucak">{{ d.zakljucakMd | mdRed | safe }} <a href="{{ d.harmonyLink.link }}" class="samo-mobilni">{{ d.harmonyLink.tekst }}</a></p>
+</section>

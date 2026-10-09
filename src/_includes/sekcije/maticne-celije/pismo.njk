@@ -1,0 +1,23 @@
+{#- MATIČNE ĆELIJE · pismo lekara roditeljima (fotografija, ime, pismo, napomena)
+    Desktop: autor levo, pismo desno. Mobilni: autor u redu iznad pisma.
+    Sadržaj: stranice.maticneCelije.pismo   ·   Stil: css/stranice/maticne-celije.css (.mc-pismo) -#}
+{%- from "makroi/osnovni.njk" import slika -%}
+{%- set d = stranice.maticneCelije.pismo -%}
+<section class="kontejner mc-pismo" aria-labelledby="mc-pismo-naslov">
+  <div class="mc-pismo__autor">
+    {{ slika(d.slika, d.slikaOpis, "slika--krug mc-pismo__foto") }}
+    <div class="mc-pismo__potpis">
+      <p class="mc-pismo__ime">{{ d.ime }}</p>
+      <p class="mc-pismo__zvanje">{{ d.zvanje }}</p>
+    </div>
+  </div>
+  <div class="mc-pismo__sadrzaj">
+    <h2 id="mc-pismo-naslov" class="mc-pismo__naslov">{{ d.naslov }}</h2>
+    <div class="mc-pismo__tekst">
+      {%- for p in d.pasusi %}
+      <p>{{ p }}</p>
+      {%- endfor %}
+    </div>
+    <p class="mc-pismo__napomena">{{ d.napomena }}</p>
+  </div>
+</section>

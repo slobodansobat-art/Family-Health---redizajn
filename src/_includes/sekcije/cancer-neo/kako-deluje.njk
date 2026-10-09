@@ -1,0 +1,23 @@
+{#- CANCER NEO · "Kako deluje": tri koraka sa ilustracijom (tamna sekcija)
+    Sadržaj: stranice.cancerNeo.kakoDeluje   ·   Stil: css/stranice/cancer-neo.css (KAKO DELUJE)
+    Ilustracije: src/_includes/ilustracije/cancer-neo/ (čitaju "s": opis i oznake) -#}
+{%- set d = stranice.cancerNeo.kakoDeluje -%}
+<section class="neo-deluje neo-tamna" aria-labelledby="neo-deluje-naslov">
+  <div class="kontejner neo-sekcija">
+    <div class="neo-zaglavlje neo-deluje__zaglavlje">
+      <p class="neo-nadnaslov">{{ d.nadnaslov }}</p>
+      <h2 id="neo-deluje-naslov" class="naslov-l neo-naslov">{{ d.naslov }}</h2>
+      <p class="neo-deluje__uvod">{{ d.uvod }}</p>
+    </div>
+    <ol class="neo-deluje__koraci">
+      {%- for s in d.koraci %}
+      <li class="neo-deluje__korak">
+        <div class="neo-deluje__slika">{% include "ilustracije/" + s.ilustracija + ".njk" ignore missing %}</div>
+        <p class="neo-deluje__oznaka">{{ d.oznakaKoraka }} {{ loop.index }}</p>
+        <h3 class="neo-deluje__naslov">{{ s.naslov }}</h3>
+        <p class="neo-deluje__tekst">{{ s.tekst }}</p>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>

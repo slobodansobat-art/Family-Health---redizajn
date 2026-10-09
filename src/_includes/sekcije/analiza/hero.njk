@@ -1,0 +1,26 @@
+{#- ANALIZA · hero: putanja, naziv, kratak opis, osnovni podaci, animirana mreža
+    Sadržaj: analiza.naziv + analiza.stranica.hero (putanja: stranice.analiza.putanja)
+    Stil: css/stranice/analiza.css (.analiza-hero) -#}
+{%- set h = s.hero or {} -%}
+<section class="analiza-hero" aria-labelledby="analiza-naslov">
+  <div class="analiza-hero__mreza" aria-hidden="true">{% onkoMreza analiza.slug %}</div>
+  <div class="kontejner analiza-hero__unutra">
+    {%- if z.putanja.length %}
+    <nav class="analiza-hero__putanja" aria-label="Putanja">
+      {%- for p in z.putanja %}<a href="{{ p.link }}">{{ p.tekst }}</a> <span aria-hidden="true">/</span> {% endfor -%}
+      <span aria-current="page">{{ analiza.naziv }}</span>
+    </nav>
+    {%- endif %}
+    {%- if h.nadnaslov %}<p class="analiza-hero__nadnaslov">{{ h.nadnaslov }}</p>{% endif %}
+    <h1 id="analiza-naslov" class="analiza-hero__naslov">{{ analiza.naziv }}</h1>
+    {%- set tekst = h.tekst or analiza.opis %}
+    {%- if tekst %}<p class="analiza-hero__tekst">{{ tekst }}</p>{% endif %}
+    {%- if h.podaci.length %}
+    <dl class="analiza-hero__podaci">
+      {%- for p in h.podaci %}
+      <div><dt>{{ p.oznaka }}</dt><dd>{{ p.vrednost }}</dd></div>
+      {%- endfor %}
+    </dl>
+    {%- endif %}
+  </div>
+</section>

@@ -1,0 +1,43 @@
+{#- SYMPHONY · "Šta Symphony pregleda": interaktivni kariogram (24 hromozoma)
+    Dugmad biraju režim (Harmony Kvartet / Plus / Symphony) i boje pokrivene
+    hromozome. Bez JavaScript-a prikazuje se podrazumevani režim (Symphony).
+    Sadržaj: stranice.symphony.kariogram   ·   Stil: css/stranice/symphony.css
+    JS: js/stranice/symphony.js (čita podatke iz #symphony-rezimi) -#}
+{%- set d = stranice.symphony.kariogram -%}
+{%- set izabran = (d.rezimi | selectattr("podrazumevani") | first) or (d.rezimi | last) -%}
+<section class="symphony-kariogram kontejner" aria-labelledby="symphony-sta" data-kariogram>
+  <div class="symphony-kariogram__glava">
+    <div class="symphony-kariogram__uvod">
+      <h2 id="symphony-sta" class="naslov-l symphony-naslov">{{ d.naslov }}</h2>
+      <p class="blag">{{ d.tekst }}</p>
+    </div>
+    <div class="symphony-kariogram__rezimi" role="group" aria-label="{{ d.izborOznaka }}">
+      {%- for r in d.rezimi %}
+      <button type="button" class="symphony-kariogram__rezim symphony-kariogram__rezim--{{ r.boja }}" data-rezim="{{ loop.index0 }}" aria-pressed="{{ 'true' if r.naziv == izabran.naziv else 'false' }}" aria-controls="symphony-slika">{{ r.naziv }}</button>
+      {%- endfor %}
+    </div>
+  </div>
+
+  <div class="symphony-kariogram__okvir symphony-kariogram__okvir--{{ izabran.boja }}" data-kariogram-okvir>
+    <div class="symphony-kariogram__slika" id="symphony-slika" role="img" aria-label="{{ izabran.naziv }}: {{ izabran.sazetak }}" data-kariogram-slika>
+      {%- for c in d.hromozomi %}
+      <div class="symphony-hromozom{% if c.oznaka in izabran.hromozomi %} je-pokriven{% endif %}{% if c.oznaka in izabran.oznaceni %} je-oznacen{% endif %}" data-hromozom="{{ c.oznaka }}" style="--duzina: {{ c.duzina }}">
+        <span class="symphony-hromozom__par"><span></span><span></span><span class="symphony-hromozom__traka"></span></span>
+        <span class="symphony-hromozom__broj">{{ c.oznaka }}</span>
+      </div>
+      {%- endfor %}
+    </div>
+    <div class="symphony-kariogram__rezultat" aria-live="polite">
+      <p class="symphony-kariogram__sazetak" data-kariogram-sazetak>{{ izabran.sazetak }}</p>
+      <p class="symphony-kariogram__opis" data-kariogram-opis>{{ izabran.opis }}</p>
+    </div>
+  </div>
+
+  <ul class="symphony-kariogram__stavke">
+    {%- for s in d.stavke %}
+    <li class="symphony-kariogram__stavka{% if s.sporedno %} symphony-kariogram__stavka--sporedno{% endif %}"><strong>{{ s.naslov }}</strong><span>{{ s.tekst }}</span></li>
+    {%- endfor %}
+  </ul>
+
+  <script type="application/json" id="symphony-rezimi">{{ d.rezimi | uJson | safe }}</script>
+</section>

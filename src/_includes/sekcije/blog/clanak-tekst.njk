@@ -1,0 +1,65 @@
+{#- ČLANAK · putanja, zaglavlje članka, sadržaj (desktop: bočno, mobilni:
+    harmonika), tekst članka iz Markdown-a i baner uz tekst (samo desktop).
+    Sadržaj: front matter članka + stranice.blog.clanak   ·   Stil: css/stranice/blog.css
+    Promenljive iz šablona: tekstClanka, naslovi (sekcije/blog/clanak-sablon.njk) -#}
+{%- from "makroi/osnovni.njk" import plus -%}
+{%- set t = stranice.blog.clanak -%}
+{%- set k = stranice.blog.kalkulator -%}
+{#- Spisak linkova sadržaja (isti za desktop i mobilni) -#}
+{%- set linkoviSadrzaja %}
+  {%- for n in naslovi %}
+  <li><a href="#clanak-deo-{{ loop.index }}">{{ n | safe }}</a></li>
+  {%- endfor %}
+  {%- if kalkulatorTrudnoce %}
+  <li><a href="#kalkulator" class="clanak-sadrzaj__kalkulator">{{ k.linkUSadrzaju }}</a></li>
+  {%- endif %}
+{%- endset -%}
+<article class="kontejner clanak-tekst" aria-labelledby="clanak-naslov">
+  <nav class="clanak-putanja" aria-label="Putanja">
+    <a href="{{ t.putanjaLink }}">{{ t.putanja }}</a> <span aria-hidden="true">/</span> {{ kategorija }}
+  </nav>
+  <header class="clanak-zaglavlje">
+    <span class="oznaka">{{ kategorija }}</span>
+    <h1 id="clanak-naslov" class="clanak-zaglavlje__naslov">{{ naslov }}</h1>
+    {%- if opis %}<p class="clanak-zaglavlje__opis">{{ opis }}</p>{% endif %}
+    <p class="clanak-zaglavlje__meta">
+      <span class="clanak-zaglavlje__autor-slika" aria-hidden="true"></span>
+      <span>
+        {%- if autor %}{{ autor }}{% if autorUloga %}, {{ autorUloga }}{% endif %} · {% endif -%}
+        {%- if datum %}<time datetime="{{ datum | isoDatum }}">{{ datum | mesecGodina }}</time>{% endif -%}
+        {%- if vremeCitanja %} · {{ vremeCitanja }} {{ t.citanje }}{% endif -%}
+      </span>
+    </p>
+  </header>
+
+  <div class="clanak-tekst__mreza">
+    <aside class="clanak-tekst__bok samo-desktop">
+      {%- if naslovi.length or kalkulatorTrudnoce %}
+      <nav class="clanak-sadrzaj" aria-labelledby="clanak-sadrzaj-naslov">
+        <p id="clanak-sadrzaj-naslov" class="clanak-sadrzaj__naslov">{{ t.sadrzaj }}</p>
+        <ul class="clanak-sadrzaj__lista">{{ linkoviSadrzaja | safe }}</ul>
+      </nav>
+      {%- endif %}
+      {%- set b = t.banerUzTekst %}
+      <aside class="blog-baner blog-baner--uspravni" aria-label="{{ b.oznaka }}">
+        <span class="blog-baner__oznaka">{{ b.oznaka }}</span>
+        <span class="blog-baner__naslov">{{ b.naslov }}</span>
+        <span class="blog-baner__opis">{{ b.opis }}</span>
+      </aside>
+    </aside>
+
+    <div class="clanak-tekst__glavno">
+      {%- if naslovi.length or kalkulatorTrudnoce %}
+      <details class="clanak-sadrzaj-mobilni samo-mobilni">
+        <summary class="clanak-sadrzaj-mobilni__dugme">{{ t.sadrzaj }}<span class="clanak-sadrzaj-mobilni__ikonica" aria-hidden="true">{{ plus(20) }}</span></summary>
+        <nav aria-label="{{ t.sadrzaj }}">
+          <ul class="clanak-sadrzaj-mobilni__lista">{{ linkoviSadrzaja | safe }}</ul>
+        </nav>
+      </details>
+      {%- endif %}
+      <div class="clanak-telo">
+        {{ tekstClanka | safe }}
+      </div>
+    </div>
+  </div>
+</article>

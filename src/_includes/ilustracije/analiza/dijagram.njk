@@ -1,0 +1,27 @@
+{#- Dijagram: tumor naspram zdravog tkiva (tumor-normal poređenje).
+    Tekstovi: promenljiva "dg" = analiza.stranica.zaPacijente.dijagram
+    Dve verzije istog crteža: šira (od 600px naviše) i uža (telefon). Boje i prikaz: css/stranice/analiza.css -#}
+{%- macro crtez(sirina, x0, duzina, korak, prviPotez, nasledjena, mete, oznakaX, oznakaSirina, klasa) -%}
+<svg class="analiza-dijagram {{ klasa }}" width="{{ sirina }}" height="250" viewBox="0 0 {{ sirina }} 250" role="img" aria-label="{{ dg.opis }}" focusable="false">
+  {#- Gornja traka: tumor #}
+  <text x="{{ x0 }}" y="32" class="analiza-dijagram__naslov">{{ dg.tumor }}</text>
+  <rect x="{{ x0 }}" y="46" width="{{ duzina }}" height="26" rx="13" class="analiza-dijagram__tumor"></rect>
+  {%- for x in range(prviPotez, x0 + duzina, korak) %}<line x1="{{ x }}" y1="50" x2="{{ x }}" y2="68" class="analiza-dijagram__potez"></line>{% endfor %}
+  <rect x="{{ nasledjena }}" y="42" width="18" height="34" rx="6" class="analiza-dijagram__nasledjena"></rect>
+  {%- for m in mete %}<rect x="{{ m }}" y="42" width="18" height="34" rx="6" class="analiza-dijagram__meta"></rect>{% endfor %}
+  {#- Donja traka: zdravo tkivo #}
+  <text x="{{ x0 }}" y="116" class="analiza-dijagram__naslov">{{ dg.zdravo }}</text>
+  <rect x="{{ x0 }}" y="130" width="{{ duzina }}" height="26" rx="13" class="analiza-dijagram__zdravo"></rect>
+  {%- for x in range(prviPotez, x0 + duzina, korak) %}<line x1="{{ x }}" y1="134" x2="{{ x }}" y2="152" class="analiza-dijagram__potez"></line>{% endfor %}
+  <rect x="{{ nasledjena }}" y="126" width="18" height="34" rx="6" class="analiza-dijagram__nasledjena"></rect>
+  {#- Isprekidane linije od promena samo u tumoru do oznake #}
+  {%- for m in mete %}<path d="M{{ m + 9 }} 76 v 96" class="analiza-dijagram__veza"></path>{% endfor %}
+  <rect x="{{ oznakaX }}" y="176" width="{{ oznakaSirina }}" height="34" rx="17" class="analiza-dijagram__meta"></rect>
+  <text x="{{ oznakaX + oznakaSirina / 2 }}" y="198" text-anchor="middle" class="analiza-dijagram__oznaka">{{ dg.meta }}</text>
+  {#- Legenda #}
+  <rect x="{{ x0 }}" y="222" width="14" height="14" rx="4" class="analiza-dijagram__nasledjena"></rect>
+  <text x="{{ x0 + 22 }}" y="234" class="analiza-dijagram__legenda">{{ dg.nasledjeno }}</text>
+</svg>
+{%- endmacro -%}
+{{ crtez(460, 20, 420, 40, 60, 121, [221, 341], 186, 210, "analiza-dijagram--siroki") }}
+{{ crtez(320, 14, 292, 26, 40, 74, [152, 230], 100, 206, "analiza-dijagram--uski") }}

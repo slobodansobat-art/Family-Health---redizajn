@@ -1,0 +1,64 @@
+{
+  "_naziv": "Politika privatnosti",
+  "seo": {
+    "naslov": "Politika privatnosti | Family Health",
+    "opis": "Kako Family Health obrađuje i čuva lične podatke i podatke o zdravlju."
+  },
+  "uvod": {
+    "naslov": "Politika privatnosti",
+    "izmena": "Poslednja izmena: [datum].",
+    "napomena": "Tekst politike priprema pravnik; ovde je struktura stranice."
+  },
+  "odeljci": {
+    "naslovSadrzaja": "Sadržaj",
+    "stavke": [
+      {
+        "_sidro": "ko",
+        "naslov": "Ko obrađuje podatke",
+        "tekstMd": "[tekst: pravnik]"
+      },
+      {
+        "_sidro": "podaci",
+        "naslov": "Koje podatke prikupljamo",
+        "tekstMd": "[tekst: pravnik]"
+      },
+      {
+        "_sidro": "svrha",
+        "naslov": "Svrha i pravni osnov obrade",
+        "tekstMd": "[tekst: pravnik]"
+      },
+      {
+        "_sidro": "zdravlje",
+        "naslov": "Podaci o zdravlju",
+        "tekstMd": "[tekst: pravnik]"
+      },
+      {
+        "_sidro": "primaoci",
+        "naslov": "Kome prosleđujemo podatke",
+        "tekstMd": "Partnerske laboratorije u Nemačkoj i Velikoj Britaniji, banka Cells4Life, kurirske službe. [spisak i pravni osnov iznošenja podataka: pravnik]"
+      },
+      {
+        "_sidro": "rok",
+        "naslov": "Koliko dugo čuvamo podatke",
+        "tekstMd": "[tekst: pravnik]"
+      },
+      {
+        "_sidro": "prava",
+        "naslov": "Vaša prava",
+        "tekstMd": "[tekst: pravnik]"
+      },
+      {
+        "_sidro": "kolacici",
+        "naslov": "Kolačići",
+        "tekstMd": "Sajt koristi samo neophodne kolačiće. Mapa i analitika učitavaju se tek uz vašu saglasnost. [potvrditi]"
+      },
+      {
+        "_sidro": "kontakt-privatnost",
+        "naslov": "Kontakt za pitanja o privatnosti",
+        "kontaktUvod": "Pišite nam na",
+        "kontaktVeza": "ili na adresu",
+        "tekstMd": "[lice za zaštitu podataka: dodati]"
+      }
+    ]
+  }
+}

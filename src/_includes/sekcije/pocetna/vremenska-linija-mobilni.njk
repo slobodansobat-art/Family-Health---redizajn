@@ -1,0 +1,19 @@
+{#- POČETNA · "Šta je važno, i kada" (SAMO MOBILNI; na desktopu je ova linija
+    u proširenom delu "Trudnoća i beba" u heroju)
+    Sadržaj: stranice.pocetna.vremenskaLinijaMobilni   ·   Stil: css/stranice/pocetna.css -#}
+{%- set d = stranice.pocetna.vremenskaLinijaMobilni -%}
+<section class="pocetna-linija samo-mobilni" aria-labelledby="pocetna-linija-naslov">
+  <div class="kontejner">
+    <h2 id="pocetna-linija-naslov" class="pocetna-linija__naslov">{{ d.naslov }}</h2>
+    <ol class="pocetna-linija__lista">
+      {%- for s in d.stavke %}
+      <li>
+        <span class="pocetna-linija__tacka{% if s.prazanKrug %} pocetna-linija__tacka--prazna{% endif %}" aria-hidden="true"></span>
+        <span class="pocetna-linija__period">{{ s.period }}</span>
+        <strong>{{ s.naslov }}</strong>
+        <span class="pocetna-linija__tekst">{{ s.tekst }}</span>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>

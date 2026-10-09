@@ -1,0 +1,53 @@
+{#- SYMPHONY · hero: putanja, naslov, glavne činjenice i fotografija u "mrlji"
+    Sadržaj: stranice.symphony.hero   ·   Stil: css/stranice/symphony.css -#}
+{%- from "makroi/osnovni.njk" import slika -%}
+{%- set d = stranice.symphony.hero -%}
+{#- Mehurići u pozadini (samo ukras): položaj, veličina, boja, trajanje, kašnjenje -#}
+{%- set mehuriciLevo = [
+  ["6%", 16, "300", 11, -2], ["22%", 10, "400", 9, -6], ["40%", 22, "100", 13, -4],
+  ["58%", 8, "500", 10, -8], ["76%", 14, "300", 12, -1], ["90%", 11, "400", 10, -5]
+] -%}
+{%- set mehuriciDesno = [
+  ["8%", 12, "400", 17, -3], ["20%", 24, "100", 21, -9], ["34%", 9, "500", 15, -12], ["50%", 18, "300", 19, -1],
+  ["63%", 13, "400", 16, -7], ["76%", 26, "100", 22, -14], ["88%", 10, "500", 14, -5], ["94%", 16, "300", 18, -10]
+] -%}
+{%- macro mehurici(lista, klasa) -%}
+<div class="symphony-hero__mehurici {{ klasa }}" aria-hidden="true">
+  {%- for m in lista %}<span style="--levo: {{ m[0] }}; --velicina: {{ m[1] }}px; --boja: var(--ljubicasta-{{ m[2] }}); --trajanje: {{ m[3] }}s; --kasnjenje: {{ m[4] }}s"></span>{% endfor %}
+</div>
+{%- endmacro %}
+<section class="symphony-hero" aria-labelledby="symphony-h1">
+  {{ mehurici(mehuriciLevo, "symphony-hero__mehurici--levo") }}
+  {{ mehurici(mehuriciDesno, "symphony-hero__mehurici--desno") }}
+
+  <div class="kontejner symphony-hero__unutra">
+    <nav class="symphony-putanja" aria-label="Putanja">
+      {%- for p in d.putanja %}<a href="{{ p.link }}">{{ p.tekst }}</a> <span aria-hidden="true">/</span> {% endfor %}<span aria-current="page">{{ d.putanjaTrenutna }}</span>
+    </nav>
+
+    <div class="symphony-hero__mreza">
+      <p class="symphony-hero__nadnaslov"><span class="symphony-hero__tacka" aria-hidden="true"></span>{{ d.nadnaslov }}</p>
+      <h1 id="symphony-h1" class="symphony-hero__naslov">{{ d.naslov }}</h1>
+      <p class="symphony-hero__tekst">{{ d.tekst }}</p>
+      <p class="symphony-hero__vadjenje"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-6h4v6"></path></svg>{{ d.vadjenje }}</p>
+
+      <div class="symphony-hero__foto">
+        <span class="symphony-hero__mrlja" aria-hidden="true"></span>
+        <div class="symphony-hero__oblik">{{ slika(d.slika, d.slikaOpis, "symphony-hero__slika", ucitavanje="eager") }}</div>
+      </div>
+
+      <div class="symphony-hero__akcije">
+        <a href="{{ d.dugme.link }}" class="dugme symphony-hero__dugme">{{ d.dugme.tekst }}</a>
+        <a href="{{ d.link.link }}" class="symphony-hero__link">{{ d.link.tekst }}</a>
+      </div>
+
+      <dl class="symphony-hero__cinjenice">
+        {%- for c in d.cinjenice %}
+        <div><dt>{{ c.oznaka }}</dt><dd>{{ c.vrednost }}</dd></div>
+        {%- endfor %}
+      </dl>
+    </div>
+  </div>
+
+  <svg class="symphony-hero__talas" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 60 H1440 V30 C1200 0 960 52 720 28 C480 4 240 50 0 22 Z"></path></svg>
+</section>

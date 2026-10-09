@@ -1,0 +1,81 @@
+{#- ONKO ANALIZE · filteri + lista analiza
+    Tekst: stranice.onkoAnalize.katalog
+    Analize: globalni podatak "analize" (src/sadrzaj/analize/*.json). Sve kartice
+    se ispisuju u HTML-u (vidi ih i Google), a JS samo sakriva one koje ne odgovaraju filteru.
+    Stil: css/stranice/onko-analize.css   ·   JS: js/stranice/onko-analize.js
+    Desktop: tabela (Analiza / Uzorak / Rezultat / dugme). Mobilni: kartice. -#}
+{%- set d = stranice.onkoAnalize.katalog -%}
+<section class="analize-katalog" aria-labelledby="analize-lista-naslov" data-analize>
+  <div class="kontejner">
+    <h2 id="analize-lista-naslov" class="sr-only">{{ d.naslov }}</h2>
+
+    {#- Filteri: cilj i vrsta uzorka (dugmad sa aria-pressed) #}
+    <div class="analize-filteri">
+      <div class="analize-filteri__red">
+        <p id="analize-cilj-naslov" class="analize-filteri__naslov">{{ d.ciljeviNaslov }}</p>
+        <div role="group" aria-labelledby="analize-cilj-naslov" class="cipovi cipovi--skrol analize-filteri__cipovi">
+          {%- for c in d.ciljevi %}
+          <button type="button" class="cip analize-cip" data-cilj="{{ c.kod }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ c.naziv }}</button>
+          {%- endfor %}
+        </div>
+      </div>
+      <div class="analize-filteri__red">
+        <p id="analize-uzorak-naslov" class="analize-filteri__naslov">{{ d.uzorakNaslov }}</p>
+        <div role="group" aria-labelledby="analize-uzorak-naslov" class="cipovi cipovi--skrol analize-filteri__cipovi">
+          {%- for u in d.uzorci %}
+          <button type="button" class="cip analize-cip" data-uzorak="{{ u.kod }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ u.naziv }}</button>
+          {%- endfor %}
+        </div>
+      </div>
+    </div>
+
+    <p class="analize-brojac" aria-live="polite" data-analize-brojac data-sablon="{{ d.brojac }}">{{ d.brojac | replace("{prikazano}", analize | length) | replace("{ukupno}", analize | length) }}</p>
+
+    {#- Zaglavlje tabele (samo desktop) #}
+    <div class="analize-tabela__glava" aria-hidden="true">
+      <span>{{ d.kolonaAnaliza }}</span><span>{{ d.kolonaUzorak }}</span><span>{{ d.kolonaRezultat }}</span><span></span>
+    </div>
+
+    <ul class="analize-lista" id="analize-lista">
+      {%- for a in analize %}
+      {%- set imaStranicu = a.imaStranicu or a.posebanLink %}
+      <li class="analize-kartica{% if a.premium %} analize-kartica--premium{% endif %}" id="{{ a.slug }}" data-ciljevi="{{ a.ciljevi | join(' ') }}" data-tkivo="{{ 'da' if a.tkivo else 'ne' }}" data-krv="{{ 'da' if a.krv else 'ne' }}" style="--kasnjenje: {{ (loop.index0 * 40) }}ms">
+        <div class="analize-kartica__glavno">
+          <div class="analize-kartica__vrh">
+            <h3 class="analize-kartica__naziv">{{ a.naziv }}</h3>
+            {%- if a.premium %}<span class="analize-kartica__premium">{{ d.premium }}</span>{% endif %}
+            {%- for c in d.ciljevi %}{% if c.kod == a.ciljevi[0] %}<span class="analize-kartica__cilj">{{ c.naziv }}</span>{% endif %}{% endfor %}
+          </div>
+          <p class="analize-kartica__opis">{{ a.opis }}</p>
+        </div>
+        <dl class="analize-kartica__podaci">
+          <div class="analize-kartica__uzorak">
+            <dt>{{ d.kolonaUzorak }}</dt>
+            <dd>
+              {%- if a.tkivo %}<svg class="analize-ikonica analize-ikonica--tkivo" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="6" width="16" height="12" rx="2"></rect><path d="M4 10h16"></path></svg>{% endif %}
+              {%- if a.krv %}<svg class="analize-ikonica analize-ikonica--krv" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 3c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"></path></svg>{% endif %}
+              <span>{{ a.uzorak }}</span>
+            </dd>
+          </div>
+          <div class="analize-kartica__vreme">
+            <dt>{{ d.kolonaRezultat }}</dt>
+            <dd>{{ a.vreme }}</dd>
+          </div>
+        </dl>
+        <div class="analize-kartica__akcija">
+          {%- if imaStranicu %}
+          <a href="{{ a.url }}" class="analize-dugme analize-dugme--detalji">{{ d.dugmeDetalji }}<span class="analize-dugme__dopuna"> {{ d.dugmeDetaljiDopuna }} {{ a.naziv }}</span> <span aria-hidden="true">→</span></a>
+          {%- else %}
+          <a href="{{ d.dugmePitajteLink }}" class="analize-dugme analize-dugme--pitajte">{{ d.dugmePitajte }}</a>
+          {%- endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+
+    {#- Prazno stanje (JS ga prikazuje kad nijedna analiza ne odgovara) #}
+    <p class="analize-prazno" data-analize-prazno hidden>{{ d.prazno }} <button type="button" class="analize-prazno__dugme" data-analize-ponisti>{{ d.praznoDugme }}</button></p>
+
+    <p class="analize-dopuna">{{ d.dopuna }}</p>
+  </div>
+</section>

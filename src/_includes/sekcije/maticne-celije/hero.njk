@@ -1,0 +1,61 @@
+{#- MATIČNE ĆELIJE · hero: putanja, naslov, dugmad, prednosti, fotografija u "mrlji"
+    U prednostima {cena}, {brojRata} i {rata} se popunjavaju iz kalkulatora paketa
+    (početni paket), pa je cena u heroju uvek ista kao u kalkulatoru.
+    Sadržaj: stranice.maticneCelije.hero (+ .paketi)   ·   Stil: css/stranice/maticne-celije.css (.mc-hero) -#}
+{%- from "makroi/osnovni.njk" import slika, kvacica -%}
+{%- set d = stranice.maticneCelije.hero -%}
+{%- set pk = stranice.maticneCelije.paketi -%}
+{%- set pocetnaCena = pk.stavke[0].cena + (pk.toti.cena if pk.toti.ukljucenNaPocetku else 0) -%}
+<section class="mc-hero" aria-labelledby="mc-hero-naslov">
+  {#- Mehurići koji se dižu (ukras). Položaj, veličina i brzina su podaci u CSS promenljivama. #}
+  <div class="mc-hero__mehurici mc-hero__mehurici--levo" aria-hidden="true">
+    <span class="mc-mehur mc-mehur--300" style="--x: 6%; --v: 16px; --t: 11s; --k: -2s"></span>
+    <span class="mc-mehur mc-mehur--400" style="--x: 22%; --v: 10px; --t: 9s; --k: -6s"></span>
+    <span class="mc-mehur mc-mehur--100" style="--x: 40%; --v: 22px; --t: 13s; --k: -4s"></span>
+    <span class="mc-mehur mc-mehur--500" style="--x: 58%; --v: 8px; --t: 10s; --k: -8s"></span>
+    <span class="mc-mehur mc-mehur--300" style="--x: 76%; --v: 14px; --t: 12s; --k: -1s"></span>
+    <span class="mc-mehur mc-mehur--400" style="--x: 90%; --v: 11px; --t: 10s; --k: -5s"></span>
+  </div>
+  <div class="mc-hero__mehurici mc-hero__mehurici--desno" aria-hidden="true">
+    <span class="mc-mehur mc-mehur--400" style="--x: 8%; --v: 12px; --t: 17s; --k: -3s"></span>
+    <span class="mc-mehur mc-mehur--100" style="--x: 20%; --v: 24px; --t: 21s; --k: -9s"></span>
+    <span class="mc-mehur mc-mehur--500" style="--x: 34%; --v: 9px; --t: 15s; --k: -12s"></span>
+    <span class="mc-mehur mc-mehur--300" style="--x: 50%; --v: 18px; --t: 19s; --k: -1s"></span>
+    <span class="mc-mehur mc-mehur--400" style="--x: 63%; --v: 13px; --t: 16s; --k: -7s"></span>
+    <span class="mc-mehur mc-mehur--100" style="--x: 76%; --v: 26px; --t: 22s; --k: -14s"></span>
+    <span class="mc-mehur mc-mehur--500" style="--x: 88%; --v: 10px; --t: 14s; --k: -5s"></span>
+    <span class="mc-mehur mc-mehur--300" style="--x: 94%; --v: 16px; --t: 18s; --k: -10s"></span>
+  </div>
+
+  <div class="kontejner mc-hero__unutra">
+    <nav class="mc-hero__putanja" aria-label="Putanja">
+      <a href="{{ d.putanja.roditeljLink }}">{{ d.putanja.roditeljTekst }}</a> <span aria-hidden="true">/</span> {{ d.putanja.trenutna }}
+    </nav>
+
+    <div class="mc-hero__mreza">
+      <div class="mc-hero__tekst">
+        <h1 id="mc-hero-naslov" class="naslov-xl mc-hero__naslov">{{ d.naslov }}</h1>
+        <p class="mc-hero__uvod">{{ d.tekst }}</p>
+      </div>
+
+      <div class="mc-hero__foto-okvir">
+        <div class="mc-hero__mrlja" aria-hidden="true"></div>
+        {{ slika(d.slika, d.slikaOpis, "mc-hero__foto", ucitavanje="eager") }}
+      </div>
+
+      <div class="mc-hero__akcije">
+        <a href="{{ d.dugme.link }}" class="dugme mc-hero__dugme">{{ d.dugme.tekst }}</a>
+        <a href="{{ d.link.link }}" class="mc-hero__link">{{ d.link.tekst }}</a>
+      </div>
+
+      <ul class="mc-hero__prednosti">
+        {%- for p in d.prednosti %}
+        <li>{{ kvacica(16) }}<span>{{ p | replace("{cena}", pocetnaCena | evra) | replace("{brojRata}", pk.obracun.brojRata) | replace("{rata}", (pocetnaCena / pk.obracun.brojRata) | evra) }}</span></li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+
+  {#- Talas na dnu, prelaz u belu pozadinu #}
+  <svg class="mc-hero__talas" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 60 H1440 V30 C1200 0 960 52 720 28 C480 4 240 50 0 22 Z"></path></svg>
+</section>

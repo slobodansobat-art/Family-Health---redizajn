@@ -1,0 +1,34 @@
+{#- MATIČNE ĆELIJE · kontakt (#kontakt): forma "maticne-celije-konsultacije"
+    Polje "Izabrani paket" je samo za čitanje i puni ga kalkulator paketa (JS);
+    pisano je ručno jer makro polje() nema readonly. Klase su iste kao u makrou.
+    Sadržaj: stranice.maticneCelije.kontakt (+ početni paket iz .paketi) + podesavanja.kontakt
+    Stil: css/komponente/forme.css + css/stranice/maticne-celije.css (.mc-kontakt) -#}
+{%- from "makroi/komponente.njk" import forma, polje, saglasnost, posalji with context -%}
+{%- set d = stranice.maticneCelije.kontakt -%}
+{%- set k = podesavanja.kontakt -%}
+{%- set pk = stranice.maticneCelije.paketi -%}
+{%- set pocetniPaket = pk.obracun.naslovPaketa | replace("{godina}", pk.stavke[0].godina) + (pk.obracun.dodatakToti if pk.toti.ukljucenNaPocetku else "") -%}
+<section id="kontakt" class="mc-kontakt" aria-labelledby="mc-kontakt-naslov">
+  <svg class="mc-kontakt__mrlja" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path d="M310 60c50 40 70 120 40 190s-120 110-190 90S40 260 50 180 120 40 190 30s70-10 120 30z"></path></svg>
+  <div class="kontejner mc-kontakt__mreza">
+    <div class="mc-kontakt__levo">
+      <h2 id="mc-kontakt-naslov" class="mc-kontakt__naslov">{{ d.naslov }}</h2>
+      <p class="mc-kontakt__tekst">{{ d.tekst }}</p>
+      <p class="mc-kontakt__telefoni">
+        <a href="tel:{{ k.telefonLink }}">{{ k.telefon }}</a>
+        <a href="tel:{{ k.mobilniLink }}">{{ k.mobilni }}</a>
+      </p>
+    </div>
+    {%- call forma("maticne-celije-konsultacije", "forma forma--bela mc-kontakt__forma") %}
+      {{ polje("mc-ime", "ime", d.forma.ime, autocomplete="name", obavezno=true) }}
+      {{ polje("mc-tel", "telefon", d.forma.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ polje("mc-termin", "termin", d.forma.termin, tip="date") }}
+      <div class="polje">
+        <label for="mc-paket" class="polje__oznaka">{{ d.forma.paket }}</label>
+        <input id="mc-paket" name="paket" type="text" class="unos mc-kontakt__zakljucano" value="{{ pocetniPaket }}" readonly data-mc-paket-polje>
+      </div>
+      {{ saglasnost("mc-ok") }}
+      {{ posalji(d.forma.dugme) }}
+    {%- endcall %}
+  </div>
+</section>

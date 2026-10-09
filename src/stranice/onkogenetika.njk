@@ -1,0 +1,24 @@
+---
+# ONKOGENETIKA: glavna stranica oblasti (hub). Sadržaj: src/sadrzaj/stranice/onkogenetika.json
+# Stil: src/assets/css/stranice/onkogenetika.css · JS (izbor situacije): src/assets/js/stranice/onkogenetika.js
+kljuc: onkogenetika
+permalink: /onkogenetika/
+zaglavlje:
+  tema: tamna
+  oblast: onko
+  nazad: /
+  linkovi:
+    - { tekst: "Proces", link: "#proces" }
+    - { tekst: "Za lekare", link: "/za-lekare/" }
+    - { tekst: "Kontakt", link: "#kontakt" }
+  dugme: { tekst: "Pošaljite nalaz", link: "#kontakt" }
+donjaTraka: { tekst: "Pošaljite nalaz", link: "#kontakt" }
+skripte: ["stranice/onkogenetika.js"]
+---
+<div class="onko">
+{% include "sekcije/onkogenetika/hero.njk" %}
+{% include "sekcije/onkogenetika/situacije.njk" %}
+{% include "sekcije/onkogenetika/proces.njk" %}
+{% include "sekcije/onkogenetika/lekari.njk" %}
+{% include "sekcije/onkogenetika/kontakt.njk" %}
+</div>

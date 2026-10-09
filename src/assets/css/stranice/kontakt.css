@@ -1,0 +1,135 @@
+/* ==========================================================================
+   STRANICA: KONTAKT  (/kontakt/)  ·  sekcije: src/_includes/sekcije/kontakt/
+   hero (kanali) · ordinacija (radno vreme + mapa) · forma sa temom (#forma)
+   ========================================================================== */
+
+/* --- Uvod: tri kanala ----------------------------------------------------- */
+.kontakt-hero { background: var(--ljubicasta-50); }
+.kontakt-hero__unutra { padding-block: 72px 80px; }
+.kontakt-hero__naslov { color: var(--ljubicasta-800); margin-bottom: 12px; }
+.kontakt-hero__tekst { font-size: 19px; color: var(--tekst-blag); max-width: 560px; margin-bottom: 40px; }
+
+.kontakt-kanali { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.kontakt-kanal { background: var(--bela); border-radius: var(--zaobljenje); padding: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; }
+.kontakt-kanal__ikonica { color: var(--ljubicasta-600); flex-shrink: 0; }
+.kontakt-kanal__oznaka { margin-top: 8px; font-size: 14px; color: var(--tekst-blag); }
+.kontakt-kanal__vrednost {
+  font-family: var(--font-naslov); font-size: 26px; line-height: 1.3;
+  color: var(--ljubicasta-800); text-decoration: none; overflow-wrap: anywhere;
+}
+a.kontakt-kanal__vrednost:hover { color: var(--ljubicasta-600); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+
+/* --- Ordinacija: radno vreme i mapa ---------------------------------------- */
+.kontakt-ordinacija { display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: stretch; padding-block: 88px 40px; }
+.kontakt-ordinacija__levo { flex: .9 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+.kontakt-ordinacija__naslov { font-family: var(--font-naslov); font-size: 40px; line-height: 1.1; color: var(--ljubicasta-800); }
+
+.kontakt-vreme { margin: 6px 0 0; display: flex; flex-direction: column; }
+.kontakt-vreme__red { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid var(--linija-svetla); }
+.kontakt-vreme__red:last-child { border-bottom: 1px solid var(--linija-svetla); }
+.kontakt-vreme dt { color: var(--tekst-blag); }
+.kontakt-vreme dd { margin: 0; font-weight: 600; color: var(--ljubicasta-800); text-align: right; }
+
+/* Mapa: statična slika (ili crtež) + link ka Google mapama, bez ugrađene mape */
+.kontakt-mapa {
+  flex: 1.1 1 480px; min-width: 0; min-height: 340px; position: relative; overflow: hidden;
+  border-radius: 32px; background: var(--ljubicasta-150);
+}
+.kontakt-mapa__slika { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.kontakt-mapa__slika--crtez { background: var(--ljubicasta-150); }
+.kontakt-mapa__slika--crtez svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.kontakt-mapa__ulica { fill: none; stroke: var(--bela); stroke-width: 10; stroke-linecap: round; }
+.kontakt-mapa__ulica--mala { stroke: var(--ljubicasta-50); stroke-width: 4; }
+.kontakt-mapa__pin { fill: var(--ljubicasta-600); }
+.kontakt-mapa__pin-sredina { fill: var(--bela); }
+.kontakt-mapa__napomena {
+  position: absolute; right: 20px; top: 18px; padding: 6px 12px; border-radius: 999px;
+  background: rgba(255, 255, 255, .85); font-size: 12px; color: var(--tekst-blag);
+}
+.kontakt-mapa__link {
+  position: absolute; left: 20px; bottom: 18px; padding: 12px 18px; border-radius: 999px;
+  background: var(--bela); color: var(--ljubicasta-600); font-size: 15px; font-weight: 600; text-decoration: none;
+  box-shadow: 0 8px 24px rgba(47, 21, 68, .12);
+}
+.kontakt-mapa__link:hover { color: var(--ljubicasta-650); text-decoration: underline; }
+
+/* --- Forma sa izborom teme ------------------------------------------------- */
+.kontakt-upit {
+  --kontakt-svetao-tekst: #EBDDF5;  /* tekst na ljubičastoj (isti ton kao saglasnost--tamna) */
+  padding-block: 60px 96px;
+}
+.kontakt-upit__okvir {
+  display: flex; flex-wrap: wrap; gap: 32px 56px;
+  background: var(--ljubicasta-600); color: var(--bela);
+  border-radius: var(--zaobljenje-veliko); padding: 48px 44px;
+}
+.kontakt-upit__uvod { flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.kontakt-upit__naslov { font-family: var(--font-naslov); font-size: 42px; line-height: 1.1; }
+.kontakt-upit__tekst { color: var(--kontakt-svetao-tekst); }
+
+/* Teme: radio dugmad kao čipovi */
+.kontakt-teme { border: 0; margin: 6px 0 0; padding: 0; min-width: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.kontakt-tema { position: relative; display: inline-flex; cursor: pointer; }
+.kontakt-tema input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.kontakt-tema span {
+  display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 999px;
+  border: 1px solid var(--bela); background: transparent; color: var(--bela);
+  font-size: 15px; font-weight: 600; line-height: 1.4;
+  transition: background .2s ease, color .2s ease;
+}
+.kontakt-tema:hover span { background: rgba(255, 255, 255, .12); }
+.kontakt-tema input:checked + span { background: var(--bela); color: var(--ljubicasta-600); }
+.kontakt-tema input:focus-visible + span { outline: 3px solid var(--bela); outline-offset: 2px; }
+
+.kontakt-upit__savet { margin-top: 4px; color: var(--kontakt-svetao-tekst); font-size: 15px; }
+
+/* Bela kartica sa poljima (raspored dolazi iz .forma) */
+.kontakt-upit__polja { flex: 1.2 1 480px; min-width: 0; align-self: flex-start; }
+.kontakt-upit__dodatno { grid-column: 1 / -1; min-width: 0; }
+
+.kontakt-upit__lekari { margin-top: 22px; color: var(--tekst-blag); }
+
+/* ==========================================================================
+   MOBILNI (ispod 960px)
+   ========================================================================== */
+@media (max-width: 959px) {
+  .kontakt-hero__unutra { padding-block: 22px 32px; }
+  .kontakt-hero__naslov { font-size: 40px; margin-bottom: 10px; }
+  .kontakt-hero__tekst { font-size: 15px; margin-bottom: 22px; }
+  .kontakt-kanali { grid-template-columns: 1fr; gap: 10px; }
+  .kontakt-kanal { border-radius: 22px; padding: 18px 20px; gap: 4px; }
+  .kontakt-kanal__ikonica { width: 26px; height: 26px; }
+  .kontakt-kanal__oznaka { margin-top: 6px; }
+  .kontakt-kanal__vrednost { font-size: 24px; line-height: 1.2; }
+
+  .kontakt-ordinacija { display: block; padding-block: 34px 10px; }
+  .kontakt-ordinacija__levo { gap: 10px; }
+  .kontakt-ordinacija__naslov { font-size: 30px; }
+  .kontakt-ordinacija__levo p { font-size: 15px; }
+  .kontakt-vreme { margin-top: 6px; }
+  .kontakt-vreme__red { padding: 13px 0; font-size: 15px; }
+
+  /* Mapa ispod liste, link kao dugme ispod mape */
+  .kontakt-mapa { min-height: 0; overflow: visible; border-radius: 0; background: none; margin-top: 20px; }
+  .kontakt-mapa__slika { position: relative; inset: auto; display: block; height: 230px; border-radius: 24px; overflow: hidden; }
+  .kontakt-mapa__ulica { stroke-width: 9; }
+  .kontakt-mapa__napomena { right: auto; left: 12px; top: 12px; padding: 5px 10px; font-size: 11.5px; background: rgba(255, 255, 255, .9); }
+  .kontakt-mapa__link {
+    position: static; display: flex; justify-content: center; align-items: center; gap: 8px; text-align: center;
+    margin-top: 12px; padding: 13px; box-shadow: none; background: transparent;
+    border: 1px solid var(--ivica-polja);
+  }
+
+  /* Forma: ljubičasta traka preko cele širine */
+  .kontakt-upit { padding-block: 30px 0; }
+  .kontakt-upit > .kontejner { padding-inline: 0; }
+  .kontakt-upit__okvir { display: block; border-radius: 0; padding: 30px var(--margina) 32px; }
+  .kontakt-upit__uvod { gap: 0; }
+  .kontakt-upit__naslov { font-size: 30px; }
+  .kontakt-upit__tekst { margin-top: 10px; font-size: 15px; }
+  .kontakt-teme { margin-top: 16px; }
+  .kontakt-tema span { padding: 10px 15px; }
+  .kontakt-upit__savet { margin-top: 12px; font-size: 14px; }
+  .kontakt-upit__polja { margin-top: 18px; gap: 14px; }
+  .kontakt-upit__lekari { margin: 0; padding: 20px var(--margina) 36px; font-size: 15px; }
+}

@@ -1,0 +1,199 @@
+/* ==========================================================================
+   STRANICA: SVE ONKO ANALIZE  (/onkogenetika/analize/)
+   Sekcije: src/_includes/sekcije/onko-analize/   ·   JS: js/stranice/onko-analize.js
+   Prefiks klasa: analize-
+   ========================================================================== */
+
+/* --- Hero: naslov, pretraga i mreža --------------------------------------- */
+.analize-hero { position: relative; overflow: hidden; background: var(--ljubicasta-800); color: var(--bela); }
+.analize-hero__mreza { position: absolute; right: -80px; top: -110px; width: 600px; height: 600px; opacity: .9; pointer-events: none; }
+.analize-hero__unutra { position: relative; padding-block: 40px 64px; }
+.analize-putanja { font-size: 14px; color: var(--ljubicasta-400); margin-bottom: 40px; }
+.analize-putanja a { color: var(--ljubicasta-400); }
+.analize-putanja a:hover { color: var(--bela); }
+.analize-hero__naslov {
+  font-family: var(--font-naslov); font-weight: 400;
+  font-size: clamp(48px, 5.4vw, 68px); line-height: 1.02; letter-spacing: -.6px; max-width: 760px;
+}
+.analize-hero__tekst { margin-top: 20px; color: var(--tekst-na-tamnom); font-size: 19px; max-width: 600px; }
+
+.analize-pretraga { position: relative; margin-top: 32px; max-width: 520px; }
+.analize-pretraga__ikonica { position: absolute; left: 20px; top: 17px; color: var(--ljubicasta-650); pointer-events: none; }
+.analize-pretraga__unos {
+  width: 100%; height: 54px; padding: 0 20px 0 52px;
+  border: 0; border-radius: 999px; background: var(--bela); color: var(--tekst);
+}
+.analize-pretraga__unos::placeholder { color: var(--tekst-blag); }
+.analize-pretraga__unos:focus-visible { outline: 3px solid var(--ljubicasta-400); outline-offset: 2px; }
+
+/* --- Filteri -------------------------------------------------------------- */
+.analize-katalog { padding-block: 56px 40px; }
+.analize-filteri { display: flex; flex-direction: column; gap: 18px; padding-bottom: 28px; border-bottom: 1px solid var(--ljubicasta-100); }
+.analize-filteri__red { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.analize-filteri__naslov { font-weight: 600; color: var(--ljubicasta-800); margin-right: 8px; min-width: 130px; }
+.analize-cip { padding: 10px 16px; font-size: 15px; }
+
+.analize-brojac { margin: 20px 0 6px; font-size: 14px; color: var(--tekst-blag); }
+
+/* --- Lista: na desktopu tabela sa 4 kolone -------------------------------- */
+.analize-katalog { --kolone: minmax(0, 2.4fr) minmax(0, 1.2fr) minmax(0, 1fr) 150px; }
+.analize-tabela__glava {
+  display: grid; grid-template-columns: var(--kolone); gap: 24px;
+  padding: 12px 16px; font-size: 13px; color: var(--tekst-blag); border-bottom: 1px solid var(--ljubicasta-100);
+}
+.analize-lista { list-style: none; }
+.analize-kartica {
+  display: grid; grid-template-columns: var(--kolone); gap: 24px; align-items: center;
+  padding: 22px 16px; border-bottom: 1px solid var(--ljubicasta-100);
+  scroll-margin-top: 24px;
+  transition: background .2s ease;
+  animation: analize-pojava .35s cubic-bezier(.4, 0, .2, 1) var(--kasnjenje, 0ms) both;
+}
+.analize-kartica:hover { background: var(--ljubicasta-25); }
+.analize-kartica:target { background: var(--ljubicasta-50); }
+@keyframes analize-pojava { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.analize-kartica__glavno { min-width: 0; }
+.analize-kartica__vrh { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.analize-kartica__naziv { font-family: var(--font-naslov); font-size: 25px; line-height: 1.15; color: var(--ljubicasta-800); }
+.analize-kartica__cilj {
+  font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+  background: var(--ljubicasta-50); color: var(--ljubicasta-600); white-space: nowrap;
+}
+/* Oznaka "Premium" postoji samo u mobilnoj skici */
+.analize-kartica__premium { display: none; }
+.analize-kartica__opis { margin-top: 6px; color: var(--tekst-blag); font-size: 15px; }
+
+/* Uzorak i rezultat: na desktopu su to obične ćelije tabele */
+.analize-kartica__podaci { display: contents; }
+.analize-kartica__podaci > div { min-width: 0; font-size: 15px; }
+.analize-kartica__podaci dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.analize-kartica__podaci dd { margin: 0; }
+.analize-kartica__uzorak dd { display: flex; align-items: center; gap: 8px; }
+.analize-ikonica { flex-shrink: 0; }
+.analize-ikonica--tkivo { color: var(--ljubicasta-600); }
+.analize-ikonica--krv { color: var(--crvena-600); }
+
+/* Dugme u poslednjoj koloni */
+.analize-kartica__akcija { text-align: right; }
+.analize-dugme {
+  display: inline-block; border-radius: 999px; text-decoration: none;
+  font-weight: 600; font-size: 14px; line-height: 1.4; transition: background .2s ease, color .2s ease;
+}
+.analize-dugme--detalji { padding: 10px 16px; background: var(--ljubicasta-600); color: var(--bela); }
+.analize-dugme--detalji:hover { background: var(--ljubicasta-650); color: var(--bela); }
+.analize-dugme--pitajte { padding: 9px 15px; border: 1px solid var(--ljubicasta-400); color: var(--ljubicasta-650); }
+.analize-dugme--pitajte:hover { background: var(--ljubicasta-50); color: var(--ljubicasta-650); }
+/* "o analizi X" se na desktopu samo čita (čitač ekrana), na mobilnom se vidi */
+.analize-dugme__dopuna { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Prazno stanje i mesto za ostale analize */
+.analize-prazno { padding: 36px 16px; color: var(--tekst-blag); border-bottom: 1px solid var(--ljubicasta-100); }
+.analize-prazno__dugme {
+  border: 0; background: none; padding: 0; color: var(--ljubicasta-600);
+  font-weight: 600; text-decoration: underline;
+}
+.analize-dopuna {
+  margin-top: 14px; padding: 18px 16px; border: 2px dashed var(--ljubicasta-300); border-radius: 18px;
+  color: var(--ljubicasta-650); font-size: 15px;
+}
+
+/* --- Nedoumica ------------------------------------------------------------ */
+.analize-nedoumica { padding-block: 40px 96px; }
+.analize-nedoumica__kartica {
+  display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center;
+  background: var(--ljubicasta-50); border-radius: 32px; padding: 36px 40px;
+}
+.analize-nedoumica__tekst { flex: 1 1 420px; min-width: 0; color: var(--tekst-blag); }
+.analize-nedoumica__naslov {
+  margin-bottom: 8px; font-family: var(--font-naslov); font-size: 34px; line-height: 1.15; color: var(--ljubicasta-800);
+}
+.analize-nedoumica__akcije { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
+.analize-nedoumica__dugme { padding: 15px 24px; }
+.analize-nedoumica__link { color: var(--ljubicasta-650); }
+
+/* --- Kontakt (forma sa prilogom) ----------------------------------------- */
+.analize-kontakt { background: var(--ljubicasta-800); color: var(--bela); }
+.analize-kontakt__mreza { display: flex; flex-wrap: wrap; gap: 40px 72px; padding-block: 88px; }
+.analize-kontakt__levo { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.analize-kontakt__naslov { font-family: var(--font-naslov); font-size: clamp(36px, 3.6vw, 44px); line-height: 1.08; }
+.analize-kontakt__tekst { color: var(--tekst-na-tamnom); max-width: 400px; }
+.analize-kontakt__forma { flex: 1 1 520px; min-width: 0; }
+
+/* ==========================================================================
+   MOBILNI (ispod 960px)
+   ========================================================================== */
+@media (max-width: 959px) {
+  /* Hero */
+  .analize-hero__mreza { right: -170px; top: -90px; width: 340px; height: 340px; opacity: .55; }
+  .analize-hero__unutra { padding-block: 20px 30px; }
+  .analize-putanja { margin-bottom: 0; }
+  .analize-hero__naslov { margin-top: 16px; font-size: 38px; line-height: 1.05; letter-spacing: 0; }
+  .analize-hero__tekst { margin-top: 12px; font-size: 15px; }
+  .analize-pretraga { margin-top: 20px; max-width: none; }
+  .analize-pretraga__ikonica { left: 18px; top: 15px; }
+  .analize-pretraga__unos { height: 50px; padding: 0 18px 0 48px; }
+
+  /* Filteri: naslov iznad, čipovi u redu koji se skroluje */
+  .analize-katalog { padding-block: 8px 10px; }
+  .analize-filteri { gap: 0; padding-bottom: 0; border-bottom: 0; }
+  .analize-filteri__red { display: block; margin-top: 14px; }
+  .analize-filteri__naslov { margin: 0 0 8px; min-width: 0; font-size: 14px; }
+  .analize-filteri__cipovi { padding-bottom: 4px; }
+  .analize-cip { flex-shrink: 0; min-height: 44px; padding: 0 16px; }
+  .analize-brojac { margin: 16px 0 10px; padding-top: 14px; border-top: 1px solid var(--ljubicasta-100); }
+
+  /* Lista postaje niz kartica */
+  .analize-tabela__glava { display: none; }
+  .analize-lista { display: flex; flex-direction: column; gap: 12px; }
+  .analize-kartica {
+    display: flex; flex-direction: column; align-items: stretch; gap: 10px;
+    padding: 18px; background: var(--bela); border: 1px solid var(--ljubicasta-100); border-radius: 22px;
+  }
+  .analize-kartica:hover { background: var(--bela); }
+  .analize-kartica__vrh { align-items: center; gap: 6px 10px; }
+  .analize-kartica__naziv { font-size: 23px; }
+  .analize-kartica__premium {
+    display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .8px; text-transform: uppercase;
+    padding: 3px 9px; border: 1px solid var(--zlatna-500); border-radius: 999px; color: var(--zlatna-700); background: var(--bela);
+  }
+  .analize-kartica__opis { margin-top: 0; }
+  .analize-kartica__podaci {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    padding-top: 10px; border-top: 1px solid var(--linija-svetla);
+  }
+  .analize-kartica__podaci dt { position: static; width: auto; height: auto; overflow: visible; clip: auto; white-space: normal; font-size: 12.5px; color: var(--tekst-blag); }
+  .analize-kartica__podaci dd { margin-top: 2px; font-size: 14px; }
+  .analize-kartica__uzorak dd { gap: 6px; }
+  .analize-ikonica { width: 16px; height: 16px; }
+  .analize-kartica__akcija { text-align: center; }
+  .analize-dugme { display: block; font-size: 15px; text-align: center; }
+  .analize-dugme--detalji { padding: 12px; }
+  .analize-dugme--pitajte { padding: 11px; }
+  .analize-dugme__dopuna { position: static; width: auto; height: auto; overflow: visible; clip: auto; white-space: normal; }
+
+  /* Premium kartica (Cancer Neo): slonovača i zlatna ivica */
+  .analize-kartica--premium, .analize-kartica--premium:hover { background: var(--slonovaca); border-color: var(--zlatna-500); }
+  .analize-kartica--premium .analize-kartica__podaci { border-top-color: #EADFC8; }
+  .analize-kartica--premium .analize-dugme--detalji { background: var(--neo-900); color: #F3E6C8; }
+  .analize-kartica--premium .analize-dugme--detalji:hover { background: var(--neo-700); color: #F3E6C8; }
+
+  .analize-prazno { padding: 24px 0; font-size: 15px; }
+  .analize-dopuna { padding: 16px; font-size: 14px; }
+
+  /* Nedoumica */
+  .analize-nedoumica { padding-block: 24px 34px; }
+  .analize-nedoumica__kartica { display: block; border-radius: 26px; padding: 24px 20px; }
+  .analize-nedoumica__tekst { font-size: 15px; }
+  .analize-nedoumica__naslov { font-size: 27px; }
+  .analize-nedoumica__akcije { display: block; }
+  .analize-nedoumica__dugme { display: flex; width: 100%; margin-top: 16px; padding: 14px; }
+  .analize-nedoumica__link { display: block; margin-top: 12px; text-align: center; font-size: 15px; }
+
+  /* Kontakt */
+  .analize-kontakt__mreza { display: block; padding-block: 32px 36px; }
+  .analize-kontakt__levo { gap: 10px; }
+  .analize-kontakt__naslov { font-size: 32px; line-height: 1.1; }
+  .analize-kontakt__tekst { font-size: 15px; }
+  .analize-kontakt__forma { margin-top: 18px; gap: 14px; }
+}

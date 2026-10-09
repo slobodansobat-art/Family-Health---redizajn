@@ -1,0 +1,27 @@
+{#- ANALIZA · srodne analize (linkovi na druge analize iz kataloga)
+    Sadržaj: analiza.stranica.srodne.stavke = [{ slug, opis }]; naziv i adresa iz "analize"
+    (ako opis nije upisan, koristi se kratak opis analize). Naslov: stranice.analiza.srodne
+    Stil: css/stranice/analiza.css (.analiza-srodne) -#}
+{%- set sr = s.srodne or {} -%}
+{%- if sr.stavke.length -%}
+<section class="analiza-srodne" aria-labelledby="analiza-srodne-naslov">
+  <div class="kontejner">
+    <h2 id="analiza-srodne-naslov" class="analiza__h2 analiza-srodne__naslov">{{ sr.naslov or z.srodne.naslov }}</h2>
+    <ul class="analiza-srodne__lista">
+      {%- for st in sr.stavke %}
+      {%- for a in analize %}{% if a.slug == st.slug %}
+      <li>
+        <a href="{{ a.url }}" class="analiza-srodne__link">
+          <span class="analiza-srodne__tekst">
+            <span class="analiza-srodne__naziv">{{ a.naziv }}</span>
+            <span class="analiza-srodne__opis">{{ st.opis or a.opis }}</span>
+          </span>
+          <span class="analiza-srodne__strelica" aria-hidden="true">→</span>
+        </a>
+      </li>
+      {%- endif %}{% endfor %}
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{%- endif -%}

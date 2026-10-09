@@ -1,0 +1,37 @@
+{#- ZA LEKARE · tabela "Koja analiza, za koju indikaciju"
+    Desktop: tabela. Mobilni: isti redovi kao kartice (cela kartica je link),
+    red sa "premium: true" (Cancer Neo) je tamna kartica.
+    Sadržaj: stranice.zaLekare.indikacije  ·  Stil: css/stranice/za-lekare.css (.lekari-ind) -#}
+{%- set d = stranice.zaLekare.indikacije -%}
+<section class="lekari-ind" aria-labelledby="lekari-ind-naslov">
+  <div class="kontejner">
+    <div class="lekari-ind__zaglavlje">
+      <h2 id="lekari-ind-naslov" class="naslov-m lekari-ind__naslov">{{ d.naslov }}</h2>
+      <a href="{{ d.linkSve.link }}" class="lekari-ind__sve">{{ d.linkSve.tekst }}</a>
+    </div>
+    <div class="lekari-ind__okvir">
+      <table class="lekari-ind__tabela">
+        <thead>
+          <tr>
+            <th scope="col">{{ d.kolonaSituacija }}</th>
+            <th scope="col">{{ d.kolonaAnaliza }}</th>
+            <th scope="col">{{ d.kolonaUzorak }}</th>
+            <th scope="col">{{ d.kolonaRezultat }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for r in d.redovi %}
+          <tr class="lekari-ind__red{% if r.premium %} lekari-ind__red--premium{% endif %}">
+            <td class="lekari-ind__situacija" data-oznaka="{{ d.kolonaSituacija }}">{{ r.situacija }}</td>
+            <td class="lekari-ind__analiza">
+              <a href="{{ r.link }}"><span>{{ r.analiza }}{% if r.premium %} <span class="lekari-ind__premium">{{ d.oznakaPremium }}</span>{% endif %}</span><span class="lekari-ind__strelica" aria-hidden="true">→</span></a>
+            </td>
+            <td class="lekari-ind__uzorak" data-oznaka="{{ d.kolonaUzorak }}">{{ r.uzorak }}</td>
+            <td class="lekari-ind__rezultat" data-oznaka="{{ d.kolonaRezultat }}">{{ r.rezultat }}</td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

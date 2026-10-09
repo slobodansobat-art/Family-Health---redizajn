@@ -1,0 +1,19 @@
+{#- POČETNA · lekar: fotografija i citat dr Antovića
+    Na mobilnom se tekst o medijima skraćuje na sam link (kao u skici).
+    Sadržaj: stranice.pocetna.lekar   ·   Stil: css/stranice/pocetna.css -#}
+{%- from "makroi/osnovni.njk" import slika -%}
+{%- set d = stranice.pocetna.lekar -%}
+<section class="pocetna-lekar" aria-labelledby="pocetna-lekar-citat">
+  <div class="kontejner pocetna-lekar__mreza">
+    <div class="pocetna-lekar__foto-okvir">
+      <span class="pocetna-lekar__krug" aria-hidden="true"></span>
+      {{ slika(d.slika, d.slikaOpis, "slika--krug pocetna-lekar__foto") }}
+    </div>
+    <figure class="pocetna-lekar__citat">
+      <p class="pocetna-lekar__nadnaslov">{{ d.nadnaslov }}</p>
+      <blockquote id="pocetna-lekar-citat">{{ d.citat }}</blockquote>
+      <figcaption>{{ d.potpis }}</figcaption>
+      <p class="pocetna-lekar__mediji"><span class="samo-desktop">{{ d.medijiTekst }} </span><a href="{{ d.medijiLink.link }}">{{ d.medijiLink.tekst }}</a></p>
+    </figure>
+  </div>
+</section>

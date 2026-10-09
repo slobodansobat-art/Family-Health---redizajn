@@ -1,0 +1,16 @@
+---
+# Kontakt: kanali, ordinacija sa radnim vremenom i statičnom mapom, forma sa temom.
+# Sadržaj: src/sadrzaj/stranice/kontakt.json  ·  kontakt podaci: src/sadrzaj/podesavanja.json
+# Forma: Netlify "kontakt-upit", adresa /kontakt/#forma
+kljuc: kontakt
+permalink: /kontakt/
+zaglavlje:
+  tema: svetla
+  oblast: opsti
+  nazad: /
+donjaTraka: { tekst: "Pošaljite upit", link: "#forma" }
+skripte: ["stranice/kontakt.js"]
+---
+{% include "sekcije/kontakt/hero.njk" %}
+{% include "sekcije/kontakt/ordinacija.njk" %}
+{% include "sekcije/kontakt/forma.njk" %}

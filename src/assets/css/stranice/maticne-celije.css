@@ -1,0 +1,532 @@
+/* ==========================================================================
+   STRANICA: MATIČNE ĆELIJE  (/maticne-celije/)
+   Sekcije: src/_includes/sekcije/maticne-celije/  ·  JS: js/stranice/maticne-celije.js
+   Redosled: hero, pismo lekara, pitanja za banku, rok za odluku, koraci,
+   kalkulator paketa, primena, česta pitanja, kontakt.
+   Mobilni raspored je na kraju fajla (ispod 960px).
+   ========================================================================== */
+
+/* Boje samo za ovu stranicu (omotač .mc u src/stranice/maticne-celije.njk) */
+.mc {
+  --mc-podnaslov: #7A4FA3;      /* "Tokom trudnoće", "Pre porođaja"... u koracima */
+  --mc-posle-roka: #EBC9B8;     /* slajder: deo staze posle preporučenog roka */
+  --mc-rok-oznaka: #8A4B2E;     /* slajder: oznaka "36." */
+  --mc-prekidac: #C9C2D3;       /* TotiCyte prekidač kad je isključen */
+  --mc-na-tamnom: #EBDDF5;      /* blag tekst na tamnoj i ljubičastoj pozadini */
+  --mc-sveska: #F1ECF6;         /* linije "sveske" u listi pitanja */
+}
+/* Zajednički naslov sekcija (serif, tamna ljubičasta) */
+.mc h2 { font-family: var(--font-naslov); font-weight: 400; }
+
+/* --- HERO ----------------------------------------------------------------- */
+.mc-hero { position: relative; overflow: hidden; background: var(--ljubicasta-50); }
+.mc-hero__unutra { position: relative; padding-top: 40px; padding-bottom: 110px; }
+
+/* Mehurići (ukras): levo se dižu do visine naslova, desno skoro do vrha */
+.mc-hero__mehurici { position: absolute; bottom: 0; width: 50%; overflow: hidden; pointer-events: none; }
+.mc-hero__mehurici--levo { left: 0; height: 64%; }
+.mc-hero__mehurici--desno { right: 0; height: 100%; }
+.mc-mehur {
+  position: absolute; top: 100%; left: var(--x);
+  width: var(--v); height: var(--v); border-radius: 50%;
+  animation: mc-uspon var(--t) linear var(--k) infinite;
+}
+.mc-mehur--100 { background: var(--ljubicasta-100); }
+.mc-mehur--300 { background: var(--ljubicasta-300); }
+.mc-mehur--400 { background: var(--ljubicasta-400); }
+.mc-mehur--500 { background: var(--ljubicasta-500); }
+@keyframes mc-uspon {
+  0% { top: calc(100% + 30px); transform: scale(.85); opacity: 0; }
+  12% { opacity: .9; }
+  78% { opacity: .9; }
+  100% { top: -30px; transform: scale(1.1); opacity: 0; }
+}
+/* Oblik fotografije koji se polako menja */
+@keyframes mc-oblik {
+  0%, 100% { border-radius: 58% 42% 52% 48% / 46% 56% 44% 54%; }
+  33% { border-radius: 44% 56% 40% 60% / 58% 42% 58% 42%; }
+  66% { border-radius: 52% 48% 62% 38% / 40% 60% 46% 54%; }
+}
+
+.mc-hero__putanja { font-size: 14px; color: var(--tekst-blag); margin-bottom: 36px; }
+.mc-hero__putanja a { color: var(--tekst-blag); }
+
+/* Desktop: tekst, dugmad i prednosti levo, fotografija desno */
+.mc-hero__mreza {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-areas: ". foto" "tekst foto" "akcije foto" "prednosti foto" ". foto";
+  grid-template-rows: 1fr auto auto auto 1fr;   /* leva kolona je centrirana uz fotografiju */
+  column-gap: 64px;
+}
+.mc-hero__tekst { grid-area: tekst; display: flex; flex-direction: column; gap: 22px; }
+.mc-hero__naslov { font-style: italic; letter-spacing: 0; color: var(--ljubicasta-650); max-width: 600px; }
+.mc-hero__uvod { font-size: 19px; color: var(--tekst-blag); max-width: 500px; }
+.mc-hero__akcije { grid-area: akcije; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 28px; }
+.mc-hero__dugme { padding: 16px 26px; }
+.mc-hero__link { color: var(--ljubicasta-650); }
+.mc-hero__link:hover { color: var(--ljubicasta-600); }
+.mc-hero__prednosti {
+  grid-area: prednosti; list-style: none; margin-top: 40px; padding-top: 22px;
+  border-top: 1px solid var(--ljubicasta-200);
+  display: flex; flex-wrap: wrap; gap: 10px 40px; color: var(--tekst-blag); font-size: 15px;
+}
+.mc-hero__prednosti li { display: flex; gap: 8px; }
+.mc-hero__prednosti svg { display: none; flex-shrink: 0; margin-top: 4px; color: var(--ljubicasta-600); }
+
+.mc-hero__foto-okvir { grid-area: foto; align-self: center; position: relative; display: flex; justify-content: center; }
+.mc-hero__mrlja {
+  position: absolute; top: -10px; left: 50%; width: 400px; max-width: 110%; height: 380px; margin-left: -200px;
+  background: var(--ljubicasta-150); animation: mc-oblik 14s ease-in-out infinite;
+}
+.mc-hero__foto {
+  position: relative; width: 360px; max-width: 100%; height: 340px; padding: 40px;
+  background: var(--ljubicasta-300); color: var(--ljubicasta-650);
+  animation: mc-oblik 14s ease-in-out -5s infinite; border-radius: 58% 42% 52% 48% / 46% 56% 44% 54%;
+}
+.mc-hero__talas { position: absolute; bottom: 0; left: 0; width: 100%; height: 60px; fill: var(--bela); }
+
+/* --- PISMO LEKARA --------------------------------------------------------- */
+.mc-pismo { display: flex; flex-wrap: wrap; gap: 40px 80px; align-items: flex-start; padding-top: 80px; padding-bottom: 40px; }
+.mc-pismo__autor { flex: 0 1 300px; min-width: 240px; display: flex; flex-direction: column; gap: 14px; }
+.mc-pismo__foto { width: 180px; height: 180px; min-height: 0; background: var(--ljubicasta-200); font-size: 13px; }
+.mc-pismo__potpis { display: flex; flex-direction: column; gap: 4px; }
+.mc-pismo__ime { font-weight: 600; color: var(--ljubicasta-800); }
+.mc-pismo__zvanje { color: var(--tekst-blag); font-size: 15px; }
+.mc-pismo__sadrzaj { flex: 1 1 520px; min-width: 0; }
+.mc-pismo__naslov { margin-bottom: 18px; font-style: italic; font-size: 34px; color: var(--ljubicasta-650); }
+.mc-pismo__tekst {
+  font-family: var(--font-naslov); font-size: 22px; line-height: 1.5; color: var(--tekst);
+  max-width: 680px; display: flex; flex-direction: column; gap: 16px;
+}
+.mc-pismo__napomena { margin-top: 18px; font-size: 13px; color: var(--tekst-blag); }
+
+/* --- PITANJA ZA BANKU ----------------------------------------------------- */
+.mc-pitanja { padding-top: 80px; padding-bottom: 60px; }
+.mc-pitanja__naslov { margin-bottom: 14px; font-size: 44px; line-height: 1.1; color: var(--ljubicasta-800); max-width: 760px; }
+.mc-pitanja__uvod { margin-bottom: 36px; color: var(--tekst-blag); max-width: 640px; }
+.mc-pitanja__mreza { display: flex; flex-wrap: wrap; gap: 28px; align-items: stretch; }
+
+/* Leva kartica: lista kao u svesci (linija ispod svakog reda od 64px, preko cele širine kartice) */
+.mc-pitanja__lista {
+  flex: 1 1 440px; min-width: 0; padding: 30px 26px 22px;
+  background: var(--bela); border: 1px solid var(--ljubicasta-100); border-radius: var(--zaobljenje);
+  box-shadow: 0 16px 40px rgba(47, 21, 68, .07);
+}
+.mc-pitanja__glava { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 0 8px 18px; }
+.mc-pitanja__lista-naslov { font-family: var(--font-naslov); font-style: italic; font-size: 24px; color: var(--ljubicasta-650); }
+.mc-pitanja__brojac { font-size: 13px; color: var(--tekst-blag); white-space: nowrap; }
+.mc-pitanja__stavke {
+  list-style: none; margin-inline: -26px; padding-inline: 26px;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 63px, var(--mc-sveska) 63px, var(--mc-sveska) 64px);
+}
+.mc-pitanja__pitanje {
+  width: 100%; min-height: 64px; display: flex; align-items: center; gap: 16px; padding: 10px 8px;
+  background: transparent; border: 0; border-radius: 14px; text-align: left; color: var(--tekst-blag);
+  font-family: var(--font-naslov); font-size: 21px; line-height: 1.25;
+  transition: background .25s ease, color .25s ease;
+}
+.mc-pitanja__pitanje:hover { color: var(--ljubicasta-800); }
+.mc-pitanja__pitanje[aria-pressed="true"] { background: var(--ljubicasta-50); color: var(--ljubicasta-800); }
+/* Kvadratić: prazan dok pitanje nije pročitano, pun sa kvačicom posle */
+.mc-pitanja__kvadrat {
+  flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--ljubicasta-400); background: var(--bela); color: var(--bela);
+  transition: background .3s ease, border-color .3s ease;
+}
+.mc-pitanja__kvadrat svg { visibility: hidden; stroke-width: 3.5; }
+.mc-pitanja__pitanje.je-procitano .mc-pitanja__kvadrat { background: var(--ljubicasta-600); border-color: var(--ljubicasta-600); }
+.mc-pitanja__pitanje.je-procitano .mc-pitanja__kvadrat svg { visibility: visible; }
+
+/* Desna kartica: odgovor */
+.mc-pitanja__kartica {
+  flex: 1 1 400px; min-width: 0; position: relative; overflow: hidden;
+  display: flex; flex-direction: column; padding: 40px 38px;
+  background: var(--ljubicasta-800); color: var(--bela); border-radius: 32px;
+}
+.mc-pitanja__mrlja { position: absolute; right: -140px; top: -150px; width: 420px; height: 420px; fill: var(--ljubicasta-750); }
+.mc-pitanja__odgovori { position: relative; flex: 1; display: flex; flex-direction: column; gap: 40px; }
+.mc-pitanja__odgovor { display: flex; flex-direction: column; gap: 14px; }
+/* Bez JS-a vide se svi odgovori, odvojeni linijom */
+.mc-pitanja__odgovor + .mc-pitanja__odgovor { padding-top: 40px; border-top: 1px solid var(--ljubicasta-700); }
+.mc-pitanja.je-spremno .mc-pitanja__odgovor { padding-top: 0; border-top: 0; }
+.mc-pitanja__oznaka { font-size: 14px; font-weight: 600; color: var(--ljubicasta-400); }
+.mc-pitanja__ponovljeno { font-family: var(--font-naslov); font-size: 22px; line-height: 1.3; color: var(--tekst-na-tamnom); }
+.mc-pitanja__istaknuto { margin-top: 10px; font-family: var(--font-naslov); font-size: 76px; line-height: .95; color: var(--bela); }
+.mc-pitanja__istaknuto-opis { font-weight: 600; color: var(--ljubicasta-400); }
+.mc-pitanja__tekst { margin-top: 6px; color: var(--mc-na-tamnom); max-width: 460px; }
+.mc-pitanja__dno {
+  position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;
+  margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--ljubicasta-700);
+}
+.mc-pitanja__redni { font-size: 14px; color: var(--ljubicasta-400); }
+.mc-pitanja__sledece {
+  min-height: 44px; padding: 12px 20px; border: 0; border-radius: 999px;
+  background: var(--bela); color: var(--ljubicasta-800); font-weight: 600;
+  transition: background .2s ease;
+}
+.mc-pitanja__sledece:hover { background: var(--ljubicasta-50); }
+
+/* --- ROK ZA ODLUKU (slajder nedelje) -------------------------------------- */
+.mc-rok { padding-top: 40px; padding-bottom: 80px; }
+.mc-rok__kartica {
+  display: flex; flex-wrap: wrap; gap: 32px 56px; align-items: center;
+  padding: 44px 40px; background: var(--ljubicasta-50); border-radius: var(--zaobljenje-veliko);
+}
+.mc-rok__uvod { flex: .9 1 340px; min-width: 0; }
+.mc-rok__naslov { margin-bottom: 12px; font-style: italic; font-size: 40px; line-height: 1.1; color: var(--ljubicasta-650); }
+.mc-rok__tekst { color: var(--tekst-blag); }
+.mc-rok__alat {
+  flex: 1.1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 20px;
+  padding: 28px; background: var(--bela); border-radius: var(--zaobljenje);
+}
+.mc-rok__red { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.mc-rok__pitanje { font-weight: 600; color: var(--ljubicasta-800); }
+.mc-rok__brojac { display: flex; align-items: center; gap: 8px; }
+.mc-rok__korak {
+  width: 44px; height: 44px; border: 0; border-radius: 50%; padding: 0;
+  background: var(--ljubicasta-50); color: var(--ljubicasta-650); font-size: 22px; line-height: 1;
+  transition: background .2s ease;
+}
+.mc-rok__korak:hover { background: var(--ljubicasta-150); }
+.mc-rok__vrednost { min-width: 64px; text-align: center; font-family: var(--font-naslov); font-size: 34px; line-height: 1.2; color: var(--ljubicasta-600); }
+
+/* Staza: do preporučenog roka lavanda, posle roka breskva (--rok iz šablona) */
+.mc-rok__klizac { position: relative; --visina: 38px; }
+.mc-rok__staza {
+  position: absolute; left: 0; right: 0; top: calc(var(--visina) / 2 - 7px);
+  display: flex; height: 14px; border-radius: 7px; overflow: hidden;
+}
+.mc-rok__staza span:first-child { width: var(--rok); background: var(--ljubicasta-300); }
+.mc-rok__staza span:last-child { flex: 1; background: var(--mc-posle-roka); }
+.mc-rok__unos {
+  position: relative; display: block; width: 100%; height: var(--visina); margin: 0;
+  -webkit-appearance: none; appearance: none; background: transparent; cursor: pointer;
+  touch-action: pan-y;
+}
+.mc-rok__unos::-webkit-slider-runnable-track { height: var(--visina); background: transparent; }
+.mc-rok__unos::-moz-range-track { height: var(--visina); background: transparent; }
+.mc-rok__unos::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 22px; height: var(--visina); border-radius: 11px;
+  background: var(--ljubicasta-800); border: 4px solid var(--bela); box-shadow: 0 2px 10px rgba(47, 21, 68, .35); cursor: grab;
+}
+.mc-rok__unos::-moz-range-thumb {
+  width: 14px; height: calc(var(--visina) - 8px); border-radius: 11px;
+  background: var(--ljubicasta-800); border: 4px solid var(--bela); box-shadow: 0 2px 10px rgba(47, 21, 68, .35); cursor: grab;
+}
+.mc-rok__unos:active::-webkit-slider-thumb { cursor: grabbing; }
+.mc-rok__unos:focus-visible { outline: 3px solid var(--ljubicasta-600); outline-offset: 4px; border-radius: 12px; }
+.mc-rok__skala { position: relative; height: 20px; margin-top: 4px; font-size: 12px; color: var(--tekst-blag); }
+.mc-rok__skala span { position: absolute; left: var(--x); transform: translateX(-50%); white-space: nowrap; }
+.mc-rok__skala .je-prva { left: 0; transform: none; }
+.mc-rok__skala .je-poslednja { left: auto; right: 0; transform: none; }
+.mc-rok__skala .je-rok { font-weight: 600; color: var(--mc-rok-oznaka); }
+.mc-rok__poruka { display: flex; flex-direction: column; gap: 6px; }
+.mc-rok__poruka-naslov { font-family: var(--font-naslov); font-size: 24px; line-height: 1.25; color: var(--ljubicasta-800); }
+.mc-rok__poruka-tekst { color: var(--tekst-blag); font-size: 15px; }
+.mc-rok__napomena { font-size: 12px; color: var(--tekst-blag); }
+
+/* --- KORACI (dopune zajedničke komponente) -------------------------------- */
+.mc-proces { padding-top: 40px; padding-bottom: 80px; }
+.mc-proces__naslov { margin-bottom: 10px; font-style: italic; font-size: 46px; line-height: 1.08; color: var(--ljubicasta-650); }
+.mc-proces__uvod { margin-bottom: 40px; color: var(--tekst-blag); max-width: 560px; }
+.mc-proces .koraci { --k-visina: 80px; }
+.mc-proces .koraci__linija, .mc-proces .koraci__ispuna { top: 40px; }
+/* Podnaslov ("Tokom trudnoće") iznad naslova koraka, u kurzivu */
+.mc-proces .koraci__naslovi { flex-direction: column-reverse; gap: 1px; }
+.mc-proces .koraci__podnaslov { font-family: var(--font-naslov); font-style: italic; font-size: 15px; color: var(--mc-podnaslov); }
+.mc-proces .koraci__naslov { font-size: 22px; }
+.mc-proces .koraci__stavka.je-zavrsen .koraci__naslov { color: var(--tekst-blag); }
+.mc-proces .koraci__stavka.je-aktivan .koraci__naslov { color: var(--ljubicasta-800); }
+.mc-proces .koraci__broj { color: var(--ljubicasta-600); border-color: var(--ljubicasta-300); }
+.mc-proces .koraci__stavka.je-aktivan .koraci__broj { box-shadow: 0 0 0 7px var(--ljubicasta-150); }
+/* Ilustracije su velike (260 × 230) i imaju svoj krug u pozadini */
+.mc-proces .koraci__ilustracija {
+  flex: 1 1 240px; width: auto; height: auto; border-radius: 0; background: none;
+  display: flex; justify-content: center;
+}
+.mc-proces .koraci__ilustracija svg { width: 260px; max-width: 100%; max-height: none; height: auto; }
+.mc-proces .koraci__sadrzaj { flex: 1.2 1 260px; }
+.mc-proces .koraci__glava { color: var(--ljubicasta-800); }
+.mc-proces .koraci__dalje:hover { background: var(--ljubicasta-650); }
+
+/* Boje ilustracija (SVG u src/_includes/ilustracije/maticne-celije/) */
+.mc-ilustracija .mci-f-krug { fill: var(--ljubicasta-150); }
+.mc-ilustracija .mci-f-bela { fill: var(--bela); }
+.mc-ilustracija .mci-f-tamna { fill: var(--ljubicasta-800); }
+.mc-ilustracija .mci-f-svetla { fill: var(--ljubicasta-300); }
+.mc-ilustracija .mci-f-akcent { fill: var(--ljubicasta-600); }
+.mc-ilustracija .mci-f-srednja { fill: var(--ljubicasta-500); }
+.mc-ilustracija .mci-f-krv { fill: var(--crvena-600); }
+.mc-ilustracija .mci-s-bela { stroke: var(--bela); }
+.mc-ilustracija .mci-s-tamna { stroke: var(--ljubicasta-800); }
+.mc-ilustracija .mci-s-svetla { stroke: var(--ljubicasta-300); }
+.mc-ilustracija .mci-s-akcent { stroke: var(--ljubicasta-600); }
+.mc-ilustracija .mci-s-srednja { stroke: var(--ljubicasta-500); }
+.mc-ilustracija .mci-s-bleda { stroke: var(--ljubicasta-400); }
+.mc-ilustracija text { font-family: var(--font-tekst); font-weight: 600; }
+.mc-ilustracija .mci-tekst-12 { font-size: 12px; }
+.mc-ilustracija .mci-tekst-13 { font-size: 13px; }
+.mc-ilustracija .mci-tekst-14 { font-size: 14px; }
+
+/* --- KALKULATOR PAKETA ---------------------------------------------------- */
+.mc-paketi { padding-top: 100px; padding-bottom: 60px; }
+.mc-paketi__naslov { margin-bottom: 12px; font-size: 44px; line-height: 1.1; color: var(--ljubicasta-800); }
+.mc-paketi__uvod { margin-bottom: 40px; color: var(--tekst-blag); max-width: 620px; }
+/* Desktop: izbor i "šta je uključeno" levo, obračun desno */
+.mc-paketi__mreza {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  grid-template-areas: "izbor obracun" "ukljuceno obracun";
+  grid-template-rows: auto 1fr;
+  gap: 28px 48px; align-items: start;
+}
+.mc-paketi__izbor { grid-area: izbor; display: flex; flex-direction: column; gap: 28px; }
+.mc-paketi__grupa { margin: 0; padding: 0; border: 0; min-width: 0; }
+.mc-paketi__legenda { padding: 0; margin-bottom: 12px; font-weight: 600; color: var(--ljubicasta-800); }
+.mc-paketi__opcije { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 10px; }   /* svi paketi u jednom redu */
+.mc-paketi__opcija {
+  display: flex; flex-direction: column; gap: 2px; padding: 18px 16px; text-align: left;
+  background: var(--bela); color: var(--ljubicasta-800);
+  border: 2px solid var(--ljubicasta-200); border-radius: 20px;
+  transition: background .25s ease, border-color .25s ease, color .25s ease;
+}
+.mc-paketi__opcija:hover { border-color: var(--ljubicasta-500); }
+.mc-paketi__opcija[aria-pressed="true"] { background: var(--ljubicasta-600); border-color: var(--ljubicasta-600); color: var(--bela); }
+.mc-paketi__godine { font-family: var(--font-naslov); font-size: 30px; line-height: 1; }
+.mc-paketi__godine-oznaka { font-size: 14px; }
+.mc-paketi__cena { margin-top: 8px; font-weight: 600; }
+
+.mc-paketi__toti { display: flex; gap: 16px; align-items: flex-start; padding: 20px 22px; border: 1px solid var(--ljubicasta-200); border-radius: 20px; }
+.mc-paketi__toti-naziv { font-weight: 600; color: var(--ljubicasta-800); }
+.mc-paketi__toti-tekst { margin-top: 4px; color: var(--tekst-blag); font-size: 15px; }
+/* Prekidač (role="switch") */
+.mc-prekidac {
+  flex-shrink: 0; position: relative; width: 52px; height: 30px; padding: 0; border: 0; border-radius: 999px;
+  background: var(--mc-prekidac); transition: background .25s ease;
+}
+.mc-prekidac__dugme {
+  position: absolute; top: 4px; left: 4px; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--bela); transition: transform .25s ease;
+}
+.mc-prekidac[aria-checked="true"] { background: var(--ljubicasta-600); }
+.mc-prekidac[aria-checked="true"] .mc-prekidac__dugme { transform: translateX(22px); }
+
+.mc-paketi__ukljuceno { grid-area: ukljuceno; }
+.mc-paketi__ukljuceno-naslov { margin-bottom: 10px; font-weight: 600; color: var(--ljubicasta-800); }
+.mc-paketi__lista {
+  padding-left: 20px; color: var(--tekst-blag); font-size: 15px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 6px 28px;
+}
+.mc-paketi__lista svg { display: none; }
+
+/* Obračun */
+.mc-paketi__obracun {
+  grid-area: obracun; display: flex; flex-direction: column; gap: 14px;
+  padding: 34px 34px 44px; background: var(--ljubicasta-50); border-radius: 32px 32px 32px 110px;
+}
+.mc-paketi__obracun-oznaka { font-size: 14px; color: var(--tekst-blag); }
+.mc-paketi__obracun-oznaka + .mc-paketi__doplate { margin-top: -6px; }
+.mc-paketi__obracun-naslov { font-family: var(--font-naslov); font-size: 28px; line-height: 1.25; color: var(--ljubicasta-800); }
+.mc-paketi__iznos { padding: 14px 0; border-top: 1px solid var(--ljubicasta-200); border-bottom: 1px solid var(--ljubicasta-200); margin-bottom: 6px; }
+.mc-paketi__ukupno { font-family: var(--font-naslov); font-size: 54px; line-height: 1; color: var(--ljubicasta-600); }
+.mc-paketi__rate { margin-top: 8px; font-size: 15px; font-weight: 600; color: var(--ljubicasta-600); }
+.mc-paketi__napomena { margin-top: 2px; font-size: 14px; color: var(--tekst-blag); }
+.mc-paketi__doplate { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.mc-paketi__doplata { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; }
+.mc-paketi__doplata dd { margin: 0; }
+.mc-paketi__doplata-iznos { font-weight: 600; white-space: nowrap; }
+.mc-paketi__doplata-napomena { grid-column: 1 / -1; font-size: 13px; color: var(--tekst-blag); }
+.mc-paketi__dugme { align-self: flex-start; margin-top: 12px; }
+
+/* --- PRIMENA -------------------------------------------------------------- */
+.mc-primena { display: flex; flex-wrap: wrap; gap: 32px 72px; padding-top: 60px; padding-bottom: 60px; }
+.mc-primena__levo { flex: 1 1 380px; min-width: 0; }
+.mc-primena__desno { flex: 1 1 460px; min-width: 0; }
+.mc-primena__naslov { margin-bottom: 14px; font-size: 36px; line-height: 1.15; color: var(--ljubicasta-800); }
+.mc-primena__tekst { color: var(--tekst-blag); }
+.mc-primena__bolesti { padding-left: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px 28px; }
+.mc-primena__napomena { margin-top: 18px; font-size: 14px; color: var(--tekst-blag); }
+
+/* --- ČESTA PITANJA (pitanja u sans fontu, plus u krugu, kao u skici) ----- */
+.mc-faq { display: flex; flex-wrap: wrap; gap: 32px 72px; align-items: flex-start; padding-top: 60px; padding-bottom: 100px; }
+.mc-faq__levo { flex: .7 1 300px; min-width: 0; }
+.mc-faq__pitanja { flex: 1.3 1 520px; min-width: 0; }
+.mc-faq__naslov { margin-bottom: 14px; font-size: 40px; line-height: 1.1; color: var(--ljubicasta-800); }
+.mc-faq__tekst { color: var(--tekst-blag); }
+.mc-faq__tekst a { white-space: nowrap; }
+.mc-faq .faq__pitanje { padding: 20px 0; font-family: var(--font-tekst); font-size: 18px; font-weight: 500; line-height: 1.4; }
+.mc-faq .faq__ikonica {
+  width: 32px; height: 32px; border-radius: 50%; align-items: center; justify-content: center;
+  background: var(--ljubicasta-50); color: var(--ljubicasta-600);
+}
+.mc-faq .faq__ikonica svg { width: 18px; height: 18px; }
+.mc-faq .faq__odgovor { padding-right: 0; max-width: 680px; }
+
+/* --- KONTAKT -------------------------------------------------------------- */
+.mc-kontakt { position: relative; overflow: hidden; background: var(--ljubicasta-600); color: var(--bela); }
+.mc-kontakt__mrlja { position: absolute; right: -120px; bottom: -160px; width: 520px; height: 520px; fill: var(--ljubicasta-550); }
+.mc-kontakt__mreza { position: relative; display: flex; flex-wrap: wrap; gap: 40px 72px; padding-block: 88px; }
+.mc-kontakt__levo { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.mc-kontakt__naslov { font-style: italic; font-size: 46px; line-height: 1.08; }
+.mc-kontakt__tekst { color: var(--mc-na-tamnom); max-width: 380px; }
+.mc-kontakt__telefoni { display: flex; flex-direction: column; gap: 4px; margin-top: 10px; }
+.mc-kontakt__telefoni a { color: var(--bela); font-size: 22px; text-decoration: none; }
+.mc-kontakt__telefoni a:hover { text-decoration: underline; }
+.mc-kontakt__forma { flex: 1 1 520px; min-width: 0; align-self: flex-start; }
+.mc-kontakt__zakljucano { background: var(--ljubicasta-25); }
+
+/* Ko je uključio "smanji pokrete": mehurići se ne prikazuju, oblici miruju */
+@media (prefers-reduced-motion: reduce) {
+  .mc-hero__mehurici { display: none; }
+  .mc-hero__mrlja, .mc-hero__foto { animation: none; }
+}
+
+/* ==========================================================================
+   MOBILNI (ispod 960px)
+   ========================================================================== */
+@media (max-width: 959px) {
+  /* Hero: naslov, tekst, fotografija, dugmad, prednosti (jedno ispod drugog) */
+  .mc-hero__unutra { padding-top: 20px; padding-bottom: 34px; }
+  .mc-hero__mehurici--levo { width: 100%; height: 100%; }
+  .mc-hero__mehurici--desno { display: none; }
+  .mc-hero__putanja { position: relative; font-size: 13px; margin-bottom: 14px; }
+  .mc-hero__mreza { display: flex; flex-direction: column; }
+  .mc-hero__tekst { gap: 12px; }
+  .mc-hero__naslov { font-size: 38px; line-height: 1.05; }
+  .mc-hero__uvod { font-size: 15px; max-width: none; }
+  .mc-hero__foto-okvir { margin-top: 22px; }
+  .mc-hero__mrlja { display: none; }
+  .mc-hero__foto { width: 250px; height: 220px; min-height: 0; padding: 30px; font-size: 13px; }
+  .mc-hero__akcije { flex-direction: column; align-items: stretch; gap: 12px; margin-top: 22px; }
+  .mc-hero__dugme { padding: 15px; }
+  .mc-hero__link { text-align: center; font-size: 15px; }
+  .mc-hero__prednosti { flex-direction: column; gap: 6px; margin-top: 20px; padding-top: 16px; font-size: 14px; }
+  .mc-hero__prednosti svg { display: block; }
+  .mc-hero__talas { display: none; }
+
+  /* Pismo: fotografija i ime u redu, pa pismo */
+  .mc-pismo { display: block; padding-top: 34px; padding-bottom: 0; }
+  .mc-pismo__autor { flex-direction: row; align-items: center; gap: 14px; min-width: 0; }
+  .mc-pismo__foto { flex-shrink: 0; width: 84px; height: 84px; padding: 10px; font-size: 11px; }
+  .mc-pismo__potpis { gap: 0; }
+  .mc-pismo__zvanje { font-size: 14px; }
+  .mc-pismo__naslov { margin: 20px 0 10px; font-size: 28px; }
+  .mc-pismo__tekst { font-size: 19px; gap: 12px; }
+  .mc-pismo__napomena { margin-top: 14px; }
+
+  /* Pitanja za banku */
+  .mc-pitanja { padding-top: 36px; padding-bottom: 0; }
+  .mc-pitanja__naslov { margin-bottom: 8px; font-size: 28px; }
+  .mc-pitanja__uvod { margin-bottom: 16px; font-size: 15px; }
+  .mc-pitanja__mreza { flex-direction: column; gap: 10px; }
+  .mc-pitanja__lista, .mc-pitanja__kartica { flex: none; }
+  .mc-pitanja__lista { padding: 14px 10px 10px; border-radius: 24px; box-shadow: 0 12px 30px rgba(47, 21, 68, .06); }
+  .mc-pitanja__stavke { margin-inline: 0; padding-inline: 0; background: none; }
+  .mc-pitanja__glava { gap: 10px; padding: 0 6px 8px; }
+  .mc-pitanja__lista-naslov { font-size: 20px; }
+  .mc-pitanja__brojac { font-size: 12.5px; }
+  .mc-pitanja__pitanje { min-height: 52px; gap: 12px; padding: 8px 6px; border-radius: 12px; font-size: 18px; }
+  .mc-pitanja__kvadrat { width: 24px; height: 24px; border-radius: 7px; }
+  .mc-pitanja__kvadrat svg { width: 13px; height: 13px; }
+  .mc-pitanja__kartica { padding: 24px 20px 20px; border-radius: 26px; }
+  .mc-pitanja__mrlja { right: -110px; top: -120px; width: 300px; height: 300px; }
+  .mc-pitanja__odgovor { gap: 8px; }
+  .mc-pitanja__oznaka { font-size: 13px; }
+  .mc-pitanja__ponovljeno { font-size: 19px; }
+  .mc-pitanja__istaknuto { margin-top: 6px; font-size: 52px; }
+  .mc-pitanja__istaknuto-opis, .mc-pitanja__tekst { font-size: 15px; }
+  .mc-pitanja__tekst { margin-top: 4px; }
+  .mc-pitanja__dno { flex-wrap: nowrap; gap: 10px; margin-top: 18px; padding-top: 14px; }
+  .mc-pitanja__redni { font-size: 13px; }
+  .mc-pitanja__sledece { padding: 11px 18px; font-size: 15px; }
+
+  /* Rok za odluku */
+  .mc-rok { padding-top: 30px; padding-bottom: 0; }
+  .mc-rok__kartica { display: block; padding: 24px 16px 18px; border-radius: 26px; }
+  .mc-rok__uvod { padding: 0 4px; }
+  .mc-rok__naslov { margin-bottom: 8px; font-size: 28px; }
+  .mc-rok__tekst { font-size: 15px; }
+  .mc-rok__alat { margin-top: 16px; padding: 18px 16px; gap: 14px; border-radius: 22px; }
+  .mc-rok__red { display: block; }
+  .mc-rok__brojac { justify-content: space-between; margin-top: 14px; }
+  .mc-rok__korak { width: 48px; height: 48px; font-size: 24px; }
+  .mc-rok__vrednost { font-size: 38px; }
+  .mc-rok__klizac { --visina: 44px; }
+  .mc-rok__unos::-webkit-slider-thumb { width: 24px; }
+  .mc-rok__skala { height: 18px; margin-top: 2px; }
+  .mc-rok__poruka { gap: 4px; }
+  .mc-rok__poruka-naslov { font-size: 22px; }
+
+  /* Koraci: harmonika, opis u lavanda kartici */
+  .mc-proces { padding-top: 36px; padding-bottom: 0; }
+  .mc-proces__naslov { margin-bottom: 6px; font-size: 30px; }
+  .mc-proces__uvod { margin-bottom: 12px; font-size: 15px; }
+  .mc-proces .koraci__linija { left: 19px; top: 30px; height: calc(100% - 60px); }
+  .mc-proces .koraci__broj { width: 40px; height: 40px; font-size: 15px; border-color: var(--ljubicasta-300); color: var(--ljubicasta-600); }
+  .mc-proces .koraci__stavka.je-otvoren .koraci__broj { border-color: var(--ljubicasta-600); box-shadow: 0 0 0 6px var(--ljubicasta-150); }
+  .mc-proces .koraci__podnaslov { font-size: 14px; }
+  .mc-proces .koraci__naslov { font-size: 20px; color: var(--tekst-blag); }
+  .mc-proces .koraci__stavka.je-otvoren .koraci__naslov { color: var(--ljubicasta-800); }
+  .mc-proces .koraci__plus svg { width: 22px; height: 22px; }
+  .mc-proces .koraci__lista .koraci__panel { padding: 0 0 12px 54px; }
+  .mc-proces .koraci__lista .koraci__sadrzaj { gap: 6px; padding: 14px 16px; background: var(--ljubicasta-50); border-radius: 18px; color: var(--tekst); font-size: 14px; }
+  .mc-proces .koraci__lista .koraci__glava { display: block; font-size: 19px; line-height: 1.2; }
+  .mc-proces .koraci__lista .koraci__cinjenice { gap: 4px; margin-top: 2px; }
+  .mc-proces .koraci__lista .koraci__cinjenice li { gap: 8px; }
+  .mc-proces .koraci__lista .koraci__cinjenice svg { width: 16px; height: 16px; }
+  .mc-proces .koraci__lista .koraci__ilustracija, .mc-proces .koraci__lista .koraci__poslednje { display: none; }
+
+  /* Kalkulator paketa: izbor, obračun, pa šta je uključeno */
+  .mc-paketi { padding-top: 40px; padding-bottom: 0; }
+  .mc-paketi__naslov { margin-bottom: 8px; font-size: 28px; }
+  .mc-paketi__uvod { margin-bottom: 16px; font-size: 15px; }
+  .mc-paketi__mreza { display: flex; flex-direction: column; gap: 14px; }
+  .mc-paketi__izbor { gap: 14px; }
+  .mc-paketi__legenda { margin-bottom: 10px; }
+  .mc-paketi__opcije { grid-auto-flow: row; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .mc-paketi__opcija { padding: 14px; border-radius: 18px; }
+  .mc-paketi__godine { font-size: 28px; }
+  .mc-paketi__godine-oznaka { font-size: 13px; }
+  .mc-paketi__cena { margin-top: 6px; }
+  .mc-paketi__toti { gap: 14px; padding: 16px; border-radius: 18px; }
+  .mc-paketi__toti-tekst { font-size: 14px; }
+  .mc-paketi__obracun { order: 2; gap: 10px; padding: 22px 20px 30px; border-radius: 26px 26px 26px 80px; }
+  .mc-paketi__obracun-oznaka { font-size: 13px; }
+  .mc-paketi__obracun-naslov { font-size: 23px; }
+  .mc-paketi__iznos { padding: 12px 0; margin-bottom: 4px; }
+  .mc-paketi__ukupno { font-size: 46px; }
+  .mc-paketi__napomena { font-size: 13px; }
+  .mc-paketi__doplate { gap: 12px; font-size: 15px; }
+  .mc-paketi__dugme { align-self: stretch; margin-top: 8px; }
+  .mc-paketi__ukljuceno { order: 3; margin-top: 6px; }
+  .mc-paketi__ukljuceno-naslov { margin-bottom: 8px; }
+  .mc-paketi__lista { list-style: none; padding-left: 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--tekst); }
+  .mc-paketi__lista li { display: flex; gap: 8px; }
+  .mc-paketi__lista svg { display: block; flex-shrink: 0; margin-top: 4px; color: var(--ljubicasta-600); }
+
+  /* Primena: bolesti kao čipovi */
+  .mc-primena { display: block; padding-top: 36px; padding-bottom: 0; }
+  .mc-primena__naslov { margin-bottom: 8px; font-size: 28px; }
+  .mc-primena__tekst { font-size: 15px; }
+  .mc-primena__bolesti { list-style: none; padding-left: 0; margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .mc-primena__bolesti li { padding: 8px 12px; border-radius: 999px; background: var(--ljubicasta-50); color: var(--ljubicasta-800); font-size: 14px; }
+  .mc-primena__napomena { margin-top: 14px; font-size: 13px; }
+
+  /* Česta pitanja */
+  .mc-faq { display: block; padding-top: 36px; padding-bottom: 38px; }
+  .mc-faq__naslov { margin-bottom: 6px; font-size: 28px; }
+  .mc-faq__tekst { margin-bottom: 14px; font-size: 15px; }
+  .mc-faq .faq__pitanje { padding: 16px 0; font-size: 16px; }
+  .mc-faq .faq__ikonica { width: 30px; height: 30px; }
+  .mc-faq .faq__odgovor { padding-bottom: 18px; }
+
+  /* Kontakt */
+  .mc-kontakt__mrlja { display: none; }
+  .mc-kontakt__mreza { display: block; padding-block: 30px 34px; }
+  .mc-kontakt__levo { gap: 8px; }
+  .mc-kontakt__naslov { font-size: 32px; line-height: 1.1; }
+  .mc-kontakt__tekst { font-size: 15px; max-width: none; }
+  .mc-kontakt__telefoni { flex-direction: row; flex-wrap: wrap; gap: 4px 18px; margin-top: 2px; }
+  .mc-kontakt__telefoni a { font-size: 19px; }
+  .mc-kontakt__forma { margin-top: 16px; }
+}

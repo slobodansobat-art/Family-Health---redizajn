@@ -1,0 +1,9 @@
+{#- O NAMA · poziv na kraju stranice (tamna kartica sa dugmetom)
+    Sadržaj: stranice.oNama.poziv   ·   Stil: css/stranice/o-nama.css -#}
+{%- set d = stranice.oNama.poziv -%}
+<section class="kontejner onama-poziv" aria-labelledby="onama-poziv-naslov">
+  <div class="onama-poziv__kartica">
+    <h2 id="onama-poziv-naslov" class="onama-poziv__naslov">{{ d.naslov }}</h2>
+    <a href="{{ d.dugme.link }}" class="dugme dugme--belo onama-poziv__dugme">{{ d.dugme.tekst }}</a>
+  </div>
+</section>

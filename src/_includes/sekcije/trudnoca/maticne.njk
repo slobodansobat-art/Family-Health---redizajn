@@ -1,0 +1,30 @@
+{#- TRUDNOĆA · matične ćelije ukratko (sidro #maticne), kartica sa cenom i ratama
+    Sadržaj: stranice.trudnoca.maticne   ·   Stil: css/stranice/trudnoca.css
+    Rata = cena / broj rata (računa se pri izradi, filter evra).
+    Mobilni: kraća verzija (naslovMobilni, bez uvoda i liste), kao u skici. -#}
+{%- set d = stranice.trudnoca.maticne -%}
+{%- set k = d.kartica -%}
+<section id="maticne" class="trudnoca-maticne" aria-labelledby="trudnoca-maticne-naslov">
+  <svg class="trudnoca-talas trudnoca-talas--gore" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 0 H1440 V18 C1200 60 960 6 720 30 C480 54 240 8 0 34 Z"></path></svg>
+  <div class="kontejner trudnoca-maticne__unutra">
+    <div class="trudnoca-poruka-mesto" aria-live="polite" data-poruka="maticne"></div>
+    <div class="trudnoca-maticne__mreza">
+      <div class="trudnoca-maticne__levo">
+        <h2 id="trudnoca-maticne-naslov" class="trudnoca-naslov-kurziv trudnoca-maticne__naslov"><span class="samo-desktop">{{ d.naslov }}</span><span class="samo-mobilni">{{ d.naslovMobilni }}</span></h2>
+        <p class="trudnoca-maticne__uvod samo-desktop">{{ d.uvod }}</p>
+        <ul class="trudnoca-maticne__lista samo-desktop">
+          {%- for s in d.stavke %}<li>{{ s }}</li>{% endfor %}
+        </ul>
+      </div>
+      <div class="trudnoca-maticne__kartica">
+        <h3 class="trudnoca-maticne__kartica-naslov">{{ k.naslov }}</h3>
+        <p class="blag">{{ k.tekst }}</p>
+        <p class="trudnoca-maticne__cena">{{ k.cena | evra }}</p>
+        <p class="trudnoca-maticne__rate">{{ k.rateTekst | replace("{broj}", k.brojRata | string) | replace("{rata}", (k.cena / k.brojRata) | evra) }}</p>
+        <p class="trudnoca-maticne__isticanje">{{ k.isticanje }}</p>
+        <p class="trudnoca-maticne__napomena">{{ k.napomena }}</p>
+        <a href="{{ k.dugme.link }}" class="dugme trudnoca-maticne__dugme">{{ k.dugme.tekst }}</a>
+      </div>
+    </div>
+  </div>
+</section>

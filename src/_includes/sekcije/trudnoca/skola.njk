@@ -1,0 +1,24 @@
+{#- TRUDNOĆA · besplatna škola za trudnice (sidro #skola)
+    Sadržaj: stranice.trudnoca.skola   ·   Stil: css/stranice/trudnoca.css
+    Fotografija se prikazuje samo na mobilnom (kao u skici). -#}
+{%- from "makroi/osnovni.njk" import slika -%}
+{%- set d = stranice.trudnoca.skola -%}
+<section id="skola" class="trudnoca-skola" aria-labelledby="trudnoca-skola-naslov">
+  <div class="kontejner">
+    <div class="trudnoca-poruka-mesto" aria-live="polite" data-poruka="skola"></div>
+    <div class="trudnoca-skola__mreza">
+      <div class="trudnoca-skola__levo">
+        <div class="samo-mobilni">{{ slika(d.slika, d.slikaOpis, "trudnoca-skola__foto") }}</div>
+        <h2 id="trudnoca-skola-naslov" class="trudnoca-skola__naslov">{{ d.naslov }}</h2>
+        <p class="blag trudnoca-skola__tekst">{{ d.tekst }}</p>
+        <p class="trudnoca-skola__tekst trudnoca-skola__maticne">{{ d.maticneMd | mdRed | safe }}</p>
+        <p class="trudnoca-skola__isticanje">{{ d.isticanjeMd | mdRed | safe }}</p>
+      </div>
+      <div class="trudnoca-skola__desno">
+        <p class="blag trudnoca-skola__oznaka">{{ d.ciklusOznaka }}</p>
+        <p class="trudnoca-skola__termini">{{ d.termini }}</p>
+        <a href="{{ d.dugme.link }}" class="dugme dugme--obrub trudnoca-skola__dugme">{{ d.dugme.tekst }}</a>
+      </div>
+    </div>
+  </div>
+</section>

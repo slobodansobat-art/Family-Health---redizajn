@@ -1,0 +1,61 @@
+{#- HARMONY · "Šta Harmony radi drugačije": četiri razlike + dijagram
+    (ceo genom naspram ciljane analize) i merač udela DNK bebe.
+    Sadržaj: stranice.harmony.razlike   ·   Stil: css/stranice/harmony.css (.harmony-razlike)
+    Dijagram se crta ovde: 24 hromozoma (1–22, X, Y), istaknuti su 13, 18, 21, X i Y. -#}
+{%- set d = stranice.harmony.razlike -%}
+{%- set hromozomi = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","X","Y"] -%}
+{%- set ciljani = ["13", "18", "21", "X", "Y"] -%}
+<section class="harmony-razlike" aria-labelledby="harmony-razlike-naslov">
+  <div class="kontejner harmony-razlike__mreza">
+    <div class="harmony-razlike__tekst">
+      <h2 id="harmony-razlike-naslov" class="naslov-l harmony-naslov">{{ d.naslov }}</h2>
+      <p class="harmony-razlike__uvod">{{ d.uvodMd | mdRed | safe }}</p>
+      <ol class="harmony-razlike__lista">
+        {%- for s in d.stavke %}
+        <li>
+          <span class="harmony-broj" aria-hidden="true">{{ loop.index }}</span>
+          <span><strong>{{ s.naslov }}</strong><span>{{ s.tekst }}</span></span>
+        </li>
+        {%- endfor %}
+      </ol>
+      <p class="harmony-razlike__izvor">{{ d.izvor }}</p>
+    </div>
+
+    <div class="harmony-razlike__panel">
+      {#- Dijagram: gornji red ceo genom (svi jednaki), donji red Harmony (visoki samo ciljani) #}
+      <svg class="harmony-dijagram" width="539" height="310" viewBox="0 0 539 310" role="img" aria-label="{{ d.dijagram.opis }}">
+        <text x="20" y="28" class="harmony-dijagram__naslov">{{ d.dijagram.sirokiNaslov }}</text>
+        <text x="20" y="48" class="harmony-dijagram__opis">{{ d.dijagram.sirokiOpis }}</text>
+        {%- for h in hromozomi %}
+        {%- set x = 20 + loop.index0 * 21 %}
+        <rect x="{{ x }}" y="84" width="16" height="26" rx="3" class="harmony-dijagram__sve"></rect>
+        <text x="{{ x + 8 }}" y="126" text-anchor="middle" class="harmony-dijagram__broj">{{ h }}</text>
+        {%- endfor %}
+        <text x="20" y="152" class="harmony-dijagram__naslov harmony-dijagram__naslov--mint">{{ d.dijagram.ciljaniNaslov }}</text>
+        <text x="20" y="172" class="harmony-dijagram__opis harmony-dijagram__opis--mint">{{ d.dijagram.ciljaniOpis }}</text>
+        {%- for h in hromozomi %}
+        {%- set x = 20 + loop.index0 * 21 %}
+        {%- if h in ciljani %}
+        <rect x="{{ x }}" y="184" width="16" height="96" rx="3" class="harmony-dijagram__ciljani"></rect>
+        <text x="{{ x + 8 }}" y="298" text-anchor="middle" class="harmony-dijagram__broj harmony-dijagram__broj--mint">{{ h }}</text>
+        {%- else %}
+        <rect x="{{ x }}" y="275" width="16" height="5" rx="3" class="harmony-dijagram__ostali"></rect>
+        {%- endif %}
+        {%- endfor %}
+      </svg>
+
+      <span class="harmony-razlike__crta" aria-hidden="true"></span>
+
+      {#- Merač udela DNK bebe (fetalna frakcija): levo "premalo", granica, pa "dovoljno" #}
+      <svg class="harmony-merac" width="539" height="96" viewBox="0 0 539 96" role="img" aria-label="{{ d.merac.opis }}">
+        <text x="20" y="20" class="harmony-dijagram__naslov harmony-dijagram__naslov--mint">{{ d.merac.naslov }}</text>
+        <rect x="20" y="38" width="499" height="16" rx="8" class="harmony-merac__staza"></rect>
+        <rect x="20" y="38" width="250" height="16" rx="8" class="harmony-merac__ispuna"></rect>
+        <rect x="20" y="38" width="90" height="16" rx="8" class="harmony-merac__premalo"></rect>
+        <line x1="110" y1="32" x2="110" y2="60" class="harmony-merac__granica"></line>
+        <text x="20" y="78" class="harmony-merac__oznaka">{{ d.merac.premalo }}</text>
+        <text x="160" y="78" class="harmony-merac__oznaka harmony-merac__oznaka--mint">{{ d.merac.dovoljno }}</text>
+      </svg>
+    </div>
+  </div>
+</section>

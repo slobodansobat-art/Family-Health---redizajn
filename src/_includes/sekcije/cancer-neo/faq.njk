@@ -1,0 +1,18 @@
+{#- CANCER NEO · Česta pitanja (zajednički makro faq, zlatna tema)
+    Sadržaj: stranice.cancerNeo.faq   ·   Stil: komponente/faq.css + css/stranice/cancer-neo.css (FAQ)
+    Telefon "direktne linije": podesavanja.kontakt.mobilni -#}
+{%- from "makroi/komponente.njk" import faq with context -%}
+{%- set d = stranice.cancerNeo.faq -%}
+{%- set k = podesavanja.kontakt -%}
+<section class="neo-faq" aria-labelledby="neo-faq-naslov">
+  <div class="kontejner neo-sekcija neo-dve-kolone">
+    <div class="neo-zaglavlje neo-faq__levo">
+      <p class="neo-nadnaslov">{{ d.nadnaslov }}</p>
+      <h2 id="neo-faq-naslov" class="naslov-l neo-naslov">{{ d.naslov }}</h2>
+      <p class="neo-blag">{{ d.direktnaLinija }} <a href="tel:{{ k.mobilniLink }}" class="neo-faq__telefon">{{ k.mobilni }}</a></p>
+    </div>
+    <div class="neo-faq__desno">
+      {{ faq("cancer-neo-faq", d.pitanja, "zlatna") }}
+    </div>
+  </div>
+</section>

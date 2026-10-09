@@ -12,5 +12,133 @@
   "uzorak": "Tkivo i krv",
   "vreme": "3–4 nedelje",
   "imaStranicu": true,
-  "posebanLink": ""
+  "posebanLink": "",
+  "stranica": {
+    "seo": {
+      "naslov": "Cancer Precision – analiza tumora za ciljanu terapiju | Family Health",
+      "opis": "Cancer Precision poredi tumorsko i zdravo tkivo i navodi ciljane lekove i kliničke studije za relevantne promene. Rezultat za 3 do 4 nedelje."
+    },
+    "hero": {
+      "nadnaslov": "Analiza tumora za izbor ciljane terapije",
+      "tekst": "Poredimo genetski zapis tumora sa zdravim tkivom istog pacijenta i za svaku relevantnu promenu navodimo da li postoji ciljani lek ili klinička studija.",
+      "podaci": [
+        { "oznaka": "Za koga", "vrednost": "Solidni tumori, najčešće kada se bira terapija" },
+        { "oznaka": "Uzorak", "vrednost": "Tkivo tumora i epruveta krvi" },
+        { "oznaka": "Rezultat", "vrednost": "Za 3 do 4 nedelje" },
+        { "oznaka": "Laboratorija", "vrednost": "CeGaT, Tibingen, Nemačka" }
+      ]
+    },
+    "zaLekare": {
+      "tehnicki": {
+        "naslov": "Tehnički podaci",
+        "tekst": "Sveobuhvatna NGS analiza solidnih tumora uz poređenje tumorskog i normalnog tkiva, koje pouzdano razdvaja somatske od germinativnih varijanti.",
+        "stavke": [
+          { "oznaka": "Panel", "vrednost": "787 somatskih gena povezanih sa tumorima [potvrditi broj]" },
+          { "oznaka": "RNA fuzije", "vrednost": "Ciljana analiza fuzija 31 gena od terapijskog značaja" },
+          { "oznaka": "Biomarkeri", "vrednost": "TMB, MSI, HRD, CNV, onkogeni virusi" },
+          { "oznaka": "Metoda", "vrednost": "NGS, tumor–normal; pokrivenost 500–1000×" },
+          { "oznaka": "Senzitivnost i specifičnost", "vrednost": "99,9% / 99,9%" },
+          { "oznaka": "Vreme izrade", "vrednost": "3–4 nedelje od prijema uzorka u laboratoriju" }
+        ]
+      },
+      "uzorak": {
+        "naslov": "Uzorak",
+        "stavke": [
+          { "istaknuto": "Tumorsko tkivo:", "tekst": "parafinski blok ili pločice, sa najmanje 20% tumorskih ćelija u uzorku" },
+          { "istaknuto": "Normalno tkivo:", "tekst": "1–2 ml krvi u EDTA epruveti" },
+          { "istaknuto": "", "tekst": "Uz uzorak: patohistološki nalaz i popunjen uputni obrazac" }
+        ],
+        "napomena": "Preuzimanje uzorka i transport organizuje Family Health."
+      },
+      "izvestaj": {
+        "naslov": "Medicinski izveštaj sadrži",
+        "stavke": [
+          "Varijante sa potencijalnim terapijskim značajem",
+          "Predlog ciljane terapije za svaku relevantnu varijantu",
+          "TMB i MSI status, značajne za imunoterapiju",
+          "CNV i opis puteva razvoja tumora",
+          "Opcija: proširen izveštaj i tumačenje konzilijuma (Cancer Advice)"
+        ]
+      },
+      "dokumenti": {
+        "stavke": [
+          { "tekst": "Kako uputiti pacijenta, korak po korak", "link": "/za-lekare/", "fajl": "" },
+          { "tekst": "Uputni obrazac", "link": "", "fajl": "" },
+          { "tekst": "Uputstvo za pripremu i slanje uzorka", "link": "", "fajl": "" },
+          { "tekst": "Spisak gena u panelu", "link": "", "fajl": "" }
+        ]
+      }
+    },
+    "zaPacijente": {
+      "objasnjenje": {
+        "naslov": "Šta analiza pokazuje, jednostavnim rečima",
+        "tekstMd": "Svaki tumor nastaje zbog promena u genima, i te promene se razlikuju od pacijenta do pacijenta, čak i kod iste dijagnoze.\n\nCancer Precision čita stotine gena povezanih sa tumorima i poredi ih sa zdravim tkivom iz krvi. Tako se tačno vidi koje promene ima tumor, a koje su nasleđene.\n\nZa svaku promenu izveštaj navodi da li postoji lek koji je cilja. Vaš onkolog tako dobija osnovu za izbor terapije koja odgovara baš vašem tumoru.",
+        "preporukaNaslov": "Kada se analiza preporučuje",
+        "preporuka": [
+          "Kada onkolog bira terapiju posle dijagnoze ili razmatra ciljanu terapiju i imunoterapiju",
+          "Kada dosadašnja terapija ne daje očekivani odgovor",
+          "Kod retkih tumora, sa malo standardnih opcija"
+        ]
+      },
+      "dijagram": {
+        "opis": "Poređenje tumora i zdravog tkiva: promena prisutna u oba je nasleđena, a promena samo u tumoru je meta za ciljani lek",
+        "tumor": "Tumor",
+        "zdravo": "Zdravo tkivo, iz krvi",
+        "meta": "samo u tumoru: meta za lek",
+        "nasledjeno": "u oba tkiva: nasleđena promena",
+        "napomena": "Zato se uz tkivo tumora uzima i krv: poređenjem se vidi šta je promena samo u tumoru, a šta je nasleđeno."
+      },
+      "koraci": {
+        "naslov": "Šta je potrebno od vas",
+        "stavke": [
+          {
+            "naslov": "Pošaljite nalaz",
+            "podnaslov": "Procena je besplatna",
+            "glava": "Prvo pogledamo nalaz",
+            "tekst": "Pošaljite patohistološki nalaz i otpusnu listu preko forme ili mejlom. Lekar procenjuje da li analiza ima smisla i javlja se sa cenom.",
+            "cinjenice": ["Bez obaveze", "Javljamo se istog radnog dana"],
+            "ilustracija": "analiza/nalaz"
+          },
+          {
+            "naslov": "Tkivo iz bolnice",
+            "podnaslov": "Preuzimanje organizujemo mi",
+            "glava": "Tkivo već postoji u patologiji",
+            "tekst": "Parafinski kalup čuva patologija bolnice u kojoj je rađena biopsija ili operacija. Uz vašu saglasnost, preuzimanje organizujemo mi.",
+            "cinjenice": ["Nije potrebna nova biopsija", "Potrebno je vaše ovlašćenje"],
+            "ilustracija": "analiza/tkivo"
+          },
+          {
+            "naslov": "Vađenje krvi",
+            "podnaslov": "U ordinaciji ili kod kuće",
+            "glava": "Jedna epruveta krvi",
+            "tekst": "Krv služi kao zdravo tkivo za poređenje. Vadimo je u našoj ordinaciji ili kod vas kući, a uzorci zatim putuju u laboratoriju u Nemačkoj.",
+            "cinjenice": ["Dovoljno je 1–2 ml krvi", "Dolazak na kućnu adresu ne naplaćujemo"],
+            "ilustracija": "analiza/krv"
+          },
+          {
+            "naslov": "Izveštaj",
+            "podnaslov": "Za 3–4 nedelje",
+            "glava": "Izveštaj za vas i vašeg onkologa",
+            "tekst": "Izveštaj dobijate vi i vaš onkolog. Po želji ga tumači i konzilijum nemačkih onkologa, koji predlaže terapiju zajedno sa vašim lekarom.",
+            "cinjenice": ["Ciljani lekovi i studije za relevantne promene", "Po želji: Cancer Advice konzilijum"],
+            "ilustracija": "analiza/izvestaj"
+          }
+        ],
+        "poslednje": { "tekst": "Pošaljite nalaz na procenu", "link": "#kontakt" }
+      },
+      "cena": {
+        "naslov": "Koliko košta?",
+        "tekst": "Cena zavisi od toga koja analiza i koji dodaci imaju smisla za vaš slučaj. Posle besplatne procene nalaza dobijate preporuku i tačnu cenu, pre nego što se za bilo šta odlučite.",
+        "dugme": { "tekst": "Zatražite besplatnu procenu", "link": "#kontakt" }
+      }
+    },
+    "srodne": {
+      "stavke": [
+        { "slug": "cancer-essential", "opis": "Ciljani panel za određene tipove tumora" },
+        { "slug": "cancer-detect", "opis": "Tečna biopsija, kada tkivo nije dostupno" },
+        { "slug": "cancer-precision-double-best", "opis": "Tkivo i tečna biopsija zajedno" },
+        { "slug": "mrd-pracenje", "opis": "Rano otkrivanje povratka bolesti" }
+      ]
+    }
+  }
 }

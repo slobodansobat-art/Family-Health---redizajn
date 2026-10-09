@@ -1,0 +1,20 @@
+{#- ONKOGENETIKA · hero sa animiranom mrežom
+    Sadržaj: stranice.onkogenetika.hero   ·   Stil: css/stranice/onkogenetika.css (.onko-hero) -#}
+{%- set d = stranice.onkogenetika.hero -%}
+<section class="onko-hero" aria-labelledby="onko-hero-naslov">
+  <div class="onko-hero__mreza" data-mreza-ponovo>{% onkoMreza "onkogenetika" %}</div>
+  <div class="kontejner onko-hero__unutra">
+    <p class="onko-hero__nadnaslov">{{ d.nadnaslov }}</p>
+    <h1 id="onko-hero-naslov" class="naslov-xl onko-hero__naslov">{{ d.naslov }}</h1>
+    <p class="onko-hero__tekst">{{ d.tekst }}</p>
+    <div class="onko-hero__dugmad">
+      <a href="{{ d.dugmeGlavno.link }}" class="dugme dugme--belo onko-hero__dugme">{{ d.dugmeGlavno.tekst }}</a>
+      <a href="{{ d.dugmeSporedno.link }}" class="dugme onko-hero__dugme onko-hero__dugme--obrub">{{ d.dugmeSporedno.tekst }}</a>
+    </div>
+    <ul class="onko-hero__cinjenice">
+      {%- for c in d.cinjenice %}
+      <li>{{ c }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
