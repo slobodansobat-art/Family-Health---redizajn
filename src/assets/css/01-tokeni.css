@@ -1,0 +1,100 @@
+/* ==========================================================================
+   TOKENI: boje, fontovi, razmaci. Menjajte ovde i promena važi za ceo sajt.
+   ========================================================================== */
+
+/* --- Fontovi (hostovani na sajtu, bez Google Fonts) ---------------------- */
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("/assets/fonti/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("/assets/fonti/ibm-plex-sans-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 500; font-display: swap; src: url("/assets/fonti/ibm-plex-sans-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 500; font-display: swap; src: url("/assets/fonti/ibm-plex-sans-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url("/assets/fonti/ibm-plex-sans-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url("/assets/fonti/ibm-plex-sans-latin-ext-600-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Newsreader"; font-style: normal; font-weight: 400; font-display: swap; src: url("/assets/fonti/newsreader-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Newsreader"; font-style: normal; font-weight: 400; font-display: swap; src: url("/assets/fonti/newsreader-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Newsreader"; font-style: italic; font-weight: 400; font-display: swap; src: url("/assets/fonti/newsreader-latin-400-italic.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Newsreader"; font-style: italic; font-weight: 400; font-display: swap; src: url("/assets/fonti/newsreader-latin-ext-400-italic.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Newsreader"; font-style: normal; font-weight: 500; font-display: swap; src: url("/assets/fonti/newsreader-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Newsreader"; font-style: normal; font-weight: 500; font-display: swap; src: url("/assets/fonti/newsreader-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Teko"; font-style: normal; font-weight: 500; font-display: swap; src: url("/assets/fonti/teko-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url("/assets/fonti/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url("/assets/fonti/ibm-plex-mono-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+:root {
+  /* --- Brend: ljubičasta ------------------------------------------------- */
+  --ljubicasta-950: #140B1C;  /* Cancer Neo, najtamnija */
+  --ljubicasta-900: #1F0E2D;  /* gornja traka */
+  --ljubicasta-800: #2F1544;  /* tamne sekcije, naslovi */
+  --ljubicasta-750: #3B1B55;
+  --ljubicasta-700: #4A2A63;  /* linije na tamnom */
+  --ljubicasta-650: #4E2170;  /* hover */
+  --ljubicasta-600: #662D91;  /* PRIMARNA */
+  --ljubicasta-550: #743AA0;
+  --ljubicasta-500: #A27BC9;
+  --ljubicasta-400: #C5B5D9;
+  --ljubicasta-300: #DCCDEB;
+  --ljubicasta-250: #DCD0E8;  /* tekst na tamnom */
+  --ljubicasta-200: #E2D6EE;
+  --ljubicasta-150: #ECE3F5;
+  --ljubicasta-100: #E6DCF0;
+  --ljubicasta-50:  #F5F1FA;  /* svetla pozadina */
+  --ljubicasta-25:  #FAF8FC;
+
+  /* --- Harmony: zelena ---------------------------------------------------- */
+  --mint-900: #17463F;
+  --mint-600: #1F7A6E;
+  --mint-300: #9FD3C9;
+  --mint-200: #D3ECE6;
+  --mint-150: #D5E9E4;
+  --mint-50:  #EEF7F5;
+
+  /* --- Cancer Neo: premium ------------------------------------------------ */
+  --zlatna-500: #D8B878;
+  --zlatna-700: #8A6A2E;
+  --slonovaca:  #FAF7F2;
+  --neo-900: #140B1C;
+  --neo-800: #1A0F24;
+  --neo-700: #2A1A38;
+
+  /* --- Ostale --------------------------------------------------------------- */
+  --crvena-600: #B23A48;
+  --crvena-100: #F6E3E6;
+  --upozorenje-pozadina: #FFF6E5;
+  --upozorenje-ivica: #F0D9A8;
+  --upozorenje-ikonica: #8A5A00;
+  --upozorenje-tekst: #4A3200;
+
+  /* --- Tekst i linije ------------------------------------------------------- */
+  --tekst: #2B2F3A;
+  --tekst-blag: #4B5363;
+  --tekst-na-tamnom: #DCD0E8;
+  --linija: #E6E0EE;
+  --linija-svetla: #ECE6F2;
+  --ivica-polja: #8E80A3;
+  --bela: #FFFFFF;
+
+  /* --- Fontovi ------------------------------------------------------------- */
+  --font-tekst: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-naslov: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-logo: "Teko", "Arial Narrow", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* --- Raspored ------------------------------------------------------------ */
+  --sirina: 1240px;          /* najveća širina sadržaja */
+  --margina: 24px;           /* razmak od ivice ekrana */
+  --sekcija: 96px;           /* vertikalni razmak između sekcija */
+  --zaobljenje-malo: 18px;
+  --zaobljenje: 28px;
+  --zaobljenje-veliko: 36px;
+  --senka: 0 18px 50px rgba(47, 21, 68, 0.16);
+  --prelaz: cubic-bezier(.22, .8, .24, 1);
+}
+
+/* Telefon i manji tablet: manji razmaci (granica: 960px, ista kao u skici) */
+@media (max-width: 959px) {
+  :root {
+    --margina: 16px;
+    --sekcija: 56px;
+    --zaobljenje: 24px;
+    --zaobljenje-veliko: 28px;
+  }
+}

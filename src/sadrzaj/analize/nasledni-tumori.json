@@ -1,0 +1,16 @@
+{
+  "naziv": "Nasledni tumori, genetski panel",
+  "slug": "nasledni-tumori",
+  "redosled": 60,
+  "premium": false,
+  "opis": "Proverava da li postoji nasledna sklonost ka tumorima, važno i za ostale članove porodice.",
+  "ciljevi": [
+    "nas"
+  ],
+  "tkivo": false,
+  "krv": true,
+  "uzorak": "Krv",
+  "vreme": "[potvrditi]",
+  "imaStranicu": false,
+  "posebanLink": ""
+}

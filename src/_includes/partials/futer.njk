@@ -1,0 +1,38 @@
+{#- ==========================================================================
+    FUTER (isti na svim stranicama)
+    Linkovi: src/sadrzaj/navigacija.json -> futer.kolone
+    Kontakt i pravni red: src/sadrzaj/podesavanja.json
+    Izgled: src/assets/css/komponente/futer.css
+    ========================================================================== -#}
+{%- set k = podesavanja.kontakt -%}
+<footer class="futer">
+  <div class="kontejner futer__mreza">
+    <div class="futer__firma">
+      <span class="futer__logo">Family Health</span>
+      <span class="futer__slogan">{{ podesavanja.sajt.slogan }}</span>
+      <address class="futer__adresa">
+        <span>{{ k.adresa }}, {{ k.mesto }}</span>
+        <span>{{ k.radnoVreme }}</span>
+        <a href="tel:{{ k.telefonLink }}">{{ k.telefon }}</a>
+        <a href="tel:{{ k.mobilniLink }}">{{ k.mobilni }}</a>
+        <a href="mailto:{{ k.email }}">{{ k.email }}</a>
+      </address>
+    </div>
+    {%- for kol in navigacija.futer.kolone %}
+    <nav class="futer__kolona" aria-label="{{ kol.naslov }}">
+      {%- if kol.link %}
+      <a href="{{ kol.link }}" class="futer__naslov">{{ kol.naslov }}</a>
+      {%- else %}
+      <span class="futer__naslov">{{ kol.naslov }}</span>
+      {%- endif %}
+      {%- for s in kol.stavke %}
+      <a href="{{ s.link }}">{{ s.tekst }}</a>
+      {%- endfor %}
+    </nav>
+    {%- endfor %}
+  </div>
+  <div class="kontejner futer__dno">
+    <span>© {% godina %} {{ podesavanja.sajt.naziv }} · {{ podesavanja.pravno.futerRed }}</span>
+    <span>{{ podesavanja.pravno.napomena }}</span>
+  </div>
+</footer>

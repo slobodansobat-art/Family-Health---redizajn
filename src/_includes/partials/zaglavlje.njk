@@ -1,0 +1,104 @@
+{#- ==========================================================================
+    ZAGLAVLJE (jedno za ceo sajt; izgled se bira u front matter-u stranice)
+    --------------------------------------------------------------------------
+    zaglavlje:
+      tema:    svetla | lavanda | mint | tamna | noc   (boja pozadine)
+      oblast:  opsti | onko | trudnoca                 (koji meni se prikazuje)
+      linkovi: [{tekst, link}]   opciono, zamenjuje linkove oblasti
+      dugme:   {tekst, link}     opciono, zamenjuje glavno dugme
+      nazad:   "/adresa/"        opciono, dugme "nazad" na mobilnom
+    Sadržaj menija: src/sadrzaj/navigacija.json
+    Ponašanje (padajući meni, mobilni meni): src/assets/js/glavni.js
+    Izgled: src/assets/css/komponente/zaglavlje.css
+    ========================================================================== -#}
+{%- from "makroi/osnovni.njk" import logo, kucaIkonica, strelicaDole -%}
+{%- set z = zaglavlje or {} -%}
+{%- set tema = z.tema or "svetla" -%}
+{%- set oblast = z.oblast or "opsti" -%}
+{%- set nav = navigacija[oblast] or navigacija.opsti -%}
+{%- set linkovi = z.linkovi or nav.linkovi -%}
+{%- set dugme = z.dugme or nav.dugme -%}
+{%- set tamno = tema == "tamna" or tema == "noc" -%}
+<header class="zaglavlje zaglavlje--{{ tema }}" data-zaglavlje>
+  <a href="#sadrzaj" class="preskoci">Preskoči na sadržaj</a>
+
+  {#- Gornja traka: vađenje krvi + sekundarni linkovi + telefon (samo desktop) #}
+  <div class="zaglavlje__traka">
+    <div class="kontejner zaglavlje__traka-unutra">
+      <span class="zaglavlje__napomena">{{ kucaIkonica() }}{{ podesavanja.vadjenjeKrvi.kratko }}</span>
+      <nav class="zaglavlje__sekundarni" aria-label="Family Health">
+        {%- for l in navigacija.gornjaTraka %}
+        <a href="{{ l.link }}"{% if l.link | jeTrenutna(page.url) %} aria-current="page"{% endif %}>{{ l.tekst }}</a>
+        {%- endfor %}
+        <a href="tel:{{ podesavanja.kontakt.telefonLink }}" class="zaglavlje__telefon">{{ podesavanja.kontakt.telefon }}</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="kontejner zaglavlje__glavni">
+    {{ logo("zlatna" if tema == "noc" else ("tamna" if tamno else "")) }}
+
+    {#- Prekidač oblasti #}
+    <nav class="zaglavlje__oblasti" aria-label="Oblasti">
+      {%- for o in navigacija.oblasti %}
+      <a href="{{ o.link }}" class="zaglavlje__oblast{% if o.kljuc == oblast %} je-aktivna{% endif %}"{% if o.link | jeTrenutna(page.url) %} aria-current="page"{% endif %}>{{ o.tekst }}</a>
+      {%- endfor %}
+    </nav>
+
+    {#- Meni oblasti (sa padajućim menijem) #}
+    <nav class="zaglavlje__meni" aria-label="{{ 'Onkogenetika' if oblast == 'onko' else ('Trudnoća i beba' if oblast == 'trudnoca' else 'Usluge') }}">
+      {%- if nav.padajuci %}
+      {%- set p = nav.padajuci %}
+      <div class="padajuci" data-padajuci>
+        <a href="{{ p.link }}" class="zaglavlje__link{% if p.link | jeTrenutna(page.url) %} je-aktivan{% endif %}"{% if p.link | jeTrenutna(page.url) %} aria-current="page"{% endif %}>{{ p.tekst }}</a>
+        <button type="button" class="padajuci__dugme" aria-expanded="false" aria-controls="padajuci-{{ oblast }}" aria-label="{{ p.opisDugmeta }}">{{ strelicaDole() }}</button>
+        <div class="padajuci__panel" id="padajuci-{{ oblast }}">
+          <div class="padajuci__kartica">
+            {%- for s in p.stavke %}
+            <a href="{{ s.link }}" class="padajuci__stavka"{% if s.link | jeTrenutna(page.url) %} aria-current="page"{% endif %}>
+              <span class="padajuci__tacka padajuci__tacka--{{ s.boja or 'ljubicasta' }}" aria-hidden="true"><span></span></span>
+              <span class="padajuci__tekst">
+                <span class="padajuci__naziv">{{ s.naziv }}{% if s.oznaka %} <span class="oznaka-premium">{{ s.oznaka }}</span>{% endif %}</span>
+                <span class="padajuci__opis">{{ s.opis }}</span>
+                {%- if s.meta %}<span class="padajuci__meta">{{ s.meta }}</span>{% endif %}
+              </span>
+            </a>
+            {%- endfor %}
+            <div class="padajuci__dno">
+              {%- for d in p.dno %}
+              {%- if d.link %}<a href="{{ d.link }}" class="{{ 'padajuci__dno-glavni' if d.istaknuto else 'padajuci__dno-sporedni' }}">{{ d.tekst }}</a>{% else %}<span class="padajuci__dno-sporedni">{{ d.tekst }}</span>{% endif %}
+              {%- endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {%- endif %}
+      {%- for l in linkovi %}
+      <a href="{{ l.link }}" class="zaglavlje__link{% if l.link | jeTrenutna(page.url) %} je-aktivan{% endif %}"{% if l.link | jeTrenutna(page.url) %} aria-current="page"{% endif %}>{{ l.tekst }}</a>
+      {%- endfor %}
+    </nav>
+
+    {%- if dugme %}
+    <a href="{{ dugme.link }}" class="dugme zaglavlje__dugme">{{ dugme.tekst }}</a>
+    {%- endif %}
+
+    {#- Mobilno: nazad + meni #}
+    <div class="zaglavlje__mobilno">
+      {%- if z.nazad %}
+      <a href="{{ z.nazad }}" class="okruglo-dugme okruglo-dugme--obrub" aria-label="Nazad"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 6l-6 6 6 6"></path></svg></a>
+      {%- endif %}
+      <button type="button" class="okruglo-dugme" data-otvori-meni aria-controls="mobilni-meni" aria-expanded="false" aria-label="Otvori meni"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+    </div>
+  </div>
+
+  {#- Mobilni prekidač oblasti (prikazuje se samo na stranicama oblasti) #}
+  {%- if oblast != "opsti" and z.prekidacMobilni != false %}
+  <nav class="zaglavlje__oblasti-mobilno" aria-label="Oblasti">
+    <div>
+      {%- for o in navigacija.oblasti %}
+      <a href="{{ o.link }}" class="zaglavlje__oblast{% if o.kljuc == oblast %} je-aktivna{% endif %}"{% if o.link | jeTrenutna(page.url) %} aria-current="page"{% endif %}>{{ o.tekst }}</a>
+      {%- endfor %}
+    </div>
+  </nav>
+  {%- endif %}
+</header>

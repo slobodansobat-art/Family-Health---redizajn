@@ -1,0 +1,32 @@
+/* ==========================================================================
+   FORME  (makroi: forma, polje, izbor, tekstPolje, fajlPolje, saglasnost, posalji)
+   .forma          raspored polja (dve kolone na desktopu, jedna na mobilnom)
+   .forma--bela    bela kartica (na ljubičastoj ili tamnoj pozadini)
+   ========================================================================== */
+.forma { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.forma--bela { background: var(--bela); color: var(--tekst); border-radius: var(--zaobljenje); padding: 32px; }
+.forma > .ceo-red, .forma > .saglasnost, .forma > button, .forma > .forma__napomena { grid-column: 1 / -1; }
+.polje { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.polje--ceo-red { grid-column: 1 / -1; }
+.polje__oznaka { font-size: 14px; color: var(--tekst-blag); }
+.polje__obavezno { color: var(--ljubicasta-600); }
+.polje__pomoc { font-size: 13px; color: var(--tekst-blag); }
+.unos {
+  width: 100%; height: 48px; padding: 0 16px;
+  border: 1px solid var(--ivica-polja); border-radius: 999px; background: var(--bela); color: var(--tekst);
+}
+.unos:focus { outline: 3px solid var(--ljubicasta-600); outline-offset: 1px; border-color: var(--ljubicasta-600); }
+.unos--izbor { padding: 0 14px; }
+.unos--tekst { height: auto; min-height: 96px; padding: 14px 16px; border-radius: 18px; resize: vertical; }
+.unos--fajl { height: auto; padding: 10px 14px; border-radius: 18px; border-style: dashed; }
+.unos:user-invalid { border-color: var(--crvena-600); }
+.saglasnost { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--tekst-blag); cursor: pointer; }
+.saglasnost input { width: 20px; height: 20px; margin: 1px 0 0; flex-shrink: 0; accent-color: var(--ljubicasta-600); }
+.saglasnost--tamna { color: #EBDDF5; }
+.saglasnost--tamna a { color: var(--bela); }
+.forma__napomena { font-size: 13px; color: var(--tekst-blag); }
+@media (max-width: 959px) {
+  .forma { grid-template-columns: 1fr; gap: 12px; }
+  .forma--bela { padding: 20px; border-radius: 24px; }
+  .saglasnost { font-size: 13px; }
+}

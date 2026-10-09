@@ -1,0 +1,16 @@
+{
+  "naziv": "Cancer Precision",
+  "slug": "cancer-precision",
+  "redosled": 10,
+  "premium": false,
+  "opis": "Široka analiza tumora: stotine gena, RNA fuzije, TMB, MSI i HRD, za izbor ciljane terapije.",
+  "ciljevi": [
+    "ter"
+  ],
+  "tkivo": true,
+  "krv": true,
+  "uzorak": "Tkivo i krv",
+  "vreme": "3–4 nedelje",
+  "imaStranicu": true,
+  "posebanLink": ""
+}

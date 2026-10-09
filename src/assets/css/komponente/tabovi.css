@@ -1,0 +1,8 @@
+/* ==========================================================================
+   TABOVI (opšte ponašanje; izgled taba određuje stranica)
+   Oznake: [data-tabovi] > [role=tablist] > [role=tab] + [role=tabpanel]
+   JS: src/assets/js/glavni.js -> pokreniTabove()
+   ========================================================================== */
+[role="tabpanel"]:not([hidden]) { animation: pojava .4s cubic-bezier(.4, 0, .2, 1); }
+[role="tablist"] { scrollbar-width: none; }
+[role="tablist"]::-webkit-scrollbar { display: none; }

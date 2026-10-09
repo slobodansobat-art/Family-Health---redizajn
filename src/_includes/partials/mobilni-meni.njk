@@ -1,0 +1,34 @@
+{#- ==========================================================================
+    MOBILNI MENI (otvara se dugmetom sa tri crte u zaglavlju)
+    Sadržaj: src/sadrzaj/navigacija.json -> mobilniMeni
+    Ponašanje: src/assets/js/glavni.js (otvaranje, zatvaranje, Escape)
+    ========================================================================== -#}
+{%- from "makroi/osnovni.njk" import logo -%}
+<div class="mobilni-meni" id="mobilni-meni" role="dialog" aria-modal="true" aria-label="Meni" hidden>
+  <div class="mobilni-meni__zaglavlje">
+    {{ logo("", true) }}
+    <button type="button" class="okruglo-dugme okruglo-dugme--tamno" data-zatvori-meni aria-label="Zatvori meni"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+  </div>
+  <nav aria-label="Glavni meni" class="mobilni-meni__sadrzaj">
+    {%- for g in navigacija.mobilniMeni.grupe %}
+    <section class="mobilni-meni__grupa mobilni-meni__grupa--{{ g.boja }}" aria-labelledby="mm-grupa-{{ loop.index }}">
+      <h2 id="mm-grupa-{{ loop.index }}" class="mobilni-meni__naslov">{{ g.naslov }}</h2>
+      <ul>
+        {%- for s in g.stavke %}
+        <li><a href="{{ s.link }}"{% if s.link | jeTrenutna(page.url) %} aria-current="page"{% endif %}><span><span class="mobilni-meni__naziv">{{ s.naziv }}{% if s.oznaka %} <span class="oznaka-premium">{{ s.oznaka }}</span>{% endif %}</span><span class="mobilni-meni__opis">{{ s.opis }}</span></span><span aria-hidden="true" class="mobilni-meni__strelica">→</span></a></li>
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endfor %}
+    <div class="mobilni-meni__ostalo">
+      {%- for l in navigacija.mobilniMeni.ostalo %}
+      <a href="{{ l.link }}"{% if l.link | jeTrenutna(page.url) %} aria-current="page"{% endif %}>{{ l.tekst }}</a>
+      {%- endfor %}
+    </div>
+  </nav>
+  <div class="mobilni-meni__kontakt">
+    <span>{{ podesavanja.kontakt.radnoVreme }}</span>
+    <a href="tel:{{ podesavanja.kontakt.telefonLink }}">{{ podesavanja.kontakt.telefon }}</a>
+    <span>{{ podesavanja.vadjenjeKrvi.kratko }}.</span>
+  </div>
+</div>

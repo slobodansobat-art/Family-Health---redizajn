@@ -1,0 +1,21 @@
+/* ==========================================================================
+   DONJA TRAKA ZA BRZI KONTAKT (samo mobilni)
+   ========================================================================== */
+.donja-traka { display: none; }
+@media (max-width: 959px) {
+  .donja-traka {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    display: flex; gap: 8px;
+    padding: 10px 12px calc(14px + env(safe-area-inset-bottom));
+    background: var(--bela); box-shadow: 0 -8px 24px rgba(47, 21, 68, .10);
+  }
+  .donja-traka a {
+    height: 48px; display: flex; align-items: center; justify-content: center; gap: 6px;
+    border-radius: 999px; text-decoration: none; font-size: 15px;
+  }
+  .donja-traka__poziv { flex: 1; background: var(--ljubicasta-50); color: var(--ljubicasta-800); font-weight: 500; }
+  .donja-traka__glavno { flex: 1.6; background: var(--ljubicasta-600); color: var(--bela); font-weight: 600; text-align: center; padding-inline: 10px; }
+  .donja-traka__glavno:hover { color: var(--bela); }
+  .donja-traka--zlatna .donja-traka__glavno { background: var(--zlatna-500); color: var(--neo-900); }
+  .meni-otvoren .donja-traka { display: none; }
+}

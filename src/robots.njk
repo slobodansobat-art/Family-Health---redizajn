@@ -1,0 +1,13 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+{%- if podesavanja.sajt.zabraniIndeksiranje -%}
+# Prezentacija: pretraživači ne indeksiraju sajt (podesavanja.json -> zabraniIndeksiranje)
+User-agent: *
+Disallow: /
+{%- else -%}
+User-agent: *
+Disallow: /admin/
+Sitemap: {{ podesavanja.sajt.url }}/sitemap.xml
+{%- endif %}

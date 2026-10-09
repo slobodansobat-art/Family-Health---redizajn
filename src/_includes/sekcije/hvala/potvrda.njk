@@ -1,0 +1,24 @@
+{#- HVALA · potvrda slanja + "šta sledi"
+    Sadržaj: stranice.hvala.potvrda   ·   Stil: css/stranice/hvala.css -#}
+{%- set d = stranice.hvala.potvrda -%}
+<section class="hvala" aria-labelledby="hvala-naslov">
+  <div class="kontejner hvala__mreza">
+    <div class="hvala__levo">
+      <svg class="hvala__ikonica" width="88" height="88" viewBox="0 0 88 88" aria-hidden="true" focusable="false"><circle class="hvala__krug" cx="44" cy="44" r="40"></circle><path class="hvala__kvacica" d="M27 45 l11 11 l23 -24"></path></svg>
+      <h1 id="hvala-naslov" class="naslov-xl hvala__naslov">{{ d.naslov }}</h1>
+      <p class="hvala__tekst">{{ d.tekstMd | mdRed | safe }}</p>
+      <div class="hvala__dugmad">
+        <a href="{{ d.dugmeGlavno.link }}" class="dugme">{{ d.dugmeGlavno.tekst }}</a>
+        <a href="{{ d.dugmeSporedno.link }}" class="dugme dugme--obrub">{{ d.dugmeSporedno.tekst }}</a>
+      </div>
+    </div>
+    <div class="hvala__kartica">
+      <h2 class="naslov-s hvala__podnaslov">{{ d.sledi.naslov }}</h2>
+      <ol class="hvala__koraci">
+        {%- for k in d.sledi.koraci %}
+        <li><span class="hvala__broj" aria-hidden="true">{{ loop.index }}</span><span><strong>{{ k.naslov }}</strong><span>{{ k.tekst }}</span></span></li>
+        {%- endfor %}
+      </ol>
+    </div>
+  </div>
+</section>

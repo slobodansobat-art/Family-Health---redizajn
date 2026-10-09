@@ -1,0 +1,17 @@
+{
+  "naziv": "Cancer Detect",
+  "slug": "cancer-detect",
+  "redosled": 40,
+  "premium": false,
+  "opis": "Tečna biopsija: genetski profil tumora iz krvi, i praćenje odgovora na terapiju.",
+  "ciljevi": [
+    "bez",
+    "pra"
+  ],
+  "tkivo": false,
+  "krv": true,
+  "uzorak": "Krv, 3 epruvete",
+  "vreme": "3–4 nedelje",
+  "imaStranicu": false,
+  "posebanLink": ""
+}

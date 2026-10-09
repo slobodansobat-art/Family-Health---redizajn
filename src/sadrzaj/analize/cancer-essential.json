@@ -1,0 +1,16 @@
+{
+  "naziv": "Cancer Essential",
+  "slug": "cancer-essential",
+  "redosled": 20,
+  "premium": false,
+  "opis": "Ciljani paneli za određeni tip tumora, sa pokrivenošću većom od 1000×.",
+  "ciljevi": [
+    "ter"
+  ],
+  "tkivo": true,
+  "krv": false,
+  "uzorak": "Tkivo [potvrditi]",
+  "vreme": "oko 3 nedelje",
+  "imaStranicu": false,
+  "posebanLink": ""
+}

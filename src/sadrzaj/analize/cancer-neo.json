@@ -1,0 +1,16 @@
+{
+  "naziv": "Cancer Neo",
+  "slug": "cancer-neo",
+  "redosled": 70,
+  "premium": true,
+  "opis": "Premium usluga: analiza egzoma tumora i izbor peptida za personalizovanu vakcinu.",
+  "ciljevi": [
+    "imu"
+  ],
+  "tkivo": true,
+  "krv": true,
+  "uzorak": "Tkivo i krv",
+  "vreme": "4–6 nedelja",
+  "imaStranicu": false,
+  "posebanLink": "/onkogenetika/cancer-neo/"
+}

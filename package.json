@@ -1,0 +1,23 @@
+{
+  "name": "familyhealth-sajt",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sajt Family Health: Eleventy + Decap CMS, postavljanje na Netlify",
+  "type": "module",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "cms": "npx decap-server"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6",
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "@fontsource/ibm-plex-sans": "5.3.0",
+    "@fontsource/newsreader": "5.3.0",
+    "@fontsource/teko": "5.3.0",
+    "markdown-it": "^14.1.0"
+  }
+}

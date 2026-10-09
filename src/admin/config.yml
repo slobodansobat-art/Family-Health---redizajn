@@ -1,0 +1,738 @@
+# =============================================================================
+# OVAJ FAJL SE PRAVI AUTOMATSKI (scripts/cms-konfiguracija.js) pri svakoj izradi.
+# Ne menjati ručno: izmene će biti pregažene. Menja se skripta ili sadržaj.
+# =============================================================================
+backend:
+  name: "github"
+  repo: "slobodansobat-art/familyhealth-sajt"
+  branch: "main"
+  commit_messages:
+    create: "CMS: dodato {{collection}} „{{slug}}“"
+    update: "CMS: izmenjeno {{collection}} „{{slug}}“"
+    delete: "CMS: obrisano {{collection}} „{{slug}}“"
+    uploadMedia: "CMS: dodata slika „{{path}}“"
+    deleteMedia: "CMS: obrisana slika „{{path}}“"
+local_backend: true
+site_url: "https://familyhealth-sajt.netlify.app"
+display_url: "https://familyhealth-sajt.netlify.app"
+logo_url: "/assets/slike/logo-cms.svg"
+media_folder: "src/assets/slike"
+public_folder: "/assets/slike"
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+collections:
+  - name: "podesavanja"
+    label: "Podešavanja sajta"
+    editor:
+      preview: false
+    files:
+      - name: "podesavanja"
+        label: "Kontakt, adresa i opšti podaci"
+        file: "src/sadrzaj/podesavanja.json"
+        fields:
+          - name: "sajt"
+            label: "Sajt"
+            required: false
+            widget: "object"
+            collapsed: true
+            fields:
+              - name: "naziv"
+                label: "Naziv"
+                required: false
+                widget: "string"
+              - name: "url"
+                label: "Url"
+                required: false
+                widget: "string"
+              - name: "slogan"
+                label: "Slogan"
+                required: false
+                widget: "string"
+              - name: "zabraniIndeksiranje"
+                label: "Zabrani indeksiranje"
+                required: false
+                widget: "boolean"
+              - name: "napomenaZabrana"
+                label: "Napomena zabrana"
+                required: false
+                widget: "string"
+          - name: "kontakt"
+            label: "Kontakt"
+            required: false
+            widget: "object"
+            collapsed: true
+            fields:
+              - name: "telefon"
+                label: "Telefon"
+                required: false
+                widget: "string"
+              - name: "telefonLink"
+                label: "Telefon Link"
+                required: false
+                widget: "string"
+              - name: "mobilni"
+                label: "Mobilni"
+                required: false
+                widget: "string"
+              - name: "mobilniLink"
+                label: "Mobilni Link"
+                required: false
+                widget: "string"
+              - name: "email"
+                label: "Email"
+                required: false
+                widget: "string"
+              - name: "adresa"
+                label: "Adresa"
+                required: false
+                widget: "string"
+              - name: "mesto"
+                label: "Mesto"
+                required: false
+                widget: "string"
+              - name: "postanskiBroj"
+                label: "Postanski broj"
+                required: false
+                widget: "string"
+              - name: "radnoVreme"
+                label: "Radno Vreme"
+                required: false
+                widget: "string"
+              - name: "radnoVremeDugo"
+                label: "Radno Vreme dugo"
+                required: false
+                widget: "string"
+              - name: "subota"
+                label: "Subota"
+                required: false
+                widget: "string"
+              - name: "parking"
+                label: "Parking"
+                required: false
+                widget: "string"
+              - name: "mapaLink"
+                label: "Mapa Link"
+                required: false
+                widget: "string"
+              - name: "odgovorRok"
+                label: "Odgovor rok"
+                required: false
+                widget: "string"
+          - name: "vadjenjeKrvi"
+            label: "Vadjenje krvi"
+            required: false
+            widget: "object"
+            collapsed: true
+            fields:
+              - name: "kratko"
+                label: "Kratko"
+                required: false
+                widget: "string"
+              - name: "podrucje"
+                label: "Podrucje"
+                required: false
+                widget: "string"
+          - name: "pravno"
+            label: "Pravno"
+            required: false
+            widget: "object"
+            collapsed: true
+            fields:
+              - name: "futerRed"
+                label: "Futer red"
+                required: false
+                widget: "string"
+              - name: "napomena"
+                label: "Napomena"
+                required: false
+                widget: "string"
+              - name: "saglasnostTekst"
+                label: "Saglasnost Tekst"
+                required: false
+                widget: "string"
+              - name: "saglasnostNapomena"
+                label: "Saglasnost Napomena"
+                required: false
+                widget: "string"
+          - name: "cms"
+            label: "Cms"
+            required: false
+            widget: "object"
+            collapsed: true
+            fields:
+              - name: "repo"
+                label: "Repo"
+                required: false
+                widget: "string"
+              - name: "grana"
+                label: "Grana"
+                required: false
+                widget: "string"
+      - name: "navigacija"
+        label: "Meniji i futer"
+        file: "src/sadrzaj/navigacija.json"
+        fields:
+          - name: "gornjaTraka"
+            label: "Gornja traka"
+            required: false
+            widget: "list"
+            collapsed: true
+            summary: "{{fields.tekst}}"
+            fields:
+              - name: "tekst"
+                label: "Tekst"
+                required: false
+                widget: "string"
+              - name: "link"
+                label: "Link"
+                required: false
+                widget: "string"
+          - name: "oblasti"
+            label: "Oblasti"
+            required: false
+            widget: "list"
+            collapsed: true
+            summary: "{{fields.kljuc}}"
+            fields:
+              - name: "kljuc"
+                label: "Kljuc"
+                required: false
+                widget: "string"
+              - name: "tekst"
+                label: "Tekst"
+                required: false
+                widget: "string"
+              - name: "link"
+                label: "Link"
+                required: false
+                widget: "string"
+          - name: "opsti"
+            label: "Opsti"
+            required: false
+            widget: "object"
+            collapsed: true
+            fields:
+              - name: "linkovi"
+                label: "Linkovi"
+                required: false
+                widget: "list"
+                collapsed: true
+                summary: "{{fields.tekst}}"
+                fields:
+                  - name: "tekst"
+                    label: "Tekst"
+                    required: false
+                    widget: "string"
+                  - name: "link"
+                    label: "Link"
+                    required: false
+                    widget: "string"
+              - name: "dugme"
+                label: "Dugme"
+                required: false
+                widget: "object"
+                collapsed: true
+                fields:
+                  - name: "tekst"
+                    label: "Tekst"
+                    required: false
+                    widget: "string"
+                  - name: "link"
+                    label: "Link"
+                    required: false
+                    widget: "string"
+          - name: "onko"
+            label: "Onko"
+            required: false
+            widget: "object"
+            collapsed: true
+            fields:
+              - name: "padajuci"
+                label: "Padajuci"
+                required: false
+                widget: "object"
+                collapsed: true
+                fields:
+                  - name: "tekst"
+                    label: "Tekst"
+                    required: false
+                    widget: "string"
+                  - name: "link"
+                    label: "Link"
+                    required: false
+                    widget: "string"
+                  - name: "opisDugmeta"
+                    label: "Opis dugmeta"
+                    required: false
+                    widget: "string"
+                  - name: "stavke"
+                    label: "Stavke"
+                    required: false
+                    widget: "list"
+                    collapsed: true
+                    summary: "{{fields.naziv}}"
+                    fields:
+                      - name: "naziv"
+                        label: "Naziv"
+                        required: false
+                        widget: "string"
+                      - name: "opis"
+                        label: "Opis"
+                        required: false
+                        widget: "string"
+                      - name: "meta"
+                        label: "Meta"
+                        required: false
+                        widget: "string"
+                      - name: "link"
+                        label: "Link"
+                        required: false
+                        widget: "string"
+                      - name: "boja"
+                        label: "Boja"
+                        required: false
+                        widget: "string"
+                      - name: "oznaka"
+                        label: "Oznaka"
+                        required: false
+                        widget: "string"
+                  - name: "dno"
+                    label: "Dno"
+                    required: false
+                    widget: "list"
+                    collapsed: true
+                    summary: "{{fields.tekst}}"
+                    fields:
+                      - name: "tekst"
+                        label: "Tekst"
+                        required: false
+                        widget: "string"
+                      - name: "link"
+                        label: "Link"
+                        required: false
+                        widget: "string"
+                      - name: "istaknuto"
+                        label: "Istaknuto"
+                        required: false
+                        widget: "boolean"
+              - name: "linkovi"
+                label: "Linkovi"
+                required: false
+                widget: "list"
+                collapsed: true
+                summary: "{{fields.tekst}}"
+                fields:
+                  - name: "tekst"
+                    label: "Tekst"
+                    required: false
+                    widget: "string"
+                  - name: "link"
+                    label: "Link"
+                    required: false
+                    widget: "string"
+              - name: "dugme"
+                label: "Dugme"
+                required: false
+                widget: "object"
+                collapsed: true
+                fields:
+                  - name: "tekst"
+                    label: "Tekst"
+                    required: false
+                    widget: "string"
+                  - name: "link"
+                    label: "Link"
+                    required: false
+                    widget: "string"
+          - name: "trudnoca"
+            label: "Trudnoća"
+            required: false
+            widget: "object"
+            collapsed: true
+            fields:
+              - name: "padajuci"
+                label: "Padajuci"
+                required: false
+                widget: "object"
+                collapsed: true
+                fields:
+                  - name: "tekst"
+                    label: "Tekst"
+                    required: false
+                    widget: "string"
+                  - name: "link"
+                    label: "Link"
+                    required: false
+                    widget: "string"
+                  - name: "opisDugmeta"
+                    label: "Opis dugmeta"
+                    required: false
+                    widget: "string"
+                  - name: "stavke"
+                    label: "Stavke"
+                    required: false
+                    widget: "list"
+                    collapsed: true
+                    summary: "{{fields.naziv}}"
+                    fields:
+                      - name: "naziv"
+                        label: "Naziv"
+                        required: false
+                        widget: "string"
+                      - name: "opis"
+                        label: "Opis"
+                        required: false
+                        widget: "string"
+                      - name: "meta"
+                        label: "Meta"
+                        required: false
+                        widget: "string"
+                      - name: "link"
+                        label: "Link"
+                        required: false
+                        widget: "string"
+                      - name: "boja"
+                        label: "Boja"
+                        required: false
+                        widget: "string"
+                  - name: "dno"
+                    label: "Dno"
+                    required: false
+                    widget: "list"
+                    collapsed: true
+                    summary: "{{fields.tekst}}"
+                    fields:
+                      - name: "tekst"
+                        label: "Tekst"
+                        required: false
+                        widget: "string"
+                      - name: "link"
+                        label: "Link"
+                        required: false
+                        widget: "string"
+                      - name: "istaknuto"
+                        label: "Istaknuto"
+                        required: false
+                        widget: "boolean"
+              - name: "linkovi"
+                label: "Linkovi"
+                required: false
+                widget: "list"
+                collapsed: true
+                summary: "{{fields.tekst}}"
+                fields:
+                  - name: "tekst"
+                    label: "Tekst"
+                    required: false
+                    widget: "string"
+                  - name: "link"
+                    label: "Link"
+                    required: false
+                    widget: "string"
+              - name: "dugme"
+                label: "Dugme"
+                required: false
+                widget: "object"
+                collapsed: true
+                fields:
+                  - name: "tekst"
+                    label: "Tekst"
+                    required: false
+                    widget: "string"
+                  - name: "link"
+                    label: "Link"
+                    required: false
+                    widget: "string"
+          - name: "mobilniMeni"
+            label: "Mobilni meni"
+            required: false
+            widget: "object"
+            collapsed: true
+            fields:
+              - name: "grupe"
+                label: "Grupe"
+                required: false
+                widget: "list"
+                collapsed: true
+                summary: "{{fields.naslov}}"
+                fields:
+                  - name: "naslov"
+                    label: "Naslov"
+                    required: false
+                    widget: "string"
+                  - name: "boja"
+                    label: "Boja"
+                    required: false
+                    widget: "string"
+                  - name: "stavke"
+                    label: "Stavke"
+                    required: false
+                    widget: "list"
+                    collapsed: true
+                    summary: "{{fields.naziv}}"
+                    fields:
+                      - name: "naziv"
+                        label: "Naziv"
+                        required: false
+                        widget: "string"
+                      - name: "opis"
+                        label: "Opis"
+                        required: false
+                        widget: "string"
+                      - name: "link"
+                        label: "Link"
+                        required: false
+                        widget: "string"
+                      - name: "oznaka"
+                        label: "Oznaka"
+                        required: false
+                        widget: "string"
+              - name: "ostalo"
+                label: "Ostalo"
+                required: false
+                widget: "list"
+                collapsed: true
+                summary: "{{fields.tekst}}"
+                fields:
+                  - name: "tekst"
+                    label: "Tekst"
+                    required: false
+                    widget: "string"
+                  - name: "link"
+                    label: "Link"
+                    required: false
+                    widget: "string"
+          - name: "futer"
+            label: "Futer"
+            required: false
+            widget: "object"
+            collapsed: true
+            fields:
+              - name: "kolone"
+                label: "Kolone"
+                required: false
+                widget: "list"
+                collapsed: true
+                summary: "{{fields.naslov}}"
+                fields:
+                  - name: "naslov"
+                    label: "Naslov"
+                    required: false
+                    widget: "string"
+                  - name: "link"
+                    label: "Link"
+                    required: false
+                    widget: "string"
+                  - name: "stavke"
+                    label: "Stavke"
+                    required: false
+                    widget: "list"
+                    collapsed: true
+                    summary: "{{fields.tekst}}"
+                    fields:
+                      - name: "tekst"
+                        label: "Tekst"
+                        required: false
+                        widget: "string"
+                      - name: "link"
+                        label: "Link"
+                        required: false
+                        widget: "string"
+  - name: "stranice"
+    label: "Stranice"
+    editor:
+      preview: false
+    files:
+      - name: "hvala"
+        label: "Hvala (posle slanja forme)"
+        file: "src/sadrzaj/stranice/hvala.json"
+        fields:
+          - name: "_naziv"
+            label: "Naziv"
+            required: false
+            widget: "hidden"
+          - name: "seo"
+            label: "SEO (pretraživači)"
+            required: false
+            widget: "object"
+            collapsed: true
+            fields:
+              - name: "naslov"
+                label: "Naslov"
+                required: false
+                widget: "string"
+              - name: "opis"
+                label: "Opis"
+                required: false
+                widget: "string"
+          - name: "potvrda"
+            label: "Potvrda"
+            required: false
+            widget: "object"
+            collapsed: true
+            fields:
+              - name: "naslov"
+                label: "Naslov"
+                required: false
+                widget: "string"
+              - name: "tekstMd"
+                label: "Tekst"
+                required: false
+                widget: "markdown"
+                buttons:
+                  - "bold"
+                  - "italic"
+                  - "link"
+                  - "bulleted-list"
+                  - "numbered-list"
+                editor_components: []
+                modes:
+                  - "rich_text"
+              - name: "dugmeGlavno"
+                label: "Dugme glavno"
+                required: false
+                widget: "object"
+                collapsed: true
+                fields:
+                  - name: "tekst"
+                    label: "Tekst"
+                    required: false
+                    widget: "string"
+                  - name: "link"
+                    label: "Link"
+                    required: false
+                    widget: "string"
+              - name: "dugmeSporedno"
+                label: "Dugme sporedno"
+                required: false
+                widget: "object"
+                collapsed: true
+                fields:
+                  - name: "tekst"
+                    label: "Tekst"
+                    required: false
+                    widget: "string"
+                  - name: "link"
+                    label: "Link"
+                    required: false
+                    widget: "string"
+              - name: "sledi"
+                label: "Sledi"
+                required: false
+                widget: "object"
+                collapsed: true
+                fields:
+                  - name: "naslov"
+                    label: "Naslov"
+                    required: false
+                    widget: "string"
+                  - name: "koraci"
+                    label: "Koraci"
+                    required: false
+                    widget: "list"
+                    collapsed: true
+                    summary: "{{fields.naslov}}"
+                    fields:
+                      - name: "naslov"
+                        label: "Naslov"
+                        required: false
+                        widget: "string"
+                      - name: "tekst"
+                        label: "Tekst"
+                        required: false
+                        widget: "string"
+  - name: "analize"
+    label: "Onko analize"
+    label_singular: "analizu"
+    folder: "src/sadrzaj/analize"
+    extension: "json"
+    format: "json"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "naziv"
+    summary: "{{naziv}}"
+    sortable_fields:
+      - "redosled"
+      - "naziv"
+    editor:
+      preview: false
+    fields: []
+  - name: "blog"
+    label: "Blog"
+    label_singular: "članak"
+    folder: "src/sadrzaj/blog"
+    extension: "md"
+    format: "frontmatter"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "naslov"
+    summary: "{{naslov}} ({{kategorija}})"
+    sortable_fields:
+      - "datum"
+      - "naslov"
+      - "kategorija"
+    fields:
+      - name: "naslov"
+        label: "Naslov"
+        widget: "string"
+      - name: "opis"
+        label: "Kratak opis (lista članaka i Google)"
+        widget: "text"
+        required: false
+      - name: "kategorija"
+        label: "Kategorija"
+        widget: "select"
+        options:
+          - "Trudnoća"
+          - "Prenatalni testovi"
+          - "Matične ćelije"
+          - "Onkogenetika"
+          - "Genetika"
+      - name: "datum"
+        label: "Datum objave"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "DD.MM.YYYY."
+        time_format: false
+        required: false
+      - name: "vremeCitanja"
+        label: "Vreme čitanja (npr. 4 min)"
+        widget: "string"
+        required: false
+      - name: "autor"
+        label: "Autor"
+        widget: "string"
+        required: false
+      - name: "autorUloga"
+        label: "Uloga autora"
+        widget: "string"
+        required: false
+      - name: "slika"
+        label: "Glavna fotografija"
+        widget: "image"
+        required: false
+        choose_url: false
+      - name: "slikaOpis"
+        label: "Opis fotografije (za slepe i Google)"
+        widget: "string"
+        required: false
+      - name: "istaknuto"
+        label: "Istaknut članak na vrhu bloga"
+        widget: "boolean"
+        default: false
+        required: false
+      - name: "kalkulatorTrudnoce"
+        label: "Prikaži kalkulator nedelje trudnoće"
+        widget: "boolean"
+        default: false
+        required: false
+      - name: "predlogTeme"
+        label: "Predlog teme (tekst još nije napisan)"
+        widget: "boolean"
+        default: false
+        required: false
+      - name: "body"
+        label: "Tekst članka"
+        widget: "markdown"

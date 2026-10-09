@@ -1,0 +1,16 @@
+{
+  "naziv": "Cancer Precision Double Best",
+  "slug": "cancer-precision-double-best",
+  "redosled": 30,
+  "premium": false,
+  "opis": "Cancer Precision i tečna biopsija zajedno, za najpotpuniju sliku tumora.",
+  "ciljevi": [
+    "ter"
+  ],
+  "tkivo": true,
+  "krv": true,
+  "uzorak": "Tkivo i krv",
+  "vreme": "[potvrditi]",
+  "imaStranicu": false,
+  "posebanLink": ""
+}

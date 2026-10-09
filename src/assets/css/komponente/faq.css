@@ -1,0 +1,27 @@
+/* ==========================================================================
+   ČESTA PITANJA  (makro: faq u src/_includes/makroi/komponente.njk)
+   Koristi <details>/<summary>: radi i bez JavaScript-a.
+   ========================================================================== */
+.faq { --f-akcent: var(--ljubicasta-600); --f-tamna: var(--ljubicasta-800); --f-linija: var(--linija); border-top: 1px solid var(--f-linija); }
+.faq--mint { --f-akcent: var(--mint-600); --f-tamna: var(--mint-900); --f-linija: var(--mint-150); }
+.faq--tamna { --f-akcent: var(--ljubicasta-400); --f-tamna: var(--bela); --f-linija: var(--ljubicasta-700); }
+.faq--zlatna { --f-akcent: var(--zlatna-700); --f-tamna: var(--neo-900); --f-linija: #E9DFCB; }
+.faq__stavka { border-bottom: 1px solid var(--f-linija); }
+.faq__pitanje {
+  list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 22px 0; cursor: pointer;
+  font-family: var(--font-naslov); font-size: 23px; line-height: 1.25; color: var(--f-tamna);
+}
+.faq__pitanje::-webkit-details-marker { display: none; }
+.faq__pitanje:hover { color: var(--f-akcent); }
+.faq__ikonica { flex-shrink: 0; color: var(--f-akcent); transition: transform .3s ease; display: flex; }
+.faq__stavka[open] .faq__ikonica { transform: rotate(45deg); }
+.faq__odgovor { padding: 0 48px 24px 0; color: var(--tekst-blag); max-width: 820px; }
+.faq--tamna .faq__odgovor { color: var(--tekst-na-tamnom); }
+.faq__odgovor > * + * { margin-top: .8em; }
+.faq__odgovor ul, .faq__odgovor ol { padding-left: 1.2em; }
+.faq__stavka[open] .faq__odgovor { animation: pojava .35s ease; }
+@media (max-width: 959px) {
+  .faq__pitanje { font-size: 19px; padding: 16px 0; }
+  .faq__odgovor { padding: 0 0 16px; font-size: 15px; }
+}

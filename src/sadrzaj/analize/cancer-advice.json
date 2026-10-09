@@ -1,0 +1,16 @@
+{
+  "naziv": "Cancer Advice",
+  "slug": "cancer-advice",
+  "redosled": 80,
+  "premium": false,
+  "opis": "Konzilijum nemačkih onkologa tumači nalaz i, zajedno sa vašim lekarom, predlaže terapiju.",
+  "ciljevi": [
+    "tum"
+  ],
+  "tkivo": false,
+  "krv": false,
+  "uzorak": "Postojeći nalazi",
+  "vreme": "[potvrditi]",
+  "imaStranicu": false,
+  "posebanLink": ""
+}

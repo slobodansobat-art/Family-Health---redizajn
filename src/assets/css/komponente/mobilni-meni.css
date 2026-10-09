@@ -1,0 +1,27 @@
+/* ==========================================================================
+   MOBILNI MENI  (šablon: src/_includes/partials/mobilni-meni.njk)
+   Ceo ekran, otvara se dugmetom u zaglavlju. Na desktopu se ne koristi.
+   ========================================================================== */
+.mobilni-meni {
+  position: fixed; inset: 0; z-index: 100; overflow-y: auto; overscroll-behavior: contain;
+  background: var(--bela); padding-bottom: 32px;
+  animation: pojava .25s ease;
+}
+.meni-otvoren { overflow: hidden; }
+.mobilni-meni__zaglavlje { display: flex; align-items: center; justify-content: space-between; padding: 14px var(--margina); border-bottom: 1px solid var(--linija-svetla); }
+.mobilni-meni__grupa { padding: 18px var(--margina) 0; }
+.mobilni-meni__naslov { margin: 0 0 4px; font-size: 13px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ljubicasta-800); }
+.mobilni-meni__grupa--ljubicasta .mobilni-meni__naslov, .mobilni-meni__grupa--ljubicasta .mobilni-meni__strelica { color: var(--ljubicasta-600); }
+.mobilni-meni ul { list-style: none; }
+.mobilni-meni li a { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 13px 0; border-bottom: 1px solid var(--linija-svetla); text-decoration: none; color: var(--tekst); }
+.mobilni-meni li a[aria-current="page"] .mobilni-meni__naziv { color: var(--ljubicasta-600); }
+.mobilni-meni__naziv { display: block; font-family: var(--font-naslov); font-size: 21px; color: var(--ljubicasta-800); }
+.mobilni-meni__opis { display: block; font-size: 13px; color: var(--tekst-blag); }
+.mobilni-meni__strelica { color: var(--ljubicasta-800); }
+.mobilni-meni__ostalo { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 22px var(--margina) 0; }
+.mobilni-meni__ostalo a { padding: 14px 16px; background: var(--ljubicasta-50); border-radius: var(--zaobljenje-malo); color: var(--ljubicasta-800); text-decoration: none; font-weight: 500; }
+.mobilni-meni__kontakt { margin: 22px var(--margina) 0; padding: 18px; background: var(--ljubicasta-800); color: var(--bela); border-radius: 22px; display: flex; flex-direction: column; gap: 4px; }
+.mobilni-meni__kontakt span:first-child { font-size: 13px; color: var(--ljubicasta-400); }
+.mobilni-meni__kontakt a { font-family: var(--font-naslov); font-size: 26px; color: var(--bela); text-decoration: none; }
+.mobilni-meni__kontakt span:last-child { font-size: 14px; color: var(--tekst-na-tamnom); }
+@media (min-width: 960px) { .mobilni-meni { display: none !important; } }

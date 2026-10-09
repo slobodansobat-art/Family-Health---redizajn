@@ -1,0 +1,5 @@
+# =============================================================================
+# Preusmerenja sa starog sajta (WordPress) na nove adrese.
+# Format: /stara-adresa/   /nova-adresa/   301
+# [spisak starih adresa: preuzeti sa postojećeg sajta pre puštanja u rad]
+# =============================================================================

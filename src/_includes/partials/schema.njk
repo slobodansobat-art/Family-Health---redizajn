@@ -1,0 +1,20 @@
+{#- Strukturisani podaci za Google (naziv, adresa, telefon, radno vreme). Samo na početnoj. -#}
+{%- set k = podesavanja.kontakt -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": {{ podesavanja.sajt.naziv | uJson | safe }},
+  "url": {{ podesavanja.sajt.url | uJson | safe }},
+  "telephone": {{ k.telefonLink | uJson | safe }},
+  "email": {{ k.email | uJson | safe }},
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": {{ k.adresa | uJson | safe }},
+    "addressLocality": {{ k.mesto | uJson | safe }},
+    "postalCode": {{ k.postanskiBroj | uJson | safe }},
+    "addressCountry": "RS"
+  },
+  "openingHours": "Mo-Fr 08:00-16:00"
+}
+</script>

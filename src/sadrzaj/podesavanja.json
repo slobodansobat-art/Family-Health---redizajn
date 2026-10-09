@@ -1,0 +1,39 @@
+{
+  "sajt": {
+    "naziv": "Family Health",
+    "url": "https://familyhealth-sajt.netlify.app",
+    "slogan": "Kompanija u vlasništvu lekara",
+    "zabraniIndeksiranje": true,
+    "napomenaZabrana": "Dok je ovo prezentacija, Google ne indeksira sajt. Isključiti pri puštanju u rad."
+  },
+  "kontakt": {
+    "telefon": "011 43 87 752",
+    "telefonLink": "+381114387752",
+    "mobilni": "062 55 34 43",
+    "mobilniLink": "+38162553443",
+    "email": "info@familyhealth.rs",
+    "adresa": "Vladimira Popovića 6",
+    "mesto": "Novi Beograd",
+    "postanskiBroj": "11070",
+    "radnoVreme": "Radnim danima 8–16h",
+    "radnoVremeDugo": "Radnim danom od 8 do 16 h.",
+    "subota": "[potvrditi]",
+    "parking": "[potvrditi]",
+    "mapaLink": "https://maps.google.com/?q=Vladimira+Popovi%C4%87a+6,+Novi+Beograd",
+    "odgovorRok": "istog radnog dana"
+  },
+  "vadjenjeKrvi": {
+    "kratko": "Krv vadimo u našoj ordinaciji ili kod vas kući, dolazak ne naplaćujemo",
+    "podrucje": "[područje dolaska: potvrditi]"
+  },
+  "pravno": {
+    "futerRed": "[pravni naziv, PIB, MB, rešenje Ministarstva zdravlja: dodati]",
+    "napomena": "Sadržaj sajta je informativan i ne zamenjuje savet lekara.",
+    "saglasnostTekst": "Saglasan/na sam da Family Health obrađuje moje podatke radi odgovora na upit.",
+    "saglasnostNapomena": "[tekst saglasnosti: potvrditi sa pravnikom]"
+  },
+  "cms": {
+    "repo": "slobodansobat-art/familyhealth-sajt",
+    "grana": "main"
+  }
+}

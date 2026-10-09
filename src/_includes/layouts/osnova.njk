@@ -1,0 +1,64 @@
+{#- ==========================================================================
+    OSNOVNI OKVIR SVAKE STRANICE
+    --------------------------------------------------------------------------
+    Redosled: <head> (SEO, fontovi, CSS) -> zaglavlje -> <main> sa sekcijama
+    stranice -> futer -> donja traka (samo mobilni) -> mobilni meni -> skripte.
+
+    Podešavanja u front matter-u stranice (vidi docs/KONVENCIJE.md):
+      kljuc        ime JSON fajla sa sadržajem (src/sadrzaj/stranice/<kljuc>.json)
+      zaglavlje    { tema, oblast, linkovi, dugme, nazad }
+      donjaTraka   { tekst, link } ili false
+      skripte      dodatni JS fajlovi iz src/assets/js
+      seo          { naslov, opis } (ako sadržaj stranice nema svoj "seo")
+    ========================================================================== -#}
+{%- set sadrzajStranice = stranice[kljuc] if kljuc else {} -%}
+{%- set seoPodaci = seo or sadrzajStranice.seo or {} -%}
+{%- set naslovStranice = seoPodaci.naslov or title or podesavanja.sajt.naziv -%}
+{%- set opisStranice = seoPodaci.opis or "" -%}
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ naslovStranice }}</title>
+  {%- if opisStranice %}
+  <meta name="description" content="{{ opisStranice }}">
+  {%- endif %}
+  {%- if podesavanja.sajt.zabraniIndeksiranje %}
+  <meta name="robots" content="noindex, nofollow">
+  {%- endif %}
+  <link rel="canonical" href="{{ podesavanja.sajt.url }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sr_RS">
+  <meta property="og:site_name" content="{{ podesavanja.sajt.naziv }}">
+  <meta property="og:title" content="{{ naslovStranice }}">
+  {%- if opisStranice %}
+  <meta property="og:description" content="{{ opisStranice }}">
+  {%- endif %}
+  <meta property="og:url" content="{{ podesavanja.sajt.url }}{{ page.url }}">
+  <meta name="theme-color" content="#2F1544">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonti/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonti/newsreader-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/glavni.css?v={{ izrada.verzija }}">
+  {%- if page.url == "/" %}
+  {% include "partials/schema.njk" %}
+  {%- endif %}
+</head>
+<body class="stranica-{{ telo or kljuc or 'opsta' }}">
+  {% include "partials/zaglavlje.njk" %}
+
+  <main id="sadrzaj" tabindex="-1">
+    {{ content | safe }}
+  </main>
+
+  {% include "partials/futer.njk" %}
+  {% include "partials/donja-traka.njk" %}
+  {% include "partials/mobilni-meni.njk" %}
+
+  <script src="/assets/js/glavni.js?v={{ izrada.verzija }}" defer></script>
+  {%- for skripta in skripte %}
+  <script src="/assets/js/{{ skripta }}?v={{ izrada.verzija }}" defer></script>
+  {%- endfor %}
+</body>
+</html>

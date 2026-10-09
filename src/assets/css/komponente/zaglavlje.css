@@ -1,0 +1,148 @@
+/* ==========================================================================
+   ZAGLAVLJE  (šablon: src/_includes/partials/zaglavlje.njk)
+   Teme: --svetla (bela), --lavanda, --mint (Harmony), --tamna (onko), --noc (Cancer Neo)
+   ========================================================================== */
+
+.zaglavlje {
+  /* boje teme; svaka tema ispod menja samo ove promenljive */
+  --z-pozadina: var(--bela);
+  --z-tekst: var(--tekst);
+  --z-logo: var(--tekst-blag);
+  --z-luk: var(--ljubicasta-600);
+  --z-prekidac: var(--ljubicasta-50);
+  --z-prekidac-tekst: var(--ljubicasta-800);
+  --z-aktivna: var(--ljubicasta-600);
+  --z-aktivna-tekst: var(--bela);
+  --z-link-aktivan: var(--ljubicasta-600);
+  --z-dugme: var(--ljubicasta-600);
+  --z-dugme-tekst: var(--bela);
+  --z-okruglo: var(--ljubicasta-50);
+  --z-okruglo-tekst: var(--ljubicasta-800);
+
+  position: relative; z-index: 30;
+  background: var(--z-pozadina); color: var(--z-tekst);
+}
+.zaglavlje--lavanda { --z-pozadina: var(--ljubicasta-50); --z-prekidac: var(--bela); --z-okruglo: var(--bela); }
+.zaglavlje--mint { --z-pozadina: var(--mint-50); --z-prekidac: var(--bela); --z-link-aktivan: var(--mint-600); --z-okruglo: var(--bela); }
+.zaglavlje--tamna {
+  --z-pozadina: var(--ljubicasta-800); --z-tekst: var(--bela); --z-logo: var(--bela); --z-luk: var(--ljubicasta-400);
+  --z-prekidac: var(--ljubicasta-700); --z-prekidac-tekst: var(--bela);
+  --z-aktivna: var(--bela); --z-aktivna-tekst: var(--ljubicasta-800);
+  --z-link-aktivan: var(--bela); --z-dugme: var(--bela); --z-dugme-tekst: var(--ljubicasta-800);
+  --z-okruglo: rgba(255, 255, 255, .12); --z-okruglo-tekst: var(--bela);
+}
+.zaglavlje--noc {
+  --z-pozadina: var(--neo-900); --z-tekst: var(--bela); --z-logo: var(--bela); --z-luk: var(--zlatna-500);
+  --z-prekidac: var(--neo-700); --z-prekidac-tekst: var(--bela);
+  --z-aktivna: var(--bela); --z-aktivna-tekst: var(--ljubicasta-800);
+  --z-link-aktivan: var(--zlatna-500); --z-dugme: var(--zlatna-500); --z-dugme-tekst: var(--neo-900);
+  --z-okruglo: rgba(255, 255, 255, .12); --z-okruglo-tekst: var(--bela);
+}
+
+/* --- Gornja traka --------------------------------------------------------- */
+.zaglavlje__traka { background: var(--ljubicasta-900); color: var(--tekst-na-tamnom); font-size: 13.5px; }
+.zaglavlje__traka-unutra { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 24px; padding-block: 9px; }
+.zaglavlje__napomena { display: inline-flex; align-items: center; gap: 8px; }
+.zaglavlje__napomena svg { color: var(--ljubicasta-400); }
+.zaglavlje__sekundarni { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
+.zaglavlje__sekundarni a { color: var(--tekst-na-tamnom); text-decoration: none; }
+.zaglavlje__sekundarni a:hover, .zaglavlje__sekundarni a[aria-current="page"] { color: var(--bela); }
+.zaglavlje__sekundarni a[aria-current="page"] { font-weight: 600; }
+.zaglavlje__sekundarni .zaglavlje__telefon { color: var(--bela); font-weight: 600; }
+
+/* --- Glavni red ----------------------------------------------------------- */
+.zaglavlje__glavni { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 32px; padding-block: 20px; }
+
+/* Logo */
+.logo { display: flex; flex-direction: column; text-decoration: none; color: var(--z-logo, var(--tekst-blag)); flex-shrink: 0; }
+.logo:hover { color: var(--z-logo, var(--tekst-blag)); }
+.logo__tekst { font-family: var(--font-logo); font-weight: 500; font-size: 40px; line-height: .8; letter-spacing: -.3px; }
+.logo__tm { font-size: 11px; vertical-align: top; margin-left: 2px; }
+.logo__luk { width: 168px; height: 16px; margin-top: 1px; color: var(--z-luk, var(--ljubicasta-600)); }
+.logo__slogan { font-size: 7.5px; letter-spacing: 1.4px; margin-top: -10px; }
+.logo--tamna { --z-logo: var(--bela); --z-luk: var(--ljubicasta-400); }
+.logo--zlatna { --z-logo: var(--bela); --z-luk: var(--zlatna-500); }
+.logo--mali .logo__tekst { font-size: 30px; }
+.logo--mali .logo__luk { width: 126px; height: 12px; }
+.logo--mali .logo__slogan, .logo--mali .logo__tm { display: none; }
+
+/* Prekidač oblasti (Onkogenetika / Trudnoća i beba) */
+.zaglavlje__oblasti { display: flex; padding: 4px; background: var(--z-prekidac); border-radius: 999px; }
+.zaglavlje__oblast {
+  padding: 9px 18px; border-radius: 999px; text-decoration: none;
+  font-size: 14px; font-weight: 500; color: var(--z-prekidac-tekst); transition: background .2s ease;
+}
+.zaglavlje__oblast:hover { color: var(--z-prekidac-tekst); background: rgba(102, 45, 145, .08); }
+.zaglavlje__oblast.je-aktivna { background: var(--z-aktivna); color: var(--z-aktivna-tekst); font-weight: 600; }
+
+/* Meni oblasti */
+.zaglavlje__meni { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-left: auto; font-size: 15px; }
+.zaglavlje__link { color: var(--z-tekst); text-decoration: none; }
+.zaglavlje__link:hover { color: var(--z-link-aktivan); text-decoration: underline; text-underline-offset: 4px; }
+.zaglavlje__link.je-aktivan { color: var(--z-link-aktivan); font-weight: 600; }
+
+.zaglavlje__dugme { background: var(--z-dugme); color: var(--z-dugme-tekst); min-height: 44px; padding: 12px 20px; font-size: 15px; }
+.zaglavlje__dugme:hover { background: var(--z-dugme); color: var(--z-dugme-tekst); filter: brightness(.94); }
+
+/* --- Padajući meni ---------------------------------------------------------- */
+.padajuci { position: relative; display: flex; align-items: center; gap: 2px; }
+.padajuci__dugme {
+  width: 28px; height: 28px; border: 0; padding: 0; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent; color: var(--z-tekst);
+}
+.padajuci__dugme svg { transition: transform .2s ease; }
+.padajuci.je-otvoren .padajuci__dugme svg { transform: rotate(180deg); }
+.padajuci__panel {
+  position: absolute; top: 100%; left: -18px; padding-top: 14px; z-index: 50;
+  opacity: 0; transform: translateY(-6px); visibility: hidden;
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+}
+.padajuci.je-otvoren .padajuci__panel { opacity: 1; transform: none; visibility: visible; }
+.padajuci__kartica {
+  width: 380px; background: var(--bela); border-radius: 22px; padding: 10px;
+  box-shadow: 0 18px 50px rgba(20, 8, 30, .28); display: flex; flex-direction: column; gap: 4px;
+}
+.padajuci__stavka {
+  display: flex; gap: 14px; align-items: flex-start; padding: 14px; border-radius: 16px;
+  text-decoration: none; color: var(--tekst); transition: background .2s ease;
+}
+.padajuci__stavka:hover, .padajuci__stavka[aria-current="page"] { background: var(--ljubicasta-50); color: var(--tekst); }
+.padajuci__tacka { flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: var(--ljubicasta-150); }
+.padajuci__tacka span { width: 14px; height: 14px; border-radius: 50%; background: var(--ljubicasta-600); }
+.padajuci__tacka--crvena { background: var(--crvena-100); } .padajuci__tacka--crvena span { background: var(--crvena-600); }
+.padajuci__tacka--lavanda { background: var(--ljubicasta-50); } .padajuci__tacka--lavanda span { background: var(--ljubicasta-500); }
+.padajuci__tacka--mint { background: var(--mint-200); } .padajuci__tacka--mint span { background: var(--mint-600); }
+.padajuci__tacka--premium { background: var(--neo-800); } .padajuci__tacka--premium span { background: var(--zlatna-500); box-shadow: 0 0 0 4px rgba(216, 184, 120, .25); }
+.padajuci__tekst { display: flex; flex-direction: column; gap: 2px; }
+.padajuci__naziv { font-family: var(--font-naslov); font-size: 20px; line-height: 1.15; color: var(--ljubicasta-800); }
+.padajuci__opis { font-size: 14px; color: var(--tekst-blag); }
+.padajuci__meta { font-size: 13px; font-weight: 600; color: var(--ljubicasta-600); }
+.padajuci__dno { margin: 4px 6px 0; padding: 12px 8px 6px; border-top: 1px solid var(--linija-svetla); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
+.padajuci__dno-glavni { font-size: 14px; font-weight: 600; color: var(--ljubicasta-600); text-decoration: none; }
+.padajuci__dno-sporedni { font-size: 13px; color: var(--tekst-blag); }
+
+/* --- Mobilni deo zaglavlja ------------------------------------------------- */
+.zaglavlje__mobilno { display: none; gap: 8px; margin-left: auto; }
+.zaglavlje__mobilno .okruglo-dugme { background: var(--z-okruglo); color: var(--z-okruglo-tekst); }
+.zaglavlje__mobilno .okruglo-dugme--obrub { background: transparent; box-shadow: inset 0 0 0 1px rgba(127, 110, 150, .35); }
+.zaglavlje__oblasti-mobilno { display: none; }
+
+/* Srednji ekrani: meni oblasti ide u novi red */
+@media (max-width: 1180px) and (min-width: 960px) {
+  .zaglavlje__meni { margin-left: 0; order: 3; width: 100%; }
+  .zaglavlje__dugme { margin-left: auto; }
+}
+
+/* Mobilni (ispod 960px): logo + nazad + meni; ostalo je u mobilnom meniju */
+@media (max-width: 959px) {
+  .zaglavlje__traka, .zaglavlje__oblasti, .zaglavlje__meni, .zaglavlje__dugme { display: none; }
+  .zaglavlje__glavni { flex-wrap: nowrap; padding-block: 14px; gap: 12px; }
+  .zaglavlje__mobilno { display: flex; }
+  .zaglavlje .logo__tekst { font-size: 30px; }
+  .zaglavlje .logo__luk { width: 126px; height: 12px; }
+  .zaglavlje .logo__slogan, .zaglavlje .logo__tm { display: none; }
+  .zaglavlje__oblasti-mobilno { display: block; padding: 0 var(--margina) 12px; }
+  .zaglavlje__oblasti-mobilno > div { display: flex; padding: 4px; background: var(--z-prekidac); border-radius: 999px; }
+  .zaglavlje__oblasti-mobilno .zaglavlje__oblast { flex: 1; text-align: center; padding: 10px 0; }
+}

@@ -1,0 +1,16 @@
+{
+  "naziv": "Savremena imunohistohemija",
+  "slug": "imunohistohemija",
+  "redosled": 90,
+  "premium": false,
+  "opis": "Određivanje biomarkera u tkivu tumora, kao dopuna genetskoj analizi.",
+  "ciljevi": [
+    "ter"
+  ],
+  "tkivo": true,
+  "krv": false,
+  "uzorak": "Preseci tkiva",
+  "vreme": "[potvrditi]",
+  "imaStranicu": false,
+  "posebanLink": ""
+}

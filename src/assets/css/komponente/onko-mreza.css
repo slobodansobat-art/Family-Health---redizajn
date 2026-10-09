@@ -1,0 +1,34 @@
+/* ==========================================================================
+   ONKO MREŽA (animacija; kratki kod {% onkoMreza "seme" %})
+   Tačke izleću iz centra i slažu se u krug, zatim se iscrtavaju niti.
+   Cela mreža se sporo okreće. Generator: scripts/onko-mreza.js
+   ========================================================================== */
+.onko-mreza { width: 100%; height: 100%; overflow: visible; display: block; }
+.onko-mreza__rotacija { transform-origin: 260px 260px; animation: mreza-okret 160s linear infinite; }
+.onko-mreza__tacka {
+  transform-box: view-box; transform-origin: 260px 260px;
+  transform: rotate(var(--ugao)) translateX(var(--r));
+  animation: mreza-tacka var(--trajanje) cubic-bezier(.45, .05, .2, 1) var(--kasnjenje) both;
+}
+.onko-mreza__nit {
+  stroke-dasharray: var(--l); stroke-dashoffset: 0;
+  animation: mreza-nit 1.8s cubic-bezier(.4, 0, .2, 1) calc(var(--trajanje) + var(--kasnjenje) - 1s) both;
+}
+.onko-mreza__centar { transform-box: view-box; transform-origin: 260px 260px; animation: mreza-centar 1.4s cubic-bezier(.4, 0, .2, 1) both; }
+.onko-mreza__prsten-omotac { animation: mreza-pojava 1.2s ease 5.6s both; }
+.onko-mreza__prsten { transform-origin: 411px 125px; animation: mreza-puls 3.4s ease-in-out infinite; }
+/* Ponovno pokretanje (JS doda/skloni klasu .ponovo) */
+.ponovo .onko-mreza__tacka, .ponovo .onko-mreza__nit, .ponovo .onko-mreza__centar { animation-name: none; }
+
+@keyframes mreza-okret { to { transform: rotate(360deg); } }
+@keyframes mreza-tacka {
+  0% { transform: rotate(calc(var(--ugao) - var(--okret))) translateX(0) scale(.3); opacity: 0; }
+  100% { transform: rotate(var(--ugao)) translateX(var(--r)) scale(1); opacity: 1; }
+}
+@keyframes mreza-nit { from { stroke-dashoffset: var(--l); } to { stroke-dashoffset: 0; } }
+@keyframes mreza-centar { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes mreza-pojava { from { opacity: 0; } to { opacity: 1; } }
+@keyframes mreza-puls { 0%, 100% { opacity: .9; transform: scale(1); } 50% { opacity: .3; transform: scale(1.4); } }
+@media (prefers-reduced-motion: reduce) {
+  .onko-mreza__rotacija, .onko-mreza__tacka, .onko-mreza__nit, .onko-mreza__centar, .onko-mreza__prsten-omotac, .onko-mreza__prsten { animation: none !important; }
+}

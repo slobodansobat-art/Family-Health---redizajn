@@ -1,0 +1,131 @@
+{
+  "gornjaTraka": [
+    { "tekst": "O nama", "link": "/o-nama/" },
+    { "tekst": "Za lekare", "link": "/za-lekare/" },
+    { "tekst": "Ostala genetika", "link": "/genetika/" },
+    { "tekst": "Blog", "link": "/blog/" },
+    { "tekst": "Kontakt", "link": "/kontakt/" }
+  ],
+  "oblasti": [
+    { "kljuc": "onko", "tekst": "Onkogenetika", "link": "/onkogenetika/" },
+    { "kljuc": "trudnoca", "tekst": "Trudnoća i beba", "link": "/trudnoca-i-beba/" }
+  ],
+  "opsti": {
+    "linkovi": [
+      { "tekst": "Analize tumora", "link": "/onkogenetika/analize/" },
+      { "tekst": "Prenatalni testovi", "link": "/trudnoca-i-beba/#testovi" },
+      { "tekst": "Matične ćelije", "link": "/maticne-celije/" }
+    ],
+    "dugme": { "tekst": "Besplatne konsultacije", "link": "/kontakt/#forma" }
+  },
+  "onko": {
+    "padajuci": {
+      "tekst": "Analize",
+      "link": "/onkogenetika/analize/",
+      "opisDugmeta": "Prikaži analize",
+      "stavke": [
+        { "naziv": "Cancer Precision", "opis": "Izbor ciljane terapije, tkivo i krv", "meta": "3–4 nedelje", "link": "/onkogenetika/analize/cancer-precision/", "boja": "ljubicasta" },
+        { "naziv": "Tečna biopsija", "opis": "Kada tkivo tumora nije dostupno", "meta": "iz krvi", "link": "/onkogenetika/analize/#cilj-bez", "boja": "crvena" },
+        { "naziv": "MRD praćenje", "opis": "Rano otkrivanje povratka bolesti", "meta": "kontrola na 3–4 meseca", "link": "/onkogenetika/analize/#cilj-pra", "boja": "lavanda" },
+        { "naziv": "Cancer Neo", "opis": "Personalizovana vakcina protiv tumora", "meta": "4–6 nedelja", "link": "/onkogenetika/cancer-neo/", "boja": "premium", "oznaka": "Premium" }
+      ],
+      "dno": [
+        { "tekst": "Sve analize →", "link": "/onkogenetika/analize/", "istaknuto": true },
+        { "tekst": "Za lekare", "link": "/za-lekare/", "istaknuto": false }
+      ]
+    },
+    "linkovi": [
+      { "tekst": "Proces", "link": "/onkogenetika/#proces" },
+      { "tekst": "Za lekare", "link": "/za-lekare/" },
+      { "tekst": "Kontakt", "link": "#kontakt" }
+    ],
+    "dugme": { "tekst": "Pošaljite nalaz", "link": "#kontakt" }
+  },
+  "trudnoca": {
+    "padajuci": {
+      "tekst": "Prenatalni testovi",
+      "link": "/trudnoca-i-beba/#testovi",
+      "opisDugmeta": "Prikaži prenatalne testove",
+      "stavke": [
+        { "naziv": "Harmony", "opis": "Test kompanije Roche, 4 paketa", "meta": "od 390 €", "link": "/trudnoca-i-beba/harmony/", "boja": "mint" },
+        { "naziv": "Symphony", "opis": "Svi hromozomi i veće mikrodelecije", "meta": "790 €", "link": "/trudnoca-i-beba/symphony/", "boja": "ljubicasta" }
+      ],
+      "dno": [
+        { "tekst": "Uporedite sve testove →", "link": "/trudnoca-i-beba/#testovi", "istaknuto": true },
+        { "tekst": "Vađenje krvi kod kuće ili u ordinaciji", "link": "", "istaknuto": false }
+      ]
+    },
+    "linkovi": [
+      { "tekst": "Matične ćelije", "link": "/maticne-celije/" },
+      { "tekst": "Škola za trudnice", "link": "/trudnoca-i-beba/#skola" },
+      { "tekst": "Kontakt", "link": "#kontakt" }
+    ],
+    "dugme": { "tekst": "Besplatne konsultacije", "link": "#kontakt" }
+  },
+  "mobilniMeni": {
+    "grupe": [
+      {
+        "naslov": "Onkogenetika",
+        "boja": "tamna",
+        "stavke": [
+          { "naziv": "Pregled", "opis": "Sa kojim pitanjem dolazite", "link": "/onkogenetika/" },
+          { "naziv": "Sve analize", "opis": "Katalog sa filterima", "link": "/onkogenetika/analize/" },
+          { "naziv": "Cancer Precision", "opis": "Izbor ciljane terapije", "link": "/onkogenetika/analize/cancer-precision/" },
+          { "naziv": "Cancer Neo", "opis": "Personalizovana vakcina", "link": "/onkogenetika/cancer-neo/", "oznaka": "Premium" },
+          { "naziv": "Za lekare", "opis": "Uputite pacijenta", "link": "/za-lekare/" }
+        ]
+      },
+      {
+        "naslov": "Trudnoća i beba",
+        "boja": "ljubicasta",
+        "stavke": [
+          { "naziv": "Pregled", "opis": "Šta je važno, i kada", "link": "/trudnoca-i-beba/" },
+          { "naziv": "Harmony", "opis": "od 390 €", "link": "/trudnoca-i-beba/harmony/" },
+          { "naziv": "Symphony", "opis": "790 €, svi hromozomi", "link": "/trudnoca-i-beba/symphony/" },
+          { "naziv": "Matične ćelije", "opis": "1.980 € ili 12 rata", "link": "/maticne-celije/" }
+        ]
+      }
+    ],
+    "ostalo": [
+      { "tekst": "O nama", "link": "/o-nama/" },
+      { "tekst": "Ostala genetika", "link": "/genetika/" },
+      { "tekst": "Blog", "link": "/blog/" },
+      { "tekst": "Kontakt", "link": "/kontakt/" }
+    ]
+  },
+  "futer": {
+    "kolone": [
+      {
+        "naslov": "Onkogenetika",
+        "link": "/onkogenetika/",
+        "stavke": [
+          { "tekst": "Sve analize", "link": "/onkogenetika/analize/" },
+          { "tekst": "Cancer Precision", "link": "/onkogenetika/analize/cancer-precision/" },
+          { "tekst": "Cancer Neo", "link": "/onkogenetika/cancer-neo/" },
+          { "tekst": "Za lekare", "link": "/za-lekare/" }
+        ]
+      },
+      {
+        "naslov": "Trudnoća i beba",
+        "link": "/trudnoca-i-beba/",
+        "stavke": [
+          { "tekst": "Harmony test", "link": "/trudnoca-i-beba/harmony/" },
+          { "tekst": "Symphony test", "link": "/trudnoca-i-beba/symphony/" },
+          { "tekst": "Matične ćelije", "link": "/maticne-celije/" },
+          { "tekst": "Škola za trudnice", "link": "/trudnoca-i-beba/#skola" }
+        ]
+      },
+      {
+        "naslov": "Family Health",
+        "link": "",
+        "stavke": [
+          { "tekst": "O nama i tim", "link": "/o-nama/" },
+          { "tekst": "Ostale genetske analize", "link": "/genetika/" },
+          { "tekst": "Blog", "link": "/blog/" },
+          { "tekst": "Kontakt", "link": "/kontakt/" },
+          { "tekst": "Politika privatnosti", "link": "/politika-privatnosti/" }
+        ]
+      }
+    ]
+  }
+}

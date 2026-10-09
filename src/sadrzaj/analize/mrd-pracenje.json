@@ -1,0 +1,16 @@
+{
+  "naziv": "MRD praćenje",
+  "slug": "mrd-pracenje",
+  "redosled": 50,
+  "premium": false,
+  "opis": "Traži tragove tumorske DNK u krvi posle lečenja, pre standardnih metoda.",
+  "ciljevi": [
+    "pra"
+  ],
+  "tkivo": true,
+  "krv": true,
+  "uzorak": "Prvo tkivo i krv, zatim krv",
+  "vreme": "kontrola na 3–4 meseca",
+  "imaStranicu": false,
+  "posebanLink": ""
+}

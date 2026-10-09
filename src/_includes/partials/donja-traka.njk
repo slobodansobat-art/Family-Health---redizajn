@@ -1,0 +1,13 @@
+{#- ==========================================================================
+    DONJA TRAKA ZA BRZI KONTAKT (samo mobilni, uvek na dnu ekrana)
+    Front matter stranice:  donjaTraka: { tekst: "...", link: "#kontakt", zlatna: true }
+    Isključivanje:          donjaTraka: false
+    ========================================================================== -#}
+{%- from "makroi/osnovni.njk" import telefonIkonica -%}
+{%- if donjaTraka !== false -%}
+{%- set dt = donjaTraka or { tekst: "Besplatne konsultacije", link: "/kontakt/#forma" } -%}
+<nav class="donja-traka{% if dt.zlatna %} donja-traka--zlatna{% endif %}" aria-label="Brzi kontakt">
+  <a href="tel:{{ podesavanja.kontakt.telefonLink }}" class="donja-traka__poziv">{{ telefonIkonica() }}Pozovite</a>
+  <a href="{{ dt.link }}" class="donja-traka__glavno">{{ dt.tekst }}</a>
+</nav>
+{%- endif -%}

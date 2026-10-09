@@ -1,0 +1,145 @@
+{#- ==========================================================================
+    KOMPONENTE KOJE SE PONAVLJAJU NA VIŠE STRANICA
+    Uvoz:
+      {% from "makroi/komponente.njk" import koraci, faq, forma, polje, izbor,
+         tekstPolje, fajlPolje, saglasnost, posalji %}
+    CSS: src/assets/css/komponente/  ·  JS: src/assets/js/glavni.js
+    ========================================================================== -#}
+{%- from "makroi/osnovni.njk" import strelica, kvacica, plus -%}
+
+{#- --------------------------------------------------------------------------
+    KORACI (vertikalni "stepper" sa linijom koja se puni)
+    Desktop: lista koraka levo, opis izabranog koraka desno.
+    Mobilni: harmonika (klik na korak otvara opis ispod njega).
+      id      jedinstven naziv na stranici, npr. "harmony-koraci"
+      stavke  [{ naslov, podnaslov, glava, tekst, cinjenice: [], ilustracija }]
+              ilustracija = ime fajla u src/_includes/ilustracije (bez .njk)
+      tema    ljubicasta | mint | tamna | zlatna
+      poslednje  { tekst, link }  dugme na poslednjem koraku (opciono)
+    -------------------------------------------------------------------------- #}
+{% macro koraci(id, stavke, tema = "ljubicasta", poslednje = null) -%}
+<div class="koraci koraci--{{ tema }}" data-koraci style="--broj-koraka: {{ stavke | length }}">
+  <div class="koraci__levo">
+    <span class="koraci__linija" aria-hidden="true"></span>
+    <span class="koraci__ispuna" aria-hidden="true"></span>
+    <ol class="koraci__lista">
+      {%- for s in stavke %}
+      <li class="koraci__stavka">
+        <button type="button" class="koraci__dugme" id="{{ id }}-dugme-{{ loop.index }}" aria-controls="{{ id }}-panel-{{ loop.index }}" aria-expanded="{{ 'true' if loop.first else 'false' }}">
+          <span class="koraci__broj">{{ loop.index }}</span>
+          <span class="koraci__naslovi">
+            <span class="koraci__naslov">{{ s.naslov }}</span>
+            {%- if s.podnaslov %}<span class="koraci__podnaslov">{{ s.podnaslov }}</span>{% endif %}
+          </span>
+          <span class="koraci__plus" aria-hidden="true">{{ plus(20) }}</span>
+        </button>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+  <div class="koraci__paneli">
+    {%- for s in stavke %}
+    <div class="koraci__panel" id="{{ id }}-panel-{{ loop.index }}" role="region" aria-labelledby="{{ id }}-dugme-{{ loop.index }}"{% if not loop.first %} hidden{% endif %}>
+      {%- if s.ilustracija %}
+      <div class="koraci__ilustracija" aria-hidden="true">{% include "ilustracije/" + s.ilustracija + ".njk" ignore missing %}</div>
+      {%- endif %}
+      <div class="koraci__sadrzaj">
+        <p class="koraci__oznaka">Korak {{ loop.index }} od {{ stavke | length }}</p>
+        <h3 class="koraci__glava">{{ s.glava or s.naslov }}</h3>
+        <div class="koraci__tekst">{{ s.tekstMd | md | safe if s.tekstMd else s.tekst }}</div>
+        {%- if s.cinjenice and s.cinjenice.length %}
+        <ul class="koraci__cinjenice">
+          {%- for c in s.cinjenice %}<li>{{ kvacica() }}<span>{{ c }}</span></li>{% endfor %}
+        </ul>
+        {%- endif %}
+        {%- if not loop.last %}
+        <button type="button" class="koraci__dalje" data-koraci-dalje aria-label="Sledeći korak" title="Sledeći korak">{{ strelica() }}</button>
+        {%- elif poslednje %}
+        <a href="{{ poslednje.link }}" class="dugme koraci__poslednje">{{ poslednje.tekst }}</a>
+        {%- endif %}
+      </div>
+    </div>
+    {%- endfor %}
+  </div>
+</div>
+{%- endmacro %}
+
+{#- --------------------------------------------------------------------------
+    ČESTA PITANJA (harmonika; otvara se jedno po jedno)
+      id       jedinstven naziv, npr. "harmony-faq"
+      pitanja  [{ pitanje, odgovor }]   odgovor podržava Markdown (podebljano, link)
+      tema     ljubicasta | mint | tamna | zlatna
+    -------------------------------------------------------------------------- #}
+{% macro faq(id, pitanja, tema = "ljubicasta", prvoOtvoreno = true) -%}
+<div class="faq faq--{{ tema }}">
+  {%- for p in pitanja %}
+  <details class="faq__stavka" name="{{ id }}"{% if prvoOtvoreno and loop.first %} open{% endif %}>
+    <summary class="faq__pitanje"><span>{{ p.pitanje }}</span><span class="faq__ikonica" aria-hidden="true">{{ plus(20) }}</span></summary>
+    <div class="faq__odgovor">{{ p.odgovor | md | safe }}</div>
+  </details>
+  {%- endfor %}
+</div>
+{%- endmacro %}
+
+{#- --------------------------------------------------------------------------
+    FORME (Netlify Forms: prijave stižu u Netlify, a odatle na mejl)
+    Upotreba:
+      {% call forma("kontakt-harmony", "forma forma--bela") %}
+        {{ polje("hm-ime", "ime", "Ime i prezime", autocomplete="name", obavezno=true) }}
+        ...
+        {{ saglasnost("hm-ok") }}
+        {{ posalji("Pošaljite") }}
+      {% endcall %}
+    Svaka forma mora imati jedinstveno ime (prvi parametar).
+    -------------------------------------------------------------------------- #}
+{% macro forma(ime, klasa = "forma", fajlovi = false, akcija = "/hvala/") -%}
+<form name="{{ ime }}" method="POST" action="{{ akcija }}" class="{{ klasa }}" data-netlify="true" netlify-honeypot="bot-polje"{% if fajlovi %} enctype="multipart/form-data"{% endif %}>
+  <input type="hidden" name="form-name" value="{{ ime }}">
+  <p class="sr-only"><label>Ne popunjavajte ovo polje: <input name="bot-polje" tabindex="-1" autocomplete="off"></label></p>
+  {{ caller() }}
+</form>
+{%- endmacro %}
+
+{% macro polje(id, ime, oznaka, tip = "text", autocomplete = "", obavezno = false, placeholder = "", klasa = "", vrednost = "", pomoc = "") -%}
+<div class="polje {{ klasa }}">
+  <label for="{{ id }}" class="polje__oznaka">{{ oznaka }}{% if obavezno %} <span class="polje__obavezno" aria-hidden="true">*</span>{% endif %}</label>
+  <input id="{{ id }}" name="{{ ime }}" type="{{ tip }}" class="unos"{% if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}{% if obavezno %} required{% endif %}{% if placeholder %} placeholder="{{ placeholder }}"{% endif %}{% if vrednost %} value="{{ vrednost }}"{% endif %}{% if pomoc %} aria-describedby="{{ id }}-pomoc"{% endif %}>
+  {%- if pomoc %}<span class="polje__pomoc" id="{{ id }}-pomoc">{{ pomoc }}</span>{% endif %}
+</div>
+{%- endmacro %}
+
+{% macro izbor(id, ime, oznaka, opcije, klasa = "", obavezno = false) -%}
+<div class="polje {{ klasa }}">
+  <label for="{{ id }}" class="polje__oznaka">{{ oznaka }}</label>
+  <select id="{{ id }}" name="{{ ime }}" class="unos unos--izbor"{% if obavezno %} required{% endif %}>
+    {%- for o in opcije %}<option>{{ o }}</option>{% endfor %}
+  </select>
+</div>
+{%- endmacro %}
+
+{% macro tekstPolje(id, ime, oznaka, redova = 3, klasa = "", placeholder = "") -%}
+<div class="polje {{ klasa }}">
+  <label for="{{ id }}" class="polje__oznaka">{{ oznaka }}</label>
+  <textarea id="{{ id }}" name="{{ ime }}" rows="{{ redova }}" class="unos unos--tekst"{% if placeholder %} placeholder="{{ placeholder }}"{% endif %}></textarea>
+</div>
+{%- endmacro %}
+
+{% macro fajlPolje(id, ime, oznaka, pomoc = "PDF ili fotografija, do 8 MB", klasa = "") -%}
+<div class="polje {{ klasa }}">
+  <label for="{{ id }}" class="polje__oznaka">{{ oznaka }}</label>
+  <input id="{{ id }}" name="{{ ime }}" type="file" class="unos unos--fajl" accept=".pdf,.jpg,.jpeg,.png,.heic" aria-describedby="{{ id }}-pomoc">
+  <span class="polje__pomoc" id="{{ id }}-pomoc">{{ pomoc }}</span>
+</div>
+{%- endmacro %}
+
+{#- Saglasnost za obradu podataka. Tekst: src/sadrzaj/podesavanja.json -> pravno -#}
+{% macro saglasnost(id, tamna = false) -%}
+<label for="{{ id }}" class="saglasnost{% if tamna %} saglasnost--tamna{% endif %}">
+  <input id="{{ id }}" name="saglasnost" type="checkbox" required>
+  <span>{{ podesavanja.pravno.saglasnostTekst }} <a href="/politika-privatnosti/">Politika privatnosti</a> {{ podesavanja.pravno.saglasnostNapomena }}</span>
+</label>
+{%- endmacro %}
+
+{% macro posalji(tekst, klasa = "") -%}
+<button type="submit" class="dugme dugme--puno {{ klasa }}">{{ tekst }}</button>
+{%- endmacro %}
