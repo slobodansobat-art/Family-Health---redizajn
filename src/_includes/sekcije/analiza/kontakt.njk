@@ -13,8 +13,9 @@
     </div>
     {% call forma("analiza-kontakt", "forma forma--bela analiza-kontakt__forma", true) %}
       <input type="hidden" name="analiza" value="{{ analiza.naziv }}">
-      {{ polje("an-ime", "ime", k.imeOznaka, autocomplete="name") }}
-      {{ polje("an-tel", "telefon", k.telefonOznaka, tip="tel", autocomplete="tel") }}
+      {{ polje("an-ime", "ime", k.imeOznaka, autocomplete="name", obavezno=true) }}
+      {{ polje("an-tel", "telefon", k.telefonOznaka, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ polje("an-email", "email", k.emailOznaka or z.kontakt.emailOznaka, tip="email", autocomplete="email", obavezno=true, klasa="polje--ceo-red") }}
       {{ izbor("an-uloga", "uloga", k.ulogaOznaka, k.uloge) }}
       {{ fajlPolje("an-nalaz", "nalaz", k.nalazOznaka, "") }}
       {{ saglasnost("an-ok") }}

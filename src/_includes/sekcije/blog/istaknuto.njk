@@ -20,7 +20,7 @@
     <span class="blog-istaknuto__tekst">
       <span class="blog-istaknuto__oznaka">{{ istaknut.data.kategorija }} · {{ d.oznakaIstaknuto }}</span>
       <h2 class="blog-istaknuto__clanak">{{ istaknut.data.naslov }}</h2>
-      <span class="blog-istaknuto__opis">{{ istaknut.data.opis }}</span>
+      <span class="blog-istaknuto__opis">{{ istaknut.data.opisIstaknut or istaknut.data.opis }}</span>
       <span class="blog-istaknuto__dalje">{{ d.dalje }}</span>
     </span>
   </a>

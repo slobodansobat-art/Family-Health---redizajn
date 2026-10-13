@@ -29,6 +29,7 @@
     "tekst": "Lekar pregleda nalaz i javlja se istog radnog dana sa preporukom i cenom.",
     "imeOznaka": "Ime i prezime",
     "telefonOznaka": "Telefon",
+    "emailOznaka": "Mejl adresa",
     "ulogaOznaka": "Javljate se kao",
     "uloge": ["Pacijent", "Član porodice", "Lekar"],
     "nalazOznaka": "Nalaz (PDF ili fotografija)",

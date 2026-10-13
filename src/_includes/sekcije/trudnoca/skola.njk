@@ -1,6 +1,7 @@
 {#- TRUDNOĆA · besplatna škola za trudnice (sidro #skola)
     Sadržaj: stranice.trudnoca.skola   ·   Stil: css/stranice/trudnoca.css
-    Fotografija se prikazuje samo na mobilnom (kao u skici). -#}
+    Fotografija se prikazuje samo na mobilnom (kao u skici).
+    Kraći tekstovi za telefon: polja …Mobilni (prazno = desktop tekst). -#}
 {%- from "makroi/osnovni.njk" import slika -%}
 {%- set d = stranice.trudnoca.skola -%}
 <section id="skola" class="trudnoca-skola" aria-labelledby="trudnoca-skola-naslov">
@@ -10,8 +11,8 @@
       <div class="trudnoca-skola__levo">
         <div class="samo-mobilni">{{ slika(d.slika, d.slikaOpis, "trudnoca-skola__foto") }}</div>
         <h2 id="trudnoca-skola-naslov" class="trudnoca-skola__naslov">{{ d.naslov }}</h2>
-        <p class="blag trudnoca-skola__tekst">{{ d.tekst }}</p>
-        <p class="trudnoca-skola__tekst trudnoca-skola__maticne">{{ d.maticneMd | mdRed | safe }}</p>
+        <p class="blag trudnoca-skola__tekst"><span class="samo-desktop">{{ d.tekst }}</span><span class="samo-mobilni">{{ d.tekstMobilni or d.tekst }}</span></p>
+        <p class="trudnoca-skola__tekst trudnoca-skola__maticne"><span class="samo-desktop">{{ d.maticneMd | mdRed | safe }}</span><span class="samo-mobilni">{{ (d.maticneMobilniMd or d.maticneMd) | mdRed | safe }}</span></p>
         <p class="trudnoca-skola__isticanje">{{ d.isticanjeMd | mdRed | safe }}</p>
       </div>
       <div class="trudnoca-skola__desno">

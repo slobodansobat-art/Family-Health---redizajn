@@ -4,7 +4,7 @@
    ========================================================================== */
 .faq { --f-akcent: var(--ljubicasta-600); --f-tamna: var(--ljubicasta-800); --f-linija: var(--linija); border-top: 1px solid var(--f-linija); }
 .faq--mint { --f-akcent: var(--mint-600); --f-tamna: var(--mint-900); --f-linija: var(--mint-150); }
-.faq--tamna { --f-akcent: var(--ljubicasta-400); --f-tamna: var(--bela); --f-linija: var(--ljubicasta-700); }
+.faq--tamna { --fokus: var(--fokus-na-tamnom); --f-akcent: var(--ljubicasta-400); --f-tamna: var(--bela); --f-linija: var(--ljubicasta-700); }
 .faq--zlatna { --f-akcent: var(--zlatna-700); --f-tamna: var(--neo-900); --f-linija: #E9DFCB; }
 .faq__stavka { border-bottom: 1px solid var(--f-linija); }
 .faq__pitanje {

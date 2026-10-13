@@ -14,22 +14,62 @@
 
   var MOBILNI = window.matchMedia("(max-width: 959px)");
 
-  /* --- Padajući meni ------------------------------------------------------- */
+  /* --- Padajući meni -------------------------------------------------------
+     Miš: prelaz otvara, odlazak zatvara (posle kratke pauze). Klik na strelicu
+          "zakači" meni otvorenim (ako ga je prelaz već otvorio, ostaje otvoren;
+          prvi klik nikad ne zatvara meni koji korisnik tek vidi).
+     Dodir (telefon, tablet): samo dodir na strelicu otvara/zatvara; prelaz se
+          ne koristi (pointerType !== "mouse").
+     Tastatura: Enter/razmak na strelici, Escape zatvara i vraća fokus.
+     Klik/dodir van menija i odlazak fokusa iz menija zatvaraju ga.
+     ------------------------------------------------------------------------ */
   function pokreniPadajuceMenije() {
     document.querySelectorAll("[data-padajuci]").forEach(function (meni) {
       var dugme = meni.querySelector(".padajuci__dugme");
+      if (!dugme) return;
       var tajmer;
-      function otvori() { clearTimeout(tajmer); meni.classList.add("je-otvoren"); dugme.setAttribute("aria-expanded", "true"); }
-      function zatvori() { meni.classList.remove("je-otvoren"); dugme.setAttribute("aria-expanded", "false"); }
+      var nacin = "";           // "" zatvoren, "prelaz" otvorio miš, "klik" zakačen klikom
+      function jeOtvoren() { return meni.classList.contains("je-otvoren"); }
+      function otvori(kako) {
+        clearTimeout(tajmer);
+        nacin = kako;
+        meni.classList.add("je-otvoren");
+        dugme.setAttribute("aria-expanded", "true");
+      }
+      function zatvori() {
+        clearTimeout(tajmer);
+        nacin = "";
+        meni.classList.remove("je-otvoren");
+        dugme.setAttribute("aria-expanded", "false");
+      }
 
-      meni.addEventListener("mouseenter", function () { if (!MOBILNI.matches) otvori(); });
-      meni.addEventListener("mouseleave", function () { tajmer = setTimeout(zatvori, 120); });
-      dugme.addEventListener("click", function () { meni.classList.contains("je-otvoren") ? zatvori() : otvori(); });
-      meni.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && meni.classList.contains("je-otvoren")) { zatvori(); dugme.focus(); }
+      meni.addEventListener("pointerenter", function (e) {
+        if (e.pointerType !== "mouse" || MOBILNI.matches) return;
+        clearTimeout(tajmer);
+        if (!jeOtvoren()) otvori("prelaz");
       });
-      meni.addEventListener("focusout", function (e) { if (!meni.contains(e.relatedTarget)) zatvori(); });
-      document.addEventListener("click", function (e) { if (!meni.contains(e.target)) zatvori(); });
+      meni.addEventListener("pointerleave", function (e) {
+        if (e.pointerType !== "mouse" || nacin !== "prelaz") return;
+        tajmer = setTimeout(zatvori, 200);
+      });
+      dugme.addEventListener("click", function () {
+        if (!jeOtvoren()) otvori("klik");
+        else if (nacin === "prelaz") nacin = "klik";   // miš ga je već otvorio: klik ga samo zadržava
+        else zatvori();
+      });
+      meni.addEventListener("focusout", function (e) {
+        if (e.relatedTarget && !meni.contains(e.relatedTarget)) zatvori();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Escape" || !jeOtvoren()) return;
+        var fokusUnutra = meni.contains(document.activeElement);
+        zatvori();
+        if (fokusUnutra) dugme.focus();
+      });
+      document.addEventListener("pointerdown", function (e) {
+        if (jeOtvoren() && !meni.contains(e.target)) zatvori();
+      });
+      MOBILNI.addEventListener("change", zatvori);
     });
   }
 
@@ -80,6 +120,7 @@
       var paneli = dugmad.map(function (d) { return document.getElementById(d.getAttribute("aria-controls")); });
       var kontejnerPanela = koraci.querySelector(".koraci__paneli");
       var aktivan = 0;
+      koraci.classList.add("je-pokrenut");   // CSS: pre ovoga je vidljiv samo prvi panel
 
       // Desktop: jedan aktivan korak, opis desno
       function izaberi(i, fokus) {
@@ -169,11 +210,14 @@
      aria-controls="id-panela" aria-selected="true|false"> ... </div>
      <div role="tabpanel" id="id-panela"> ... </div> </div>
      Ako adresa ima #id-taba ili #id-panela, otvara se taj tab.
+     Paneli NISU skriveni u HTML-u (bez JS-a se vide svi); neaktivne sakriva
+     ova funkcija.
      ------------------------------------------------------------------------ */
   function pokreniTabove() {
     document.querySelectorAll("[data-tabovi]").forEach(function (grupa) {
       var tabovi = Array.prototype.slice.call(grupa.querySelectorAll('[role="tab"]'));
       if (!tabovi.length) return;
+      grupa.classList.add("je-pokrenut");    // CSS: pre ovoga je vidljiv samo prvi panel
       function izaberi(tab, fokus) {
         tabovi.forEach(function (t) {
           var izabran = t === tab;

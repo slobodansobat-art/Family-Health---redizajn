@@ -1,7 +1,7 @@
 {
   "_naziv": "Početna",
   "seo": {
-    "naslov": "Genetske analize, prenatalni testovi i matične ćelije | Family Health",
+    "naslov": "Genetika, prenatalni testovi, matične ćelije | Family Health",
     "opis": "Genetske analize tumora, prenatalni testovi Harmony i Symphony i matične ćelije iz pupčanika. Krv vadimo u ordinaciji ili kod vas kući."
   },
   "hero": {
@@ -67,6 +67,7 @@
     "naslov": "Partneri i tehnologije sa kojima radimo",
     "dugmeZaustavi": "Zaustavi",
     "dugmePokreni": "Pokreni",
+    "trakaOznaka": "Partneri i tehnologije, lista se pomera bočno",
     "napomena": "Uzorci matičnih ćelija čuvaju se po standardima AABB i HTA",
     "lista": [
       { "naziv": "Roche", "logo": "" },
@@ -84,7 +85,7 @@
     "citat": "„Kao otac troje dece, želim da vam pomognem da donesete odluku koja će vašem detetu biti podrška ceo život.”",
     "potpis": "dr Aleksandar Antović, specijalista interne medicine",
     "medijiTekst": "Gostovao je na RTS-u, N1, TV Prvoj, Euronews Srbija, RTV-u i Tanjugu.",
-    "medijiLink": { "tekst": "Pogledajte nastupe", "link": "/o-nama/#mediji" }
+    "medijiLink": { "tekst": "Pogledajte nastupe", "tekstMobilni": "Nastupi u medijima", "link": "/o-nama/#mediji" }
   },
   "blog": {
     "naslov": "Sa bloga",
@@ -96,6 +97,7 @@
     "forma": {
       "ime": "Ime i prezime",
       "telefon": "Telefon",
+      "email": "Mejl adresa",
       "tema": "Šta vas zanima",
       "teme": ["Onkogenetika", "Prenatalni testovi", "Matične ćelije", "Ostale genetske analize", "Škola za trudnice"],
       "vreme": "Kada da vas pozovemo",

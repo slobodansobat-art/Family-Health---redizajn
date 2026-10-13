@@ -33,7 +33,8 @@
       {{ polje("zl-dr", "lekar", f.imeLekara, autocomplete="name", obavezno=true) }}
       {{ polje("zl-ust", "ustanova", f.ustanova, autocomplete="organization") }}
       {{ polje("zl-tel", "telefon", f.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
-      {{ izbor("zl-an", "analiza", f.analiza, f.analize) }}
+      {{ polje("zl-email", "email", f.email, tip="email", autocomplete="email", obavezno=true) }}
+      {{ izbor("zl-an", "analiza", f.analiza, f.analize, "polje--ceo-red") }}
       {{ polje("zl-pac", "pacijent", f.pacijent, placeholder=f.pacijentPrimer, klasa="polje--ceo-red") }}
       {{ fajlPolje("zl-prilog", "prilog", f.prilog, f.prilogPomoc, "polje--ceo-red") }}
       <label for="zl-pok" class="saglasnost">

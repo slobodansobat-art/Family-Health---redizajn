@@ -4,10 +4,11 @@
    ========================================================================== */
 .onko {
   --onko-obrub: #6E4D8C;   /* ivica sporednog dugmeta na tamnoj pozadini */
+  --onko-prelaz: rgba(255, 255, 255, .08);  /* prelaz mišem preko sporednog dugmeta */
 }
 
 /* --- Hero (tamna pozadina + animirana mreža) ------------------------------ */
-.onko-hero { position: relative; overflow: hidden; background: var(--ljubicasta-800); color: var(--bela); }
+.onko-hero { position: relative; overflow: hidden; background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela); }
 .onko-hero__mreza { position: absolute; right: -60px; top: -20px; width: 720px; height: 720px; pointer-events: none; }
 .onko-hero__unutra { position: relative; padding-block: 80px 96px; }
 .onko-hero__nadnaslov { margin-bottom: 18px; font-size: 15px; color: var(--ljubicasta-400); }
@@ -16,7 +17,7 @@
 .onko-hero__dugmad { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 36px; }
 .onko-hero__dugme { padding: 16px 26px; }
 .onko-hero__dugme--obrub { background: transparent; color: var(--bela); font-weight: 400; box-shadow: inset 0 0 0 1px var(--onko-obrub); }
-.onko-hero__dugme--obrub:hover { background: rgba(255, 255, 255, .08); color: var(--bela); }
+.onko-hero__dugme--obrub:hover { background: var(--onko-prelaz); color: var(--bela); }
 .onko-hero__cinjenice {
   list-style: none; display: flex; flex-wrap: wrap; gap: 14px 56px;
   max-width: 900px; margin-top: 64px; padding-top: 26px;
@@ -60,7 +61,7 @@
 .onko-situacija {
   display: flex; flex-direction: column; gap: 18px;
   padding: 38px; border-radius: 24px;
-  background: var(--ljubicasta-800); color: var(--bela);
+  background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela);
 }
 .onko-situacije__stavka > .onko-situacija { margin: 0 0 18px; }   /* bez JS-a: ispod pitanja */
 .onko-situacija__analiza { font-size: 15px; color: var(--ljubicasta-400); }
@@ -74,7 +75,7 @@
 .onko-situacija__dugmad { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 8px; }
 .onko-situacija__dugme { padding: 13px 22px; }
 .onko-situacija__dugme--obrub { background: transparent; color: var(--bela); font-weight: 500; box-shadow: inset 0 0 0 1px var(--ljubicasta-500); }
-.onko-situacija__dugme--obrub:hover { background: rgba(255, 255, 255, .08); color: var(--bela); }
+.onko-situacija__dugme--obrub:hover { background: var(--onko-prelaz); color: var(--bela); }
 
 /* --- Proces (makro "koraci") ---------------------------------------------- */
 .onko-proces { padding-block: 80px 40px; }
@@ -111,7 +112,7 @@ a.onko-lekari__dokument:hover { color: var(--ljubicasta-600); }
 .onko-lekari__telefon:hover { color: var(--ljubicasta-600); }
 
 /* --- Kontakt (forma za slanje nalaza) -------------------------------------- */
-.onko-kontakt { background: var(--ljubicasta-800); color: var(--bela); }
+.onko-kontakt { background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela); }
 .onko-kontakt__mreza { display: flex; flex-wrap: wrap; gap: 40px 72px; padding-block: 88px; }
 .onko-kontakt__levo { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
 .onko-kontakt__naslov { font-size: 44px; line-height: 1.08; }

@@ -72,6 +72,14 @@
   --ivica-polja: #8E80A3;
   --bela: #FFFFFF;
 
+  /* --- Okvir fokusa (tastatura) ----------------------------------------------
+     --fokus je boja okvira; tamne površine je menjaju u --fokus-na-tamnom
+     (klasa .povrsina-tamna ili --fokus: var(--fokus-na-tamnom) u CSS-u sekcije).
+     Obe imaju kontrast >= 3:1 prema svojoj pozadini. */
+  --fokus-na-svetlom: var(--ljubicasta-600);   /* 8,8:1 na beloj, 7:1 na mint-50 */
+  --fokus-na-tamnom: var(--ljubicasta-200);    /* 11:1 na #2F1544, 15:1 na #140B1C */
+  --fokus: var(--fokus-na-svetlom);
+
   /* --- Fontovi ------------------------------------------------------------- */
   --font-tekst: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-naslov: "Newsreader", Georgia, "Times New Roman", serif;

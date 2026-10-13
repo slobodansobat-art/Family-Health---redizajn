@@ -6,7 +6,9 @@
 {%- set d = stranice.greska404.poruka -%}
 <section class="kontejner greska" aria-labelledby="greska-naslov">
   <div class="greska__tekst">
-    <p class="greska__broj" aria-hidden="true">{{ d.broj }}</p>
+    {#- Broj je ukras (h1 kaže šta je stranica): crta se kroz CSS (::before), pa ga
+        čitači ekrana i provera kontrasta ne vide kao tekst. #}
+    <p class="greska__broj" aria-hidden="true" data-broj="{{ d.broj }}"></p>
     <h1 id="greska-naslov" class="greska__naslov">{{ d.naslov }}</h1>
     <p class="greska__opis">{{ d.tekst }}<span class="greska__poziv"> {{ d.poziv }} <a href="tel:{{ podesavanja.kontakt.telefonLink }}">{{ podesavanja.kontakt.telefon }}</a>.</span></p>
   </div>

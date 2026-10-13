@@ -23,6 +23,7 @@
     {%- call forma("harmony-zakazivanje", "forma forma--bela harmony-kontakt__forma") %}
       {{ polje("hm-ime", "ime", d.polja.ime, autocomplete="name", obavezno=true) }}
       {{ polje("hm-tel", "telefon", d.polja.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ polje("hm-email", "email", d.polja.email, tip="email", autocomplete="email", obavezno=true, klasa="polje--ceo-red") }}
       <div class="polje">
         <label for="hm-paket" class="polje__oznaka">{{ d.polja.paket }}</label>
         {%- for p in pk.stavke %}{% if p.naziv == pk.izabranPaket %}

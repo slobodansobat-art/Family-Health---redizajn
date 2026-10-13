@@ -1,5 +1,7 @@
 /* ==========================================================================
-   DONJA TRAKA ZA BRZI KONTAKT (samo mobilni)
+   DONJA TRAKA ZA BRZI KONTAKT (samo mobilni)  (šablon: partials/donja-traka.njk)
+   Tri dugmeta kao u skici (Mobile.dc.html): Pozovite · Viber · glavno dugme.
+   Staje i na 360px: duži tekst glavnog dugmeta prelazi u dva reda.
    ========================================================================== */
 .donja-traka { display: none; }
 @media (max-width: 959px) {
@@ -10,12 +12,20 @@
     background: var(--bela); box-shadow: 0 -8px 24px rgba(47, 21, 68, .10);
   }
   .donja-traka a {
-    height: 48px; display: flex; align-items: center; justify-content: center; gap: 6px;
-    border-radius: 999px; text-decoration: none; font-size: 15px;
+    flex: 1 1 0; min-width: 0; height: 48px; padding-inline: 8px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 999px; text-decoration: none; text-align: center;
+    font-size: 15px; line-height: 1.15;
   }
-  .donja-traka__poziv { flex: 1; background: var(--ljubicasta-50); color: var(--ljubicasta-800); font-weight: 500; }
-  .donja-traka__glavno { flex: 1.6; background: var(--ljubicasta-600); color: var(--bela); font-weight: 600; text-align: center; padding-inline: 10px; }
+  .donja-traka__sporedno { background: var(--ljubicasta-50); color: var(--ljubicasta-800); font-weight: 500; }
+  .donja-traka__sporedno:hover { color: var(--ljubicasta-800); background: var(--ljubicasta-150); }
+  .donja-traka .donja-traka__glavno { flex-grow: 1.3; background: var(--ljubicasta-600); color: var(--bela); font-weight: 600; padding-inline: 10px; }
   .donja-traka__glavno:hover { color: var(--bela); }
   .donja-traka--zlatna .donja-traka__glavno { background: var(--zlatna-500); color: var(--neo-900); }
+  .donja-traka--zlatna .donja-traka__glavno:hover { color: var(--neo-900); }
   .meni-otvoren .donja-traka { display: none; }
+}
+@media (max-width: 380px) {
+  .donja-traka { gap: 6px; padding-inline: 10px; }
+  .donja-traka a { font-size: 14px; padding-inline: 6px; }
 }

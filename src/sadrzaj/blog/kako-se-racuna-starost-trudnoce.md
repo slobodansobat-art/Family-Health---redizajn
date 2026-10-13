@@ -1,6 +1,7 @@
 ---
 naslov: "Kako se računa starost trudnoće?"
 opis: "Zašto se nedelje broje od poslednje menstruacije, i kada ultrazvuk ima prednost."
+opisIstaknut: "Zašto se nedelje broje od poslednje menstruacije, kada ultrazvuk ima prednost, i kalkulator koji odmah pokazuje vašu nedelju i termin porođaja."
 kategorija: "Trudnoća"
 datum: 2026-07-14
 vremeCitanja: "4 min"

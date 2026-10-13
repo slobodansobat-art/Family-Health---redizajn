@@ -20,7 +20,7 @@
 .mobilni-meni__strelica { color: var(--ljubicasta-800); }
 .mobilni-meni__ostalo { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 22px var(--margina) 0; }
 .mobilni-meni__ostalo a { padding: 14px 16px; background: var(--ljubicasta-50); border-radius: var(--zaobljenje-malo); color: var(--ljubicasta-800); text-decoration: none; font-weight: 500; }
-.mobilni-meni__kontakt { margin: 22px var(--margina) 0; padding: 18px; background: var(--ljubicasta-800); color: var(--bela); border-radius: 22px; display: flex; flex-direction: column; gap: 4px; }
+.mobilni-meni__kontakt { --fokus: var(--fokus-na-tamnom); margin: 22px var(--margina) 0; padding: 18px; background: var(--ljubicasta-800); color: var(--bela); border-radius: 22px; display: flex; flex-direction: column; gap: 4px; }
 .mobilni-meni__kontakt span:first-child { font-size: 13px; color: var(--ljubicasta-400); }
 .mobilni-meni__kontakt a { font-family: var(--font-naslov); font-size: 26px; color: var(--bela); text-decoration: none; }
 .mobilni-meni__kontakt span:last-child { font-size: 14px; color: var(--tekst-na-tamnom); }

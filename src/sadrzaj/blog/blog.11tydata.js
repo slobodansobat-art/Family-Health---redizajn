@@ -7,15 +7,19 @@
 //   u listi na /blog/, bez linka, sa oznakom "[predlog teme]". Kad se tekst
 //   napiše, urednik isključi "Predlog teme" i članak dobija adresu.
 // - Kalkulator trudnoće (kalkulatorTrudnoce: true) učitava js/stranice/blog.js.
+// - Opciona polja: seoNaslov (kraći naslov za pretraživače, kad je naslov
+//   članka predug za ~60 znakova), opisIstaknut (duži opis na kartici
+//   istaknutog članka na /blog/), redosled (redosled predloga tema u listi).
 // =============================================================================
 export default {
   layout: "sekcije/blog/clanak-sablon.njk",
   telo: "clanak",
   zaglavlje: { tema: "svetla", oblast: "opsti", nazad: "/blog/" },
   eleventyComputed: {
-    permalink: (d) => (d.predlogTeme ? false : `/blog/${d.page.fileSlug}/`),
+    // Predlog teme i sakriven članak nemaju svoju stranicu.
+    permalink: (d) => (d.predlogTeme || d.sakrij ? false : `/blog/${d.page.fileSlug}/`),
     seo: (d) => ({
-      naslov: `${d.naslov} | ${d.podesavanja.sajt.naziv}`,
+      naslov: `${d.seoNaslov || d.naslov} | ${d.podesavanja.sajt.naziv}`,
       opis: d.opis || "",
     }),
     skripte: (d) => (d.kalkulatorTrudnoce ? ["stranice/blog.js"] : []),

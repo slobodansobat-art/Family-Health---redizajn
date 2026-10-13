@@ -1,16 +1,14 @@
 {#- HARMONY · "Kako izgleda testiranje": koraci (zajednički makro, tema mint)
     Sadržaj: stranice.harmony.koraci   ·   Ilustracije: _includes/ilustracije/harmony/
     Stil: css/komponente/koraci.css + dopune u css/stranice/harmony.css (.harmony-koraci)
-    Polje "oznaka" na koraku (npr. "Besplatno") makro ne prikazuje, pa ga
-    js/stranice/harmony.js dodaje uz podnaslov koraka (podaci ispod). -#}
+    Polje "oznaka" na koraku (npr. "Besplatno") makro prikazuje uz podnaslov
+    (.koraci__znak, statički HTML); "tekstMobilni" je kraći tekst za telefon. -#}
 {%- from "makroi/komponente.njk" import koraci with context -%}
 {%- set d = stranice.harmony.koraci -%}
 <section class="harmony-koraci" aria-labelledby="harmony-koraci-naslov">
   <div class="kontejner">
     <h2 id="harmony-koraci-naslov" class="naslov-m harmony-naslov">{{ d.naslov }}</h2>
     <p class="harmony-koraci__uvod">{{ d.uvod }}</p>
-    {#- Oznake koraka za JS, istim redom kao koraci (prazno = bez oznake) #}
-    <ul hidden data-oznake-koraka>{% for s in d.stavke %}<li>{{ s.oznaka }}</li>{% endfor %}</ul>
     {{ koraci("harmony-koraci", d.stavke, "mint", d.poslednje) }}
   </div>
 </section>

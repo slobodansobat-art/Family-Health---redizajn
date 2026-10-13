@@ -15,6 +15,6 @@
     "postalCode": {{ k.postanskiBroj | uJson | safe }},
     "addressCountry": "RS"
   },
-  "openingHours": "Mo-Fr 08:00-16:00"
+  "openingHours": {{ (k.radnoVremeSchema or "Mo-Fr 08:00-16:00") | uJson | safe }}
 }
 </script>

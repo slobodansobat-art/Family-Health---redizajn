@@ -36,7 +36,7 @@
   position: relative; min-width: 0; overflow: hidden;
   transition: flex-basis .75s var(--prelaz);
 }
-.pocetna-hero__deo--onko { flex: 0 0 57%; background: var(--ljubicasta-800); color: var(--bela); }
+.pocetna-hero__deo--onko { flex: 0 0 57%; background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela); }
 .pocetna-hero__deo--trudnoca { flex: 0 0 43%; background: var(--ljubicasta-50); color: var(--tekst); }
 .pocetna-hero__deo.je-prosiren { flex-basis: 80%; }
 .pocetna-hero__deo.je-sklopljen { flex-basis: 20%; cursor: pointer; }
@@ -192,11 +192,13 @@
 .pocetna-partneri__grupa { display: flex; list-style: none; }
 .pocetna-partneri__stavka {
   flex-shrink: 0; height: 84px; padding: 0 44px; display: flex; align-items: center; justify-content: center;
-  filter: grayscale(1); opacity: .75; transition: filter .3s ease, opacity .3s ease;
+  filter: grayscale(1); transition: filter .3s ease;
 }
-.pocetna-partneri__stavka:hover { filter: none; opacity: 1; }
+.pocetna-partneri__stavka:hover { filter: none; }
 .pocetna-partneri__naziv { font-size: 22px; font-weight: 600; letter-spacing: -.2px; white-space: nowrap; color: var(--pocetna-partner); }
-.pocetna-partneri__logo { max-height: 44px; width: auto; }
+/* Naziv (tekst) je pune boje (6,8:1 na beloj); prigušen je samo logo (slika) */
+.pocetna-partneri__logo { max-height: 44px; width: auto; opacity: .75; transition: opacity .3s ease; }
+.pocetna-partneri__stavka:hover .pocetna-partneri__logo { opacity: 1; }
 
 /* Smanjeni pokreti: traka stoji, partneri u redovima, bez kopija */
 @media (prefers-reduced-motion: reduce) {
@@ -352,6 +354,8 @@
     -webkit-mask-image: none; mask-image: none;
   }
   .pocetna-partneri__okvir::-webkit-scrollbar { display: none; }
+  .pocetna-partneri__okvir:focus-visible { outline-offset: -3px; }
+  .pocetna-partneri__napomena { flex-basis: 100%; }
   .pocetna-partneri__traka { animation: none; padding-inline: var(--margina); }
   .pocetna-partneri__grupa { gap: 8px; }
   .pocetna-partneri__grupa--kopija { display: none; }

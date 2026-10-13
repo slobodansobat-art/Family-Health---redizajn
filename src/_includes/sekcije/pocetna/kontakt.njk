@@ -20,6 +20,7 @@
     {% call forma("pocetna-kontakt", "forma forma--bela pocetna-kontakt__forma") %}
       {{ polje("pc-ime", "ime", d.forma.ime, autocomplete="name", obavezno=true) }}
       {{ polje("pc-tel", "telefon", d.forma.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ polje("pc-email", "email", d.forma.email, tip="email", autocomplete="email", obavezno=true, klasa="polje--ceo-red") }}
       {{ izbor("pc-tema", "tema", d.forma.tema, d.forma.teme) }}
       {{ izbor("pc-vreme", "vreme", d.forma.vreme, d.forma.vremena) }}
       {{ saglasnost("pc-ok") }}

@@ -11,8 +11,8 @@
   <svg class="trudnoca-kontakt__mrlja" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path d="M310 60c50 40 70 120 40 190s-120 110-190 90S40 260 50 180 120 40 190 30s70-10 120 30z"></path></svg>
   <div class="kontejner trudnoca-kontakt__mreza">
     <div class="trudnoca-kontakt__levo">
-      <h2 id="trudnoca-kontakt-naslov" class="trudnoca-naslov-kurziv trudnoca-kontakt__naslov">{{ d.naslov }}</h2>
-      <p class="trudnoca-kontakt__tekst">{{ d.tekst }}</p>
+      <h2 id="trudnoca-kontakt-naslov" class="trudnoca-naslov-kurziv trudnoca-kontakt__naslov"><span class="samo-desktop">{{ d.naslov }}</span><span class="samo-mobilni">{{ d.naslovMobilni or d.naslov }}</span></h2>
+      <p class="trudnoca-kontakt__tekst"><span class="samo-desktop">{{ d.tekst }}</span><span class="samo-mobilni">{{ d.tekstMobilni or d.tekst }}</span></p>
       <div class="trudnoca-kontakt__telefoni">
         <a href="tel:{{ kt.telefonLink }}">{{ kt.telefon }}</a>
         <a href="tel:{{ kt.mobilniLink }}">{{ kt.mobilni }}</a>
@@ -21,6 +21,7 @@
     {% call forma("trudnoca-kontakt", "forma forma--bela trudnoca-kontakt__forma") %}
       {{ polje("tk-ime", "ime", f.ime, autocomplete="name", obavezno=true) }}
       {{ polje("tk-tel", "telefon", f.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ polje("tk-email", "email", f.email, tip="email", autocomplete="email", obavezno=true, klasa="polje--ceo-red") }}
       {{ izbor("tk-tema", "tema", f.tema, f.teme) }}
       <div class="polje">
         <label for="tk-nedelja" class="polje__oznaka">{{ f.nedelja }}</label>

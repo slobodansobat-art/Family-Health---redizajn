@@ -6,3 +6,6 @@
 [role="tabpanel"]:not([hidden]) { animation: pojava .4s cubic-bezier(.4, 0, .2, 1); }
 [role="tablist"] { scrollbar-width: none; }
 [role="tablist"]::-webkit-scrollbar { display: none; }
+/* Paneli nisu skriveni u HTML-u (bez JS-a se vide svi). Sa JS-om (.js na <html>),
+   dok glavni.js ne pokrene tabove, vidi se samo prvi panel. */
+.js [data-tabovi]:not(.je-pokrenut) [role="tabpanel"] ~ [role="tabpanel"] { display: none; }

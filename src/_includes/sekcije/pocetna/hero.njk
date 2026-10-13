@@ -82,7 +82,7 @@
         <div class="pocetna-hero__osnovno">
           <p class="pocetna-hero__nadnaslov">{{ t.nadnaslov }}</p>
           <h2 class="pocetna-hero__naslov">{{ t.naslov }}</h2>
-          {{ slika(t.slika, t.slikaOpis, "pocetna-hero__porodica") }}
+          {{ slika(t.slika, t.slikaOpis, "pocetna-hero__porodica", ucitavanje="eager") }}
           {#- Samo mobilni: linkovi ka testovima #}
           <ul class="pocetna-hero__lista samo-mobilni">
             {%- for l in t.linkoviMobilni %}
@@ -91,7 +91,7 @@
           </ul>
           <div class="pocetna-hero__akcije">
             <a href="{{ t.dugme.link }}" class="dugme">{{ t.dugme.tekst }}</a>
-            <span class="pocetna-hero__napomena samo-desktop">{{ t.napomena }}</span>
+            <span class="pocetna-hero__napomena">{{ t.napomena }}</span>
           </div>
         </div>
 

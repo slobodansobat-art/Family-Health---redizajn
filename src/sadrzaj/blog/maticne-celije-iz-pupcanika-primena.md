@@ -11,5 +11,6 @@ slikaOpis: "Fotografija uz članak"
 istaknuto: false
 kalkulatorTrudnoce: false
 predlogTeme: true
+redosled: 3
 ---
 [tekst: dodati]

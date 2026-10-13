@@ -12,6 +12,7 @@
     {% call forma("onko-analize-kontakt", "forma forma--bela analize-kontakt__forma", true) %}
       {{ polje("analize-ime", "ime", d.poljeIme, autocomplete="name", obavezno=true) }}
       {{ polje("analize-telefon", "telefon", d.poljeTelefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ polje("analize-email", "email", d.poljeEmail, tip="email", autocomplete="email", obavezno=true, klasa="polje--ceo-red") }}
       {{ izbor("analize-uloga", "uloga", d.poljeUloga, d.uloge) }}
       {{ fajlPolje("analize-nalaz", "nalaz", d.poljeNalaz, "") }}
       {{ saglasnost("analize-ok") }}

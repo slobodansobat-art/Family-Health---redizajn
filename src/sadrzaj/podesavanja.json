@@ -11,12 +11,14 @@
     "telefonLink": "+381114387752",
     "mobilni": "062 55 34 43",
     "mobilniLink": "+38162553443",
+    "viberLink": "viber://chat?number=%2B38162553443",
     "email": "info@familyhealth.rs",
     "adresa": "Vladimira Popovića 6",
     "mesto": "Novi Beograd",
     "postanskiBroj": "11070",
     "radnoVreme": "Radnim danima 8–16h",
     "radnoVremeDugo": "Radnim danom od 8 do 16 h.",
+    "radnoVremeSchema": "Mo-Fr 08:00-16:00",
     "subota": "[potvrditi]",
     "parking": "[potvrditi]",
     "mapaLink": "https://maps.google.com/?q=Vladimira+Popovi%C4%87a+6,+Novi+Beograd",
@@ -35,6 +37,18 @@
   "forme": {
     "izaberiFajl": "Izaberite fajl",
     "nijeIzabranFajl": "Nije izabran fajl"
+  },
+  "tekstovi": {
+    "preskociNaSadrzaj": "Preskoči na sadržaj",
+    "korakOd": "Korak {n} od {N}",
+    "sledeciKorak": "Sledeći korak",
+    "politikaPrivatnosti": "Politika privatnosti",
+    "pozovite": "Pozovite",
+    "viber": "Viber",
+    "glavnoDugme": "Besplatne konsultacije",
+    "glavnoDugmeLink": "/kontakt/#forma",
+    "oznakaGornjiMeni": "Brzi linkovi",
+    "oznakaFuter": "Futer"
   },
   "cms": {
     "repo": "slobodansobat-art/familyhealth-sajt",

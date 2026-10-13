@@ -2,7 +2,7 @@
   "_naziv": "Matične ćelije",
   "seo": {
     "naslov": "Matične ćelije iz pupčanika – Cells4Life | Family Health",
-    "opis": "Čuvanje matičnih ćelija iz krvi pupčanika u banci Cells4Life, uz TotiCyte obradu. 1.980 € ili 12 rata po 165 € bez kamate. Izračunajte cenu i rok za odluku."
+    "opis": "Čuvanje matičnih ćelija iz krvi pupčanika u banci Cells4Life, uz TotiCyte obradu. 1.980 € ili 12 rata po 165 € bez kamate. Izračunajte cenu i rok odluke."
   },
   "hero": {
     "putanja": { "roditeljTekst": "Trudnoća i beba", "roditeljLink": "/trudnoca-i-beba/", "trenutna": "Matične ćelije" },
@@ -160,6 +160,7 @@
     "forma": {
       "ime": "Ime i prezime",
       "telefon": "Telefon",
+      "email": "Mejl adresa",
       "termin": "Očekivani termin porođaja",
       "paket": "Izabrani paket",
       "dugme": "Pošaljite, javljamo se istog radnog dana"

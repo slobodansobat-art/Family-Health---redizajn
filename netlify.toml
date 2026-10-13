@@ -18,16 +18,33 @@
     X-Frame-Options = "SAMEORIGIN"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# Fontovi, CSS i JS se dugo čuvaju u kešu pregledača (CSS/JS imaju ?v= verziju)
+# Dugo čuvanje u kešu pregledača (godinu dana):
+# - fontovi: ime fajla se ne menja, a sadržaj nikad;
+# - CSS i JS: layout (src/_includes/layouts/osnova.njk) uvek dodaje ?v=<verzija
+#   izrade> na glavni.css, glavni.js i skripte stranica, pa svaka nova izrada
+#   ima novu adresu i pregledač preuzima novu verziju.
+#   VAŽNO: fajl iz /assets/css ili /assets/js koji se učitava BEZ ?v= ne sme
+#   ovde (ostao bi star u kešu godinu dana).
 [[headers]]
   for = "/assets/fonti/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Admin (CMS) se ne indeksira
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Admin (CMS) se ne indeksira; config.yml i prevod se uvek proveravaju (bez dugog keša)
 [[headers]]
   for = "/admin/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-cache"
 
 # Preusmerenja sa adresa starog sajta dodati u src/staticno/_redirects

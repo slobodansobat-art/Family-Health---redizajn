@@ -1,5 +1,6 @@
 ---
 naslov: "Gestacijski dijabetes: zašto je važno otkriti ga na vreme"
+seoNaslov: "Gestacijski dijabetes: otkrijte ga na vreme"
 opis: "Kada se radi test opterećenja glukozom i šta znači povišen nalaz."
 kategorija: "Trudnoća"
 datum: 2026-07-06

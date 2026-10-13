@@ -94,6 +94,7 @@
     "tekst": "Lekar pregleda nalaz i javlja se istog radnog dana sa preporukom i cenom.",
     "poljeIme": "Ime i prezime",
     "poljeTelefon": "Telefon",
+    "poljeEmail": "Mejl adresa",
     "poljeUloga": "Javljate se kao",
     "uloge": [
       "Pacijent",

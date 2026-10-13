@@ -210,6 +210,7 @@
       izbor.classList.toggle("trudnoca-izbor--symphony", p.porodica === "Symphony");
       el("naziv").textContent = punNaziv(p);
       el("opis").textContent = p.opis;
+      if (el("opis-mobilni")) el("opis-mobilni").textContent = p.opisMobilni || p.opis;
       el("cena").textContent = FH.evra(p.cena);
       el("rata").textContent = zameni(t.rataTekst, { broj: t.brojRata, rata: rata });
       el("rezultat").textContent = zameni(t.rezultatTekst, { rezultat: p.rezultat });

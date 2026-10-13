@@ -2,12 +2,13 @@
     Sadržaj: stranice.harmony.paketi (cene su brojevi u JSON-u)
     Stil: css/stranice/harmony.css (.harmony-paketi)   ·   JS: js/stranice/harmony.js
     Bez JS-a: prikazan je paket iz polja "izabranPaket"; JS menja izbor na klik
-    i upisuje izabrani paket u formu za zakazivanje. -#}
+    i upisuje izabrani paket u formu za zakazivanje.
+    Kraći tekstovi za telefon: polja …Mobilni (prazno = desktop tekst). -#}
 {%- set d = stranice.harmony.paketi -%}
 <section id="paketi" class="harmony-paketi" aria-labelledby="harmony-paketi-naslov">
   <div class="kontejner">
-    <h2 id="harmony-paketi-naslov" class="naslov-l harmony-naslov">{{ d.naslov }}</h2>
-    <p class="harmony-paketi__uvod">{{ d.uvod }}</p>
+    <h2 id="harmony-paketi-naslov" class="naslov-l harmony-naslov"><span class="samo-desktop">{{ d.naslov }}</span><span class="samo-mobilni">{{ d.naslovMobilni or d.naslov }}</span></h2>
+    <p class="harmony-paketi__uvod"><span class="samo-desktop">{{ d.uvod }}</span><span class="samo-mobilni">{{ d.uvodMobilni or d.uvod }}</span></p>
 
     {#- Podaci za JS (cene i nazivi), isti kao u JSON-u stranice #}
     <script type="application/json" id="harmony-podaci">{{ { stavke: d.stavke, brojRata: d.rate.broj } | uJson | safe }}</script>
@@ -19,7 +20,7 @@
         <span class="harmony-paket__oznaka">{{ p.oznaka }}</span>
         <span class="harmony-paket__glavno">
           <span class="harmony-paket__naziv">{{ p.naziv }}</span>
-          <span class="harmony-paket__opis">{{ p.opis }}</span>
+          <span class="harmony-paket__opis"><span class="samo-desktop">{{ p.opis }}</span><span class="samo-mobilni">{{ p.opisMobilni or p.opis }}</span></span>
         </span>
         <span class="harmony-paket__cena">{{ p.cena | evra }}</span>
         <span class="harmony-paket__rata">{{ d.rate.kartica }} {{ (p.cena / d.rate.broj) | evra }}</span>
@@ -44,7 +45,7 @@
     </div>
     {%- endif %}{% endfor %}
 
-    <p class="harmony-paketi__symphony">{{ d.symphonyMd | mdRed | safe }}</p>
+    <p class="harmony-paketi__symphony"><span class="samo-desktop">{{ d.symphonyMd | mdRed | safe }}</span><span class="samo-mobilni">{{ (d.symphonyMobilniMd or d.symphonyMd) | mdRed | safe }}</span></p>
 
     {#- Samo na mobilnom: kratka napomena o kombinovanom testu odmah uz pakete #}
     <p class="harmony-paketi__napomena samo-mobilni">{{ d.napomenaMobilniMd | mdRed | safe }}</p>

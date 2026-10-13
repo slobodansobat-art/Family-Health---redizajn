@@ -48,6 +48,7 @@
     "tekstMobilni": "Iz krvi, od 10. nedelje. Krv vadimo u ordinaciji ili kod vas kući, a dolazak ne naplaćujemo.",
     "napomenaMobilniMd": "**Kombinovani (double) test se radi uvek.** Prenatalni test ga dopunjuje, ali ne zamenjuje.",
     "harmonyMd": "Harmony je test kompanije Roche, proveren u 78 objavljenih studija sa više od 330.000 žena. [Sve o Harmony testu](/trudnoca-i-beba/harmony/)",
+    "harmonyMobilniMd": "Harmony je test kompanije Roche: 78 objavljenih studija, više od 330.000 žena.",
     "grupaHarmony": "Harmony, test kompanije Roche",
     "grupaSymphony": "Symphony",
     "kolonaOznaka": "Šta test ispituje",
@@ -62,10 +63,10 @@
     "dugmeZakazite": "Zakažite {paket}",
     "dugmeVise": "Sve o testu {porodica} →",
     "paketi": [
-      { "porodica": "Harmony", "naziv": "Solo", "cena": 390, "opis": "Trizomija 21", "rezultat": "3–5 radnih dana", "link": "/trudnoca-i-beba/harmony/" },
+      { "porodica": "Harmony", "naziv": "Solo", "cena": 390, "opis": "Trizomija 21", "opisMobilni": "Trizomija 21 (Daunov sindrom)", "rezultat": "3–5 radnih dana", "link": "/trudnoca-i-beba/harmony/" },
       { "porodica": "Harmony", "naziv": "Trio", "cena": 490, "opis": "Trizomije 13, 18 i 21", "rezultat": "3–5 radnih dana", "link": "/trudnoca-i-beba/harmony/" },
       { "porodica": "Harmony", "naziv": "Kvartet", "cena": 590, "opis": "Trizomije 13, 18 i 21 i polne aneuploidije", "rezultat": "3–5 radnih dana", "link": "/trudnoca-i-beba/harmony/" },
-      { "porodica": "Harmony", "naziv": "Plus", "cena": 690, "opis": "Trizomije 13, 18 i 21, polne aneuploidije i DiGeorge mikrodelecija", "rezultat": "3–5 radnih dana", "link": "/trudnoca-i-beba/harmony/" },
+      { "porodica": "Harmony", "naziv": "Plus", "cena": 690, "opis": "Trizomije 13, 18 i 21, polne aneuploidije i DiGeorge mikrodelecija", "opisMobilni": "Kvartet i DiGeorge mikrodelecija", "rezultat": "3–5 radnih dana", "link": "/trudnoca-i-beba/harmony/" },
       { "porodica": "Symphony", "naziv": "Symphony", "cena": 790, "opis": "Svi hromozomi 1–22, polni hromozomi i 241 mikrodelecija i mikroduplikacija veća od 7 Mb", "rezultat": "5 radnih dana", "link": "/trudnoca-i-beba/symphony/" }
     ],
     "redovi": [
@@ -82,6 +83,7 @@
     "naslov": "Matične ćelije se prikupljaju samo jednom, na porođaju.",
     "naslovMobilni": "Matične ćelije",
     "uvod": "Nije važno samo koliko godina se uzorak čuva, već da li će ga, kada zatreba, biti dovoljno. TotiCyte obrada sačuva i do tri puta više matičnih ćelija.",
+    "uvodMobilni": "TotiCyte obrada sačuva i do tri puta više matičnih ćelija. Uzorak se deli na 5 delova i čuva na dve lokacije u Velikoj Britaniji; moguće je i odloženo presecanje pupčanika. Ugovor potpisuje i banka, osigurana za slučaj bankrota.",
     "stavke": [
       "Uzorak se deli na 5 delova, za više tretmana.",
       "Čuva se u banci Cells4Life, na dve lokacije u Velikoj Britaniji.",
@@ -91,18 +93,24 @@
     "kartica": {
       "naslov": "Čuvanje 20 godina",
       "tekst": "Prikupljanje, transport do laboratorije, obrada, sertifikat i čuvanje u banci Cells4Life.",
+      "tekstMobilni": "Prikupljanje, transport, obrada i čuvanje 20 godina u banci Cells4Life.",
       "cena": 1980,
       "brojRata": 12,
       "rateTekst": "ili {broj} rata po {rata} bez kamate, uz sve Banca Intesa kartice. TotiCyte obrada +300 €.",
+      "rateTekstMobilni": "ili {broj} rata po {rata} bez kamate, uz Banca Intesa kartice. TotiCyte +300 €.",
       "isticanje": "Paket plaćate tek kad stigne sertifikat o sačuvanim ćelijama.",
+      "isticanjeMobilni": "Paket plaćate tek kad stigne sertifikat.",
       "napomena": "Pored paketa: set za prikupljanje 120 € i državna taksa za iznošenje uzorka. Paketi i za 25, 30 i 50 godina.",
+      "napomenaMobilni": "Set 120 € i državna taksa plaćaju se posebno. Paketi i za 25, 30 i 50 godina.",
       "dugme": { "tekst": "Izračunajte tačnu cenu", "link": "/maticne-celije/#paketi" }
     }
   },
   "skola": {
     "naslov": "Besplatna škola za trudnice",
     "tekst": "Četiri online predavanja ginekologa, pedijatra, nutricioniste i psihologa, u saradnji sa Euromedikom. Posle sva četiri dobijate vaučer za besplatan ultrazvuk.",
+    "tekstMobilni": "Četiri online predavanja u drugom trimestru: ginekolog, pedijatar, nutricionista i psiholog, uz Euromedik. Posle sva četiri, vaučer za besplatan ultrazvuk.",
     "maticneMd": "Deo programa je i predavanje o matičnim ćelijama: šta su, kako se čuvaju i do kada treba odlučiti. [Više o matičnim ćelijama](/maticne-celije/)",
+    "maticneMobilniMd": "Uz predavanje o matičnim ćelijama i roku za odluku. [Više o matičnim ćelijama](/maticne-celije/)",
     "isticanjeMd": "Niste uradili prenatalni test? Još uvek možete. [Uporedite Harmony i Symphony](#testovi)",
     "ciklusOznaka": "Sledeći ciklus",
     "termini": "[termini za naredni mesec]",
@@ -112,10 +120,13 @@
   },
   "kontakt": {
     "naslov": "Pitajte nas bilo šta.",
+    "naslovMobilni": "Prvi razgovor je besplatan.",
     "tekst": "Prvi razgovor je besplatan. Javljamo vam se istog radnog dana, u vreme koje vam odgovara.",
+    "tekstMobilni": "Javljamo vam se istog radnog dana, u vreme koje vam odgovara.",
     "forma": {
       "ime": "Ime i prezime",
       "telefon": "Telefon",
+      "email": "Mejl adresa",
       "tema": "Šta vas zanima",
       "teme": ["Prenatalni testovi", "Matične ćelije", "Oba", "Škola za trudnice"],
       "nedelja": "Nedelja trudnoće",

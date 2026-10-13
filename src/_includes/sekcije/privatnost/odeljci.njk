@@ -11,7 +11,8 @@
 {%- set kt = podesavanja.kontakt -%}
 <div class="kontejner privatnost">
   <h1 class="privatnost__naslov">{{ u.naslov }}</h1>
-  <p class="privatnost__uvod">{{ u.izmena }} {{ u.napomena }}</p>
+  {#- napomenaMobilni: kraća napomena za telefon (bez nje se svuda vidi napomena) #}
+  <p class="privatnost__uvod">{{ u.izmena }} {% if u.napomenaMobilni %}<span class="samo-desktop">{{ u.napomena }}</span><span class="samo-mobilni">{{ u.napomenaMobilni }}</span>{% else %}{{ u.napomena }}{% endif %}</p>
 
   <div class="privatnost__mreza">
     <nav class="privatnost-sadrzaj samo-desktop" aria-labelledby="privatnost-sadrzaj-naslov">

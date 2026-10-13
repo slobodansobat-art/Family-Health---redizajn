@@ -18,6 +18,7 @@
   --z-dugme-tekst: var(--bela);
   --z-okruglo: var(--ljubicasta-50);
   --z-okruglo-tekst: var(--ljubicasta-800);
+  --fokus: var(--fokus-na-svetlom);
 
   position: relative; z-index: 30;
   background: var(--z-pozadina); color: var(--z-tekst);
@@ -25,6 +26,7 @@
 .zaglavlje--lavanda { --z-pozadina: var(--ljubicasta-50); --z-prekidac: var(--bela); --z-okruglo: var(--bela); }
 .zaglavlje--mint { --z-pozadina: var(--mint-50); --z-prekidac: var(--bela); --z-link-aktivan: var(--mint-600); --z-okruglo: var(--bela); }
 .zaglavlje--tamna {
+  --fokus: var(--fokus-na-tamnom);
   --z-pozadina: var(--ljubicasta-800); --z-tekst: var(--bela); --z-logo: var(--bela); --z-luk: var(--ljubicasta-400);
   --z-prekidac: var(--ljubicasta-700); --z-prekidac-tekst: var(--bela);
   --z-aktivna: var(--bela); --z-aktivna-tekst: var(--ljubicasta-800);
@@ -32,6 +34,7 @@
   --z-okruglo: rgba(255, 255, 255, .12); --z-okruglo-tekst: var(--bela);
 }
 .zaglavlje--noc {
+  --fokus: var(--fokus-na-tamnom);
   --z-pozadina: var(--neo-900); --z-tekst: var(--bela); --z-logo: var(--bela); --z-luk: var(--zlatna-500);
   --z-prekidac: var(--neo-700); --z-prekidac-tekst: var(--bela);
   --z-aktivna: var(--bela); --z-aktivna-tekst: var(--ljubicasta-800);
@@ -40,7 +43,7 @@
 }
 
 /* --- Gornja traka --------------------------------------------------------- */
-.zaglavlje__traka { background: var(--ljubicasta-900); color: var(--tekst-na-tamnom); font-size: 13.5px; }
+.zaglavlje__traka { --fokus: var(--fokus-na-tamnom); background: var(--ljubicasta-900); color: var(--tekst-na-tamnom); font-size: 13.5px; }
 .zaglavlje__traka-unutra { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 24px; padding-block: 9px; }
 .zaglavlje__napomena { display: inline-flex; align-items: center; gap: 8px; }
 .zaglavlje__napomena svg { color: var(--ljubicasta-400); }
@@ -100,6 +103,7 @@
 }
 .padajuci.je-otvoren .padajuci__panel { opacity: 1; transform: none; visibility: visible; }
 .padajuci__kartica {
+  --fokus: var(--fokus-na-svetlom);
   width: 380px; background: var(--bela); border-radius: 22px; padding: 10px;
   box-shadow: 0 18px 50px rgba(20, 8, 30, .28); display: flex; flex-direction: column; gap: 4px;
 }
@@ -127,6 +131,17 @@
 .zaglavlje__mobilno .okruglo-dugme { background: var(--z-okruglo); color: var(--z-okruglo-tekst); }
 .zaglavlje__mobilno .okruglo-dugme--obrub { background: transparent; box-shadow: inset 0 0 0 1px rgba(127, 110, 150, .35); }
 .zaglavlje__oblasti-mobilno { display: none; }
+
+/* Mali laptop: gornja traka ostaje u jednom redu (manji razmaci i slova;
+   ako ni to nije dovoljno, napomena se skraćuje sa "…") */
+@media (max-width: 1099px) and (min-width: 960px) {
+  .zaglavlje__traka { font-size: 13px; }
+  .zaglavlje__traka-unutra { flex-wrap: nowrap; gap: 16px; }
+  .zaglavlje__napomena { min-width: 0; }
+  .zaglavlje__napomena svg { flex-shrink: 0; }
+  .zaglavlje__napomena-tekst { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .zaglavlje__sekundarni { flex-wrap: nowrap; flex-shrink: 0; gap: 14px; white-space: nowrap; }
+}
 
 /* Srednji ekrani: meni oblasti ide u novi red */
 @media (max-width: 1180px) and (min-width: 960px) {

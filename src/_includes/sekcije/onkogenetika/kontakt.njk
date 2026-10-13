@@ -14,6 +14,7 @@
     {% call forma("onkogenetika-nalaz", "forma forma--bela onko-kontakt__forma", true) %}
       {{ polje("onko-ime", "ime", f.ime, autocomplete="name", obavezno=true) }}
       {{ polje("onko-tel", "telefon", f.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ polje("onko-email", "email", f.email, tip="email", autocomplete="email", obavezno=true, klasa="polje--ceo-red") }}
       {{ izbor("onko-uloga", "uloga", f.uloga, f.ulogaOpcije) }}
       {{ fajlPolje("onko-nalaz", "nalaz", f.nalaz, "") }}
       {{ saglasnost("onko-ok") }}

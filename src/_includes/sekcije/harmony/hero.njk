@@ -3,6 +3,7 @@
     Stil: css/stranice/harmony.css (.harmony-hero) -#}
 {%- from "makroi/osnovni.njk" import slika -%}
 {%- set d = stranice.harmony.hero -%}
+{#- Kraći tekst za telefon: polje …Mobilni (prazno = isti tekst kao na desktopu) -#}
 {%- set najniza = (stranice.harmony.paketi.stavke | sort(false, true, "cena") | first).cena -%}
 <section class="harmony-hero" aria-labelledby="harmony-hero-naslov">
   {#- Mehurići (ukras): levo se dižu do visine naslova, desno skoro do vrha.
@@ -38,10 +39,10 @@
       <div class="harmony-hero__tekst">
         <p class="harmony-hero__nadnaslov"><span class="harmony-hero__tacka" aria-hidden="true"></span>{{ d.nadnaslov }}</p>
         <h1 id="harmony-hero-naslov" class="harmony-hero__naslov">{{ d.naslov }}</h1>
-        <p class="harmony-hero__uvod">{{ d.tekst }}</p>
+        <p class="harmony-hero__uvod"><span class="samo-desktop">{{ d.tekst }}</span><span class="samo-mobilni">{{ d.tekstMobilni or d.tekst }}</span></p>
         <p class="harmony-hero__vadjenje">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-6h4v6"></path></svg>
-          <span>{{ d.vadjenje }}</span>
+          <span><span class="samo-desktop">{{ d.vadjenje }}</span><span class="samo-mobilni">{{ d.vadjenjeMobilni or d.vadjenje }}</span></span>
         </p>
         <div class="harmony-hero__akcije">
           <a href="{{ d.dugmeLink }}" class="dugme dugme--mint harmony-hero__dugme">{{ d.dugmeTekst }} {{ najniza | evra }}</a>

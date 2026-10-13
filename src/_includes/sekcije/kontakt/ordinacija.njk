@@ -1,7 +1,7 @@
 {#- KONTAKT · ordinacija: radno vreme + statična mapa
     Sadržaj: stranice.kontakt.ordinacija (tekst, oznake, slika mape)
              podesavanja.kontakt (radno vreme, subota, parking, adresa, mapaLink)
-             podesavanja.vadjenjeKrvi.podrucje (područje dolaska)
+             područje dolaska: d.kucnaPoseta (ako je prazno: podesavanja.vadjenjeKrvi.podrucje)
     Google mapa se NE ugrađuje (traži saglasnost za kolačiće): ovde je statična
     slika (ili crtež dok slika ne stigne) i link ka Google mapama.
     Stil: css/stranice/kontakt.css -#}
@@ -16,7 +16,7 @@
     <dl class="kontakt-vreme">
       <div class="kontakt-vreme__red"><dt>{{ d.oznakaRadniDan }}</dt><dd>{{ radniDan }}</dd></div>
       <div class="kontakt-vreme__red"><dt>{{ d.oznakaSubota }}</dt><dd>{{ k.subota }}</dd></div>
-      <div class="kontakt-vreme__red"><dt>{{ d.oznakaKucnaPoseta }}</dt><dd>{{ podesavanja.vadjenjeKrvi.podrucje }}</dd></div>
+      <div class="kontakt-vreme__red"><dt>{{ d.oznakaKucnaPoseta }}</dt><dd>{{ d.kucnaPoseta or podesavanja.vadjenjeKrvi.podrucje }}</dd></div>
       <div class="kontakt-vreme__red"><dt>{{ d.oznakaParking }}</dt><dd>{{ k.parking }}</dd></div>
     </dl>
   </div>

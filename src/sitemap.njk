@@ -4,9 +4,13 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{%- for p in collections.all %}
-{%- if p.url and p.url.endsWith("/") and not p.data.izostaviIzMape %}
-  <url><loc>{{ podesavanja.sajt.url }}{{ p.url }}</loc><lastmod>{{ p.date | isoDatum }}</lastmod></url>
+{%- for p in collections.all | sort(false, true, "url") %}
+{#- Bez stranica koje ne treba da budu u pretrazi: /hvala/ (posle forme), 404,
+    sakriveni članci (sakrij: true) i sve sa "izostaviIzMape: true".
+    lastmod samo kad postoji stvaran datum (članci bloga: datum); datum izrade
+    sajta nije datum izmene stranice. -#}
+{%- if p.url and p.url.endsWith("/") and p.url != "/hvala/" and p.url != "/404.html" and not p.data.izostaviIzMape and not p.data.sakrij %}
+  <url><loc>{{ podesavanja.sajt.url }}{{ p.url }}</loc>{% if p.data.datum and (p.data.datum | isoDatum) %}<lastmod>{{ p.data.datum | isoDatum }}</lastmod>{% endif %}</url>
 {%- endif %}
 {%- endfor %}
 </urlset>

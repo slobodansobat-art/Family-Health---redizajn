@@ -6,13 +6,18 @@
     Sadržaj: stranice.blog.lista + collections.blog   ·   Stil: css/stranice/blog.css -#}
 {%- set d = stranice.blog.lista -%}
 {#- Redosled: napisani članci (najnoviji prvi, kao u collections.blog), pa predlozi
-    tema grupisani po redosledu tema iz filtera (d.kategorije), u temi po imenu fajla.
+    tema grupisani po redosledu tema iz filtera (d.kategorije); u temi prvo oni sa
+    poljem "redosled" (manji broj ide pre), pa ostali po imenu fajla.
     Tako redosled ne zavisi od datuma fajlova na serveru. -#}
 {%- set clanci = [] -%}
 {%- for c in collections.blog -%}
   {%- if not c.data.predlogTeme %}{% set _x = clanci.push(c) %}{% endif -%}
 {%- endfor -%}
-{%- set predlozi = collections.blog | sort(false, false, "fileSlug") -%}
+{%- set saRedom = [] -%}{%- set bezReda = [] -%}
+{%- for c in collections.blog | sort(false, false, "fileSlug") -%}
+  {%- if c.data.redosled or c.data.redosled === 0 %}{% set _x = saRedom.push(c) %}{% else %}{% set _x = bezReda.push(c) %}{% endif -%}
+{%- endfor -%}
+{%- set predlozi = (saRedom | sort(false, false, "data.redosled")).concat(bezReda) -%}
 {%- for k in d.kategorije -%}
   {%- for c in predlozi -%}
     {%- if c.data.predlogTeme and c.data.kategorija == k %}{% set _x = clanci.push(c) %}{% endif -%}

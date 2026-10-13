@@ -188,10 +188,8 @@
 /* Dugme na poslednjem koraku je ljubičasto, kao u skici */
 .harmony-koraci .koraci__poslednje { background: var(--ljubicasta-600); }
 .harmony-koraci .koraci__poslednje:hover { background: var(--ljubicasta-650); }
-.harmony-koraci__oznaka {
-  padding: 2px 10px; border-radius: 999px; background: var(--ljubicasta-600); color: var(--bela);
-  font-size: 13px; font-weight: 600; line-height: 1.5;
-}
+/* Oznaka uz korak ("Besplatno", polje oznaka; makro koraci, .koraci__znak) je ljubičasta, kao u skici */
+.harmony-koraci .koraci__znak { background: var(--ljubicasta-600); }
 
 /* Boje ilustracija (SVG u src/_includes/ilustracije/harmony/) */
 .harmony-ilu .hi-f-tamna { fill: var(--mint-900); }
@@ -244,7 +242,7 @@
   display: inline-block; padding: 3px 10px; border-radius: 999px;
   font-family: var(--font-tekst); font-size: 12px; font-weight: 600; line-height: 1.5;
 }
-.harmony-korak--obavezan { background: var(--ljubicasta-800); color: var(--bela); }
+.harmony-korak--obavezan { background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela); }
 .harmony-korak--istaknut { background: var(--mint-600); color: var(--bela); }
 .harmony-korak--opcioni { background: var(--harmony-opciono); color: var(--tekst-blag); }
 
@@ -374,7 +372,7 @@
   .harmony-koraci { padding-block: 34px 0; }
   .harmony-koraci .harmony-naslov { margin-bottom: 6px; }
   .harmony-koraci__uvod { margin-bottom: 12px; font-size: 15px; }
-  .harmony-koraci__oznaka { font-size: 12px; padding: 1px 8px; }
+  .harmony-koraci .koraci__znak { font-size: 12px; padding: 1px 8px; }
   /* U harmonici samo tekst, bez ilustracije (kao u mobilnoj skici) */
   .harmony-koraci .koraci__lista .koraci__ilustracija { display: none; }
 

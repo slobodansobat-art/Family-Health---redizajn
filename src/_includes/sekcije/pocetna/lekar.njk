@@ -1,5 +1,6 @@
 {#- POČETNA · lekar: fotografija i citat dr Antovića
-    Na mobilnom se tekst o medijima skraćuje na sam link (kao u skici).
+    Tekst o medijima (spisak TV kuća) ostaje i na telefonu; link ima kraći
+    tekst za telefon (medijiLink.tekstMobilni, prazno = desktop tekst).
     Sadržaj: stranice.pocetna.lekar   ·   Stil: css/stranice/pocetna.css -#}
 {%- from "makroi/osnovni.njk" import slika -%}
 {%- set d = stranice.pocetna.lekar -%}
@@ -13,7 +14,7 @@
       <p class="pocetna-lekar__nadnaslov">{{ d.nadnaslov }}</p>
       <blockquote id="pocetna-lekar-citat">{{ d.citat }}</blockquote>
       <figcaption>{{ d.potpis }}</figcaption>
-      <p class="pocetna-lekar__mediji"><span class="samo-desktop">{{ d.medijiTekst }} </span><a href="{{ d.medijiLink.link }}">{{ d.medijiLink.tekst }}</a></p>
+      <p class="pocetna-lekar__mediji">{{ d.medijiTekst }} <a href="{{ d.medijiLink.link }}"><span class="samo-desktop">{{ d.medijiLink.tekst }}</span><span class="samo-mobilni">{{ d.medijiLink.tekstMobilni or d.medijiLink.tekst }}</span></a></p>
     </figure>
   </div>
 </section>

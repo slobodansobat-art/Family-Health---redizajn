@@ -20,6 +20,7 @@
     {%- call forma("symphony-zakazivanje", "forma forma--bela symphony-kontakt__forma") %}
       {{ polje("sy-ime", "ime", d.forma.ime, autocomplete="name", obavezno=true) }}
       {{ polje("sy-tel", "telefon", d.forma.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ polje("sy-email", "email", d.forma.email, tip="email", autocomplete="email", obavezno=true, klasa="polje--ceo-red") }}
       <div class="polje">
         <label for="sy-test" class="polje__oznaka">{{ d.forma.test }}</label>
         <input id="sy-test" name="test" type="text" class="unos symphony-kontakt__zakljucano" value="{{ d.forma.testVrednost }}" readonly>

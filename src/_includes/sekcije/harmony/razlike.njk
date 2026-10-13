@@ -1,5 +1,6 @@
 {#- HARMONY · "Šta Harmony radi drugačije": četiri razlike + dijagram
     (ceo genom naspram ciljane analize) i merač udela DNK bebe.
+    Kraći tekstovi za telefon: polja …Mobilni (prazno = desktop tekst).
     Sadržaj: stranice.harmony.razlike   ·   Stil: css/stranice/harmony.css (.harmony-razlike)
     Dijagram se crta ovde: 24 hromozoma (1–22, X, Y), istaknuti su 13, 18, 21, X i Y. -#}
 {%- set d = stranice.harmony.razlike -%}
@@ -9,16 +10,16 @@
   <div class="kontejner harmony-razlike__mreza">
     <div class="harmony-razlike__tekst">
       <h2 id="harmony-razlike-naslov" class="naslov-l harmony-naslov">{{ d.naslov }}</h2>
-      <p class="harmony-razlike__uvod">{{ d.uvodMd | mdRed | safe }}</p>
+      <p class="harmony-razlike__uvod"><span class="samo-desktop">{{ d.uvodMd | mdRed | safe }}</span><span class="samo-mobilni">{{ (d.uvodMobilniMd or d.uvodMd) | mdRed | safe }}</span></p>
       <ol class="harmony-razlike__lista">
         {%- for s in d.stavke %}
         <li>
           <span class="harmony-broj" aria-hidden="true">{{ loop.index }}</span>
-          <span><strong>{{ s.naslov }}</strong><span>{{ s.tekst }}</span></span>
+          <span><strong>{{ s.naslov }}</strong><span class="samo-desktop">{{ s.tekst }}</span><span class="samo-mobilni">{{ s.tekstMobilni or s.tekst }}</span></span>
         </li>
         {%- endfor %}
       </ol>
-      <p class="harmony-razlike__izvor">{{ d.izvor }}</p>
+      <p class="harmony-razlike__izvor"><span class="samo-desktop">{{ d.izvor }}</span><span class="samo-mobilni">{{ d.izvorMobilni or d.izvor }}</span></p>
     </div>
 
     <div class="harmony-razlike__panel">

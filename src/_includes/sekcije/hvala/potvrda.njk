@@ -6,7 +6,13 @@
     <div class="hvala__levo">
       <svg class="hvala__ikonica" width="88" height="88" viewBox="0 0 88 88" aria-hidden="true" focusable="false"><circle class="hvala__krug" cx="44" cy="44" r="40"></circle><path class="hvala__kvacica" d="M27 45 l11 11 l23 -24"></path></svg>
       <h1 id="hvala-naslov" class="naslov-xl hvala__naslov">{{ d.naslov }}</h1>
+      {#- Mobilni tekst (…Mobilni) je kraća verzija; bez njega se svuda vidi isti tekst #}
+      {%- if d.tekstMdMobilni %}
+      <p class="hvala__tekst samo-desktop">{{ d.tekstMd | mdRed | safe }}</p>
+      <p class="hvala__tekst samo-mobilni">{{ d.tekstMdMobilni | mdRed | safe }}</p>
+      {%- else %}
       <p class="hvala__tekst">{{ d.tekstMd | mdRed | safe }}</p>
+      {%- endif %}
       <div class="hvala__dugmad">
         <a href="{{ d.dugmeGlavno.link }}" class="dugme">{{ d.dugmeGlavno.tekst }}</a>
         <a href="{{ d.dugmeSporedno.link }}" class="dugme dugme--obrub">{{ d.dugmeSporedno.tekst }}</a>
@@ -16,7 +22,7 @@
       <h2 class="naslov-s hvala__podnaslov">{{ d.sledi.naslov }}</h2>
       <ol class="hvala__koraci">
         {%- for k in d.sledi.koraci %}
-        <li><span class="hvala__broj" aria-hidden="true">{{ loop.index }}</span><span><strong>{{ k.naslov }}</strong><span>{{ k.tekst }}</span></span></li>
+        <li><span class="hvala__broj" aria-hidden="true">{{ loop.index }}</span><span><strong>{{ k.naslov }}</strong>{% if k.tekstMobilni %}<span class="samo-desktop">{{ k.tekst }}</span><span class="samo-mobilni">{{ k.tekstMobilni }}</span>{% else %}<span>{{ k.tekst }}</span>{% endif %}</span></li>
         {%- endfor %}
       </ol>
     </div>

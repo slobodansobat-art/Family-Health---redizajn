@@ -22,6 +22,7 @@
     {%- call forma("maticne-celije-konsultacije", "forma forma--bela mc-kontakt__forma") %}
       {{ polje("mc-ime", "ime", d.forma.ime, autocomplete="name", obavezno=true) }}
       {{ polje("mc-tel", "telefon", d.forma.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ polje("mc-email", "email", d.forma.email, tip="email", autocomplete="email", obavezno=true, klasa="polje--ceo-red") }}
       {{ polje("mc-termin", "termin", d.forma.termin, tip="date") }}
       <div class="polje">
         <label for="mc-paket" class="polje__oznaka">{{ d.forma.paket }}</label>

@@ -12,12 +12,18 @@
     Desktop: lista koraka levo, opis izabranog koraka desno.
     Mobilni: harmonika (klik na korak otvara opis ispod njega).
       id      jedinstven naziv na stranici, npr. "harmony-koraci"
-      stavke  [{ naslov, podnaslov, glava, tekst, cinjenice: [], ilustracija }]
+      stavke  [{ naslov, podnaslov, oznaka, glava, tekst, tekstMobilni, cinjenice: [], ilustracija }]
               ilustracija = ime fajla u src/_includes/ilustracije (bez .njk)
+              oznaka (opciono) = mala oznaka uz podnaslov, npr. "Besplatno" (.koraci__znak)
+              tekstMobilni (opciono) = kraći tekst za telefon (umesto tekst / tekstMd)
+    Bez JS-a su svi paneli vidljivi (redom ispod liste). glavni.js (pokreniKorake)
+    sakriva neaktivne panele; dok se ne pokrene, CSS (.js) prikazuje samo prvi.
+    Tekstovi "Korak {n} od {N}" i "Sledeći korak": podesavanja.tekstovi
       tema    ljubicasta | mint | tamna | zlatna
       poslednje  { tekst, link }  dugme na poslednjem koraku (opciono)
     -------------------------------------------------------------------------- #}
 {% macro koraci(id, stavke, tema = "ljubicasta", poslednje = null) -%}
+{%- set t = podesavanja.tekstovi -%}
 <div class="koraci koraci--{{ tema }}" data-koraci style="--broj-koraka: {{ stavke | length }}">
   <div class="koraci__levo">
     <span class="koraci__linija" aria-hidden="true"></span>
@@ -29,7 +35,9 @@
           <span class="koraci__broj">{{ loop.index }}</span>
           <span class="koraci__naslovi">
             <span class="koraci__naslov">{{ s.naslov }}</span>
-            {%- if s.podnaslov %}<span class="koraci__podnaslov">{{ s.podnaslov }}</span>{% endif %}
+            {%- if s.podnaslov and s.oznaka %}<span class="koraci__podnaslov"><span>{{ s.podnaslov }}</span><span class="koraci__znak">{{ s.oznaka }}</span></span>
+            {%- elif s.podnaslov %}<span class="koraci__podnaslov">{{ s.podnaslov }}</span>
+            {%- elif s.oznaka %}<span class="koraci__podnaslov"><span class="koraci__znak">{{ s.oznaka }}</span></span>{% endif %}
           </span>
           <span class="koraci__plus" aria-hidden="true">{{ plus(20) }}</span>
         </button>
@@ -39,21 +47,25 @@
   </div>
   <div class="koraci__paneli">
     {%- for s in stavke %}
-    <div class="koraci__panel" id="{{ id }}-panel-{{ loop.index }}" role="region" aria-labelledby="{{ id }}-dugme-{{ loop.index }}"{% if not loop.first %} hidden{% endif %}>
+    <div class="koraci__panel" id="{{ id }}-panel-{{ loop.index }}" role="region" aria-labelledby="{{ id }}-dugme-{{ loop.index }}">
       {%- if s.ilustracija %}
       <div class="koraci__ilustracija" aria-hidden="true">{% include "ilustracije/" + s.ilustracija + ".njk" ignore missing %}</div>
       {%- endif %}
       <div class="koraci__sadrzaj">
-        <p class="koraci__oznaka">Korak {{ loop.index }} od {{ stavke | length }}</p>
+        <p class="koraci__oznaka">{{ t.korakOd | replace("{n}", loop.index) | replace("{N}", stavke | length) }}</p>
         <h3 class="koraci__glava">{{ s.glava or s.naslov }}</h3>
+        {%- if s.tekstMobilni %}
+        <div class="koraci__tekst"><div class="samo-desktop">{{ s.tekstMd | md | safe if s.tekstMd else s.tekst }}</div><div class="samo-mobilni">{{ s.tekstMobilni }}</div></div>
+        {%- else %}
         <div class="koraci__tekst">{{ s.tekstMd | md | safe if s.tekstMd else s.tekst }}</div>
+        {%- endif %}
         {%- if s.cinjenice and s.cinjenice.length %}
         <ul class="koraci__cinjenice">
           {%- for c in s.cinjenice %}<li>{{ kvacica() }}<span>{{ c }}</span></li>{% endfor %}
         </ul>
         {%- endif %}
         {%- if not loop.last %}
-        <button type="button" class="koraci__dalje" data-koraci-dalje aria-label="Sledeći korak" title="Sledeći korak">{{ strelica() }}</button>
+        <button type="button" class="koraci__dalje" data-koraci-dalje aria-label="{{ t.sledeciKorak }}" title="{{ t.sledeciKorak }}">{{ strelica() }}</button>
         {%- elif poslednje %}
         <a href="{{ poslednje.link }}" class="dugme koraci__poslednje">{{ poslednje.tekst }}</a>
         {%- endif %}
@@ -86,11 +98,14 @@
     Upotreba:
       {% call forma("kontakt-harmony", "forma forma--bela") %}
         {{ polje("hm-ime", "ime", "Ime i prezime", autocomplete="name", obavezno=true) }}
+        {{ polje("hm-tel", "telefon", "Telefon", tip="tel", autocomplete="tel", obavezno=true) }}
+        {{ polje("hm-email", "email", "Email", tip="email", autocomplete="email", obavezno=true) }}
         ...
         {{ saglasnost("hm-ok") }}
         {{ posalji("Pošaljite") }}
       {% endcall %}
     Svaka forma mora imati jedinstveno ime (prvi parametar).
+    Svaka forma obavezno traži ime, telefon i email (pravilo vlasnika).
     -------------------------------------------------------------------------- #}
 {% macro forma(ime, klasa = "forma", fajlovi = false, akcija = "/hvala/") -%}
 <form name="{{ ime }}" method="POST" action="{{ akcija }}" class="{{ klasa }}" data-netlify="true" netlify-honeypot="bot-polje"{% if fajlovi %} enctype="multipart/form-data"{% endif %}>
@@ -103,7 +118,7 @@
 {% macro polje(id, ime, oznaka, tip = "text", autocomplete = "", obavezno = false, placeholder = "", klasa = "", vrednost = "", pomoc = "") -%}
 <div class="polje {{ klasa }}">
   <label for="{{ id }}" class="polje__oznaka">{{ oznaka }}{% if obavezno %} <span class="polje__obavezno" aria-hidden="true">*</span>{% endif %}</label>
-  <input id="{{ id }}" name="{{ ime }}" type="{{ tip }}" class="unos"{% if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}{% if obavezno %} required{% endif %}{% if placeholder %} placeholder="{{ placeholder }}"{% endif %}{% if vrednost %} value="{{ vrednost }}"{% endif %}{% if pomoc %} aria-describedby="{{ id }}-pomoc"{% endif %}>
+  <input id="{{ id }}" name="{{ ime }}" type="{{ tip }}" class="unos"{% if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}{% if obavezno %} required{% endif %}{% if placeholder %} placeholder="{{ placeholder }}"{% endif %}{% if vrednost %} value="{{ vrednost }}"{% endif %}{% if tip == "email" %} spellcheck="false" autocapitalize="off"{% endif %}{% if pomoc %} aria-describedby="{{ id }}-pomoc"{% endif %}>
   {%- if pomoc %}<span class="polje__pomoc" id="{{ id }}-pomoc">{{ pomoc }}</span>{% endif %}
 </div>
 {%- endmacro %}
@@ -144,7 +159,7 @@
 {% macro saglasnost(id, tamna = false) -%}
 <label for="{{ id }}" class="saglasnost{% if tamna %} saglasnost--tamna{% endif %}">
   <input id="{{ id }}" name="saglasnost" type="checkbox" required>
-  <span>{{ podesavanja.pravno.saglasnostTekst }} <a href="/politika-privatnosti/">Politika privatnosti</a> {{ podesavanja.pravno.saglasnostNapomena }}</span>
+  <span>{{ podesavanja.pravno.saglasnostTekst }} <a href="/politika-privatnosti/">{{ podesavanja.tekstovi.politikaPrivatnosti }}</a> {{ podesavanja.pravno.saglasnostNapomena }}</span>
 </label>
 {%- endmacro %}
 

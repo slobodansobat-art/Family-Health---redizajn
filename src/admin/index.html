@@ -1,8 +1,13 @@
 <!doctype html>
 <!-- =========================================================================
      Decap CMS: uređivanje sadržaja sajta na adresi /admin/
-     Podešavanja (šta se uređuje): config.yml (pravi se automatski).
-     Prijava: GitHub nalog sa pristupom repozitorijumu (uputstvo u README.md).
+     config.yml   šta se uređuje i kako izgleda forma (fiksan fajl; menja se
+                  ručno ili skriptom: npm run cms-konfiguracija)
+     sr-latinica.js  interfejs na srpskoj latinici (npm run cms-prevod);
+                  verzija decap-cms-locales u package.json mora da odgovara
+                  verziji Decap-a ispod.
+     Prijava: GitHub nalog sa pravom pisanja u repozitorijum (Netlify OAuth).
+     Lokalno (bez GitHub-a): npm run cms:lokalno + npm start, pa /admin/.
      ========================================================================= -->
 <html lang="sr-Latn">
 <head>
@@ -14,5 +19,6 @@
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js"></script>
+  <script src="/admin/sr-latinica.js"></script>
 </body>
 </html>

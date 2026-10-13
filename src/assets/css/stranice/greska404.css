@@ -12,6 +12,7 @@
 }
 .greska__tekst { grid-area: tekst; align-self: end; display: flex; flex-direction: column; gap: 18px; }
 .greska__broj { font-family: var(--font-naslov); font-style: italic; font-size: 120px; line-height: .9; color: var(--ljubicasta-300); }
+.greska__broj::before { content: attr(data-broj); }  /* ukras: tekst je u data-broj */
 .greska__naslov { font-family: var(--font-naslov); font-size: 52px; line-height: 1.06; color: var(--ljubicasta-800); }
 .greska__opis { max-width: 460px; font-size: 18px; color: var(--tekst-blag); }
 .greska__opis a { white-space: nowrap; }
@@ -42,13 +43,14 @@
   .greska__broj { font-size: 90px; }
   .greska__naslov { font-size: 36px; }
   .greska__opis { font-size: 16px; }
-  .greska__poziv { display: none; }          /* u skici na mobilnom nema poziva telefonom (traka "Pozovite" je na dnu) */
+  /* Poziv telefonom i opisi oblasti ostaju i na mobilnom (skica ih izostavlja,
+     ali odluka vlasnika je da se sadržaj ne gubi na telefonu) */
 
   .greska__oblasti { display: block; margin-top: 18px; border-top: 1px solid var(--linija-svetla); }
-  .greska__oblast { flex-direction: row; justify-content: space-between; padding: 16px 0; border: 0; border-bottom: 1px solid var(--linija-svetla); border-radius: 0; }
+  .greska__oblast { flex-direction: column; gap: 2px; padding: 14px 0; border: 0; border-bottom: 1px solid var(--linija-svetla); border-radius: 0; }
   .greska__oblast:hover { background: none; }
   .greska__oblast-naziv { display: flex; justify-content: space-between; width: 100%; font-size: 22px; }
-  .greska__oblast-opis { display: none; }
+  .greska__oblast-opis { font-size: 14px; }
   .greska__strelica { color: var(--ljubicasta-600); }
 
   .greska__dugme { width: 100%; margin-top: 22px; }

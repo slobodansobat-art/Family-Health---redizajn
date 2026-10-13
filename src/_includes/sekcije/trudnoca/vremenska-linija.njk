@@ -1,14 +1,15 @@
 {#- TRUDNOĆA · vremenska linija "Šta je važno, i kada" (trenutna faza prema nedelji iz alata)
     Sadržaj: stranice.trudnoca.vremenskaLinija   ·   Stil: css/stranice/trudnoca.css
     JS (trudnoca.js) pomera oznaku "Vi ste ovde" kad se promeni nedelja.
-    Na mobilnom se ne prikazuje (kao u skici); tamo alat odmah kaže šta je važno. -#}
+    Mobilna skica je nema, ali je zadržana i na telefonu (uspravna lista, bez krive),
+    da se ne izgube rokovi i koraci (odluka vlasnika: ne gubimo sadržaj). -#}
 {%- set d = stranice.trudnoca.vremenskaLinija -%}
 {%- set n = stranice.trudnoca.alat.podrazumevanaNedelja -%}
 {#- Ista pravila kao u JS-u: do 14. nedelje faza 2, 15–21 faza 3, 22–36 faza 4, od 37. faza 5 -#}
 {%- set trenutna = 1 if n < 15 else (2 if n < 22 else (3 if n < 37 else 4)) -%}
 {#- Visina tačke na krivoj (px), redom za faze; prati putanju u SVG-u ispod -#}
 {%- set visine = [100, 48, 96, 44, 88] -%}
-<section class="trudnoca-linija samo-desktop" aria-labelledby="trudnoca-linija-naslov">
+<section class="trudnoca-linija" aria-labelledby="trudnoca-linija-naslov">
   <div class="kontejner">
     <div class="zaglavlje-sekcije zaglavlje-sekcije--centar trudnoca-linija__zaglavlje">
       <h2 id="trudnoca-linija-naslov" class="trudnoca-naslov-kurziv">{{ d.naslov }}</h2>

@@ -122,7 +122,7 @@ a.blog-stavka__unutra:hover .blog-stavka__naslov { color: var(--ljubicasta-600);
 .clanak-kalkulator { padding-block: 20px 80px; }
 .clanak-kalkulator__kartica {
   display: flex; flex-wrap: wrap; align-items: center; gap: 28px 56px;
-  padding: 40px; border-radius: var(--zaobljenje-veliko); background: var(--ljubicasta-800); color: var(--bela);
+  padding: 40px; border-radius: var(--zaobljenje-veliko); background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela);
 }
 .clanak-kalkulator__unos { flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
 .clanak-kalkulator__naslov { font-family: var(--font-naslov); font-size: 36px; line-height: 1.1; }
@@ -156,6 +156,8 @@ a.blog-stavka__unutra:hover .blog-stavka__naslov { color: var(--ljubicasta-600);
   color: inherit; text-decoration: none; transition: border-color .2s ease, background .2s ease;
 }
 .clanak-srodni__kartica:hover { color: inherit; border-color: var(--ljubicasta-300); background: var(--ljubicasta-25); }
+/* Predlog teme (još nema stranicu): ista kartica, bez linka i bez prelaza mišem */
+.clanak-srodni__kartica--predlog:hover { border-color: var(--linija); background: transparent; }
 .clanak-srodni__kategorija { font-size: 13px; font-weight: 600; color: var(--ljubicasta-600); }
 .clanak-srodni__clanak { display: block; margin-top: 6px; font-family: var(--font-naslov); font-size: 22px; line-height: 1.25; color: var(--ljubicasta-800); }
 

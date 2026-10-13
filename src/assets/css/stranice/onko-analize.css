@@ -4,8 +4,14 @@
    Prefiks klasa: analize-
    ========================================================================== */
 
+/* Boje samo za ovu stranicu (koren: body.stranica-onko-analize) */
+.stranica-onko-analize {
+  --analize-premium-linija: #EADFC8;  /* linija na Cancer Neo kartici (mobilni) */
+  --analize-premium-tekst: #F3E6C8;   /* tekst dugmeta na Cancer Neo kartici */
+}
+
 /* --- Hero: naslov, pretraga i mreža --------------------------------------- */
-.analize-hero { position: relative; overflow: hidden; background: var(--ljubicasta-800); color: var(--bela); }
+.analize-hero { position: relative; overflow: hidden; background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela); }
 .analize-hero__mreza { position: absolute; right: -80px; top: -110px; width: 600px; height: 600px; opacity: .9; pointer-events: none; }
 .analize-hero__unutra { position: relative; padding-block: 40px 64px; }
 .analize-putanja { font-size: 14px; color: var(--ljubicasta-400); margin-bottom: 40px; }
@@ -113,7 +119,7 @@
 .analize-nedoumica__link { color: var(--ljubicasta-650); }
 
 /* --- Kontakt (forma sa prilogom) ----------------------------------------- */
-.analize-kontakt { background: var(--ljubicasta-800); color: var(--bela); }
+.analize-kontakt { background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela); }
 .analize-kontakt__mreza { display: flex; flex-wrap: wrap; gap: 40px 72px; padding-block: 88px; }
 .analize-kontakt__levo { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
 .analize-kontakt__naslov { font-family: var(--font-naslov); font-size: clamp(36px, 3.6vw, 44px); line-height: 1.08; }
@@ -174,9 +180,9 @@
 
   /* Premium kartica (Cancer Neo): slonovača i zlatna ivica */
   .analize-kartica--premium, .analize-kartica--premium:hover { background: var(--slonovaca); border-color: var(--zlatna-500); }
-  .analize-kartica--premium .analize-kartica__podaci { border-top-color: #EADFC8; }
-  .analize-kartica--premium .analize-dugme--detalji { background: var(--neo-900); color: #F3E6C8; }
-  .analize-kartica--premium .analize-dugme--detalji:hover { background: var(--neo-700); color: #F3E6C8; }
+  .analize-kartica--premium .analize-kartica__podaci { border-top-color: var(--analize-premium-linija); }
+  .analize-kartica--premium .analize-dugme--detalji { background: var(--neo-900); color: var(--analize-premium-tekst); }
+  .analize-kartica--premium .analize-dugme--detalji:hover { background: var(--neo-700); color: var(--analize-premium-tekst); }
 
   .analize-prazno { padding: 24px 0; font-size: 15px; }
   .analize-dopuna { padding: 16px; font-size: 14px; }

@@ -7,6 +7,7 @@
   --lekari-obrub-tamni: #5A3A77;   /* ivica dugmeta na tamnom (mobilni) */
   --lekari-neo-tekst: #CFC4DA;     /* tekst na Cancer Neo kartici */
   --lekari-neo-blag: #9C8DB0;      /* oznake na Cancer Neo kartici */
+  --lekari-senka: rgba(47, 21, 68, .08);  /* senka bele kartice izveštaja */
 }
 
 /* --- Zajednička bela kartica sa ikonicom (uzorak, ginekolozi) ------------- */
@@ -18,7 +19,7 @@
 .lekari-kartica--mint strong { color: var(--mint-900); }
 
 /* --- Hero ------------------------------------------------------------------ */
-.lekari-hero { position: relative; overflow: hidden; background: var(--ljubicasta-800); color: var(--bela); }
+.lekari-hero { position: relative; overflow: hidden; background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela); }
 .lekari-hero__mreza { position: absolute; right: -80px; top: -110px; width: 600px; height: 600px; opacity: .9; pointer-events: none; }
 .lekari-hero__unutra { position: relative; padding-top: 40px; }
 .lekari-hero__putanja { font-size: 14px; color: var(--ljubicasta-400); margin-bottom: 44px; }
@@ -127,7 +128,7 @@
 
 .lekari-izvestaj {
   flex: 1 1 460px; min-width: 0; background: var(--bela); border-radius: var(--zaobljenje);
-  padding: 30px; box-shadow: 0 20px 50px rgba(47, 21, 68, .08);
+  padding: 30px; box-shadow: 0 20px 50px var(--lekari-senka);
 }
 .lekari-izvestaj__vrh { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 12px; padding-bottom: 14px; border-bottom: 2px solid var(--ljubicasta-800); }
 .lekari-izvestaj__naslov { font-weight: 600; color: var(--ljubicasta-800); }
@@ -166,7 +167,7 @@
 .lekari-gin__lista { flex: 1 1 460px; min-width: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
 
 /* --- Uputite pacijenta ------------------------------------------------------ */
-.lekari-uputi { background: var(--ljubicasta-800); color: var(--bela); }
+.lekari-uputi { background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela); }
 .lekari-uputi__mreza { display: flex; flex-wrap: wrap; gap: 40px 72px; padding-block: 88px; }
 .lekari-uputi__levo { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
 .lekari-uputi__naslov { font-size: clamp(32px, 3.2vw, 44px); line-height: 1.08; }
@@ -292,7 +293,7 @@ a.lekari-uputi__dokument:hover { color: var(--bela); text-decoration: underline;
   .lekari-uzorak__levo { gap: 16px; }
   .lekari-uzorak__naslov { font-size: 28px; line-height: 1.12; }
   .lekari-uzorak__lista { gap: 10px; }
-  .lekari-izvestaj { border-radius: 24px; padding: 18px; box-shadow: 0 16px 40px rgba(47, 21, 68, .08); }
+  .lekari-izvestaj { border-radius: 24px; padding: 18px; box-shadow: 0 16px 40px var(--lekari-senka); }
   .lekari-izvestaj__vrh { padding-bottom: 12px; }
   .lekari-izvestaj__oznaka { padding: 3px 10px; }
   .lekari-izvestaj__podnaslov { margin: 14px 0 6px; }

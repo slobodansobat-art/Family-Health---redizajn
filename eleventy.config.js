@@ -8,14 +8,14 @@
 //                       futer...), makroi (komponente), sekcije (po stranicama).
 //   src/stranice/       Jedan fajl po stranici: samo redosled sekcija.
 //   src/assets/         CSS, JavaScript, fontovi, slike.
-//   src/admin/          Decap CMS (config.yml se pravi automatski, vidi scripts/).
+//   src/admin/          Decap CMS: config.yml je fiksan fajl u repou; menja se
+//                       ručno ili skriptom `npm run cms-konfiguracija` (scripts/).
 // =============================================================================
 
 import fs from "node:fs";
 import path from "node:path";
 import markdownIt from "markdown-it";
 import { onkoMreza } from "./scripts/onko-mreza.js";
-import { napraviCmsKonfiguraciju } from "./scripts/cms-konfiguracija.js";
 
 const md = markdownIt({ html: false, linkify: true, typographer: false });
 
@@ -32,8 +32,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets/slike": "assets/slike" });
   eleventyConfig.addPassthroughCopy({ "src/assets/fonti": "assets/fonti" });
   eleventyConfig.addPassthroughCopy({ "src/staticno": "/" });
-  eleventyConfig.addPassthroughCopy({ "src/admin/index.html": "admin/index.html" });
-  eleventyConfig.addPassthroughCopy({ "src/admin/config.yml": "admin/config.yml" });
+  // Decap CMS: index.html, config.yml, sr-latinica.js (prevod interfejsa)
+  eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
 
   // --- Delimična izrada (samo za razvoj) -------------------------------------
   // SAMO="harmony,blog" pravi samo navedene stranice (ime fajla iz src/stranice,
@@ -46,10 +46,11 @@ export default function (eleventyConfig) {
     if (!samo.includes("blog")) eleventyConfig.ignores.add("src/sadrzaj/blog/**");
   }
 
-  // --- Pre svake izrade: fontovi i CMS konfiguracija -------------------------
+  // --- Pre svake izrade: fontovi -----------------------------------------------
+  // (CMS konfiguracija se NE pravi pri izradi: src/admin/config.yml je fiksan,
+  //  da izmene iz CMS-a ne bi menjale formu. Vidi scripts/cms-konfiguracija.js.)
   eleventyConfig.on("eleventy.before", () => {
     kopirajFontove();
-    if (!process.env.SAMO) napraviCmsKonfiguraciju();
   });
 
   // --- Filteri (koriste se u šablonima kao {{ x | ime }}) --------------------

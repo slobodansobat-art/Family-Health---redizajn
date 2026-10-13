@@ -13,7 +13,9 @@
     "nadnaslov": "Neinvazivni prenatalni test kompanije Roche",
     "naslov": "Harmony test, iz jedne epruvete krvi.",
     "tekst": "Već od 10. nedelje trudnoće, bez ikakvog rizika za bebu, saznajte da li postoji povećan rizik za najčešće hromozomske poremećaje. Rezultat za 3 do 5 radnih dana.",
+    "tekstMobilni": "Od 10. nedelje, bez rizika za bebu, otkriva povećan rizik za najčešće hromozomske poremećaje. Rezultat za 3 do 5 radnih dana.",
     "vadjenje": "Krv vadimo u našoj ordinaciji ili kod vas kući, a dolazak ne naplaćujemo",
+    "vadjenjeMobilni": "U ordinaciji ili kod kuće, dolazak ne naplaćujemo",
     "dugmeTekst": "Izaberite paket, od",
     "dugmeLink": "#paketi",
     "sporedniLink": { "tekst": "Pitajte lekara koji test vam treba", "link": "#kontakt" },
@@ -29,13 +31,15 @@
   "razlike": {
     "naslov": "Šta Harmony radi drugačije",
     "uvodMd": "Svi neinvazivni testovi rade se iz krvi majke. Razlika je u tome šta laboratorija čita: Harmony ide u dubinu za najčešće poremećaje, a [Symphony](/trudnoca-i-beba/symphony/) u širinu, kroz ceo genom.",
+    "uvodMobilniMd": "Oba testa su iz krvi majke: Harmony ide u dubinu za najčešće poremećaje, [Symphony](/trudnoca-i-beba/symphony/) u širinu, kroz ceo genom.",
     "stavke": [
-      { "naslov": "Ciljana, dubinska analiza", "tekst": "Hromozomi 13, 18 i 21 čine manje od 10% genoma. Harmony ne čita ceo genom, nego ciljano i dublje analizira baš hromozome koji se ispituju (DANSR tehnologija, analiza na mikročipu)." },
-      { "naslov": "Udeo DNK bebe se meri u svakom uzorku", "tekst": "Uz pomoć SNP tehnologije meri se koliki deo slobodne DNK potiče od bebe, i taj podatak ulazi u izračunavanje rizika (FORTE algoritam) i u nalaz. Ako DNK bebe nema dovoljno, ne dobijate nepouzdan rezultat, nego novo vađenje krvi." },
-      { "naslov": "Manje od 0,1% lažno pozitivnih rezultata", "tekst": "U studiji NEXT, kod visokog rizika za Daunov sindrom nalaz se potvrdio u 81% slučajeva. Kod kombinovanog skrininga u prvom trimestru (kombinovani test: krv i ultrazvuk) taj procenat je bio 3,4%. Manje lažnih uzbuna znači i manje nepotrebnih amniocenteza." },
-      { "naslov": "Najviše proučavan neinvazivni test", "tekst": "78 objavljenih stručnih studija sa više od 330.000 žena, kod jednoplodnih i blizanačkih trudnoća i trudnoća iz vantelesne oplodnje." }
+      { "naslov": "Ciljana, dubinska analiza", "tekst": "Hromozomi 13, 18 i 21 čine manje od 10% genoma. Harmony ne čita ceo genom, nego ciljano i dublje analizira baš hromozome koji se ispituju (DANSR tehnologija, analiza na mikročipu).", "tekstMobilni": "Hromozomi 13, 18 i 21 čine manje od 10% genoma, a Harmony baš njih analizira ciljano i dublje (DANSR tehnologija, mikročip)." },
+      { "naslov": "Udeo DNK bebe se meri u svakom uzorku", "tekst": "Uz pomoć SNP tehnologije meri se koliki deo slobodne DNK potiče od bebe, i taj podatak ulazi u izračunavanje rizika (FORTE algoritam) i u nalaz. Ako DNK bebe nema dovoljno, ne dobijate nepouzdan rezultat, nego novo vađenje krvi.", "tekstMobilni": "Meri se SNP tehnologijom, a ne procenjuje, i ulazi u proračun rizika (FORTE) i u nalaz. Ako je premali, sledi novo vađenje krvi, ne nepouzdan rezultat." },
+      { "naslov": "Manje od 0,1% lažno pozitivnih rezultata", "tekst": "U studiji NEXT, kod visokog rizika za Daunov sindrom nalaz se potvrdio u 81% slučajeva. Kod kombinovanog skrininga u prvom trimestru (kombinovani test: krv i ultrazvuk) taj procenat je bio 3,4%. Manje lažnih uzbuna znači i manje nepotrebnih amniocenteza.", "tekstMobilni": "U studiji NEXT nalaz visokog rizika za Daunov sindrom potvrdio se u 81% slučajeva, naspram 3,4% kod kombinovanog skrininga. Manje lažnih uzbuna, manje nepotrebnih amniocenteza." },
+      { "naslov": "Najviše proučavan neinvazivni test", "tekst": "78 objavljenih stručnih studija sa više od 330.000 žena, kod jednoplodnih i blizanačkih trudnoća i trudnoća iz vantelesne oplodnje.", "tekstMobilni": "78 objavljenih studija sa više od 330.000 žena: jednoplodne i blizanačke trudnoće i trudnoće iz vantelesne oplodnje." }
     ],
     "izvor": "Izvor: Roche, materijali za zdravstvene radnike o Harmony testu (podaci o studijama zaključno sa decembrom 2023).",
+    "izvorMobilni": "Izvor: Roche (podaci o studijama zaključno sa decembrom 2023).",
     "dijagram": {
       "opis": "Poređenje: analiza celog genoma raspoređuje očitavanja na sve hromozome, a Harmony ih usmerava na hromozome 13, 18, 21, X i Y",
       "sirokiNaslov": "Symphony, analiza celog genoma",
@@ -52,13 +56,15 @@
   },
   "paketi": {
     "naslov": "Četiri paketa, po obimu ispitivanja",
+    "naslovMobilni": "Izaberite paket",
     "uvod": "Svaki sledeći paket ispituje sve što i prethodni, plus još nešto. Ako niste sigurni koji vam treba, lekar će vam pomoći u izboru.",
+    "uvodMobilni": "Svaki paket uključuje sve iz prethodnog. Lekar vam pomaže u izboru.",
     "izabranPaket": "Harmony Kvartet",
     "stavke": [
       { "naziv": "Harmony Solo", "cena": 390, "opis": "Trizomija 21 (Daunov sindrom)", "oznaka": "Osnovni" },
       { "naziv": "Harmony Trio", "cena": 490, "opis": "Trizomije 13, 18 i 21", "oznaka": "Tri najčešće trizomije" },
-      { "naziv": "Harmony Kvartet", "cena": 590, "opis": "Trizomije 13, 18 i 21 i polne aneuploidije", "oznaka": "Najčešći izbor" },
-      { "naziv": "Harmony Plus", "cena": 690, "opis": "Kvartet i DiGeorge mikrodelecija", "oznaka": "Najširi Harmony" }
+      { "naziv": "Harmony Kvartet", "cena": 590, "opis": "Trizomije 13, 18 i 21 i polne aneuploidije", "opisMobilni": "+ polne aneuploidije", "oznaka": "Najčešći izbor" },
+      { "naziv": "Harmony Plus", "cena": 690, "opis": "Kvartet i DiGeorge mikrodelecija", "opisMobilni": "+ DiGeorge mikrodelecija", "oznaka": "Najširi Harmony" }
     ],
     "izabraliSte": "Izabrali ste",
     "rate": {
@@ -70,7 +76,8 @@
     },
     "dugme": { "tekst": "Zakažite vađenje krvi", "link": "#kontakt" },
     "napomenaMobilniMd": "**Kombinovani (double) test se radi uvek.** Prenatalni test ga dopunjuje, ali ne zamenjuje.",
-    "symphonyMd": "Treba vam širi pregled, svih hromozoma i većih mikrodelecija? [Pogledajte Symphony test](/trudnoca-i-beba/symphony/)"
+    "symphonyMd": "Treba vam širi pregled, svih hromozoma i većih mikrodelecija? [Pogledajte Symphony test](/trudnoca-i-beba/symphony/)",
+    "symphonyMobilniMd": "Širi pregled, svih hromozoma i većih mikrodelecija: [Symphony test](/trudnoca-i-beba/symphony/)"
   },
   "koraci": {
     "naslov": "Kako izgleda testiranje",
@@ -82,6 +89,7 @@
         "oznaka": "",
         "glava": "Dogovaramo termin i mesto",
         "tekst": "Pozovite nas ili ostavite broj u formi, pa se javljamo da dogovorimo dan i vreme, i da li krv vadimo kod vas kući ili u našoj ordinaciji. Potreban je nalaz ultrazvuka koji potvrđuje nedelju trudnoće i da li je trudnoća jednoplodna.",
+        "tekstMobilni": "Telefonom ili preko forme dogovaramo termin i da li krv vadimo u ordinaciji ili kod vas kući. Potreban je nalaz ultrazvuka (nedelja trudnoće, jednoplodna ili ne).",
         "cinjenice": ["Test je moguć od 10. nedelje, uz kombinovani test", "Pripremite poslednji nalaz ultrazvuka", "Pomažemo vam da izaberete paket"],
         "ilustracija": "harmony/zakazivanje"
       },
@@ -91,6 +99,7 @@
         "oznaka": "Besplatno",
         "glava": "Kod vas kući ili u našoj ordinaciji",
         "tekst": "Birate šta vam odgovara: dođete u našu ordinaciju, ili naš medicinski tehničar dolazi kod vas u dogovoreno vreme, pa ne morate nigde da idete. Uzima se jedna epruveta venske krvi, a sve traje nekoliko minuta.",
+        "tekstMobilni": "U ordinaciji ili kod vas kući, u dogovoreno vreme. Jedna epruveta venske krvi, za nekoliko minuta.",
         "cinjenice": ["Dolazak na kućnu adresu ne naplaćujemo", "Ne morate biti našte", "Moguće i uz terapiju heparinom"],
         "ilustracija": "harmony/vadjenje"
       },
@@ -100,6 +109,7 @@
         "oznaka": "",
         "glava": "Kako test vidi DNK bebe",
         "tekst": "U krvi trudnice kruže sitni delovi DNK. Većina potiče od majke, a oko 10% od posteljice, i taj deo odgovara DNK bebe. Laboratorija u Nemačkoj izdvaja i broji te delove: ako nekog hromozoma ima više nego što treba, test to pokazuje.",
+        "tekstMobilni": "Oko 10% slobodne DNK u krvi majke potiče od posteljice i odgovara DNK bebe. Laboratorija u Nemačkoj je izdvaja i proverava broj hromozoma.",
         "cinjenice": ["Bez ikakvog rizika za bebu", "Uzorak transportujemo mi", "Analiza testom kompanije Roche"],
         "ilustracija": "harmony/analiza"
       },
@@ -109,6 +119,7 @@
         "oznaka": "",
         "glava": "Nalaz za 3 do 5 radnih dana",
         "tekst": "Rezultat stiže za 3 do 5 radnih dana od prijema uzorka u laboratoriju. Nalaz dobijate [način dostave: potvrditi], a ako imate pitanja o nalazu, pozovite nas.",
+        "tekstMobilni": "Za 3 do 5 radnih dana od prijema uzorka. Nalaz dobijate [način dostave: potvrditi]; za pitanja o nalazu pozovite nas.",
         "cinjenice": ["Rezultat tumači vaš ginekolog", "Kod povećanog rizika objašnjavamo sledeće korake"],
         "ilustracija": "harmony/rezultat"
       }
@@ -134,7 +145,9 @@
   "poredjenje": {
     "naslov": "Harmony u poređenju sa drugim metodama",
     "uvod": "Ove tri metode se ne isključuju, već idu jedna za drugom. Harmony je dodatna, preciznija provera hromozoma, a ne zamena za kombinovani test.",
+    "uvodMobilni": "Tri metode idu jedna za drugom. Harmony je preciznija provera hromozoma, a ne zamena za kombinovani test.",
     "napomenaMd": "**Kombinovani (double) test se radi uvek, pre prenatalnog testa.** Ultrazvuk u okviru kombinovanog testa pregleda razvoj bebe (nuhalni nabor, organe, rast), a to test iz krvi ne može da zameni. Harmony se radi uz njega, da bi se rizik za hromozomske poremećaje proverio mnogo preciznije.",
+    "napomenaMobilniMd": "**Kombinovani (double) test se radi uvek, pre prenatalnog testa.** Njegov ultrazvuk pregleda razvoj bebe (nuhalni nabor, organe, rast), što test iz krvi ne može da zameni.",
     "osobinaOznaka": "Osobina",
     "_kolone": "Redosled kolona je odluka klijenta: 1. kombinovani test, 2. Harmony (istaknut), 3. amniocenteza. Stil: obavezan | istaknut | opcioni.",
     "kolone": [
@@ -171,6 +184,7 @@
     "polja": {
       "ime": "Ime i prezime",
       "telefon": "Telefon",
+      "email": "Mejl adresa",
       "paket": "Paket",
       "nedelja": "Nedelja trudnoće"
     },

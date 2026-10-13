@@ -37,6 +37,7 @@
       <div class="forma forma--bela kontakt-upit__polja">
         {{ polje("kontakt-ime", "ime", d.poljeIme, autocomplete="name", obavezno=true) }}
         {{ polje("kontakt-tel", "telefon", d.poljeTelefon, tip="tel", autocomplete="tel", obavezno=true) }}
+        {{ polje("kontakt-email", "email", d.poljeEmail, tip="email", autocomplete="email", obavezno=true, klasa="polje--ceo-red") }}
 
         {#- Dodatna polja: po jedno za svaku temu #}
         <div class="kontakt-upit__dodatno" data-za-temu="nalaz">

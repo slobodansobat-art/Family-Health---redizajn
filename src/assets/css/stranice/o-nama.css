@@ -114,7 +114,7 @@
 .onama-poziv { padding-bottom: 96px; }
 .onama-poziv__kartica {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px;
-  background: var(--ljubicasta-800); color: var(--bela); border-radius: 32px; padding: 40px;
+  background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela); border-radius: 32px; padding: 40px;
 }
 .onama-poziv__naslov { font-family: var(--font-naslov); font-size: 34px; line-height: 1.15; max-width: 620px; }
 .onama-poziv__dugme { padding: 15px 24px; }

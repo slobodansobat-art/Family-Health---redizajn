@@ -10,16 +10,21 @@
       donjaTraka   { tekst, link } ili false
       skripte      dodatni JS fajlovi iz src/assets/js
       seo          { naslov, opis } (ako sadržaj stranice nema svoj "seo")
+      bezCanonical true: stranica nema <link rel="canonical"> (404 ga nema uvek)
+    Klasa "js" na <html> se postavlja odmah (pre CSS-a): CSS po njoj zna da će
+    JS sakriti neaktivne panele (koraci, tabovi). Bez JS-a vidi se sve.
     ========================================================================== -#}
 {%- set sadrzajStranice = stranice[kljuc | camel] if kljuc else {} -%}
 {%- set seoPodaci = seo or sadrzajStranice.seo or {} -%}
 {%- set naslovStranice = seoPodaci.naslov or title or podesavanja.sajt.naziv -%}
 {%- set opisStranice = seoPodaci.opis or "" -%}
+{%- set imaCanonical = not bezCanonical and page.url != "/404.html" -%}
 <!doctype html>
 <html lang="sr-Latn">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.classList.add("js");setTimeout(function(){if(!window.FH)document.documentElement.classList.remove("js")},6000)</script>
   <title>{{ naslovStranice }}</title>
   {%- if opisStranice %}
   <meta name="description" content="{{ opisStranice }}">
@@ -27,7 +32,9 @@
   {%- if podesavanja.sajt.zabraniIndeksiranje %}
   <meta name="robots" content="noindex, nofollow">
   {%- endif %}
+  {%- if imaCanonical %}
   <link rel="canonical" href="{{ podesavanja.sajt.url }}{{ page.url }}">
+  {%- endif %}
   <meta property="og:type" content="website">
   <meta property="og:locale" content="sr_RS">
   <meta property="og:site_name" content="{{ podesavanja.sajt.naziv }}">
@@ -35,7 +42,9 @@
   {%- if opisStranice %}
   <meta property="og:description" content="{{ opisStranice }}">
   {%- endif %}
+  {%- if imaCanonical %}
   <meta property="og:url" content="{{ podesavanja.sajt.url }}{{ page.url }}">
+  {%- endif %}
   <meta name="theme-color" content="#2F1544">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/fonti/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>

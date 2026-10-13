@@ -20,6 +20,7 @@
     {% call forma("cancer-neo-razgovor", "forma forma--bela neo-kontakt__forma") %}
       {{ polje("neo-ime", "ime", f.ime, autocomplete="name", obavezno=true) }}
       {{ polje("neo-tel", "telefon", f.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
+      {{ polje("neo-email", "email", f.email, tip="email", autocomplete="email", obavezno=true, klasa="polje--ceo-red") }}
       {{ izbor("neo-uloga", "uloga", f.uloga, f.ulogaOpcije) }}
       {{ izbor("neo-blok", "parafinski_blok", f.blok, f.blokOpcije) }}
       {{ polje("neo-dg", "dijagnoza", f.dijagnoza, klasa="polje--ceo-red") }}

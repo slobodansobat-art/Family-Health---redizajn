@@ -33,7 +33,9 @@
   </header>
 
   <div class="clanak-tekst__mreza">
-    <aside class="clanak-tekst__bok samo-desktop">
+    {#- Bočna kolona (samo desktop): obična grupa, ne <aside>, jer je unutar <main>;
+        sadržaj je <nav> sa svojim naslovom, oglas ima oznaku "Oglas". #}
+    <div class="clanak-tekst__bok samo-desktop">
       {%- if naslovi.length or kalkulatorTrudnoce %}
       <nav class="clanak-sadrzaj" aria-labelledby="clanak-sadrzaj-naslov">
         <p id="clanak-sadrzaj-naslov" class="clanak-sadrzaj__naslov">{{ t.sadrzaj }}</p>
@@ -41,12 +43,12 @@
       </nav>
       {%- endif %}
       {%- set b = t.banerUzTekst %}
-      <aside class="blog-baner blog-baner--uspravni" aria-label="{{ b.oznaka }}">
+      <aside class="blog-baner blog-baner--uspravni" aria-label="{{ b.oznaka }}: {{ b.opis }}">
         <span class="blog-baner__oznaka">{{ b.oznaka }}</span>
         <span class="blog-baner__naslov">{{ b.naslov }}</span>
         <span class="blog-baner__opis">{{ b.opis }}</span>
       </aside>
-    </aside>
+    </div>
 
     <div class="clanak-tekst__glavno">
       {%- if naslovi.length or kalkulatorTrudnoce %}

@@ -20,13 +20,13 @@
 {%- set dugme = z.dugme or nav.dugme -%}
 {%- set tamno = tema == "tamna" or tema == "noc" -%}
 <header class="zaglavlje zaglavlje--{{ tema }}" data-zaglavlje>
-  <a href="#sadrzaj" class="preskoci">Preskoči na sadržaj</a>
+  <a href="#sadrzaj" class="preskoci">{{ podesavanja.tekstovi.preskociNaSadrzaj }}</a>
 
   {#- Gornja traka: vađenje krvi + sekundarni linkovi + telefon (samo desktop) #}
   <div class="zaglavlje__traka">
     <div class="kontejner zaglavlje__traka-unutra">
-      <span class="zaglavlje__napomena">{{ kucaIkonica() }}{{ podesavanja.vadjenjeKrvi.kratko }}</span>
-      <nav class="zaglavlje__sekundarni" aria-label="Family Health">
+      <span class="zaglavlje__napomena">{{ kucaIkonica() }}<span class="zaglavlje__napomena-tekst">{{ podesavanja.vadjenjeKrvi.kratko }}</span></span>
+      <nav class="zaglavlje__sekundarni" aria-label="{{ podesavanja.tekstovi.oznakaGornjiMeni }}">
         {%- for l in navigacija.gornjaTraka %}
         <a href="{{ l.link }}"{% if l.link | jeTrenutna(page.url) %} aria-current="page"{% endif %}>{{ l.tekst }}</a>
         {%- endfor %}

@@ -7,7 +7,8 @@
   "uvod": {
     "naslov": "Politika privatnosti",
     "izmena": "Poslednja izmena: [datum].",
-    "napomena": "Tekst politike priprema pravnik; ovde je struktura stranice."
+    "napomena": "Tekst politike priprema pravnik; ovde je struktura stranice.",
+    "napomenaMobilni": "Tekst priprema pravnik."
   },
   "odeljci": {
     "naslovSadrzaja": "Sadržaj",

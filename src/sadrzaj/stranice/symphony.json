@@ -171,6 +171,7 @@
     "forma": {
       "ime": "Ime i prezime",
       "telefon": "Telefon",
+      "email": "Mejl adresa",
       "test": "Test",
       "testVrednost": "Symphony, 790 €",
       "nedelja": "Nedelja trudnoće",

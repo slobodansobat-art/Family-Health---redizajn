@@ -10,6 +10,7 @@
   --symphony-neaktivan: #E3DCEB;         /* hromozom koji test ne pregleda */
   --symphony-neaktivan-tekst: #6E6680;   /* broj takvog hromozoma */
   --symphony-na-ljubicastoj: #EBDDF5;    /* blag tekst u ljubičastoj sekciji */
+  --symphony-senka: rgba(47, 21, 68, .08); /* senka bele kartice primera */
 }
 .symphony-naslov { color: var(--ljubicasta-800); }
 
@@ -169,7 +170,7 @@
 .symphony-nalaz__povisen-naslov { font-family: var(--font-naslov); font-size: 24px; line-height: 1.2; color: var(--ljubicasta-800); }
 
 /* Primer nalaza */
-.symphony-primer { flex: 1 1 420px; min-width: 0; background: var(--bela); border-radius: 28px; padding: 30px; box-shadow: 0 20px 50px rgba(47, 21, 68, .08); }
+.symphony-primer { flex: 1 1 420px; min-width: 0; background: var(--bela); border-radius: 28px; padding: 30px; box-shadow: 0 20px 50px var(--symphony-senka); }
 .symphony-primer__glava { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 2px solid var(--ljubicasta-800); }
 .symphony-primer__naslov { font-weight: 600; color: var(--ljubicasta-800); }
 .symphony-primer__oznaka { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: var(--ljubicasta-50); color: var(--ljubicasta-600); font-weight: 600; white-space: nowrap; }
@@ -317,7 +318,7 @@
   .symphony-nalaz__levo { display: contents; }
   .symphony-nalaz__levo h2 { margin-bottom: 10px; }
   .symphony-nalaz__tekst { font-size: 15px; }
-  .symphony-primer { flex: none; margin-top: 18px; border-radius: 22px; padding: 18px; box-shadow: 0 14px 34px rgba(47, 21, 68, .08); }
+  .symphony-primer { flex: none; margin-top: 18px; border-radius: 22px; padding: 18px; box-shadow: 0 14px 34px var(--symphony-senka); }
   .symphony-primer__glava { gap: 10px; padding-bottom: 12px; }
   .symphony-primer__naslov { font-size: 15px; }
   .symphony-primer__oznaka { font-size: 11.5px; padding: 4px 9px; }

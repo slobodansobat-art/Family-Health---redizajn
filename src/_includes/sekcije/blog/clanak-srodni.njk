@@ -1,24 +1,45 @@
-{#- ČLANAK · "Pročitajte još": do 3 napisana članka, prvo iz iste kategorije,
-    pa najnoviji ostali. Predlozi tema se ne prikazuju (nemaju stranicu).
-    Sadržaj: collections.blog + stranice.blog.clanak.srodniNaslov   ·   Stil: css/stranice/blog.css -#}
+{#- ČLANAK · "Pročitajte još": tri kartice.
+    Redosled: napisani članci iz iste kategorije, pa ostali napisani (najnoviji
+    prvi). Ako napisanih nema dovoljno, mesto popunjava predlog teme (po polju
+    "redosled"), ali BEZ linka i sa oznakom "[predlog teme]", jer predlog nema
+    svoju stranicu. Kad urednik objavi članak, kartica sama postaje link.
+    Sadržaj: collections.blog + stranice.blog.clanak.srodniNaslov
+             + stranice.blog.lista.oznakaPredloga   ·   Stil: css/stranice/blog.css -#}
 {%- set t = stranice.blog.clanak -%}
+{%- set broj = 3 -%}
 {%- set srodni = [] -%}
 {%- for c in collections.blog -%}
-  {%- if c.url and c.url != page.url and c.data.kategorija == kategorija and srodni.length < 3 %}{% set _x = srodni.push(c) %}{% endif -%}
+  {%- if c.url and c.url != page.url and c.data.kategorija == kategorija and srodni.length < broj %}{% set _x = srodni.push(c) %}{% endif -%}
 {%- endfor -%}
 {%- for c in collections.blog -%}
-  {%- if c.url and c.url != page.url and c.data.kategorija != kategorija and srodni.length < 3 %}{% set _x = srodni.push(c) %}{% endif -%}
+  {%- if c.url and c.url != page.url and c.data.kategorija != kategorija and srodni.length < broj %}{% set _x = srodni.push(c) %}{% endif -%}
 {%- endfor -%}
+{%- if srodni.length < broj -%}
+  {%- set saRedom = [] -%}{%- set bezReda = [] -%}
+  {%- for c in collections.blog | sort(false, false, "fileSlug") -%}
+    {%- if c.data.predlogTeme %}{% if c.data.redosled %}{% set _x = saRedom.push(c) %}{% else %}{% set _x = bezReda.push(c) %}{% endif %}{% endif -%}
+  {%- endfor -%}
+  {%- for c in (saRedom | sort(false, false, "data.redosled")).concat(bezReda) -%}
+    {%- if srodni.length < broj %}{% set _x = srodni.push(c) %}{% endif -%}
+  {%- endfor -%}
+{%- endif -%}
 {%- if srodni.length %}
 <section class="kontejner clanak-srodni" aria-labelledby="clanak-srodni-naslov">
   <h2 id="clanak-srodni-naslov" class="clanak-srodni__naslov">{{ t.srodniNaslov }}</h2>
   <ul class="clanak-srodni__lista">
     {%- for c in srodni %}
     <li>
+      {%- if c.url %}
       <a href="{{ c.url }}" class="clanak-srodni__kartica">
         <span class="clanak-srodni__kategorija">{{ c.data.kategorija }}</span>
         <span class="clanak-srodni__clanak">{{ c.data.naslov }}</span>
       </a>
+      {%- else %}
+      <div class="clanak-srodni__kartica clanak-srodni__kartica--predlog">
+        <span class="clanak-srodni__kategorija">{{ c.data.kategorija }} · {{ stranice.blog.lista.oznakaPredloga }}</span>
+        <span class="clanak-srodni__clanak">{{ c.data.naslov }}</span>
+      </div>
+      {%- endif %}
     </li>
     {%- endfor %}
   </ul>

@@ -1,5 +1,6 @@
 ---
 naslov: "Kako beba nasleđuje krvnu grupu od roditelja?"
+seoNaslov: "Kako beba nasleđuje krvnu grupu?"
 opis: "Jednostavna tabela kombinacija i šta je Rh faktor."
 kategorija: "Trudnoća"
 datum: 2026-04-15

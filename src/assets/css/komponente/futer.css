@@ -1,7 +1,7 @@
 /* ==========================================================================
    FUTER  (šablon: src/_includes/partials/futer.njk)
    ========================================================================== */
-.futer { background: var(--ljubicasta-800); color: var(--tekst-na-tamnom); font-size: 15px; }
+.futer { --fokus: var(--fokus-na-tamnom); background: var(--ljubicasta-800); color: var(--tekst-na-tamnom); font-size: 15px; }
 .futer a { color: var(--tekst-na-tamnom); text-decoration: none; }
 .futer a:hover { color: var(--bela); text-decoration: underline; }
 .futer__mreza { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; padding-block: 56px 28px; }

@@ -18,9 +18,10 @@
         <span id="pocetna-partneri-naslov">{{ d.naslov }}</span>
         <button type="button" class="pocetna-partneri__pauza" aria-pressed="false" data-tekst-zaustavi="{{ d.dugmeZaustavi }}" data-tekst-pokreni="{{ d.dugmePokreni }}" hidden>{{ d.dugmeZaustavi }}</button>
       </span>
-      <span class="pocetna-partneri__napomena samo-desktop">{{ d.napomena }}</span>
+      <span class="pocetna-partneri__napomena">{{ d.napomena }}</span>
     </div>
-    <div class="pocetna-partneri__okvir">
+    {#- Na telefonu se okvir pomera prstom; tabindex da se može pomerati i tastaturom #}
+    <div class="pocetna-partneri__okvir" tabindex="0" role="region" aria-label="{{ d.trakaOznaka or d.naslov }}">
       <div class="pocetna-partneri__traka">
         <ul class="pocetna-partneri__grupa" aria-label="{{ d.naslov }}">
           {%- for p in d.lista %}{{ partner(p) }}{% endfor %}

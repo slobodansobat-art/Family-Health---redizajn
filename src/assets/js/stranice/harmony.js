@@ -2,7 +2,7 @@
    HARMONY (/trudnoca-i-beba/harmony/)
    1. Izbor paketa: klik na karticu menja zbir (naziv, opis, cena, rate)
       i upisuje izabrani paket u formu za zakazivanje (#kontakt).
-   2. Oznaka uz korak (npr. "Besplatno" uz "Vađenje krvi"), iz JSON-a stranice.
+   Oznaka uz korak ("Besplatno") je u statičkom HTML-u (makro koraci).
    Tabovi (rezultati), koraci i česta pitanja rade preko glavni.js.
    ========================================================================== */
 (function () {
@@ -43,30 +43,8 @@
     });
   }
 
-  /* --- 2. Oznake uz korake ---------------------------------------------- */
-  function pokreniOznakeKoraka() {
-    var lista = document.querySelector("[data-oznake-koraka]");
-    var koraci = document.querySelector(".harmony-koraci [data-koraci]");
-    if (!lista || !koraci) return;
-    var oznake = Array.prototype.map.call(lista.querySelectorAll("li"), function (li) { return li.textContent.trim(); });
-    koraci.querySelectorAll(".koraci__stavka").forEach(function (stavka, i) {
-      if (!oznake[i]) return;
-      var podnaslov = stavka.querySelector(".koraci__podnaslov");
-      if (!podnaslov) return;
-      var tekst = document.createElement("span");
-      tekst.textContent = podnaslov.textContent;
-      var oznaka = document.createElement("span");
-      oznaka.className = "harmony-koraci__oznaka";
-      oznaka.textContent = oznake[i];
-      podnaslov.textContent = "";
-      podnaslov.appendChild(tekst);
-      podnaslov.appendChild(oznaka);
-    });
-  }
-
   function pokreni() {
     pokreniPakete();
-    pokreniOznakeKoraka();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", pokreni);
   else pokreni();

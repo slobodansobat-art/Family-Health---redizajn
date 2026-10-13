@@ -7,6 +7,7 @@
 .analiza {
   --analiza-mreza: 600px;          /* veličina animirane mreže u heru */
   --analiza-traka: 72px;           /* visina prilepljene trake sa tabovima */
+  --analiza-senka: rgba(47, 21, 68, .06);  /* senka kartice izveštaja (mobilni) */
 }
 .analiza__h2 {                     /* veliki naslovi sekcija (serif) */
   font-family: var(--font-naslov); font-size: 40px; line-height: 1.12; color: var(--ljubicasta-800);
@@ -17,7 +18,7 @@
 .analiza__panel > section:first-child, .analiza__panel > div:first-child { padding-top: 88px; }
 
 /* --- Hero (tamna pozadina + animirana mreža) ------------------------------ */
-.analiza-hero { position: relative; overflow: hidden; background: var(--ljubicasta-800); color: var(--bela); }
+.analiza-hero { position: relative; overflow: hidden; background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela); }
 .analiza-hero__mreza {
   position: absolute; right: -80px; top: -110px;
   width: var(--analiza-mreza); height: var(--analiza-mreza); opacity: .9; pointer-events: none;
@@ -111,7 +112,7 @@
 .analiza-dokumenti__oznaka { flex-shrink: 0; font-size: 14px; font-weight: 400; color: var(--tekst-blag); }
 .analiza-linija {
   flex: 1 1 320px; min-width: 0; padding: 32px;
-  border-radius: var(--zaobljenje); background: var(--ljubicasta-800); color: var(--bela);
+  border-radius: var(--zaobljenje); background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela);
 }
 .analiza-dokumenti--samo-linija .analiza-linija { flex: 0 1 560px; }
 .analiza-linija__oznaka { font-size: 15px; color: var(--ljubicasta-400); }
@@ -194,7 +195,7 @@
 .analiza-srodne__strelica { display: none; color: var(--ljubicasta-600); }
 
 /* --- Kontakt (slanje nalaza) -------------------------------------------------- */
-.analiza-kontakt { background: var(--ljubicasta-800); color: var(--bela); }
+.analiza-kontakt { background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela); }
 .analiza-kontakt__unutra { display: flex; flex-wrap: wrap; gap: 40px 72px; padding-block: 88px; }
 .analiza-kontakt__uvod { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
 .analiza-kontakt__naslov { font-family: var(--font-naslov); font-size: 44px; line-height: 1.08; }
@@ -243,14 +244,14 @@
 
   .analiza-kartice { display: flex; flex-direction: column; gap: 14px; padding-block: 20px 0; }
   .analiza-kartica--puna { padding: 22px 20px; }
-  .analiza-kartica--izvestaj { box-shadow: 0 10px 26px rgba(47, 21, 68, .06); }
+  .analiza-kartica--izvestaj { box-shadow: 0 10px 26px var(--analiza-senka); }
   .analiza-kartica__telo { padding: 20px; }
   .analiza-kartica__naslov { margin-bottom: 12px; font-size: 19px; }
   .analiza-kartica__lista { font-size: 15px; }
   .analiza-kartica__napomena { margin-top: 14px; }
   .analiza-kartica__traka {
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    padding: 12px 20px; background: var(--ljubicasta-800); color: var(--tekst-na-tamnom);
+    padding: 12px 20px; background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--tekst-na-tamnom);
     font-size: 12.5px; letter-spacing: 1px; text-transform: uppercase;
   }
   .analiza-kartica__tacke { display: flex; gap: 5px; }

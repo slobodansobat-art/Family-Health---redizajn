@@ -7,7 +7,8 @@ Ovaj dokument važi za svakoga ko menja kod (programer ili AI). Za urednike sadr
 ```
 src/
   sadrzaj/                 SAV SADRŽAJ (ovo menja CMS)
-    podesavanja.json       telefon, adresa, radno vreme, pravni red u futeru
+    podesavanja.json       telefon, Viber, adresa, radno vreme, pravni red u futeru,
+                           zajednički tekstovi ("tekstovi": dugmad, oznake koraka...)
     navigacija.json        meniji, padajući meniji, mobilni meni, futer
     stranice/<kljuc>.json  tekst svake stranice, po sekcijama
     analize/<slug>.json    onko analize (katalog + stranica po šablonu)
@@ -28,8 +29,8 @@ src/
     js/glavni.js           zajednički JS (meniji, koraci, tabovi)
     js/stranice/<kljuc>.js JS jedne stranice (kalkulatori, filteri...)
     slike/                 fotografije (dodaju se iz CMS-a)
-  admin/                   Decap CMS (config.yml se pravi automatski)
-scripts/                   generator CMS konfiguracije, onko mreža
+  admin/                   Decap CMS: config.yml (fiksan), sr-latinica.js (prevod)
+scripts/                   generator CMS konfiguracije, prevod CMS-a, onko mreža
 ```
 
 ## 2. Stranica = redosled sekcija
@@ -73,7 +74,9 @@ U šablonu: `{% set d = stranice.harmony.hero %}` pa `{{ d.naslov }}`. Ime fajla
 
 Pravila (CMS ih koristi da izabere vrstu polja):
 - **Svaki vidljiv tekst je u JSON-u**, ne u šablonu: naslovi, pasusi, dugmad, liste, cene, napomene, oznake tabela. U šablonu ostaju samo tehničke stvari (aria-label za ikonice i slično).
-- Polje koje počinje sa `slika` ili se završava sa `Slika` je fotografija (putanja ili prazno). Uz svaku sliku ide polje `…Opis` (alt tekst). Prazna slika se prikazuje kao obojeno polje sa opisom (makro `slika`).
+- Polje koje počinje sa `slika` ili se završava sa `Slika` je fotografija (putanja ili prazno). Uz svaku sliku ide polje `…Opis` (alt tekst, npr. `slikaOpis`, `slikaMapeOpis`; u CMS-u obično tekst polje). Prazna slika se prikazuje kao obojeno polje sa opisom (makro `slika`).
+- Polje koje se završava sa `Mobilni` je kraći tekst za telefon (`tekstMobilni` uz `tekst`). U CMS-u stoji odmah posle osnovnog polja, sa oznakom „(telefon)". Prikaz: `<span class="samo-desktop">…</span><span class="samo-mobilni">…</span>`.
+- Prazna lista (`[]`) je dozvoljena: stranica tada samo ne prikazuje stavke. Redosled ključeva u JSON-u nije bitan (CMS ga menja pri čuvanju).
 - Polje koje se završava sa `Md` sadrži Markdown (podebljano `**x**`, link `[tekst](url)`). Prikaz: `{{ d.tekstMd | mdRed | safe }}` u jednom redu, `{{ d.tekstMd | md | safe }}` za više pasusa.
 - Brojevi (cene) su brojevi, ne tekst: `"cena": 390`. Prikaz: `{{ 390 | evra }}` → `390 €`, `1980` → `1.980 €`.
 - Linkovi su konačne adrese sajta (tabela u odeljku 7).
@@ -85,7 +88,8 @@ Pravila (CMS ih koristi da izabere vrstu polja):
 - Bez inline `style` atributa. Izuzetak: CSS promenljive za podatke (npr. `style="--kasnjenje: 120ms"`).
 - Boje, fontovi i razmaci isključivo preko promenljivih iz `01-tokeni.css` (`var(--ljubicasta-600)`, `var(--font-naslov)`, `var(--margina)`...). Nove promenljive stranice definišu se na korenskom elementu stranice.
 - Klase stranice počinju prefiksom stranice (BEM): `.harmony-hero`, `.harmony-hero__naslov`, `.harmony-hero--uzano`. Prefiksi: `pocetna`, `onko`, `analize`, `analiza`, `neo`, `lekari`, `trudnoca`, `harmony`, `symphony`, `mc`, `genetika`, `onama`, `kontakt`, `privatnost`, `greska`, `blog`, `clanak`, `hvala`.
-- Zajedničke klase (koriste se, ne menjaju se u stranici): `.kontejner`, `.sekcija`, `.naslov-xl/-l/-m/-s`, `.nadnaslov`, `.uvod`, `.blag`, `.mali-tekst`, `.dugme` (+ `--belo`, `--obrub`, `--mint`, `--zlatno`, `--tamno`, `--puno`, `--malo`), `.okruglo-dugme`, `.cip`/`.cipovi`, `.oznaka`, `.oznaka-premium`, `.napomena`, `.slika` (+ `--krug`, `--zaobljena`), `.sr-only`, `.samo-desktop`, `.samo-mobilni`, `.tekst-md`, `.forma`, `.forma--bela`, `.polje`, `.unos`, `.saglasnost`.
+- Zajedničke klase (koriste se, ne menjaju se u stranici): `.kontejner`, `.sekcija`, `.naslov-xl/-l/-m/-s`, `.nadnaslov`, `.blag`, `.mali-tekst`, `.dugme` (+ `--belo`, `--obrub`, `--mint`, `--zlatno`, `--tamno`, `--puno`, `--malo`), `.okruglo-dugme`, `.cip`/`.cipovi`, `.oznaka`, `.oznaka-premium`, `.napomena`, `.slika` (+ `--krug`, `--zaobljena`), `.sr-only`, `.samo-desktop`, `.samo-mobilni`, `.tekst-md`, `.forma`, `.forma--bela`, `.polje`, `.unos`, `.saglasnost`, `.povrsina-tamna`, `.povrsina-svetla`.
+- Okvir fokusa (tastatura) je `outline: 3px solid var(--fokus)`. Sekcija sa TAMNOM pozadinom mora da promeni boju okvira, inače se ne vidi: klasa `povrsina-tamna` na sekciji (`<section class="neo-proces povrsina-tamna">`) ili u CSS-u sekcije `--fokus: var(--fokus-na-tamnom);`. Bela kartica/forma unutar tamne sekcije: `povrsina-svetla` (`.forma--bela` to već radi). Zaglavlje (tamna/noc), futer, gornja traka i mobilni meni to već imaju.
 - Granica za mobilni: **959px**. Desktop stil je osnovni, mobilni ide u `@media (max-width: 959px) { … }` na kraju fajla. Proveriti i širine između (tablet 768px, mali laptop 1024px): ništa ne sme da izlazi van ekrana.
 - Animacije: poštovati `prefers-reduced-motion` (globalno već isključuje animacije, ali ne oslanjati se na animaciju za prikaz sadržaja: krajnje stanje mora biti vidljivo).
 
@@ -96,7 +100,8 @@ Pravila (CMS ih koristi da izabere vrstu polja):
 - Podaci za kalkulatore idu iz JSON-a stranice preko: `<script type="application/json" id="harmony-podaci">{{ stranice.harmony.paketi | uJson | safe }}</script>` i u JS `FH.podaci("harmony-podaci")`.
 - Pomoćne funkcije: `FH.evra(390)`, `FH.nedelja(n)` (padež), `FH.mobilni.matches`.
 - Bez hover-only ponašanja: sve što radi na prelaz mišem radi i na klik/fokus/dodir.
-- Stranica mora da bude čitljiva i bez JS-a (npr. svi paneli vidljivi), a JS dodaje interakciju.
+- Stranica mora da bude čitljiva i bez JS-a (npr. svi paneli vidljivi), a JS dodaje interakciju. Ne stavljati `hidden` u statički HTML za sadržaj koji JS prikazuje; neka ga JS sakrije. Layout postavlja klasu `js` na `<html>` pre CSS-a: pravila tipa `.js .x:not(.je-pokrenut) …` sprečavaju „skakanje" dok se JS ne pokrene.
+- Padajući meni: prelaz otvara samo za pravi miš (`pointerType === "mouse"`); klik/dodir/tastatura rade preko dugmeta.
 
 ## 6. Komponente (makroi)
 
@@ -106,8 +111,9 @@ Pravila (CMS ih koristi da izabere vrstu polja):
 ```
 (`with context` je obavezan za `komponente.njk`, jer forme čitaju `podesavanja`.)
 
-- `slika(d.slika, d.slikaOpis, "slika--krug onko-hero__foto")`
-- `koraci("harmony-koraci", d.koraci, "mint", { tekst: "Zakažite", link: "#kontakt" })`, stavke: `{ naslov, podnaslov, glava, tekst, cinjenice[], ilustracija }`; ilustracija je putanja u `src/_includes/ilustracije` bez `.njk` (npr. `"harmony/vadjenje"`).
+- `slika(d.slika, d.slikaOpis, "slika--krug onko-hero__foto")`; hero slika (vidljiva odmah): `slika(d.slika, d.slikaOpis, "trudnoca-hero__foto", ucitavanje="eager")`
+- Tekst koji ponavljaju partiali i makroi (Pozovite, Viber, „Korak {n} od {N}", Sledeći korak, Preskoči na sadržaj, Politika privatnosti, podrazumevano dugme donje trake) je u `podesavanja.tekstovi`.
+- `koraci("harmony-koraci", d.koraci, "mint", { tekst: "Zakažite", link: "#kontakt" })`, stavke: `{ naslov, podnaslov, oznaka, glava, tekst | tekstMd, tekstMobilni, cinjenice[], ilustracija }` (`oznaka` = mala pilula uz podnaslov, klasa `.koraci__znak`); ilustracija je putanja u `src/_includes/ilustracije` bez `.njk` (npr. `"harmony/vadjenje"`).
 - `faq("harmony-faq", d.pitanja, "mint")`, pitanja: `{ pitanje, odgovor }` (odgovor je Markdown).
 - Tabovi: `<div data-tabovi><div role="tablist" aria-label="…"><button role="tab" id="t1" aria-controls="p1" aria-selected="true">…</button>…</div><div role="tabpanel" id="p1" aria-labelledby="t1">…</div>…</div>`. JS je već u glavni.js (strelice, #adresa).
 - Forme (Netlify Forms, posle slanja ide na /hvala/):
@@ -115,12 +121,13 @@ Pravila (CMS ih koristi da izabere vrstu polja):
   {% call forma("harmony-zakazivanje", "forma forma--bela") %}
     {{ polje("hm-ime", "ime", "Ime i prezime", autocomplete="name", obavezno=true) }}
     {{ polje("hm-tel", "telefon", "Telefon", tip="tel", autocomplete="tel", obavezno=true) }}
+    {{ polje("hm-email", "email", "Email", tip="email", autocomplete="email", obavezno=true) }}
     {{ izbor("hm-tema", "tema", "Šta vas zanima", ["Harmony", "Symphony"]) }}
     {{ saglasnost("hm-ok") }}
     {{ posalji("Pošaljite, javljamo se istog radnog dana") }}
   {% endcall %}
   ```
-  Ime forme je jedinstveno na celom sajtu: `<kljuc>-<svrha>`. Forma sa prilozima: `forma("onko-nalaz", "forma", true)` + `fajlPolje(...)`.
+  Ime forme je jedinstveno na celom sajtu: `<kljuc>-<svrha>`. SVAKA forma obavezno traži ime, telefon i email (`obavezno=true`). Forma sa prilozima: `forma("onko-nalaz", "forma", true)` + `fajlPolje(...)`.
 - Onko animacija: `{% onkoMreza "seme", 1 %}` (SVG; omotaču dati `data-mreza-ponovo` ako treba da se ponovi kad se vrati u vidno polje).
 - Kontakt podaci uvek iz `podesavanja.kontakt` (telefon, mobilni, email, adresa, radnoVreme), nikad prepisani u JSON stranice.
 
@@ -158,3 +165,10 @@ Situacije na onko stranici: `/onkogenetika/#situacija-1` … `#situacija-6`.
 - Svako polje forme ima `<label>`.
 - Kontrast teksta najmanje 4.5:1 (siva `--tekst-blag` na beloj je u redu).
 - Sekcije: `<section aria-labelledby="id-naslova">`.
+
+## 9. CMS (Decap)
+
+- `src/admin/config.yml` je FIKSAN fajl u repou; ne pravi se pri izradi sajta. Kad programer doda polje u JSON ili novu stranicu: `npm run cms-konfiguracija` pa pregledati `git diff src/admin/config.yml`. Skripta čuva redosled i šemu iz postojećeg config.yml (prazne liste ne menjaju tip), redosled sekcija uzima iz include-ova stranice.
+- Interfejs je na srpskoj latinici: `src/admin/sr-latinica.js` (`npm run cms-prevod`, iz `decap-cms-locales` iste verzije kao Decap u `src/admin/index.html`).
+- Kategorije bloga su samo u `stranice/blog.json` → `lista.kategorije` (CMS ih nudi kao izbor). Članak sa `sakrij: true` ne ide u listu, srodne članke ni mapu sajta.
+- Lokalno uređivanje bez GitHub-a: `npm run cms:lokalno` i `npm start`, pa `http://localhost:8080/admin/`.

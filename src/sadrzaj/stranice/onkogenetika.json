@@ -2,7 +2,7 @@
   "_naziv": "Onkogenetika",
   "seo": {
     "naslov": "Onkogenetika – genetska analiza tumora | Family Health",
-    "opis": "Genetska analiza tumorskog tkiva i krvi u nemačkim laboratorijama, za izbor ciljane terapije, praćenje bolesti i procenu naslednog rizika. Besplatna procena nalaza."
+    "opis": "Genetska analiza tumorskog tkiva i krvi u nemačkim laboratorijama: izbor ciljane terapije, praćenje bolesti i nasledni rizik. Besplatna procena nalaza."
   },
   "hero": {
     "nadnaslov": "Onkogenetika, za pacijente i lekare",
@@ -202,6 +202,7 @@
     "forma": {
       "ime": "Ime i prezime",
       "telefon": "Telefon",
+      "email": "Mejl adresa",
       "uloga": "Javljate se kao",
       "ulogaOpcije": [
         "Pacijent",

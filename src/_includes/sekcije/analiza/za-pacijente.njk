@@ -5,8 +5,9 @@
 {%- from "makroi/komponente.njk" import koraci with context -%}
 {%- if imaPacijente -%}
 {%- set p = P -%}
-{#- Kad postoje oba taba, ovaj panel je u HTML-u skriven (hidden); prikazuje ga klik na tab #}
-<div class="analiza__panel" id="za-pacijente"{% if imaTabove %} role="tabpanel" aria-labelledby="analiza-tab-pacijenti" hidden{% endif %}>
+{#- Panel NIJE skriven u HTML-u: bez JS-a su vidljiva oba panela.
+    Neaktivni panel sakriva glavni.js (pokreniTabove) pri učitavanju. #}
+<div class="analiza__panel" id="za-pacijente"{% if imaTabove %} role="tabpanel" aria-labelledby="analiza-tab-pacijenti"{% endif %}>
 
   {#- Šta analiza pokazuje (tekst levo, dijagram desno; na mobilnom dijagram ide posle teksta) #}
   {%- if imaObjasnjenje or imaDijagram %}

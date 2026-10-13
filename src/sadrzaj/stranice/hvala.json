@@ -7,14 +7,15 @@
   "potvrda": {
     "naslov": "Hvala, primili smo vaš upit.",
     "tekstMd": "Javljamo vam se istog radnog dana. Ako je hitno, pozovite nas na [011 43 87 752](tel:+381114387752).",
+    "tekstMdMobilni": "Javljamo vam se istog radnog dana. Ako je hitno, pozovite [011 43 87 752](tel:+381114387752).",
     "dugmeGlavno": { "tekst": "Nazad na početnu", "link": "/" },
     "dugmeSporedno": { "tekst": "Dok čekate: blog", "link": "/blog/" },
     "sledi": {
       "naslov": "Šta sledi",
       "koraci": [
-        { "naslov": "Pregledamo vaš upit", "tekst": "Upit stiže lekaru ili koordinatoru za oblast koju ste izabrali." },
-        { "naslov": "Zovemo vas", "tekst": "Javljamo se na broj koji ste ostavili, istog radnog dana, od 8 do 16 h." },
-        { "naslov": "Dogovaramo sledeći korak", "tekst": "Termin za vađenje krvi, preuzimanje uzorka ili razgovor sa lekarom." }
+        { "naslov": "Pregledamo vaš upit", "tekst": "Upit stiže lekaru ili koordinatoru za oblast koju ste izabrali.", "tekstMobilni": "Stiže lekaru ili koordinatoru za oblast koju ste izabrali." },
+        { "naslov": "Zovemo vas", "tekst": "Javljamo se na broj koji ste ostavili, istog radnog dana, od 8 do 16 h.", "tekstMobilni": "Na broj koji ste ostavili, istog radnog dana, 8–16 h." },
+        { "naslov": "Dogovaramo sledeći korak", "tekst": "Termin za vađenje krvi, preuzimanje uzorka ili razgovor sa lekarom.", "tekstMobilni": "Vađenje krvi, preuzimanje uzorka ili razgovor sa lekarom." }
       ]
     }
   }

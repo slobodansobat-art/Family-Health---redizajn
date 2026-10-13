@@ -5,6 +5,7 @@
     ne dobija horizontalni skrol).
     Ispod: izabrani paket sa ukupnom cenom i ratama (JS računa rate preko FH.evra).
     Sadržaj: stranice.trudnoca.testovi   ·   Stil: css/stranice/trudnoca.css
+    Kraći tekstovi za telefon: polja …Mobilni (prazno = desktop tekst).
     JS: js/stranice/trudnoca.js -#}
 {%- set d = stranice.trudnoca.testovi -%}
 {%- set izabran = (d.podrazumevaniPaketRedniBroj or 1) - 1 -%}
@@ -22,10 +23,10 @@
       <div class="trudnoca-testovi__uvod">
         <h2 id="trudnoca-testovi-naslov" class="trudnoca-testovi__naslov">{{ d.naslov }}</h2>
         <div class="trudnoca-testovi__tekst samo-desktop">{{ d.tekstMd | md | safe }}</div>
-        <p class="trudnoca-testovi__tekst samo-mobilni">{{ d.tekstMobilni }}</p>
+        <div class="trudnoca-testovi__tekst samo-mobilni">{% if d.tekstMobilni %}<p>{{ d.tekstMobilni }}</p>{% else %}{{ d.tekstMd | md | safe }}{% endif %}</div>
         <p class="trudnoca-testovi__napomena samo-mobilni">{{ d.napomenaMobilniMd | mdRed | safe }}</p>
       </div>
-      <p class="trudnoca-testovi__harmony samo-desktop">{{ d.harmonyMd | mdRed | safe }}</p>
+      <p class="trudnoca-testovi__harmony"><span class="samo-desktop">{{ d.harmonyMd | mdRed | safe }}</span><span class="samo-mobilni">{{ (d.harmonyMobilniMd or d.harmonyMd) | mdRed | safe }}</span></p>
     </div>
 
     {#- Desktop: tabela poređenja #}
@@ -94,7 +95,7 @@
       <div class="trudnoca-izbor__opis">
         <p class="trudnoca-izbor__oznaka samo-desktop">{{ d.izabranoOznaka }}</p>
         <p class="trudnoca-izbor__naziv" data-izbor-naziv>{{ punNaziv(sp) }}</p>
-        <p class="trudnoca-izbor__tekst" data-izbor-opis>{{ sp.opis }}</p>
+        <p class="trudnoca-izbor__tekst"><span class="samo-desktop" data-izbor-opis>{{ sp.opis }}</span><span class="samo-mobilni" data-izbor-opis-mobilni>{{ sp.opisMobilni or sp.opis }}</span></p>
       </div>
       <div class="trudnoca-izbor__cene">
         <p class="trudnoca-izbor__cena" data-izbor-cena>{{ sp.cena | evra }}</p>
