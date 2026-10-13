@@ -462,7 +462,7 @@ export function napraviCmsKonfiguraciju({ izlaz = PODRAZUMEVANI_IZLAZ, osnova } 
   const konfiguracija = {
     backend: {
       name: "github",
-      repo: cms.repo || "slobodansobat-art/familyhealth-sajt",
+      repo: cms.repo || "slobodansobat-art/Family-Health---redizajn",
       branch: cms.grana || "main",
       ...(cms.authEndpoint ? { auth_endpoint: cms.authEndpoint } : {}),
       ...(cms.baseUrl ? { base_url: cms.baseUrl } : {}),

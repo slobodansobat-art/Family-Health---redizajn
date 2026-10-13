@@ -6,7 +6,7 @@
 # =============================================================================
 backend:
   name: github
-  repo: slobodansobat-art/familyhealth-sajt
+  repo: slobodansobat-art/Family-Health---redizajn
   branch: main
   commit_messages:
     create: "CMS: dodato {{collection}} „{{slug}}“"
