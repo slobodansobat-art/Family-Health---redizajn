@@ -1,22 +1,24 @@
 /* ==========================================================================
    STRANICA: OSTALE GENETSKE ANALIZE  (/genetika/)
-   Sekcije: src/_includes/sekcije/genetika/   ·   Heliks: ilustracije/genetika/
+   Sekcije: src/_includes/sekcije/genetika/   ·   Animacija: js/stranice/genetika.js
    ========================================================================== */
 
 /* --- Hero ------------------------------------------------------------------ */
-.genetika-hero { background: var(--ljubicasta-50); overflow: hidden; }
-.genetika-hero__unutra { padding-block: 64px 40px; }
+.genetika-hero { position: relative; background: var(--ljubicasta-50); overflow: hidden; }
+.genetika-hero__unutra { position: relative; padding-block: 64px 72px; }   /* tekst iznad crteža */
 .genetika-hero__nadnaslov { font-weight: 600; margin-bottom: 14px; }
-.genetika-hero__naslov { color: var(--ljubicasta-800); max-width: 820px; font-size: clamp(40px, 5.4vw, 62px); }
+.genetika-hero__naslov { color: var(--ljubicasta-800); max-width: 700px; font-size: clamp(40px, 5.4vw, 62px); }
 .genetika-hero__tekst { margin-top: 20px; font-size: 19px; color: var(--tekst-blag); max-width: 600px; }
 
-/* DNK heliks: grupa se pomera ulevo za jedan talas (120 jedinica) i ponavlja */
-.genetika-heliks { display: block; width: 100%; height: 120px; }
-.genetika-heliks__grupa { animation: genetika-heliks 9s linear infinite; }
-.genetika-heliks__precka { stroke: var(--ljubicasta-300); stroke-width: 2; }
-.genetika-heliks__nit { fill: none; stroke: var(--ljubicasta-600); stroke-width: 3; }
-.genetika-heliks__nit--svetla { stroke: var(--ljubicasta-500); }
-@keyframes genetika-heliks { from { transform: translateX(0); } to { transform: translateX(-120px); } }
+/* Animacija nasleđivanja (canvas): desno, preko cele visine sekcije,
+   poravnata sa desnom ivicom okvira od 1440px */
+.genetika-hero__crtez { position: absolute; top: 0; bottom: 0; right: max(0px, calc(50% - 720px)); width: 480px; }
+.genetika-hero__platno { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+/* Mali laptop (960–1199px): crtež prilazi tekstu, pa se tekst sužava da ne ide preko hromozoma */
+@media (min-width: 960px) and (max-width: 1199px) {
+  .genetika-hero__naslov,
+  .genetika-hero__tekst { max-width: calc(100vw - 470px); }
+}
 
 /* --- Izbor situacije --------------------------------------------------------- */
 .genetika-situacije { padding-block: 72px 96px; }
@@ -71,7 +73,8 @@
   .genetika-hero__nadnaslov { font-size: 14px; margin-bottom: 10px; }
   .genetika-hero__naslov { font-size: 38px; line-height: 1.05; }
   .genetika-hero__tekst { margin-top: 14px; font-size: 15px; }
-  .genetika-heliks { height: 90px; }
+  /* Crtež ispod teksta, u toku stranice */
+  .genetika-hero__crtez { position: relative; inset: auto; width: auto; height: 260px; margin: 0 var(--margina) 8px; }
 
   .genetika-situacije { padding-block: 30px 10px; }
   .genetika-situacije__naslov { font-size: 28px; line-height: 1.1; margin-bottom: 14px; }

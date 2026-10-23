@@ -205,6 +205,15 @@
 .symphony-cena__iznos .mali-tekst { margin-top: 2px; }
 .symphony-cena__dugme { padding: 16px 26px; }
 
+/* Popust na matične ćelije uz prenatalni test (bela kartica, ljubičasta ivica levo) */
+.symphony-popust {
+  margin-top: 14px; display: flex; gap: 12px; align-items: flex-start; padding: 16px 20px;
+  background: var(--bela); border: 1px solid var(--ljubicasta-200); border-left: 4px solid var(--ljubicasta-600);
+  border-radius: 18px; font-size: 15px; color: var(--tekst-blag);
+}
+.symphony-popust__ikonica { flex-shrink: 0; margin-top: 2px; color: var(--ljubicasta-600); }
+.symphony-popust strong { font-weight: 600; color: var(--ljubicasta-800); }
+
 /* --- ČESTA PITANJA (izgled makroa faq prilagođen skici) ------------------- */
 .symphony-faq { display: flex; flex-wrap: wrap; gap: 32px 72px; align-items: flex-start; padding-top: 60px; padding-bottom: 100px; }
 .symphony-faq__levo { flex: .7 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
@@ -345,7 +354,10 @@
 
   /* Cena */
   .symphony-cena-sekcija { padding-top: 26px; padding-bottom: 0; }
-  .symphony-cena { display: block; border-radius: 26px 26px 26px 90px; padding: 24px 20px 30px; }
+  /* Kartica je ceo omotač (cena + popust), kao u mobilnoj skici */
+  .symphony-cena-okvir { background: var(--ljubicasta-50); border-radius: 26px 26px 26px 90px; padding: 24px 20px 30px; }
+  .symphony-cena { display: block; background: none; border-radius: 0; padding: 0; }
+  .symphony-popust { padding: 14px 16px; font-size: 14px; }
   .symphony-cena__naslov { font-size: 26px; }
   .symphony-cena__opis p { font-size: 14px; }
   .symphony-cena__broj { margin-top: 14px; font-size: 50px; line-height: .9; }

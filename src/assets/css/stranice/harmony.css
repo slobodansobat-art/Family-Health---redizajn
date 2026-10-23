@@ -172,6 +172,15 @@
 }
 .harmony-paketi__napomena strong { font-weight: 600; }
 
+/* Popust na matične ćelije uz prenatalni test (bela kartica, ljubičasta ivica levo) */
+.harmony-popust {
+  margin-top: 14px; display: flex; gap: 12px; align-items: flex-start; padding: 16px 20px;
+  background: var(--bela); border: 1px solid var(--ljubicasta-200); border-left: 4px solid var(--ljubicasta-600);
+  border-radius: 18px; font-size: 15px; color: var(--tekst-blag);
+}
+.harmony-popust__ikonica { flex-shrink: 0; margin-top: 2px; color: var(--ljubicasta-600); }
+.harmony-popust strong { font-weight: 600; color: var(--ljubicasta-800); }
+
 /* --- KORACI (dopune zajedničke komponente) -------------------------------- */
 .harmony-koraci { padding-block: 80px; }
 .harmony-koraci .harmony-naslov { margin-bottom: 10px; }
@@ -356,6 +365,7 @@
   .harmony-paketi__zbir-rata { margin-top: 0; font-size: 14px; }
   .harmony-paketi__zbir-banka { font-size: 12px; }
   .harmony-paketi__symphony { margin-top: 12px; font-size: 14px; }
+  .harmony-popust { padding: 14px 16px; font-size: 14px; }
 
   /* Razlike: samo lista (dijagrami su na malom ekranu nečitljivi) */
   .harmony-razlike { padding-block: 34px 0; }

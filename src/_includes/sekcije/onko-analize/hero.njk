@@ -1,9 +1,9 @@
-{#- ONKO ANALIZE · hero: putanja, naslov, uvod, pretraga + animirana mreža
+{#- ONKO ANALIZE · hero: putanja, naslov, uvod, pretraga + animirani DNK lanac
     Sadržaj: stranice.onkoAnalize.hero   ·   Stil: css/stranice/onko-analize.css
-    Pretragu pokreće js/stranice/onko-analize.js -#}
+    Pretragu i DNK lanac (crta se na <canvas>) pokreće js/stranice/onko-analize.js -#}
 {%- set d = stranice.onkoAnalize.hero -%}
 <section class="analize-hero" aria-labelledby="analize-naslov">
-  <div class="analize-hero__mreza" aria-hidden="true">{% onkoMreza "analize" %}</div>
+  <div class="analize-hero__dnk" aria-hidden="true"><canvas class="analize-hero__platno" data-analize-dnk></canvas></div>
   <div class="kontejner analize-hero__unutra">
     <nav class="analize-putanja" aria-label="Putanja">
       <a href="{{ d.putanjaNazad.link }}">{{ d.putanjaNazad.tekst }}</a> <span aria-hidden="true">/</span> <span aria-current="page">{{ d.putanjaOvde }}</span>

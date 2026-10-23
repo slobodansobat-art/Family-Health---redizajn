@@ -4,7 +4,7 @@
    Tema je radio dugme (name="tema") koje izgleda kao čip i šalje se sa formom.
    Kad se tema promeni:
      - prikazuje se kratko uputstvo za tu temu (data-savet)
-     - prikazuje se dodatno polje te teme (data-za-temu), a polja ostalih tema
+     - prikazuje se dodatno polje te teme, ako ga ima (data-za-temu), a polja ostalih tema
        se sakrivaju i isključuju (disabled), pa se ne šalju
    Bez JavaScript-a sva dodatna polja su vidljiva i forma radi normalno.
    ========================================================================== */

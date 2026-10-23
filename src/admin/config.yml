@@ -701,14 +701,6 @@ collections:
                 label: Naslov
                 required: false
                 widget: string
-              - name: oznakaUskoro
-                label: Oznaka uskoro
-                required: false
-                widget: string
-              - name: oznakaFajl
-                label: Oznaka fajl
-                required: false
-                widget: string
           - name: linija
             label: Linija
             required: false
@@ -772,10 +764,6 @@ collections:
                   name: stavka
                   label: Stavka
                   widget: string
-              - name: nalazOznaka
-                label: Nalaz Oznaka
-                required: false
-                widget: string
               - name: dugme
                 label: Dugme
                 required: false
@@ -1697,6 +1685,24 @@ collections:
                 label: Tekst
                 required: false
                 widget: text
+              - name: crtez
+                label: Crtez
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: mama
+                    label: Mama
+                    required: false
+                    widget: string
+                  - name: tata
+                    label: Tata
+                    required: false
+                    widget: string
+                  - name: beba
+                    label: Beba
+                    required: false
+                    widget: string
           - name: situacije
             label: Situacije
             required: false
@@ -2239,6 +2245,19 @@ collections:
                   - rich_text
               - name: symphonyMobilniMd
                 label: Symphony mobilni
+                required: false
+                widget: markdown
+                buttons:
+                  - bold
+                  - italic
+                  - link
+                  - bulleted-list
+                  - numbered-list
+                editor_components: []
+                modes:
+                  - rich_text
+              - name: popustMd
+                label: Popust
                 required: false
                 widget: markdown
                 buttons:
@@ -2828,10 +2847,6 @@ collections:
                 label: Polje email
                 required: false
                 widget: string
-              - name: poljeNalaz
-                label: Polje Nalaz
-                required: false
-                widget: string
               - name: poljeNedelja
                 label: Polje Nedelja
                 required: false
@@ -3286,6 +3301,38 @@ collections:
                     label: Ukljucen na pocetku
                     required: false
                     widget: boolean
+              - name: prenatalni
+                label: Prenatalni
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: naziv
+                    label: Naziv
+                    required: false
+                    widget: string
+                  - name: popust
+                    label: Popust
+                    required: false
+                    widget: number
+                    value_type: int
+                  - name: tekstMd
+                    label: Tekst
+                    required: false
+                    widget: markdown
+                    buttons:
+                      - bold
+                      - italic
+                      - link
+                      - bulleted-list
+                      - numbered-list
+                    editor_components: []
+                    modes:
+                      - rich_text
+                  - name: ukljucenNaPocetku
+                    label: Ukljucen na pocetku
+                    required: false
+                    widget: boolean
               - name: ukljucenoNaslov
                 label: Ukljuceno Naslov
                 required: false
@@ -3315,6 +3362,10 @@ collections:
                     widget: string
                   - name: dodatakToti
                     label: Dodatak toti
+                    required: false
+                    widget: string
+                  - name: popustUracunat
+                    label: Popust uracunat
                     required: false
                     widget: string
                   - name: brojRata
@@ -3584,46 +3635,6 @@ collections:
                     label: Na mapi
                     required: false
                     widget: string
-          - name: tim
-            label: Tim
-            required: false
-            widget: object
-            collapsed: true
-            fields:
-              - name: naslov
-                label: Naslov
-                required: false
-                widget: string
-              - name: tekst
-                label: Tekst
-                required: false
-                widget: text
-              - name: clanovi
-                label: Clanovi
-                required: false
-                widget: list
-                label_singular: stavku
-                collapsed: true
-                summary: "{{fields.ime}}"
-                fields:
-                  - name: ime
-                    label: Ime
-                    required: false
-                    widget: string
-                  - name: uloga
-                    label: Uloga
-                    required: false
-                    widget: string
-                  - name: slika
-                    label: Slika
-                    required: false
-                    widget: image
-                    choose_url: false
-                    hint: Fotografija (JPG, PNG ili WebP). Dok je prazno, prikazuje se obojeno polje sa opisom.
-                  - name: slikaOpis
-                    label: Opis slike (za slepe i Google)
-                    required: false
-                    widget: string
           - name: mediji
             label: Mediji
             required: false
@@ -3698,6 +3709,46 @@ collections:
                     widget: string
                   - name: link
                     label: Link
+                    required: false
+                    widget: string
+          - name: tim
+            label: Tim
+            required: false
+            widget: object
+            collapsed: true
+            fields:
+              - name: naslov
+                label: Naslov
+                required: false
+                widget: string
+              - name: tekst
+                label: Tekst
+                required: false
+                widget: text
+              - name: clanovi
+                label: Clanovi
+                required: false
+                widget: list
+                label_singular: stavku
+                collapsed: true
+                summary: "{{fields.ime}}"
+                fields:
+                  - name: ime
+                    label: Ime
+                    required: false
+                    widget: string
+                  - name: uloga
+                    label: Uloga
+                    required: false
+                    widget: string
+                  - name: slika
+                    label: Slika
+                    required: false
+                    widget: image
+                    choose_url: false
+                    hint: Fotografija (JPG, PNG ili WebP). Dok je prazno, prikazuje se obojeno polje sa opisom.
+                  - name: slikaOpis
+                    label: Opis slike (za slepe i Google)
                     required: false
                     widget: string
       - name: onko-analize
@@ -3946,10 +3997,6 @@ collections:
                   name: stavka
                   label: Stavka
                   widget: string
-              - name: poljeNalaz
-                label: Polje Nalaz
-                required: false
-                widget: string
               - name: dugme
                 label: Dugme
                 required: false
@@ -4250,40 +4297,6 @@ collections:
                     label: Link
                     required: false
                     widget: string
-              - name: dokumenta
-                label: Dokumenta
-                required: false
-                widget: object
-                collapsed: true
-                fields:
-                  - name: naslov
-                    label: Naslov
-                    required: false
-                    widget: string
-                  - name: oznakaUskoro
-                    label: Oznaka uskoro
-                    required: false
-                    widget: string
-                  - name: oznakaPreuzmi
-                    label: Oznaka preuzmi
-                    required: false
-                    widget: string
-                  - name: stavke
-                    label: Stavke
-                    required: false
-                    widget: list
-                    label_singular: stavku
-                    collapsed: true
-                    summary: "{{fields.naziv}}"
-                    fields:
-                      - name: naziv
-                        label: Naziv
-                        required: false
-                        widget: string
-                      - name: pdf
-                        label: Pdf
-                        required: false
-                        widget: string
               - name: linijaNaslov
                 label: Linija Naslov
                 required: false
@@ -4337,10 +4350,6 @@ collections:
                       name: stavka
                       label: Stavka
                       widget: string
-                  - name: nalaz
-                    label: Nalaz
-                    required: false
-                    widget: string
                   - name: posalji
                     label: Posalji
                     required: false
@@ -5344,6 +5353,19 @@ collections:
                     label: Link
                     required: false
                     widget: string
+              - name: popustMd
+                label: Popust
+                required: false
+                widget: markdown
+                buttons:
+                  - bold
+                  - italic
+                  - link
+                  - bulleted-list
+                  - numbered-list
+                editor_components: []
+                modes:
+                  - rich_text
           - name: faq
             label: Česta pitanja
             required: false
@@ -5694,11 +5716,6 @@ collections:
                 label: Paketi Oznaka
                 required: false
                 widget: string
-              - name: podrazumevaniPaketRedniBroj
-                label: Podrazumevani Paket redni broj
-                required: false
-                widget: number
-                value_type: int
               - name: brojRata
                 label: Broj rata
                 required: false
@@ -5766,6 +5783,10 @@ collections:
                     label: Rezultat
                     required: false
                     widget: string
+                  - name: rokRezultata
+                    label: Rok rezultata
+                    required: false
+                    widget: string
                   - name: link
                     label: Link
                     required: false
@@ -5795,6 +5816,335 @@ collections:
                 label: Rezultat Oznaka
                 required: false
                 widget: string
+              - name: oznakaPreporuka
+                label: Oznaka preporuka
+                required: false
+                widget: string
+              - name: oznakaDrugaOpcija
+                label: Oznaka druga opcija
+                required: false
+                widget: string
+              - name: bezIzbora
+                label: Bez izbora
+                required: false
+                widget: string
+              - name: bezIzboraMobilni
+                label: Bez izbora (telefon)
+                required: false
+                widget: string
+                hint: Kraći tekst koji se prikazuje na telefonu.
+              - name: bezIzboraDugme
+                label: Bez izbora Dugme
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: tekst
+                    label: Tekst
+                    required: false
+                    widget: string
+                  - name: link
+                    label: Link
+                    required: false
+                    widget: string
+              - name: popustMd
+                label: Popust
+                required: false
+                widget: markdown
+                buttons:
+                  - bold
+                  - italic
+                  - link
+                  - bulleted-list
+                  - numbered-list
+                editor_components: []
+                modes:
+                  - rich_text
+          - name: vodic
+            label: Vodic
+            required: false
+            widget: object
+            collapsed: true
+            fields:
+              - name: nadnaslov
+                label: Nadnaslov
+                required: false
+                widget: string
+              - name: naslov
+                label: Naslov
+                required: false
+                widget: string
+              - name: tekst
+                label: Tekst
+                required: false
+                widget: text
+              - name: nedeljaOznaka
+                label: Nedelja Oznaka
+                required: false
+                widget: string
+              - name: pitanja
+                label: Pitanja
+                required: false
+                widget: list
+                label_singular: stavku
+                collapsed: true
+                summary: "{{fields.kljuc}}"
+                fields:
+                  - name: kljuc
+                    label: Kljuc
+                    required: false
+                    widget: string
+                  - name: pitanje
+                    label: Pitanje
+                    required: false
+                    widget: string
+                  - name: odgovori
+                    label: Odgovori
+                    required: false
+                    widget: list
+                    label_singular: stavku
+                    collapsed: true
+                    summary: "{{fields.vrednost}}"
+                    fields:
+                      - name: vrednost
+                        label: Vrednost
+                        required: false
+                        widget: string
+                      - name: tekst
+                        label: Tekst
+                        required: false
+                        widget: string
+              - name: hromozomi
+                label: Hromozomi
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: pitanje
+                    label: Pitanje
+                    required: false
+                    widget: string
+                  - name: pitanjeDodatak
+                    label: Pitanje dodatak
+                    required: false
+                    widget: string
+                  - name: neZnam
+                    label: Ne znam
+                    required: false
+                    widget: string
+                  - name: napomena
+                    label: Napomena
+                    required: false
+                    widget: text
+                  - name: oznakaDugmeta
+                    label: Oznaka dugmeta
+                    required: false
+                    widget: string
+              - name: cekanje
+                label: Cekanje
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: oznaka
+                    label: Oznaka
+                    required: false
+                    widget: string
+                  - name: naslov
+                    label: Naslov
+                    required: false
+                    widget: string
+                  - name: tekst
+                    label: Tekst
+                    required: false
+                    widget: string
+              - name: iscezli
+                label: Iscezli
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: oznaka
+                    label: Oznaka
+                    required: false
+                    widget: string
+                  - name: naslov
+                    label: Naslov
+                    required: false
+                    widget: string
+                  - name: tekst
+                    label: Tekst
+                    required: false
+                    widget: text
+                  - name: tekst2
+                    label: Tekst2
+                    required: false
+                    widget: text
+                  - name: dugmePoziv
+                    label: Dugme poziv
+                    required: false
+                    widget: string
+                  - name: dugme
+                    label: Dugme
+                    required: false
+                    widget: object
+                    collapsed: true
+                    fields:
+                      - name: tekst
+                        label: Tekst
+                        required: false
+                        widget: string
+                      - name: link
+                        label: Link
+                        required: false
+                        widget: string
+              - name: preporuka
+                label: Preporuka
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: oznaka
+                    label: Oznaka
+                    required: false
+                    widget: string
+                  - name: rate
+                    label: Rate
+                    required: false
+                    widget: string
+                  - name: nedeljaPre
+                    label: Nedelja pre
+                    required: false
+                    widget: string
+                  - name: nedeljaSada
+                    label: Nedelja sada
+                    required: false
+                    widget: string
+                  - name: rezultat
+                    label: Rezultat
+                    required: false
+                    widget: string
+                  - name: popustMd
+                    label: Popust
+                    required: false
+                    widget: markdown
+                    buttons:
+                      - bold
+                      - italic
+                      - link
+                      - bulleted-list
+                      - numbered-list
+                    editor_components: []
+                    modes:
+                      - rich_text
+                  - name: dugmeIzaberite
+                    label: Dugme izaberite
+                    required: false
+                    widget: string
+                  - name: dugme
+                    label: Dugme
+                    required: false
+                    widget: object
+                    collapsed: true
+                    fields:
+                      - name: tekst
+                        label: Tekst
+                        required: false
+                        widget: string
+                      - name: link
+                        label: Link
+                        required: false
+                        widget: string
+                  - name: drugaOpcija
+                    label: Druga opcija
+                    required: false
+                    widget: string
+              - name: ispocetka
+                label: Ispocetka
+                required: false
+                widget: string
+              - name: napomena
+                label: Napomena
+                required: false
+                widget: text
+              - name: razlozi
+                label: Razlozi
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: hromozomJedan
+                    label: Hromozom jedan
+                    required: false
+                    widget: string
+                  - name: hromozomVise
+                    label: Hromozom Više
+                    required: false
+                    widget: string
+                  - name: blizanciVanHarmony
+                    label: Blizanci van harmony
+                    required: false
+                    widget: text
+                  - name: vanHarmony
+                    label: Van harmony
+                    required: false
+                    widget: text
+                  - name: blizanciTrizomija21
+                    label: Blizanci trizomija21
+                    required: false
+                    widget: text
+                  - name: trizomija21
+                    label: Trizomija21
+                    required: false
+                    widget: text
+                  - name: polniITrizomije
+                    label: Polni itrizomije
+                    required: false
+                    widget: text
+                  - name: polni
+                    label: Polni
+                    required: false
+                    widget: text
+                  - name: trizomija
+                    label: Trizomija
+                    required: false
+                    widget: text
+                  - name: trizomije
+                    label: Trizomije
+                    required: false
+                    widget: text
+                  - name: blizanciPovoljno
+                    label: Blizanci povoljno
+                    required: false
+                    widget: text
+                  - name: blizanci
+                    label: Blizanci
+                    required: false
+                    widget: text
+                  - name: odstupanje
+                    label: Odstupanje
+                    required: false
+                    widget: text
+                  - name: najsiri
+                    label: Najsiri
+                    required: false
+                    widget: text
+                  - name: posle35Brzina
+                    label: Posle35 brzina
+                    required: false
+                    widget: text
+                  - name: posle35
+                    label: Posle35
+                    required: false
+                    widget: text
+                  - name: cena
+                    label: Cena
+                    required: false
+                    widget: text
+                  - name: ostalo
+                    label: Ostalo
+                    required: false
+                    widget: text
           - name: maticne
             label: Matične
             required: false
@@ -5872,6 +6222,20 @@ collections:
                     widget: string
                   - name: isticanjeMobilni
                     label: Isticanje (telefon)
+                    required: false
+                    widget: string
+                    hint: Kraći tekst koji se prikazuje na telefonu.
+                  - name: popust
+                    label: Popust
+                    required: false
+                    widget: number
+                    value_type: int
+                  - name: popustTekst
+                    label: Popust Tekst
+                    required: false
+                    widget: string
+                  - name: popustTekstMobilni
+                    label: Popust Tekst (telefon)
                     required: false
                     widget: string
                     hint: Kraći tekst koji se prikazuje na telefonu.
@@ -5956,8 +6320,8 @@ collections:
                 editor_components: []
                 modes:
                   - rich_text
-              - name: ciklusOznaka
-                label: Ciklus Oznaka
+              - name: rasporedOznaka
+                label: Raspored Oznaka
                 required: false
                 widget: string
               - name: termini
@@ -5966,6 +6330,20 @@ collections:
                 widget: string
               - name: dugme
                 label: Dugme
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: tekst
+                    label: Tekst
+                    required: false
+                    widget: string
+                  - name: link
+                    label: Link
+                    required: false
+                    widget: string
+              - name: rasporedLink
+                label: Raspored Link
                 required: false
                 widget: object
                 collapsed: true
@@ -6477,34 +6855,6 @@ collections:
                 label: Tekst
                 required: false
                 widget: string
-              - name: dokumentiOznaka
-                label: Dokumenti Oznaka
-                required: false
-                widget: string
-              - name: dokumenti
-                label: Dokumenti
-                required: false
-                widget: list
-                label_singular: stavku
-                collapsed: true
-                summary: "{{fields.naziv}}"
-                fields:
-                  - name: naziv
-                    label: Naziv
-                    required: false
-                    widget: string
-                  - name: fajl
-                    label: Fajl
-                    required: false
-                    widget: string
-                  - name: status
-                    label: Status
-                    required: false
-                    widget: string
-              - name: dokumentPreuzmi
-                label: Dokument preuzmi
-                required: false
-                widget: string
               - name: telefonOznaka
                 label: Telefon Oznaka
                 required: false
@@ -6552,14 +6902,6 @@ collections:
                     label: Pacijent primer
                     required: false
                     widget: string
-                  - name: prilog
-                    label: Prilog
-                    required: false
-                    widget: string
-                  - name: prilogPomoc
-                    label: Prilog pomoc
-                    required: false
-                    widget: string
                   - name: saglasnostPacijenta
                     label: Saglasnost pacijenta
                     required: false
@@ -6568,6 +6910,525 @@ collections:
                     label: Dugme
                     required: false
                     widget: string
+      - name: zdravo-mama
+        label: Škola Zdravo mama
+        file: src/sadrzaj/stranice/zdravo-mama.json
+        fields:
+          - name: _naziv
+            label: Naziv
+            required: false
+            widget: hidden
+          - name: seo
+            label: SEO (pretraživači)
+            required: false
+            widget: object
+            collapsed: true
+            fields:
+              - name: naslov
+                label: Naslov
+                required: false
+                widget: string
+              - name: opis
+                label: Opis
+                required: false
+                widget: text
+          - name: hero
+            label: Uvodni deo (hero)
+            required: false
+            widget: object
+            collapsed: true
+            fields:
+              - name: putanja
+                label: Putanja
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: roditeljTekst
+                    label: Roditelj Tekst
+                    required: false
+                    widget: string
+                  - name: roditeljLink
+                    label: Roditelj Link
+                    required: false
+                    widget: string
+                  - name: trenutna
+                    label: Trenutna
+                    required: false
+                    widget: string
+              - name: logoSlika
+                label: Logo slika
+                required: false
+                widget: image
+                choose_url: false
+                hint: Fotografija (JPG, PNG ili WebP). Dok je prazno, prikazuje se obojeno polje sa opisom.
+              - name: logoSlikaOpis
+                label: "Opis: Logo slika (za slepe i Google)"
+                required: false
+                widget: string
+              - name: oznaka
+                label: Oznaka
+                required: false
+                widget: string
+              - name: oznakaTekst
+                label: Oznaka Tekst
+                required: false
+                widget: string
+              - name: naslov
+                label: Naslov
+                required: false
+                widget: string
+              - name: tekst
+                label: Tekst
+                required: false
+                widget: text
+              - name: cipovi
+                label: Čipovi
+                required: false
+                widget: list
+                label_singular: stavku
+                collapsed: true
+                summary: "{{fields.tekst}}"
+                fields:
+                  - name: tekst
+                    label: Tekst
+                    required: false
+                    widget: string
+                  - name: istaknut
+                    label: Istaknut
+                    required: false
+                    widget: boolean
+                  - name: samoDesktop
+                    label: Samo desktop
+                    required: false
+                    widget: boolean
+              - name: dugme
+                label: Dugme
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: tekst
+                    label: Tekst
+                    required: false
+                    widget: string
+                  - name: link
+                    label: Link
+                    required: false
+                    widget: string
+              - name: dugmeRaspored
+                label: Dugme raspored
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: tekst
+                    label: Tekst
+                    required: false
+                    widget: string
+                  - name: link
+                    label: Link
+                    required: false
+                    widget: string
+              - name: instagram
+                label: Instagram
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: tekst
+                    label: Tekst
+                    required: false
+                    widget: string
+                  - name: link
+                    label: Link
+                    required: false
+                    widget: string
+              - name: sledece
+                label: Sledece
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: oznaka
+                    label: Oznaka
+                    required: false
+                    widget: string
+                  - name: oznakaDanas
+                    label: Oznaka danas
+                    required: false
+                    widget: string
+                  - name: vreme
+                    label: Vreme
+                    required: false
+                    widget: string
+                  - name: nemaOznaka
+                    label: Nema Oznaka
+                    required: false
+                    widget: string
+                  - name: nemaDan
+                    label: Nema dan
+                    required: false
+                    widget: string
+                  - name: nemaVreme
+                    label: Nema Vreme
+                    required: false
+                    widget: string
+                  - name: dugme
+                    label: Dugme
+                    required: false
+                    widget: object
+                    collapsed: true
+                    fields:
+                      - name: tekst
+                        label: Tekst
+                        required: false
+                        widget: string
+                      - name: link
+                        label: Link
+                        required: false
+                        widget: string
+          - name: raspored
+            label: Raspored
+            required: false
+            widget: object
+            collapsed: true
+            fields:
+              - name: naslov
+                label: Naslov
+                required: false
+                widget: string
+              - name: tekst
+                label: Tekst
+                required: false
+                widget: text
+              - name: tekstMobilni
+                label: Tekst (telefon)
+                required: false
+                widget: text
+                hint: Kraći tekst koji se prikazuje na telefonu.
+              - name: izborOznaka
+                label: Izbor Oznaka
+                required: false
+                widget: string
+              - name: vreme
+                label: Vreme
+                required: false
+                widget: string
+              - name: nemaPredavaca
+                label: Nema predavaca
+                required: false
+                widget: string
+              - name: oznake
+                label: Oznake
+                required: false
+                widget: object
+                collapsed: true
+                fields:
+                  - name: odrzano
+                    label: Odrzano
+                    required: false
+                    widget: string
+                  - name: danas
+                    label: Danas
+                    required: false
+                    widget: string
+                  - name: sledece
+                    label: Sledece
+                    required: false
+                    widget: string
+                  - name: uskoro
+                    label: Uskoro
+                    required: false
+                    widget: string
+              - name: ciklusi
+                label: Ciklusi
+                required: false
+                widget: list
+                label_singular: stavku
+                collapsed: true
+                summary: "{{fields.naziv}}"
+                fields:
+                  - name: naziv
+                    label: Naziv
+                    required: false
+                    widget: string
+                  - name: kratko
+                    label: Kratko
+                    required: false
+                    widget: string
+                  - name: napomena
+                    label: Napomena
+                    required: false
+                    widget: text
+                  - name: termini
+                    label: Termini
+                    required: false
+                    widget: list
+                    label_singular: stavku
+                    collapsed: true
+                    fields:
+                      - name: datum
+                        label: Datum
+                        required: false
+                        widget: datetime
+                        format: YYYY-MM-DD
+                        date_format: DD.MM.YYYY.
+                        time_format: false
+                      - name: predavaci
+                        label: Predavaci
+                        required: false
+                        widget: list
+                        label_singular: stavku
+                        field:
+                          name: stavka
+                          label: Stavka
+                          widget: string
+                        hint: Ključ predavača iz liste „Predavači" (npr. jakovljevic) ili puno ime
+              - name: daniUNedelji
+                label: Dani unedelji
+                required: false
+                widget: list
+                label_singular: stavku
+                field:
+                  name: stavka
+                  label: Stavka
+                  widget: string
+              - name: meseci
+                label: Meseci
+                required: false
+                widget: list
+                label_singular: stavku
+                field:
+                  name: stavka
+                  label: Stavka
+                  widget: string
+          - name: predavaci
+            label: Predavaci
+            required: false
+            widget: object
+            collapsed: true
+            fields:
+              - name: naslov
+                label: Naslov
+                required: false
+                widget: string
+              - name: tekst
+                label: Tekst
+                required: false
+                widget: text
+              - name: napomena
+                label: Napomena
+                required: false
+                widget: text
+              - name: mestoZaFoto
+                label: Mesto za foto
+                required: false
+                widget: string
+              - name: lista
+                label: Lista
+                required: false
+                widget: list
+                label_singular: stavku
+                collapsed: true
+                summary: "{{fields.kljuc}}"
+                fields:
+                  - name: kljuc
+                    label: Kljuc
+                    required: false
+                    widget: string
+                  - name: ime
+                    label: Ime
+                    required: false
+                    widget: string
+                  - name: zvanje
+                    label: Zvanje
+                    required: false
+                    widget: string
+                  - name: tema
+                    label: Tema
+                    required: false
+                    widget: string
+                  - name: slika
+                    label: Slika
+                    required: false
+                    widget: image
+                    choose_url: false
+                    hint: Fotografija (JPG, PNG ili WebP). Dok je prazno, prikazuje se obojeno polje sa opisom.
+                  - name: slikaOpis
+                    label: Opis slike (za slepe i Google)
+                    required: false
+                    widget: string
+          - name: kako
+            label: Kako
+            required: false
+            widget: object
+            collapsed: true
+            fields:
+              - name: naslov
+                label: Naslov
+                required: false
+                widget: string
+              - name: koraci
+                label: Koraci
+                required: false
+                widget: list
+                label_singular: stavku
+                collapsed: true
+                summary: "{{fields.naslov}}"
+                fields:
+                  - name: naslov
+                    label: Naslov
+                    required: false
+                    widget: string
+                  - name: tekst
+                    label: Tekst
+                    required: false
+                    widget: text
+                  - name: tekstMobilni
+                    label: Tekst (telefon)
+                    required: false
+                    widget: string
+                    hint: Kraći tekst koji se prikazuje na telefonu.
+          - name: prijava
+            label: Prijava
+            required: false
+            widget: object
+            collapsed: true
+            fields:
+              - name: naslov
+                label: Naslov
+                required: false
+                widget: string
+              - name: tekst
+                label: Tekst
+                required: false
+                widget: string
+              - name: tekstMobilni
+                label: Tekst (telefon)
+                required: false
+                widget: string
+                hint: Kraći tekst koji se prikazuje na telefonu.
+              - name: napomena
+                label: Napomena
+                required: false
+                widget: text
+              - name: napomenaMobilni
+                label: Napomena (telefon)
+                required: false
+                widget: string
+                hint: Kraći tekst koji se prikazuje na telefonu.
+              - name: poljeIme
+                label: Polje ime
+                required: false
+                widget: string
+              - name: poljeEmail
+                label: Polje email
+                required: false
+                widget: string
+              - name: poljeNedelja
+                label: Polje Nedelja
+                required: false
+                widget: string
+              - name: poljeIzvor
+                label: Polje Izvor
+                required: false
+                widget: string
+              - name: izvorPrazno
+                label: Izvor prazno
+                required: false
+                widget: string
+              - name: izvori
+                label: Izvori
+                required: false
+                widget: list
+                label_singular: stavku
+                field:
+                  name: stavka
+                  label: Stavka
+                  widget: string
+              - name: ciklusOznaka
+                label: Ciklus Oznaka
+                required: false
+                widget: string
+              - name: ciklusUskoro
+                label: Ciklus uskoro
+                required: false
+                widget: string
+              - name: saglasnost
+                label: Saglasnost
+                required: false
+                widget: string
+              - name: vesti
+                label: Vesti
+                required: false
+                widget: string
+              - name: dugme
+                label: Dugme
+                required: false
+                widget: string
+          - name: partneri
+            label: Partneri
+            required: false
+            widget: object
+            collapsed: true
+            fields:
+              - name: naslov
+                label: Naslov
+                required: false
+                widget: string
+              - name: lista
+                label: Lista
+                required: false
+                widget: list
+                label_singular: stavku
+                collapsed: true
+                summary: "{{fields.naziv}}"
+                fields:
+                  - name: naziv
+                    label: Naziv
+                    required: false
+                    widget: string
+                  - name: logoSlika
+                    label: Logo slika
+                    required: false
+                    widget: image
+                    choose_url: false
+                    hint: Fotografija (JPG, PNG ili WebP). Dok je prazno, prikazuje se obojeno polje sa opisom.
+                  - name: logoSlikaOpis
+                    label: "Opis: Logo slika (za slepe i Google)"
+                    required: false
+                    widget: string
+              - name: napomena
+                label: Napomena
+                required: false
+                widget: string
+          - name: faq
+            label: Česta pitanja
+            required: false
+            widget: object
+            collapsed: true
+            fields:
+              - name: naslov
+                label: Naslov
+                required: false
+                widget: string
+              - name: pitanja
+                label: Pitanja
+                required: false
+                widget: list
+                label_singular: stavku
+                collapsed: true
+                summary: "{{fields.pitanje}}"
+                fields:
+                  - name: pitanje
+                    label: Pitanje
+                    required: false
+                    widget: string
+                  - name: odgovor
+                    label: Odgovor
+                    required: false
+                    widget: text
   - name: analize
     label: Onko analize
     label_singular: analizu
@@ -6666,6 +7527,10 @@ collections:
             widget: object
             collapsed: true
             fields:
+              - name: animacija
+                label: Animacija
+                required: false
+                widget: boolean
               - name: nadnaslov
                 label: Nadnaslov
                 required: false
@@ -6795,10 +7660,6 @@ collections:
                         widget: string
                       - name: link
                         label: Link
-                        required: false
-                        widget: string
-                      - name: fajl
-                        label: Fajl
                         required: false
                         widget: string
           - name: zaPacijente

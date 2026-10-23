@@ -18,53 +18,18 @@
   "put": {
     "naslov": "Uzorak se vadi u Beogradu. Analizira se tamo gde je najbolje.",
     "tekst": "Ne pravimo kompromis oko laboratorije. Biramo partnere po kvalitetu, a logistiku, dozvole i transport preuzimamo mi.",
-    "mapaOpis": "Uzorci putuju iz Beograda u Tibingen, laboratoriju u Nemačkoj i u Veliku Britaniju",
+    "mapaOpis": "Uzorci putuju iz Beograda u Tibingen, Nemačka, i u Veliku Britaniju",
     "polaziste": "Beograd",
     "partneri": [
       {
-        "naziv": "CeGaT, Tibingen",
-        "opis": "genetika tumora",
-        "naMapi": "Tibingen"
-      },
-      {
-        "naziv": "Laboratorija u Nemačkoj",
-        "opis": "Harmony test, Roche [naziv potvrditi]",
-        "naMapi": "Nemačka"
+        "naziv": "Tibingen, Nemačka",
+        "opis": "CeGaT, genetika tumora; laboratorija za Harmony test, Roche [naziv potvrditi]",
+        "naMapi": "Tibingen, Nemačka"
       },
       {
         "naziv": "Cells4Life, Velika Britanija",
         "opis": "čuvanje matičnih ćelija, TotiCyte",
         "naMapi": "Velika Britanija"
-      }
-    ]
-  },
-  "tim": {
-    "naslov": "Ljudi sa kojima razgovarate",
-    "tekst": "Na drugoj strani telefona je uvek neko ko zna o čemu pričate. [fotografije i imena tima dodati]",
-    "clanovi": [
-      {
-        "ime": "[Ime i prezime]",
-        "uloga": "[uloga, npr. lekar za onkogenetiku]",
-        "slika": "",
-        "slikaOpis": "Fotografija"
-      },
-      {
-        "ime": "[Ime i prezime]",
-        "uloga": "[uloga, npr. koordinator za matične ćelije]",
-        "slika": "",
-        "slikaOpis": "Fotografija"
-      },
-      {
-        "ime": "[Ime i prezime]",
-        "uloga": "[uloga, npr. medicinski tehničar]",
-        "slika": "",
-        "slikaOpis": "Fotografija"
-      },
-      {
-        "ime": "[Ime i prezime]",
-        "uloga": "[uloga, npr. podrška pacijentima]",
-        "slika": "",
-        "slikaOpis": "Fotografija"
       }
     ]
   },

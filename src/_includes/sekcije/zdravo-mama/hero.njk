@@ -1,0 +1,81 @@
+{#- ZDRAVO MAMA · uvod (hero): putanja, logo škole, naslov, čipovi, dugmad i
+    kartica "Sledeće predavanje" (računa se iz rasporeda i današnjeg datuma).
+    Ukras: tirkizni krug dole levo i mehurići od sapunice koji izleću iz njega
+    (CSS animacija .zm-mehuri/.zm-m; ne primaju klikove, iza su teksta,
+    skriveni uz "smanji pokrete"). Desktop i telefon imaju svoj skup mehurića.
+    Sadržaj: stranice.zdravoMama.hero  ·  kartica: zm.sled (front matter stranice)
+    JS (js/stranice/zdravo-mama.js) ponovo popunjava karticu po današnjem datumu.
+    Stil: css/stranice/zdravo-mama.css (.zm-hero, .zm-sled, .zm-mehuri) -#}
+{%- from "makroi/osnovni.njk" import slika -%}
+{%- set d = stranice.zdravoMama.hero -%}
+{#- Mehurići: [levo px, odozdo px, veličina px, trajanje s, kašnjenje s, ljuljanje s, pomak x px, pomak y px] -#}
+{%- set mehuriDesktop = [
+  [60, 143, 12, 9.9, -5.3, 2.2, 227, -452], [116, 33, 12, 8.2, -3.5, 2.9, 281, -344],
+  [219, 129, 21, 11.8, -11.5, 1.7, 883, -370], [53, 78, 34, 8.9, -1.6, 2.5, 703, -401],
+  [42, 31, 16, 11.3, -7.7, 2.3, 437, -482], [89, 170, 30, 10.7, -2.6, 2.5, 610, -592],
+  [87, 206, 13, 12.4, -5.2, 2.8, 304, -445], [163, 165, 27, 8.2, -7.2, 2.1, 750, -485],
+  [121, 179, 38, 11.5, -5.4, 2.7, 229, -526], [228, 176, 18, 11.9, -4.6, 2.7, 198, -435],
+  [53, 31, 33, 9.0, -1.2, 2.0, 500, -591], [119, 124, 36, 8.5, -7.0, 3.0, 408, -417],
+  [206, 201, 14, 10.2, -1.8, 2.0, 371, -444], [82, 20, 22, 11.5, -4.3, 2.5, 961, -522],
+  [153, 148, 11, 11.1, -10.0, 2.8, 897, -563], [109, 39, 29, 10.4, -0.6, 1.7, 351, -321]
+] -%}
+{%- set mehuriMobilni = [
+  [71, 121, 18, 10.7, -5.4, 2.5, 88, -687], [97, 30, 14, 11.8, -1.1, 2.9, 220, -405],
+  [116, 91, 21, 13.9, -2.2, 1.6, 177, -415], [36, 23, 18, 9.1, -4.0, 2.9, 174, -764],
+  [82, 70, 14, 11.0, -11.0, 3.2, 258, -804], [35, 51, 9, 9.9, -7.6, 2.2, 260, -611],
+  [103, 20, 12, 13.7, -12.5, 2.4, 294, -618], [79, 105, 13, 8.4, -0.7, 2.1, 290, -834],
+  [37, 31, 9, 8.7, -6.9, 1.9, 185, -648], [90, 34, 22, 9.1, -1.1, 2.3, 95, -541]
+] -%}
+{%- macro mehuri(lista, klasa) -%}
+<div class="zm-mehuri {{ klasa }}">
+  {%- for m in lista %}<span class="zm-m" style="--x: {{ m[0] }}px; --y: {{ m[1] }}px; --s: {{ m[2] }}px; --t: {{ m[3] }}s; --k: {{ m[4] }}s; --w: {{ m[5] }}s; --dx: {{ m[6] }}px; --dy: {{ m[7] }}px"><i></i></span>{% endfor -%}
+</div>
+{%- endmacro -%}
+<section class="zm-hero" aria-labelledby="zm-hero-naslov">
+  <div class="zm-hero__pozadina" aria-hidden="true">
+    <svg class="zm-hero__krug" viewBox="0 0 400 400" focusable="false"><path d="M310 60c50 40 70 120 40 190s-120 110-190 90S40 260 50 180 120 40 190 30s70-10 120 30z"></path></svg>
+    {{ mehuri(mehuriDesktop, "zm-mehuri--desktop") }}
+    {{ mehuri(mehuriMobilni, "zm-mehuri--mobilni") }}
+  </div>
+
+  <div class="kontejner zm-hero__unutra">
+    <div class="zm-hero__tekst">
+      <nav class="zm-hero__putanja" aria-label="Putanja">
+        <a href="{{ d.putanja.roditeljLink }}">{{ d.putanja.roditeljTekst }}</a> <span aria-hidden="true">/</span> {{ d.putanja.trenutna }}
+      </nav>
+
+      <div class="zm-hero__skola">
+        <span class="zm-hero__logo">{{ slika(d.logoSlika, d.logoSlikaOpis, "zm-hero__logo-slika", 132, 132, ucitavanje="eager") }}</span>
+        <p class="zm-hero__oznaka">{{ d.oznaka }}<span>{{ d.oznakaTekst }}</span></p>
+      </div>
+
+      <h1 id="zm-hero-naslov" class="zm-hero__naslov">{{ d.naslov }}</h1>
+      <p class="zm-hero__uvod">{{ d.tekst }}</p>
+
+      <ul class="zm-hero__cipovi">
+        {%- for c in d.cipovi %}
+        <li class="zm-hero__cip{% if c.istaknut %} zm-hero__cip--istaknut{% endif %}{% if c.samoDesktop %} samo-desktop{% endif %}">{{ c.tekst }}</li>
+        {%- endfor %}
+      </ul>
+
+      <div class="zm-hero__akcije">
+        <a href="{{ d.dugme.link }}" class="dugme zm-dugme">{{ d.dugme.tekst }}</a>
+        <a href="{{ d.dugmeRaspored.link }}" class="dugme dugme--obrub zm-dugme-obrub samo-desktop">{{ d.dugmeRaspored.tekst }}</a>
+        <a href="{{ d.instagram.link }}" class="zm-hero__instagram">{{ d.instagram.tekst }}</a>
+      </div>
+    </div>
+
+    {#- Sledeće predavanje (JS ga ponovo popunjava po današnjem datumu posetioca) #}
+    <div class="zm-sled" data-zm-sled>
+      <p class="zm-sled__oznaka" data-zm-sled-oznaka>{{ zm.sled.oznaka }}</p>
+      <p class="zm-sled__dan" data-zm-sled-dan>{{ zm.sled.dan }}</p>
+      <p class="zm-sled__vreme" data-zm-sled-vreme>{{ zm.sled.vreme }}</p>
+      <ul class="zm-sled__lista" data-zm-sled-lista>
+        {%- for p in zm.sled.predavaci -%}
+        <li><span class="zm-sled__tema">{{ p.tema }}</span><span class="zm-sled__ime">{{ p.ime }}{% if p.zvanje %}<span class="zm-sled__zvanje">, {{ p.zvanje }}</span>{% endif %}</span></li>
+        {%- endfor -%}
+      </ul>
+      <a href="{{ d.sledece.dugme.link }}" class="dugme zm-sled__dugme samo-desktop">{{ d.sledece.dugme.tekst }}</a>
+    </div>
+  </div>
+</section>

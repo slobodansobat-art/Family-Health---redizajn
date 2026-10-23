@@ -8,7 +8,7 @@
 {%- set k = podesavanja.kontakt -%}
 {%- set pk = stranice.maticneCelije.paketi -%}
 {%- set pocetniPaket = pk.obracun.naslovPaketa | replace("{godina}", pk.stavke[0].godina) + (pk.obracun.dodatakToti if pk.toti.ukljucenNaPocetku else "") -%}
-<section id="kontakt" class="mc-kontakt" aria-labelledby="mc-kontakt-naslov">
+<section id="kontakt" class="mc-kontakt povrsina-tamna" aria-labelledby="mc-kontakt-naslov">
   <svg class="mc-kontakt__mrlja" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path d="M310 60c50 40 70 120 40 190s-120 110-190 90S40 260 50 180 120 40 190 30s70-10 120 30z"></path></svg>
   <div class="kontejner mc-kontakt__mreza">
     <div class="mc-kontakt__levo">

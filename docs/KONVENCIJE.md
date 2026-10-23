@@ -87,7 +87,7 @@ Pravila (CMS ih koristi da izabere vrstu polja):
 
 - Bez inline `style` atributa. Izuzetak: CSS promenljive za podatke (npr. `style="--kasnjenje: 120ms"`).
 - Boje, fontovi i razmaci isključivo preko promenljivih iz `01-tokeni.css` (`var(--ljubicasta-600)`, `var(--font-naslov)`, `var(--margina)`...). Nove promenljive stranice definišu se na korenskom elementu stranice.
-- Klase stranice počinju prefiksom stranice (BEM): `.harmony-hero`, `.harmony-hero__naslov`, `.harmony-hero--uzano`. Prefiksi: `pocetna`, `onko`, `analize`, `analiza`, `neo`, `lekari`, `trudnoca`, `harmony`, `symphony`, `mc`, `genetika`, `onama`, `kontakt`, `privatnost`, `greska`, `blog`, `clanak`, `hvala`.
+- Klase stranice počinju prefiksom stranice (BEM): `.harmony-hero`, `.harmony-hero__naslov`, `.harmony-hero--uzano`. Prefiksi: `pocetna`, `onko`, `analize`, `analiza`, `neo`, `lekari`, `trudnoca`, `harmony`, `symphony`, `mc`, `genetika`, `onama`, `kontakt`, `privatnost`, `greska`, `blog`, `clanak`, `hvala`, `zm` (škola Zdravo mama).
 - Zajedničke klase (koriste se, ne menjaju se u stranici): `.kontejner`, `.sekcija`, `.naslov-xl/-l/-m/-s`, `.nadnaslov`, `.blag`, `.mali-tekst`, `.dugme` (+ `--belo`, `--obrub`, `--mint`, `--zlatno`, `--tamno`, `--puno`, `--malo`), `.okruglo-dugme`, `.cip`/`.cipovi`, `.oznaka`, `.oznaka-premium`, `.napomena`, `.slika` (+ `--krug`, `--zaobljena`), `.sr-only`, `.samo-desktop`, `.samo-mobilni`, `.tekst-md`, `.forma`, `.forma--bela`, `.polje`, `.unos`, `.saglasnost`, `.povrsina-tamna`, `.povrsina-svetla`.
 - Okvir fokusa (tastatura) je `outline: 3px solid var(--fokus)`. Sekcija sa TAMNOM pozadinom mora da promeni boju okvira, inače se ne vidi: klasa `povrsina-tamna` na sekciji (`<section class="neo-proces povrsina-tamna">`) ili u CSS-u sekcije `--fokus: var(--fokus-na-tamnom);`. Bela kartica/forma unutar tamne sekcije: `povrsina-svetla` (`.forma--bela` to već radi). Zaglavlje (tamna/noc), futer, gornja traka i mobilni meni to već imaju.
 - Granica za mobilni: **959px**. Desktop stil je osnovni, mobilni ide u `@media (max-width: 959px) { … }` na kraju fajla. Proveriti i širine između (tablet 768px, mali laptop 1024px): ništa ne sme da izlazi van ekrana.
@@ -127,7 +127,7 @@ Pravila (CMS ih koristi da izabere vrstu polja):
     {{ posalji("Pošaljite, javljamo se istog radnog dana") }}
   {% endcall %}
   ```
-  Ime forme je jedinstveno na celom sajtu: `<kljuc>-<svrha>`. SVAKA forma obavezno traži ime, telefon i email (`obavezno=true`). Forma sa prilozima: `forma("onko-nalaz", "forma", true)` + `fajlPolje(...)`.
+  Ime forme je jedinstveno na celom sajtu: `<kljuc>-<svrha>`. SVAKA forma obavezno traži ime, telefon i email (`obavezno=true`). Jedini izuzetak je prijava za školu Zdravo mama (`zdravo-mama`): ime, email i nedelja trudnoće, bez telefona (odluka klijenta). Forme nemaju polja za otpremanje fajlova. Forma sa prilozima: `forma("onko-nalaz", "forma", true)` + `fajlPolje(...)`.
 - Onko animacija: `{% onkoMreza "seme", 1 %}` (SVG; omotaču dati `data-mreza-ponovo` ako treba da se ponovi kad se vrati u vidno polje).
 - Kontakt podaci uvek iz `podesavanja.kontakt` (telefon, mobilni, email, adresa, radnoVreme), nikad prepisani u JSON stranice.
 
@@ -149,6 +149,7 @@ Pravila (CMS ih koristi da izabere vrstu polja):
 | ONama | `/o-nama/` |
 | Blog | `/blog/` |
 | BlogClanak | `/blog/kako-se-racuna-starost-trudnoce/` |
+| ZdravoMama | `/skola-za-trudnice/` (ista adresa kao na starom sajtu; prijava: `#prijava`) |
 | Kontakt | `/kontakt/` (forma: `#forma`) |
 | Hvala | `/hvala/` |
 | Greska404 | `/404.html` |

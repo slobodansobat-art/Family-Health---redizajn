@@ -106,7 +106,7 @@
       { "osobina": "DiGeorge (22q11.2)", "harmony": "Da, u paketu Plus", "symphony": "Ne, promena je manja od 7 Mb [potvrditi sa laboratorijom]" },
       { "osobina": "Pristup", "harmony": "Ciljana, dubinska analiza (Roche)", "symphony": "Analiza celog genoma (Illumina VeriSeq NIPT)" },
       { "osobina": "Rezultat", "harmony": "3 do 5 radnih dana", "symphony": "5 radnih dana" },
-      { "osobina": "Cena", "harmony": "od 390 do 690 €", "symphony": "790 €" },
+      { "osobina": "Cena", "harmony": "od 490 do 690 €", "symphony": "790 €" },
       { "osobina": "Kada se bira", "harmony": "Kada želite pouzdan pregled najčešćih hromozomskih poremećaja", "symphony": "Kada želite najširi pregled koji nudimo, ili vam ga lekar preporuči" }
     ],
     "zakljucakMd": "Niste sigurni koji vam treba? [Besplatne konsultacije sa našim lekarom](#kontakt), pre nego što se odlučite.",
@@ -151,7 +151,8 @@
     "brojRata": 3,
     "rateTekst": "ili {broj} rate po {iznos}, bez kamate",
     "rateNapomena": "uz sve Banca Intesa kartice",
-    "dugme": { "tekst": "Zakažite vađenje krvi", "link": "#kontakt" }
+    "dugme": { "tekst": "Zakažite vađenje krvi", "link": "#kontakt" },
+    "popustMd": "**300 € popusta na matične ćelije.** Svaka trudnica koja kod nas uradi prenatalni test ostvaruje 300 € popusta na osnovnu cenu čuvanja matičnih ćelija iz pupčanika. [Izračunajte cenu →](/maticne-celije/#paketi) [Niste sigurni koji test? Vodič kroz izbor →](/trudnoca-i-beba/#vodic)"
   },
   "faq": {
     "naslov": "Česta pitanja",
@@ -161,7 +162,7 @@
       { "pitanje": "Koliko je Symphony pouzdan?", "odgovor": "Specifičnost testa je 99,9%, a u oko 0,1% slučajeva uzorak ne daje rezultat i krv se vadi ponovo. [potvrditi podatke sa laboratorijom] Kao i svaki skrining test, povišen rizik se potvrđuje amniocentezom." },
       { "pitanje": "Mogu li da saznam pol bebe?", "odgovor": "Da. Pol bebe se navodi u nalazu ako ga tražite." },
       { "pitanje": "Da li Symphony zamenjuje amniocentezu?", "odgovor": "Ne. Symphony je skrining test koji pokazuje verovatnoću. Amniocenteza je dijagnostička metoda i preporučuje se kada je rizik povišen ili ultrazvuk pokaže odstupanje." },
-      { "pitanje": "Da li je test moguć kod blizanaca i posle vantelesne oplodnje?", "odgovor": "[potvrditi sa laboratorijom koje vrste trudnoće Symphony podržava]" },
+      { "pitanje": "Da li je test moguć kod blizanaca i posle vantelesne oplodnje?", "odgovor": "Da, Symphony se radi i kod blizanačke trudnoće. Kod blizanaca jedini drugi izbor je Harmony Trio. Za trudnoće posle vantelesne oplodnje [potvrditi sa laboratorijom]." },
       { "pitanje": "Kako se pripremiti za vađenje krvi?", "odgovor": "Nije potrebna posebna priprema i ne morate biti našte. Pripremite poslednji nalaz ultrazvuka, a krv vadimo u našoj ordinaciji ili kod vas kući, a dolazak ne naplaćujemo." }
     ]
   },

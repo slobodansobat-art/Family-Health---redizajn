@@ -80,6 +80,10 @@
   transition: transform 1s var(--prelaz);
 }
 .pocetna-hero__deo--onko.je-prosiren .pocetna-hero__mreza { transform: scale(1.18) translateX(-60px); }
+/* Tekst uvek iznad mreže (tačke ne smeju da prekriju slova) */
+.pocetna-hero__deo--onko .pocetna-hero__osnovno, .pocetna-hero__deo--onko .pocetna-hero__dodatno { z-index: 1; }
+/* Uži laptop: panel je uži, pa se mreža pomera udesno i stišava */
+@media (min-width: 960px) and (max-width: 1279px) { .pocetna-hero__mreza { right: -230px; opacity: .7; } }
 
 .pocetna-hero__deo--onko .pocetna-hero__osnovno { left: 52px; top: 52px; bottom: 44px; width: var(--onko-baza); gap: 22px; }
 .pocetna-hero__deo--onko .pocetna-hero__nadnaslov { color: var(--ljubicasta-400); }
@@ -295,7 +299,7 @@
   .pocetna-hero__akcije .dugme { flex: 1 1 100%; padding: 14px; }
 
   /* Onko kartica */
-  .pocetna-hero__mreza { right: -160px; top: -70px; width: 340px; height: 340px; opacity: .6; }
+  .pocetna-hero__mreza { right: -170px; top: -70px; width: 340px; height: 340px; opacity: .45; }
   .pocetna-hero__deo--onko .pocetna-hero__naslov { font-size: 34px; line-height: 1.06; letter-spacing: 0; max-width: none; }
   .pocetna-hero__tekst { font-size: 15px; }
   .pocetna-hero__cipovi { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }

@@ -7,7 +7,8 @@
   "hero": {
     "nadnaslov": "Ostale genetske analize",
     "naslov": "Genetika za planiranje porodice, plodnost i prevenciju.",
-    "tekst": "Krenite od situacije u kojoj ste. Pre svake analize imate besplatnu konsultaciju, da ne radite ništa što vam ne treba."
+    "tekst": "Krenite od situacije u kojoj ste. Pre svake analize imate besplatnu konsultaciju, da ne radite ništa što vam ne treba.",
+    "crtez": { "mama": "MAMA", "tata": "TATA", "beba": "BEBA" }
   },
   "situacije": {
     "naslov": "Šta od ovoga važi za vas?",

@@ -1,7 +1,7 @@
 ---
 # Stranica za lekare: upućivanje pacijenata (onkologija + ginekolozi).
 # Tekst stranice: src/sadrzaj/stranice/za-lekare.json  (u šablonu: stranice.zaLekare)
-# Sekcije: src/_includes/sekcije/za-lekare/   ·   Stil: css/stranice/za-lekare.css
+# Sekcije: src/_includes/sekcije/za-lekare/   ·   Stil: css/stranice/za-lekare.css   ·   JS: js/stranice/za-lekare.js
 kljuc: za-lekare
 permalink: /za-lekare/
 zaglavlje:
@@ -16,6 +16,7 @@ zaglavlje:
     - { tekst: "Kontakt", link: "#uputi" }
   dugme: { tekst: "Uputite pacijenta", link: "#uputi" }
 donjaTraka: { tekst: "Uputite pacijenta", link: "#uputi" }
+skripte: ["stranice/za-lekare.js"]
 ---
 {% include "sekcije/za-lekare/hero.njk" %}
 {% include "sekcije/za-lekare/tok.njk" %}

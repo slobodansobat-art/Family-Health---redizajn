@@ -34,8 +34,8 @@
     "teme": [
       {
         "oznaka": "Onkogenetika",
-        "savet": "Priložite nalaz, a lekar ga pregleda i javlja se sa predlogom analize i cenom.",
-        "_polje": "nalaz"
+        "savet": "Lekar vas zove, predlaže analizu koja ima smisla za vaš slučaj i javlja okvirnu cenu.",
+        "_polje": "onko"
       },
       {
         "oznaka": "Prenatalni test",
@@ -56,7 +56,6 @@
     "poljeIme": "Ime i prezime",
     "poljeTelefon": "Telefon",
     "poljeEmail": "Mejl adresa",
-    "poljeNalaz": "Nalaz (PDF ili fotografija)",
     "poljeNedelja": "Nedelja trudnoće",
     "poljeTermin": "Očekivani termin porođaja",
     "poljePoruka": "Kratko, o čemu se radi",

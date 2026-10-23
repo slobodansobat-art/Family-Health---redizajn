@@ -57,7 +57,7 @@
     "preporuke": [
       { "doNedelje": 10, "tekst": "Prenatalni test je moguć od 10. nedelje", "link": "/trudnoca-i-beba/harmony/" },
       { "doNedelje": 14, "tekst": "Pravo vreme za prenatalni test", "link": "/trudnoca-i-beba/harmony/" },
-      { "doNedelje": 25, "tekst": "Besplatna škola za trudnice", "link": "/trudnoca-i-beba/#skola" },
+      { "doNedelje": 25, "tekst": "Besplatna škola Zdravo mama", "link": "/skola-za-trudnice/" },
       { "doNedelje": 44, "tekst": "Odluka o matičnim ćelijama", "link": "/maticne-celije/" }
     ]
   }

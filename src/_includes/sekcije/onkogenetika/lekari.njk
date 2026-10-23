@@ -1,7 +1,6 @@
-{#- ONKOGENETIKA · za lekare ("Pomažemo i vama") + dokumenta i direktna linija
+{#- ONKOGENETIKA · za lekare ("Pomažemo i vama") + direktna linija za lekare
     Sadržaj: stranice.onkogenetika.lekari, telefon iz podesavanja.kontakt.mobilni
-    Stil: css/stranice/onkogenetika.css (.onko-lekari)
-    Dokument bez PDF-a (polje "pdf" prazno) prikazuje se kao neaktivan, sa oznakom "uskoro". -#}
+    Stil: css/stranice/onkogenetika.css (.onko-lekari) -#}
 {%- set d = stranice.onkogenetika.lekari -%}
 {%- set k = podesavanja.kontakt -%}
 <section id="lekari" class="onko-lekari" aria-labelledby="onko-lekari-naslov">
@@ -21,18 +20,6 @@
     </div>
 
     <div class="onko-lekari__kartica">
-      <h3 class="onko-lekari__podnaslov">{{ d.dokumenta.naslov }}</h3>
-      <ul class="onko-lekari__dokumenta">
-        {%- for dok in d.dokumenta.stavke %}
-        <li>
-          {%- if dok.pdf %}
-          <a href="{{ dok.pdf }}" class="onko-lekari__dokument" download>{{ dok.naziv }} <span class="onko-lekari__oznaka">{{ d.dokumenta.oznakaPreuzmi }}</span></a>
-          {%- else %}
-          <span class="onko-lekari__dokument onko-lekari__dokument--uskoro" aria-disabled="true">{{ dok.naziv }} <span class="onko-lekari__oznaka">{{ d.dokumenta.oznakaUskoro }}</span></span>
-          {%- endif %}
-        </li>
-        {%- endfor %}
-      </ul>
       <p class="onko-lekari__linija">{{ d.linijaNaslov }}</p>
       <a href="tel:{{ k.mobilniLink }}" class="onko-lekari__telefon">{{ k.mobilni }}</a>
     </div>

@@ -1,0 +1,323 @@
+/* ==========================================================================
+   STRANICA: ZDRAVO MAMA, škola za trudnice  (/skola-za-trudnice/)
+   Sekcije: src/_includes/sekcije/zdravo-mama/  ·  JS: js/stranice/zdravo-mama.js
+   Redosled: hero (sa karticom "Sledeće predavanje"), raspored (tabovi po
+   mesecima), predavači, kako funkcioniše, prijava (forma), partneri i pitanja.
+   Telo stranice je u bojama škole; zaglavlje i futer su zajednički.
+   Mobilni raspored je na kraju fajla (ispod 960px).
+   ========================================================================== */
+
+/* Boje škole (omotač .zm u src/stranice/zdravo-mama.njk) */
+.zm {
+  --zm-breskva: #FFF4EC;            /* pozadine: hero, kako funkcioniše, izbor meseca */
+  --zm-breskva-kartica: #FFFAF6;    /* kartice termina */
+  --zm-breskva-krug: #FDE6D6;       /* krug sa inicijalima (svaki drugi) */
+  --zm-linija: #F3E4D7;
+  --zm-linija-tamnija: #EFDCCB;
+  --zm-teget: #33447A;              /* dugmad, akcenti */
+  --zm-naslov: #1F2747;             /* naslovi */
+  --zm-tekst-na-breskvi: #24315C;
+  --zm-ivica: #8A92AD;              /* ivice polja i dugmeta sa obrubom */
+  --zm-tirkiz: #43C8D4;             /* mehurići */
+  --zm-tirkiz-tamni: #12808A;       /* dugme "Prijavite se za ciklus", ivica mehurića */
+  --zm-tirkiz-svetli: #E2F6F7;      /* krug u heroju, istaknut čip, krug sa inicijalima */
+  --zm-tirkiz-tekst: #0E6670;       /* tekst na svetlom tirkizu */
+  --zm-logo-pozadina: #15161C;
+  --zm-mehur-narandzasta: #F0A078;  /* prelivi na mehurićima */
+  --zm-mehur-plava: #6E82D7;
+  --zm-senka-logo: 0 10px 28px rgba(31, 39, 71, 0.20);
+  --zm-senka-kartica: 0 18px 50px rgba(31, 39, 71, 0.10);
+  --fokus: var(--zm-teget);         /* okvir fokusa u telu stranice */
+}
+
+/* --- Zajedničko na stranici ------------------------------------------------ */
+.zm-naslov { font-family: var(--font-naslov); font-weight: 400; line-height: 1.1; color: var(--zm-naslov); }
+.zm-blag { color: var(--tekst-blag); }
+.zm-napomena { margin-top: 14px; font-size: 13px; color: var(--tekst-blag); }
+.zm .dugme.zm-dugme { background: var(--zm-teget); color: var(--bela); }
+.zm .dugme.zm-dugme:hover { background: var(--zm-naslov); }
+.zm .dugme.zm-dugme-obrub { color: var(--zm-naslov); font-weight: 400; box-shadow: inset 0 0 0 1px var(--zm-ivica); }
+.zm .dugme.zm-dugme-obrub:hover { background: var(--bela); color: var(--zm-naslov); }
+
+/* --- HERO ------------------------------------------------------------------ */
+.zm-hero { position: relative; overflow: hidden; isolation: isolate; background: var(--zm-breskva); }
+.zm-hero__pozadina { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.zm-hero__krug { position: absolute; left: -140px; bottom: -190px; width: 460px; height: 460px; max-width: none; fill: var(--zm-tirkiz-svetli); }
+.zm-hero__unutra { display: flex; flex-wrap: wrap; align-items: center; gap: 40px 64px; padding-top: 40px; padding-bottom: 80px; }
+.zm-hero__tekst { flex: 1.2 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+.zm-hero__putanja { margin-bottom: 18px; font-size: 14px; color: var(--tekst-blag); }
+.zm-hero__putanja a { color: var(--zm-teget); }
+.zm-hero__skola { display: flex; align-items: center; gap: 18px; }
+/* Logo škole: okrugli bedž sa belim obručem */
+.zm-hero__logo {
+  flex-shrink: 0; display: block; width: 140px; height: 140px; overflow: hidden;
+  border: 4px solid var(--bela); border-radius: 50%;
+  background: var(--zm-logo-pozadina); box-shadow: var(--zm-senka-logo);
+}
+.zm-hero__logo-slika { width: 100%; height: 100%; }
+.zm-hero__oznaka { color: var(--zm-teget); font-weight: 600; font-size: 15px; line-height: 1.4; }
+.zm-hero__oznaka span { display: block; font-weight: 400; color: var(--tekst-blag); }
+.zm-hero__naslov {
+  font-family: var(--font-naslov); font-weight: 400; color: var(--zm-naslov);
+  font-size: clamp(52px, 4.75vw, 68px); line-height: 1.02; letter-spacing: -0.6px;
+}
+.zm-hero__uvod { max-width: 560px; font-size: 19px; color: var(--tekst-blag); }
+.zm-hero__cipovi { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.zm-hero__cip { padding: 7px 14px; border-radius: 999px; background: var(--bela); color: var(--zm-naslov); font-size: 14px; font-weight: 500; }
+.zm-hero__cip--istaknut { background: var(--zm-tirkiz-svetli); color: var(--zm-tirkiz-tekst); font-weight: 600; }
+.zm-hero__akcije { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 10px; }
+.zm-hero__akcije .dugme { min-height: 54px; padding: 16px 26px; }
+.zm-hero__instagram { color: var(--zm-teget); font-size: 15px; }
+.zm-hero__instagram:hover { color: var(--zm-naslov); }
+
+/* Kartica "Sledeće predavanje" */
+.zm-sled { flex: 1 1 380px; min-width: 0; padding: 30px 32px; border-radius: 32px; background: var(--bela); box-shadow: var(--zm-senka-kartica); }
+.zm-sled__oznaka { font-size: 14px; font-weight: 600; color: var(--zm-teget); }
+.zm-sled__dan { margin-top: 6px; font-family: var(--font-naslov); font-size: 32px; line-height: 1.1; color: var(--zm-naslov); }
+.zm-sled__vreme { margin-top: 4px; color: var(--tekst-blag); }
+.zm-sled__lista { list-style: none; display: flex; flex-direction: column; margin-top: 18px; }
+.zm-sled__lista:empty { display: none; }
+.zm-sled__lista li { padding: 14px 0; border-top: 1px solid var(--zm-linija); }
+.zm-sled__tema { display: block; font-weight: 600; color: var(--zm-naslov); }
+.zm-sled__ime { display: block; font-size: 15px; color: var(--tekst-blag); }
+.zm .dugme.zm-sled__dugme { margin-top: 16px; padding: 13px 22px; background: var(--zm-tirkiz-tamni); color: var(--bela); }
+.zm .dugme.zm-sled__dugme:hover { background: var(--zm-tirkiz-tekst); }
+
+/* Mehurići od sapunice: izleću iz kruga dole levo, preko heroja.
+   Položaj, veličina, brzina i putanja su podaci u CSS promenljivama (hero.njk). */
+.zm-mehuri { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.zm-mehuri--mobilni { display: none; }
+.zm-m {
+  position: absolute; left: var(--x); bottom: var(--y); opacity: 0;
+  animation: zm-let var(--t) cubic-bezier(.3, .1, .55, 1) var(--k) infinite;
+}
+.zm-m > i {
+  display: block; width: var(--s); height: var(--s); border-radius: 50%;
+  border: 1.5px solid color-mix(in srgb, var(--zm-tirkiz-tamni) 55%, transparent);
+  background:
+    radial-gradient(circle at 32% 28%, color-mix(in srgb, var(--bela) 95%, transparent) 0 7%, transparent 17%),
+    radial-gradient(circle,
+      color-mix(in srgb, var(--bela) 18%, transparent) 48%,
+      color-mix(in srgb, var(--zm-tirkiz) 46%, transparent) 66%,
+      color-mix(in srgb, var(--zm-mehur-narandzasta) 55%, transparent) 81%,
+      color-mix(in srgb, var(--zm-mehur-plava) 52%, transparent) 92%,
+      color-mix(in srgb, var(--bela) 85%, transparent) 100%);
+  animation: zm-ljulj var(--w) ease-in-out infinite alternate;
+}
+@keyframes zm-let {
+  0% { transform: translate(0, 0) scale(.4); opacity: 0; }
+  8% { opacity: 1; }
+  80% { opacity: .95; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(1.25); opacity: 0; }
+}
+@keyframes zm-ljulj { from { transform: translateX(-7px); } to { transform: translateX(7px); } }
+
+/* --- RASPORED (tabovi po mesecima) ----------------------------------------- */
+.zm-ras { padding-top: 88px; padding-bottom: 40px; }
+.zm-ras__glava { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 18px 40px; margin-bottom: 28px; }
+.zm-ras__uvod { max-width: 620px; }
+.zm-ras__naslov { margin-bottom: 10px; font-size: 44px; }
+.zm-ras__meseci { display: flex; gap: 4px; padding: 5px; max-width: 100%; overflow-x: auto; border-radius: 999px; background: var(--zm-breskva); }
+.zm-ras__mesec-dugme {
+  flex-shrink: 0; padding: 11px 20px; border: 0; border-radius: 999px;
+  background: transparent; color: var(--zm-naslov); font-size: 15px; font-weight: 600; line-height: 1.3;
+  transition: background .2s ease, color .2s ease;
+}
+.zm-ras__mesec-dugme:hover { background: var(--zm-breskva-krug); }
+.zm-ras__mesec-dugme[aria-selected="true"] { background: var(--zm-teget); color: var(--bela); }
+/* Naziv meseca u panelu: vidi se samo bez JS-a (tada su svi meseci jedan ispod drugog) */
+.zm-ras__mesec { margin-bottom: 16px; font-family: var(--font-naslov); font-size: 28px; color: var(--zm-naslov); }
+.js .zm-ras__mesec {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+html:not(.js) .zm-ras__panel + .zm-ras__panel { margin-top: 48px; }
+.zm-ras__termini { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }  /* skica: 270px; 220px da na 1024px sva 4 četvrtka stanu u red */
+.zm-ras__napomena { margin-top: 16px; font-size: 13px; color: var(--tekst-blag); }
+
+/* Kartica termina. Stanje (klasa) se računa iz datuma:
+   --odrzano (prošlo), --danas, --sledece (prvi sledeći), --uskoro */
+.zm-termin {
+  display: grid; grid-template-columns: 1fr auto; align-content: start; align-items: center;
+  grid-template-areas: "oznaka vreme" "dan dan" "lista lista";
+  gap: 12px 10px; padding: 24px; border-radius: 26px;
+  background: var(--zm-breskva-kartica); border: 1px solid var(--zm-linija);
+}
+.zm-termin__oznaka {
+  grid-area: oznaka; justify-self: start; padding: 4px 10px; border-radius: 999px;
+  background: var(--zm-breskva); color: var(--zm-tekst-na-breskvi); font-size: 13px; font-weight: 600;
+}
+.zm-termin__vreme { grid-area: vreme; font-size: 13px; color: var(--tekst-blag); }
+.zm-termin__dan { grid-area: dan; font-family: var(--font-naslov); font-size: 26px; line-height: 1.15; color: var(--zm-naslov); }
+.zm-termin__lista { grid-area: lista; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.zm-termin__lista li { padding-top: 12px; border-top: 1px solid var(--zm-linija-tamnija); }
+.zm-termin__tema { display: block; font-size: 15px; font-weight: 600; color: var(--zm-naslov); }
+.zm-termin__ime { display: block; font-size: 14px; color: var(--tekst-blag); }
+.zm-termin__prazno { grid-area: lista; padding-top: 12px; border-top: 1px solid var(--zm-linija-tamnija); font-size: 15px; color: var(--tekst-blag); }
+.zm-termin--danas, .zm-termin--sledece { background: var(--bela); border-color: var(--zm-teget); }
+.zm-termin--danas .zm-termin__oznaka, .zm-termin--sledece .zm-termin__oznaka { background: var(--zm-teget); color: var(--bela); }
+/* Održano: utišano bojom teksta (bez providnosti, da tekst ostane čitljiv) */
+.zm-termin--odrzano .zm-termin__oznaka { background: var(--zm-linija); }
+.zm-termin--odrzano .zm-termin__dan, .zm-termin--odrzano .zm-termin__tema { color: var(--tekst-blag); }
+
+/* --- PREDAVAČI ------------------------------------------------------------- */
+.zm-pred { padding-block: 56px; }
+.zm-pred__naslov { margin-bottom: 10px; font-size: 44px; }
+.zm-pred__tekst { max-width: 620px; margin-bottom: 28px; }
+.zm-pred__lista { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.zm-pred__kartica { display: flex; align-items: flex-start; gap: 16px; padding: 22px; border: 1px solid var(--zm-linija); border-radius: 26px; }
+.zm-pred__foto { flex-shrink: 0; width: 64px; height: 64px; border-radius: 50%; object-fit: cover; }
+.zm-pred__foto--prazna {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--zm-breskva-krug); color: var(--zm-tekst-na-breskvi);
+  font-family: var(--font-naslov); font-size: 24px;
+}
+.zm-pred__kartica:nth-child(even) .zm-pred__foto--prazna { background: var(--zm-tirkiz-svetli); color: var(--zm-tirkiz-tekst); }
+.zm-pred__tekstovi { min-width: 0; }
+.zm-pred__ime { display: block; font-weight: 600; color: var(--zm-naslov); }
+.zm-pred__zvanje { display: block; font-size: 14px; color: var(--tekst-blag); }
+.zm-pred__tema { display: block; margin-top: 8px; font-size: 14px; color: var(--zm-teget); }
+
+/* --- KAKO FUNKCIONIŠE ------------------------------------------------------ */
+.zm-kako { background: var(--zm-breskva); }
+.zm-kako > .kontejner { padding-block: 72px; }
+.zm-kako__naslov { margin-bottom: 28px; font-size: 40px; }
+.zm-kako__koraci { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.zm-kako__korak { padding: 26px; border-radius: 26px; background: var(--bela); }
+.zm-kako__broj {
+  display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+  border-radius: 50%; background: var(--zm-teget); color: var(--bela); font-weight: 600;
+}
+.zm-kako__tekstovi { display: block; }
+.zm-kako__ime { display: block; margin-top: 14px; font-size: 18px; font-weight: 600; color: var(--zm-naslov); }
+.zm-kako__tekst { display: block; margin-top: 6px; color: var(--tekst-blag); }
+
+/* --- PRIJAVA (forma) ------------------------------------------------------- */
+.zm-prijava__mreza { display: flex; flex-wrap: wrap; gap: 40px 72px; padding-block: 88px; }
+.zm-prijava__uvod { flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.zm-prijava__naslov { font-size: 44px; line-height: 1.08; }
+.zm-prijava__tekst { max-width: 400px; }
+.zm-prijava__napomena { max-width: 400px; margin-top: 8px; padding: 14px 18px; border-radius: 18px; background: var(--zm-breskva); color: var(--zm-tekst-na-breskvi); font-size: 14px; }
+.zm-prijava__forma {
+  flex: 1.4 1 560px; min-width: 0; align-self: flex-start;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  padding: 32px; border: 1px solid var(--zm-linija-tamnija); border-radius: 32px; background: var(--bela);
+}
+.zm-prijava__ciklus { padding: 12px 16px; border-radius: 16px; background: var(--zm-breskva); color: var(--zm-tekst-na-breskvi); font-size: 14px; }
+.zm-prijava__ciklus strong { font-weight: 600; }
+.zm .unos { border-color: var(--zm-ivica); }
+.zm .unos:focus { border-color: var(--zm-teget); }
+.zm .polje__obavezno { color: inherit; }
+.zm .saglasnost input { accent-color: var(--zm-teget); }
+.zm .saglasnost a { color: var(--zm-teget); }
+.zm .dugme.zm-prijava__dugme { min-height: 54px; }
+.zm-prijava__napomena-mob { font-size: 12.5px; color: var(--tekst-blag); }
+
+/* --- PARTNERI I ČESTA PITANJA ---------------------------------------------- */
+.zm-faq__mreza { display: flex; flex-wrap: wrap; gap: 40px 72px; padding-bottom: 96px; }
+.zm-faq__partneri { flex: 1 1 340px; min-width: 0; }
+.zm-faq__oznaka { margin-bottom: 12px; font-size: 14px; color: var(--tekst-blag); }
+.zm-partneri { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.zm-partneri__stavka { padding: 10px 18px; border: 1px solid var(--zm-linija-tamnija); border-radius: 999px; font-weight: 600; color: var(--zm-naslov); }
+.zm-partneri__logo { height: 28px; width: auto; }
+.zm-faq__pitanja { flex: 1.4 1 520px; min-width: 0; }
+.zm-faq__naslov { margin-bottom: 14px; font-size: 34px; }
+.zm-faq__stavka { padding: 16px 0; border-top: 1px solid var(--zm-linija); }
+.zm-faq__pitanje { cursor: pointer; font-weight: 600; color: var(--zm-naslov); }
+.zm-faq__odgovor { margin-top: 10px; color: var(--tekst-blag); }
+.zm-faq__odgovor > * + * { margin-top: .8em; }
+.zm-faq__partneri-red { font-size: 13px; color: var(--tekst-blag); }
+
+/* ==========================================================================
+   MOBILNI (ispod 960px)
+   ========================================================================== */
+@media (max-width: 959px) {
+  /* Hero: kartica i dugmad idu ispod čipova (tekstualni blok se "otvara") */
+  .zm-hero__krug { left: -120px; bottom: -150px; width: 330px; height: 330px; }
+  .zm-mehuri--desktop { display: none; }
+  .zm-mehuri--mobilni { display: block; }
+  .zm-hero__unutra { flex-direction: column; flex-wrap: nowrap; align-items: stretch; gap: 0; padding-top: 18px; padding-bottom: 30px; }
+  .zm-hero__tekst { display: contents; }
+  .zm-hero__putanja { margin-bottom: 0; }
+  .zm-hero__skola { gap: 14px; margin-top: 18px; }
+  .zm-hero__logo { width: 104px; height: 104px; box-shadow: 0 8px 22px rgba(31, 39, 71, 0.20); }
+  .zm-hero__oznaka { font-size: 14px; }
+  .zm-hero__naslov { margin-top: 6px; font-size: 40px; line-height: 1.04; letter-spacing: 0; }
+  .zm-hero__uvod { margin-top: 12px; font-size: 16px; }
+  .zm-hero__cipovi { gap: 6px; margin-top: 14px; }
+  .zm-hero__cip { padding: 6px 12px; font-size: 13px; }
+  .zm-sled { order: 1; flex: none; margin-top: 18px; padding: 20px; border-radius: 24px; box-shadow: none; }
+  .zm-sled__oznaka { font-size: 13px; }
+  .zm-sled__dan { margin-top: 4px; font-size: 26px; }
+  .zm-sled__vreme { margin-top: 2px; font-size: 15px; }
+  .zm-sled__lista { margin-top: 12px; }
+  .zm-sled__lista li { padding: 10px 0; }
+  .zm-sled__tema { font-size: 15px; }
+  .zm-sled__ime { font-size: 14px; }
+  .zm-sled__zvanje { display: none; }
+  .zm-hero__akcije { order: 2; flex-direction: column; align-items: stretch; gap: 12px; margin-top: 16px; }
+  .zm-hero__akcije .dugme { min-height: 52px; padding: 15px; }
+  .zm-hero__instagram { text-align: center; }
+
+  /* Raspored */
+  .zm-ras { padding-top: 34px; padding-bottom: 10px; }
+  .zm-ras__glava { display: block; margin-bottom: 0; }
+  .zm-ras__naslov { margin-bottom: 0; font-size: 30px; }
+  .zm-ras__uvod p { margin-top: 6px; font-size: 15px; }
+  .zm-ras__meseci { margin-top: 16px; padding: 4px; }
+  .zm-ras__mesec-dugme { flex: 1 0 auto; padding: 11px 16px; }
+  .zm-ras__mesec { margin-top: 24px; font-size: 24px; }
+  .zm-ras__termini { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+  .zm-termin { grid-template-areas: "dan oznaka" "lista lista"; gap: 0 10px; padding: 18px; border-radius: 22px; }
+  .zm-termin__vreme { display: none; }
+  .zm-termin__dan { font-size: 22px; }
+  .zm-termin__oznaka { justify-self: end; padding: 3px 9px; font-size: 12px; }
+  .zm-termin__lista { gap: 0; margin-top: 10px; }
+  .zm-termin__lista li { padding: 8px 0; }
+  .zm-termin__prazno { margin-top: 10px; padding-top: 8px; font-size: 14px; }
+  .zm-ras__napomena { margin-top: 10px; font-size: 12.5px; }
+
+  /* Predavači: lista sa linijama umesto kartica */
+  .zm-pred { padding-top: 30px; padding-bottom: 10px; }
+  .zm-pred__naslov { margin-bottom: 14px; font-size: 30px; }
+  .zm-pred__lista { display: block; border-top: 1px solid var(--zm-linija); }
+  .zm-pred__kartica { gap: 14px; padding: 14px 0; border: 0; border-bottom: 1px solid var(--zm-linija); border-radius: 0; }
+  .zm-pred__foto { width: 52px; height: 52px; }
+  .zm-pred__foto--prazna { font-size: 20px; }
+  .zm-pred__ime { font-size: 15px; }
+  .zm-pred__zvanje { font-size: 13px; }
+  .zm-pred__tema { margin-top: 4px; font-size: 13px; }
+
+  /* Kako funkcioniše */
+  .zm-kako { margin-top: 24px; }
+  .zm-kako > .kontejner { padding-block: 28px; }
+  .zm-kako__naslov { margin-bottom: 12px; font-size: 28px; }
+  .zm-kako__koraci { display: flex; flex-direction: column; gap: 10px; }
+  .zm-kako__korak { display: flex; gap: 12px; padding: 16px; border-radius: 20px; }
+  .zm-kako__broj { flex-shrink: 0; width: 32px; height: 32px; }
+  .zm-kako__ime { margin-top: 0; font-size: 16px; }
+  .zm-kako__tekst { margin-top: 0; font-size: 14px; }
+
+  /* Prijava */
+  .zm-prijava__mreza { display: block; padding-top: 32px; padding-bottom: 10px; }
+  .zm-prijava__uvod { gap: 6px; }
+  .zm-prijava__naslov { font-size: 30px; }
+  .zm-prijava__tekst { font-size: 15px; }
+  .zm-prijava__forma { margin-top: 14px; padding: 0; gap: 14px; border: 0; border-radius: 0; }
+  .zm-prijava__ciklus { padding: 12px 14px; }
+  .zm .dugme.zm-prijava__dugme { min-height: 52px; }
+
+  /* Pitanja, pa partneri u jednom redu */
+  .zm-faq__mreza { flex-direction: column; flex-wrap: nowrap; gap: 0; padding-top: 30px; padding-bottom: 34px; }
+  .zm-faq__pitanja { order: 1; flex: none; }
+  .zm-faq__partneri { order: 2; flex: none; margin-top: 18px; }
+  .zm-faq__naslov { margin-bottom: 10px; font-size: 28px; }
+  .zm-faq__stavka { padding: 14px 0; }
+  .zm-faq__pitanje { font-size: 15px; }
+  .zm-faq__odgovor { margin-top: 8px; font-size: 15px; }
+}
+
+/* "Smanji pokrete": bez mehurića (ukras), na svim širinama */
+@media (prefers-reduced-motion: reduce) {
+  .zm-hero .zm-mehuri { display: none; }
+}

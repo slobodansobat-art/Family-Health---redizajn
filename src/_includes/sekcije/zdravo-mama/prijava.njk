@@ -1,0 +1,50 @@
+{#- ZDRAVO MAMA · prijava za školu (sidro #prijava)
+    Posebna Netlify forma "zdravo-mama": prijave se izvoze u zasebnu tabelu.
+    Polja: ime, email, nedelja (4–42), izvor, saglasnost, vesti + skriveno "ciklus".
+    Ova forma NEMA telefon (odluka klijenta, izuzetak od pravila za forme).
+    Skriveno polje "ciklus" = SLEDEĆI kalendarski mesec od dana prijave (naziv
+    ciklusa sa datumima ili "<Mesec> <godina> [termini uskoro]"). U HTML-u je
+    vrednost za dan izrade sajta (zm.ciklusPrijave); JS je menja po današnjem
+    datumu posetioca i ispisuje isti tekst iznad dugmeta.
+    Lokalno (makroi to ne podržavaju): nedelja (min/max), izbor sa praznom prvom
+    opcijom, saglasnost sa tekstom za školu, polje "vesti".
+    Sadržaj: stranice.zdravoMama.prijava  ·  Stil: css/stranice/zdravo-mama.css (.zm-prijava) -#}
+{%- from "makroi/komponente.njk" import forma, polje, posalji with context -%}
+{%- set d = stranice.zdravoMama.prijava -%}
+<section id="prijava" class="zm-prijava" aria-labelledby="zm-prijava-naslov">
+  <div class="kontejner zm-prijava__mreza">
+    <div class="zm-prijava__uvod">
+      <h2 id="zm-prijava-naslov" class="zm-naslov zm-prijava__naslov">{{ d.naslov }}</h2>
+      <p class="zm-blag zm-prijava__tekst"><span class="samo-desktop">{{ d.tekst }}</span><span class="samo-mobilni">{{ d.tekstMobilni or d.tekst }}</span></p>
+      <p class="zm-prijava__napomena samo-desktop">{{ d.napomena }}</p>
+    </div>
+
+    {% call forma("zdravo-mama", "forma zm-prijava__forma") %}
+      <input type="hidden" name="ciklus" value="{{ zm.ciklusPrijave }}" data-zm-ciklus-polje>
+      {{ polje("zm-ime", "ime", d.poljeIme, autocomplete="name", obavezno=true) }}
+      {{ polje("zm-email", "email", d.poljeEmail, tip="email", autocomplete="email", obavezno=true) }}
+      <div class="polje">
+        <label for="zm-nedelja" class="polje__oznaka">{{ d.poljeNedelja }} <span class="polje__obavezno" aria-hidden="true">*</span></label>
+        <input id="zm-nedelja" name="nedelja" type="number" inputmode="numeric" min="4" max="42" step="1" class="unos" required>
+      </div>
+      <div class="polje">
+        <label for="zm-izvor" class="polje__oznaka">{{ d.poljeIzvor }}</label>
+        <select id="zm-izvor" name="izvor" class="unos unos--izbor">
+          <option value="">{{ d.izvorPrazno }}</option>
+          {%- for o in d.izvori %}<option>{{ o }}</option>{% endfor %}
+        </select>
+      </div>
+      <p class="ceo-red zm-prijava__ciklus">{{ d.ciklusOznaka }} <strong data-zm-ciklus>{{ zm.ciklusPrijave }}</strong></p>
+      <label for="zm-ok" class="saglasnost">
+        <input id="zm-ok" name="saglasnost" type="checkbox" value="da" required>
+        <span>{{ d.saglasnost }} <span class="polje__obavezno" aria-hidden="true">*</span> <a href="/politika-privatnosti/">{{ podesavanja.tekstovi.politikaPrivatnosti }}</a> {{ podesavanja.pravno.saglasnostNapomena }}</span>
+      </label>
+      <label for="zm-vesti" class="saglasnost">
+        <input id="zm-vesti" name="vesti" type="checkbox" value="da">
+        <span>{{ d.vesti }}</span>
+      </label>
+      {{ posalji(d.dugme, "zm-dugme zm-prijava__dugme") }}
+      <p class="ceo-red zm-prijava__napomena-mob samo-mobilni">{{ d.napomenaMobilni or d.napomena }}</p>
+    {% endcall %}
+  </div>
+</section>

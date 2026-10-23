@@ -1,0 +1,116 @@
+{#- TRUDNOĆA · vodič kroz izbor testa (sidro #vodic), deo sekcije "Prenatalni testovi"
+    Levo: nedelja trudnoće (ista kao u alatu iz hero sekcije) i 4 pitanja; kod
+    nalaza "Povišen rizik ili odstupanje" pojavljuje se izbor hromozoma.
+    Desno (tamno): čekanje / savet za iščezlog blizanca / preporuka sa cenom i ratama.
+    Pravila preporuke su u JS-u (js/stranice/trudnoca.js, "Vodič"); tekstovi
+    razloga su u JSON-u (vodic.razlozi). U pitanjima se menja samo tekst: "kljuc"
+    i "vrednost" koristi JS i ne smeju se menjati.
+    Bez JS-a vodič se ne prikazuje (ne može da radi), tabela i paketi ostaju.
+    Sadržaj: stranice.trudnoca.vodic   ·   Stil: css/stranice/trudnoca.css -#}
+{%- set v = stranice.trudnoca.vodic -%}
+{%- set n = stranice.trudnoca.alat.podrazumevanaNedelja -%}
+{%- set kt = podesavanja.kontakt -%}
+{#- Hromozomi: [oznaka, veličina u Mb] (visina crtice = 10 + Mb × 0,12 px).
+    13, 18 i 21 su istaknuti jer kombinovani test računa rizik samo za njih. -#}
+{%- set hromozomi = [["1",248],["2",242],["3",198],["4",190],["5",181],["6",171],["7",159],["8",145],["9",138],["10",134],["11",135],["12",133],["13",114],["14",107],["15",102],["16",90],["17",83],["18",80],["19",59],["20",64],["21",47],["22",51],["X",156],["Y",57]] -%}
+{%- set cesti = ["13", "18", "21"] -%}
+<div id="vodic" class="trudnoca-vodic" data-vodic>
+  <div class="trudnoca-vodic__pitanja">
+    <div>
+      <p class="trudnoca-vodic__nadnaslov">{{ v.nadnaslov }}</p>
+      <h3 class="trudnoca-vodic__naslov">{{ v.naslov }}</h3>
+      <p class="trudnoca-vodic__tekst">{{ v.tekst }}</p>
+    </div>
+
+    {#- Nedelja trudnoće: povezana sa alatom u hero sekciji #}
+    <div class="trudnoca-vodic__nedelja">
+      <span id="vodic-nedelja" class="trudnoca-vodic__pitanje">{{ v.nedeljaOznaka }}</span>
+      <div class="trudnoca-vodic__brojac" role="group" aria-labelledby="vodic-nedelja">
+        <button type="button" class="trudnoca-vodic__korak" data-vodic-korak="-1" aria-label="Nedelja manje">−</button>
+        <output class="trudnoca-vodic__broj" aria-live="polite" data-vodic-nedelja>{{ n }}.</output>
+        <button type="button" class="trudnoca-vodic__korak" data-vodic-korak="1" aria-label="Nedelja više">+</button>
+      </div>
+    </div>
+
+    {%- for q in v.pitanja %}
+    <div class="trudnoca-vodic__grupa" role="group" aria-labelledby="vodic-p{{ loop.index0 }}" data-vodic-pitanje="{{ q.kljuc }}">
+      <span id="vodic-p{{ loop.index0 }}" class="trudnoca-vodic__pitanje">{{ q.pitanje }}</span>
+      <div class="trudnoca-vodic__odgovori">
+        {%- for o in q.odgovori %}
+        <button type="button" class="cip trudnoca-vodic__odgovor" data-vodic-odgovor="{{ o.vrednost }}" aria-pressed="false">{{ o.tekst }}</button>
+        {%- endfor %}
+      </div>
+      {%- if q.kljuc == "nalaz" %}
+      {#- Izbor hromozoma: samo kod odstupanja (prikazuje ga JS) #}
+      <div class="trudnoca-hromozomi pojava" data-vodic-hromozomi>
+        <span id="vodic-hromozom" class="trudnoca-hromozomi__pitanje">{{ v.hromozomi.pitanje }} <span class="trudnoca-hromozomi__dodatak">{{ v.hromozomi.pitanjeDodatak }}</span></span>
+        <div class="trudnoca-hromozomi__lista" role="group" aria-labelledby="vodic-hromozom">
+          {%- for h in hromozomi %}
+          <button type="button" class="trudnoca-hromozom{% if h[0] in cesti %} trudnoca-hromozom--cest{% endif %}" data-hromozom="{{ h[0] }}" aria-pressed="false" aria-label="{{ v.hromozomi.oznakaDugmeta | replace('{n}', h[0]) }}" style="--visina: {{ (10 + h[1] * 0.12) | round }}px">
+            <span class="trudnoca-hromozom__par" aria-hidden="true"><span></span><span></span></span>
+            <span class="trudnoca-hromozom__broj" aria-hidden="true">{{ h[0] }}</span>
+          </button>
+          {%- endfor %}
+        </div>
+        <div class="trudnoca-hromozomi__dno">
+          <button type="button" class="cip trudnoca-hromozomi__ne-znam" data-hromozom-ne-znam aria-pressed="false">{{ v.hromozomi.neZnam }}</button>
+          <span class="trudnoca-hromozomi__napomena">{{ v.hromozomi.napomena }}</span>
+        </div>
+      </div>
+      {%- endif %}
+    </div>
+    {%- endfor %}
+  </div>
+
+  {#- Rezultat (tamna kolona): jedan od tri panela je vidljiv #}
+  <div class="trudnoca-vodic__rezultat povrsina-tamna" aria-live="polite">
+    {#- 1. Još nisu odgovorena sva pitanja #}
+    <div class="trudnoca-vodic__panel" data-vodic-panel="cekanje">
+      <p class="trudnoca-vodic__oznaka">{{ v.cekanje.oznaka }}</p>
+      <p class="trudnoca-vodic__veliki" data-vodic-odgovoreno>{{ v.cekanje.naslov | replace("{n}", "0") | replace("{ukupno}", v.pitanja | length) }}</p>
+      <div class="trudnoca-vodic__napredak" aria-hidden="true">
+        {%- for q in v.pitanja %}<span data-vodic-segment></span>{% endfor -%}
+      </div>
+      <p class="trudnoca-vodic__blag">{{ v.cekanje.tekst }}</p>
+    </div>
+
+    {#- 2. Iščezli blizanac: savet i poziv umesto preporuke #}
+    <div class="trudnoca-vodic__panel pojava" data-vodic-panel="iscezli">
+      <p class="trudnoca-vodic__oznaka">{{ v.iscezli.oznaka }}</p>
+      <p class="trudnoca-vodic__veliki trudnoca-vodic__veliki--gusto">{{ v.iscezli.naslov }}</p>
+      <p class="trudnoca-vodic__blag">{{ v.iscezli.tekst }}</p>
+      <p class="trudnoca-vodic__blag">{{ v.iscezli.tekst2 }}</p>
+      <div class="trudnoca-vodic__dugmad">
+        <a href="tel:{{ kt.telefonLink }}" class="dugme dugme--belo trudnoca-vodic__dugme">{{ v.iscezli.dugmePoziv | replace("{telefon}", kt.telefon) }}</a>
+        <a href="{{ v.iscezli.dugme.link }}" class="dugme trudnoca-vodic__dugme trudnoca-vodic__dugme--obrub">{{ v.iscezli.dugme.tekst }}</a>
+      </div>
+      <button type="button" class="trudnoca-vodic__ispocetka" data-vodic-ispocetka>{{ v.ispocetka }}</button>
+    </div>
+
+    {#- 3. Preporuka (popunjava JS) #}
+    {%- set pr = v.preporuka %}
+    <div class="trudnoca-vodic__panel pojava" data-vodic-panel="preporuka">
+      <p class="trudnoca-vodic__oznaka">{{ pr.oznaka }}</p>
+      <p class="trudnoca-vodic__paket" data-vp="naziv"></p>
+      <p class="trudnoca-vodic__opis"><span class="samo-desktop" data-vp="opis"></span><span class="samo-mobilni" data-vp="opis-mobilni"></span></p>
+      <p class="trudnoca-vodic__cene"><span class="trudnoca-vodic__cena" data-vp="cena"></span><span class="trudnoca-vodic__rata" data-vp="rata"></span></p>
+      <p class="trudnoca-vodic__blag" data-vp="razlog"></p>
+      <p class="trudnoca-vodic__mali" data-vp="nedelja"></p>
+      <div class="trudnoca-vodic__popust">{% include "ilustracije/trudnoca/poklon.njk" %}<span>{{ pr.popustMd | mdRed | safe }}</span></div>
+      <div class="trudnoca-vodic__dugmad">
+        <button type="button" class="dugme dugme--belo trudnoca-vodic__dugme" data-vp="izaberi"></button>
+        <a href="{{ pr.dugme.link }}" class="dugme trudnoca-vodic__dugme trudnoca-vodic__dugme--obrub">{{ pr.dugme.tekst }}</a>
+      </div>
+      <div class="trudnoca-vodic__druga" data-vp="druga">
+        <p class="trudnoca-vodic__mali">{{ pr.drugaOpcija }}</p>
+        <button type="button" class="trudnoca-vodic__druga-dugme" data-vp="druga-dugme">
+          <span><span class="trudnoca-vodic__druga-naziv" data-vp="druga-naziv"></span><span class="trudnoca-vodic__druga-opis"><span class="samo-desktop" data-vp="druga-opis"></span><span class="samo-mobilni" data-vp="druga-opis-mobilni"></span></span></span>
+          <span class="trudnoca-vodic__druga-cena" data-vp="druga-cena"></span>
+        </button>
+      </div>
+      <button type="button" class="trudnoca-vodic__ispocetka" data-vodic-ispocetka>{{ v.ispocetka }}</button>
+    </div>
+  </div>
+
+  <p class="trudnoca-vodic__napomena">{{ v.napomena }}</p>
+</div>

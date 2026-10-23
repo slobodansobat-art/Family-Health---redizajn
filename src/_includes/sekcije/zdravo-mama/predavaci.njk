@@ -1,0 +1,30 @@
+{#- ZDRAVO MAMA · predavači (8 kartica; na telefonu lista)
+    Dok predavač nema fotografiju (polje "slika" u CMS-u je prazno), prikazuje se
+    krug sa inicijalima (inicijali se računaju iz imena, zm.predavaci).
+    Sadržaj: stranice.zdravoMama.predavaci (lista: kljuc, ime, zvanje, tema, slika, slikaOpis)
+    "kljuc" se koristi u rasporedu (termini -> predavaci).
+    Stil: css/stranice/zdravo-mama.css (.zm-pred) -#}
+{%- set d = stranice.zdravoMama.predavaci -%}
+<section id="predavaci" class="zm-pred" aria-labelledby="zm-pred-naslov">
+  <div class="kontejner">
+    <h2 id="zm-pred-naslov" class="zm-naslov zm-pred__naslov">{{ d.naslov }}</h2>
+    <p class="zm-blag zm-pred__tekst samo-desktop">{{ d.tekst }}</p>
+    <ul class="zm-pred__lista">
+      {%- for p in zm.predavaci %}
+      <li class="zm-pred__kartica">
+        {%- if p.slika %}
+        <img src="{{ p.slika }}" alt="{{ p.slikaOpis }}" class="zm-pred__foto" width="64" height="64" loading="lazy" decoding="async">
+        {%- else %}
+        <div class="zm-pred__foto zm-pred__foto--prazna" role="img" aria-label="{{ d.mestoZaFoto }}: {{ p.slikaOpis or p.ime }}">{{ p.inicijali }}</div>
+        {%- endif %}
+        <div class="zm-pred__tekstovi">
+          <span class="zm-pred__ime">{{ p.ime }}</span>
+          <span class="zm-pred__zvanje">{{ p.zvanje }}</span>
+          <span class="zm-pred__tema">{{ p.tema }}</span>
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="zm-napomena samo-desktop">{{ d.napomena }}</p>
+  </div>
+</section>

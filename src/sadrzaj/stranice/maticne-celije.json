@@ -101,6 +101,12 @@
       "tekst": "Sačuva i do tri puta više ćelija i omogućava obradu malih uzoraka, na primer posle odloženog presecanja pupčanika. Preporučujemo je.",
       "ukljucenNaPocetku": false
     },
+    "prenatalni": {
+      "naziv": "Prenatalni test radim kod vas",
+      "popust": 300,
+      "tekstMd": "Svaka trudnica koja kod nas uradi prenatalni test ostvaruje 300 € popusta na osnovnu cenu čuvanja matičnih ćelija. [Koji test je za vas?](/trudnoca-i-beba/#vodic)",
+      "ukljucenNaPocetku": false
+    },
     "ukljucenoNaslov": "Šta je uključeno u paket",
     "ukljuceno": [
       "Konsultacija sa lekarom i anamneza",
@@ -117,6 +123,7 @@
       "oznaka": "Vaš paket",
       "naslovPaketa": "Čuvanje {godina} godina",
       "dodatakToti": ", uz TotiCyte",
+      "popustUracunat": "Uračunat popust uz prenatalni test: −{iznos}",
       "brojRata": 12,
       "rate": "ili {brojRata} rata po {iznosRate}, bez kamate",
       "napomena": "uz sve Banca Intesa kartice. Plaća se kad stigne sertifikat.",

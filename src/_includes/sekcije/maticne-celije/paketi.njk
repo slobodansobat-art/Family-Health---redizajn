@@ -1,6 +1,7 @@
 {#- MATIČNE ĆELIJE · kalkulator paketa (#paketi)
-    Izbor dužine čuvanja + prekidač TotiCyte -> ukupna cena i rata u obračunu desno.
-    Početno stanje (prvi paket, TotiCyte po "ukljucenNaPocetku") računa se ovde, pa je
+    Izbor dužine čuvanja + prekidač TotiCyte + prekidač popusta uz prenatalni test
+    -> ukupna cena i rata u obračunu desno.
+    Početno stanje (prvi paket, prekidači po "ukljucenNaPocetku") računa se ovde, pa je
     cena tačna i bez JS-a i ista kao u heroju.
     Desktop: izbor i "šta je uključeno" levo, obračun desno. Mobilni: izbor, obračun, pa lista.
     Sadržaj: stranice.maticneCelije.paketi
@@ -10,7 +11,9 @@
 {%- set o = d.obracun -%}
 {%- set prvi = d.stavke[0] -%}
 {%- set saToti = d.toti.ukljucenNaPocetku -%}
-{%- set ukupno = prvi.cena + (d.toti.cena if saToti else 0) -%}
+{%- set saPopustom = d.prenatalni.ukljucenNaPocetku -%}
+{#- Popust uz prenatalni test umanjuje osnovnu cenu paketa #}
+{%- set ukupno = prvi.cena - (d.prenatalni.popust if saPopustom else 0) + (d.toti.cena if saToti else 0) -%}
 {%- set naslovPaketa = o.naslovPaketa | replace("{godina}", prvi.godina) + (o.dodatakToti if saToti else "") -%}
 <section id="paketi" class="kontejner mc-paketi" aria-labelledby="mc-paketi-naslov" data-mc-paketi>
   <h2 id="mc-paketi-naslov" class="mc-paketi__naslov">{{ d.naslov }}</h2>
@@ -39,6 +42,15 @@
           <p id="mc-toti-opis" class="mc-paketi__toti-tekst">{{ d.toti.tekst }}</p>
         </div>
       </div>
+
+      {#- Popust uz prenatalni test urađen kod nas #}
+      <div class="mc-paketi__toti">
+        <button type="button" class="mc-prekidac" role="switch" aria-checked="{{ 'true' if saPopustom else 'false' }}" aria-labelledby="mc-prenatalni-naziv" aria-describedby="mc-prenatalni-opis" data-mc-prenatalni><span class="mc-prekidac__dugme"></span></button>
+        <div>
+          <p id="mc-prenatalni-naziv" class="mc-paketi__toti-naziv">{{ d.prenatalni.naziv }}, −{{ d.prenatalni.popust | evra }}</p>
+          <p id="mc-prenatalni-opis" class="mc-paketi__toti-tekst">{{ d.prenatalni.tekstMd | mdRed | safe }}</p>
+        </div>
+      </div>
     </div>
 
     {#- Šta je uključeno (na mobilnom ispod obračuna) #}
@@ -59,6 +71,7 @@
         <p class="mc-paketi__ukupno" data-mc-ukupno>{{ ukupno | evra }}</p>
         <p class="mc-paketi__rate" data-mc-rate>{{ o.rate | replace("{brojRata}", o.brojRata) | replace("{iznosRate}", (ukupno / o.brojRata) | evra) }}</p>
         <p class="mc-paketi__napomena">{{ o.napomena }}</p>
+        <p class="mc-paketi__popust" data-mc-popust{% if not saPopustom %} hidden{% endif %}>{{ o.popustUracunat | replace("{iznos}", d.prenatalni.popust | evra) }}</p>
       </div>
       <p class="mc-paketi__obracun-oznaka">{{ o.doplateNaslov }}</p>
       <dl class="mc-paketi__doplate">

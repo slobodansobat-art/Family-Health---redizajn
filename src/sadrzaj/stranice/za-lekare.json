@@ -111,13 +111,6 @@
   "uputi": {
     "naslov": "Uputite pacijenta.",
     "tekst": "Mi kontaktiramo pacijenta, dogovaramo uzorak i javljamo vam se kad izveštaj stigne.",
-    "dokumentiOznaka": "Dokumenti za lekare",
-    "dokumenti": [
-      { "naziv": "Uputni obrazac", "fajl": "", "status": "PDF, uskoro [dodati]" },
-      { "naziv": "Uputstvo za pripremu uzorka", "fajl": "", "status": "PDF, uskoro [dodati]" },
-      { "naziv": "Spisak gena u panelima", "fajl": "", "status": "PDF, uskoro [dodati]" }
-    ],
-    "dokumentPreuzmi": "PDF, preuzmite",
     "telefonOznaka": "Direktna linija za lekare",
     "forma": {
       "imeLekara": "Ime lekara",
@@ -128,8 +121,6 @@
       "analize": ["Nisam siguran, predložite", "Cancer Precision", "Cancer Essential", "Cancer Detect", "MRD praćenje", "Cancer Neo", "Cancer Advice", "Harmony", "Symphony", "Matične ćelije"],
       "pacijent": "Kontakt pacijenta",
       "pacijentPrimer": "Ime i telefon",
-      "prilog": "Prilog: uput ili patohistološki nalaz (opciono)",
-      "prilogPomoc": "PDF ili fotografija, do 8 MB",
       "saglasnostPacijenta": "Pacijent je saglasan da ga Family Health kontaktira.",
       "dugme": "Pošaljite uput"
     }

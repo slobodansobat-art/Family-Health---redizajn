@@ -47,7 +47,7 @@
       "link": "/trudnoca-i-beba/#testovi",
       "opisDugmeta": "Prikaži prenatalne testove",
       "stavke": [
-        { "naziv": "Harmony", "opis": "Test kompanije Roche, 4 paketa", "meta": "od 390 €", "link": "/trudnoca-i-beba/harmony/", "boja": "mint" },
+        { "naziv": "Harmony", "opis": "Test kompanije Roche, 3 paketa", "meta": "od 490 €", "link": "/trudnoca-i-beba/harmony/", "boja": "mint" },
         { "naziv": "Symphony", "opis": "Svi hromozomi i veće mikrodelecije", "meta": "790 €", "link": "/trudnoca-i-beba/symphony/", "boja": "ljubicasta" }
       ],
       "dno": [
@@ -57,8 +57,7 @@
     },
     "linkovi": [
       { "tekst": "Matične ćelije", "link": "/maticne-celije/" },
-      { "tekst": "Škola za trudnice", "link": "/trudnoca-i-beba/#skola" },
-      { "tekst": "Kontakt", "link": "#kontakt" }
+      { "tekst": "Škola Zdravo mama", "link": "/skola-za-trudnice/" }
     ],
     "dugme": { "tekst": "Besplatne konsultacije", "link": "#kontakt" }
   },
@@ -80,9 +79,10 @@
         "boja": "ljubicasta",
         "stavke": [
           { "naziv": "Pregled", "opis": "Šta je važno, i kada", "link": "/trudnoca-i-beba/" },
-          { "naziv": "Harmony", "opis": "od 390 €", "link": "/trudnoca-i-beba/harmony/" },
+          { "naziv": "Harmony", "opis": "od 490 €", "link": "/trudnoca-i-beba/harmony/" },
           { "naziv": "Symphony", "opis": "790 €, svi hromozomi", "link": "/trudnoca-i-beba/symphony/" },
-          { "naziv": "Matične ćelije", "opis": "1.980 € ili 12 rata", "link": "/maticne-celije/" }
+          { "naziv": "Matične ćelije", "opis": "1.980 € ili 12 rata", "link": "/maticne-celije/" },
+          { "naziv": "Zdravo mama", "opis": "Besplatna škola za trudnice", "link": "/skola-za-trudnice/" }
         ]
       }
     ],
@@ -112,7 +112,7 @@
           { "tekst": "Harmony test", "link": "/trudnoca-i-beba/harmony/" },
           { "tekst": "Symphony test", "link": "/trudnoca-i-beba/symphony/" },
           { "tekst": "Matične ćelije", "link": "/maticne-celije/" },
-          { "tekst": "Škola za trudnice", "link": "/trudnoca-i-beba/#skola" }
+          { "tekst": "Škola Zdravo mama", "link": "/skola-za-trudnice/" }
         ]
       },
       {

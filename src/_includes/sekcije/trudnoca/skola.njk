@@ -1,4 +1,5 @@
-{#- TRUDNOĆA · besplatna škola za trudnice (sidro #skola)
+{#- TRUDNOĆA · škola Zdravo mama, besplatna škola za trudnice (sidro #skola)
+    Linkovi vode na stranicu škole (/skola-za-trudnice/, prijava: #prijava).
     Sadržaj: stranice.trudnoca.skola   ·   Stil: css/stranice/trudnoca.css
     Fotografija se prikazuje samo na mobilnom (kao u skici).
     Kraći tekstovi za telefon: polja …Mobilni (prazno = desktop tekst). -#}
@@ -15,11 +16,17 @@
         <p class="trudnoca-skola__tekst trudnoca-skola__maticne"><span class="samo-desktop">{{ d.maticneMd | mdRed | safe }}</span><span class="samo-mobilni">{{ (d.maticneMobilniMd or d.maticneMd) | mdRed | safe }}</span></p>
         <p class="trudnoca-skola__isticanje">{{ d.isticanjeMd | mdRed | safe }}</p>
       </div>
-      <div class="trudnoca-skola__desno">
-        <p class="blag trudnoca-skola__oznaka">{{ d.ciklusOznaka }}</p>
+      {#- Desktop: raspored, prijava i link ka stranici škole #}
+      <div class="trudnoca-skola__desno samo-desktop">
+        <p class="blag trudnoca-skola__oznaka">{{ d.rasporedOznaka }}</p>
         <p class="trudnoca-skola__termini">{{ d.termini }}</p>
-        <a href="{{ d.dugme.link }}" class="dugme dugme--obrub trudnoca-skola__dugme">{{ d.dugme.tekst }}</a>
+        <div class="trudnoca-skola__dugmad">
+          <a href="{{ d.dugme.link }}" class="dugme">{{ d.dugme.tekst }}</a>
+          <a href="{{ d.rasporedLink.link }}" class="trudnoca-skola__link">{{ d.rasporedLink.tekst }}</a>
+        </div>
       </div>
+      {#- Telefon: jedno dugme ka stranici škole (tekst = oznaka "Raspored, predavači i prijava") #}
+      <a href="{{ d.rasporedLink.link }}" class="dugme dugme--obrub trudnoca-skola__dugme samo-mobilni">{{ d.rasporedOznaka }}</a>
     </div>
   </div>
 </section>

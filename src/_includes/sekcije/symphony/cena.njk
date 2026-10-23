@@ -1,8 +1,11 @@
 {#- SYMPHONY · cena i plaćanje na rate
     Iznos rate se računa: cena / brojRata (u tekstu zamenjuje {broj} i {iznos}).
+    Ispod kartice: popust na matične ćelije uz prenatalni test (popustMd).
+    Na mobilnom omotač .symphony-cena-okvir postaje kartica, pa je popust u njoj (kao u skici).
     Sadržaj: stranice.symphony.cena   ·   Stil: css/stranice/symphony.css -#}
 {%- set d = stranice.symphony.cena -%}
 <section class="kontejner symphony-cena-sekcija" aria-labelledby="symphony-cena">
+ <div class="symphony-cena-okvir">
   <div class="symphony-cena">
     <div class="symphony-cena__opis">
       <h2 id="symphony-cena" class="symphony-cena__naslov">{{ d.naslov }}</h2>
@@ -15,4 +18,11 @@
     </div>
     <a href="{{ d.dugme.link }}" class="dugme symphony-cena__dugme">{{ d.dugme.tekst }}</a>
   </div>
+  {%- if d.popustMd %}
+  <p class="symphony-popust">
+    <svg class="symphony-popust__ikonica" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v9H5v-9"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
+    <span>{{ d.popustMd | mdRed | safe }}</span>
+  </p>
+  {%- endif %}
+ </div>
 </section>

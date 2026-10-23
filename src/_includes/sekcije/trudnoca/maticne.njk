@@ -1,6 +1,7 @@
 {#- TRUDNOĆA · matične ćelije ukratko (sidro #maticne), kartica sa cenom i ratama
     Sadržaj: stranice.trudnoca.maticne   ·   Stil: css/stranice/trudnoca.css
     Rata = cena / broj rata (računa se pri izradi, filter evra).
+    Cena uz prenatalni test = cena − popust (polja kartica.popust i popustTekst).
     Mobilni: kraći tekstovi (polja …Mobilni, prazno = desktop tekst); uvod i lista
     su na telefonu sažeti u jedan pasus (uvodMobilni), da se ne izgube činjenice. -#}
 {%- set d = stranice.trudnoca.maticne -%}
@@ -27,6 +28,9 @@
         <p class="trudnoca-maticne__cena">{{ k.cena | evra }}</p>
         {%- set rata = (k.cena / k.brojRata) | evra %}
         <p class="trudnoca-maticne__rate"><span class="samo-desktop">{{ k.rateTekst | replace("{broj}", k.brojRata | string) | replace("{rata}", rata) }}</span><span class="samo-mobilni">{{ (k.rateTekstMobilni or k.rateTekst) | replace("{broj}", k.brojRata | string) | replace("{rata}", rata) }}</span></p>
+        {#- Cena uz prenatalni test kod nas = cena − popust #}
+        {%- set saPopustom = (k.cena - k.popust) | evra %}
+        <p class="trudnoca-maticne__popust"><span class="samo-desktop">{{ k.popustTekst | replace("{cena}", saPopustom) | replace("{popust}", k.popust | evra) }}</span><span class="samo-mobilni">{{ (k.popustTekstMobilni or k.popustTekst) | replace("{cena}", saPopustom) | replace("{popust}", k.popust | evra) }}</span></p>
         <p class="trudnoca-maticne__isticanje"><span class="samo-desktop">{{ k.isticanje }}</span><span class="samo-mobilni">{{ k.isticanjeMobilni or k.isticanje }}</span></p>
         <p class="trudnoca-maticne__napomena"><span class="samo-desktop">{{ k.napomena }}</span><span class="samo-mobilni">{{ k.napomenaMobilni or k.napomena }}</span></p>
         <a href="{{ k.dugme.link }}" class="dugme trudnoca-maticne__dugme">{{ k.dugme.tekst }}</a>

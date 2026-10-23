@@ -38,18 +38,18 @@
       "napomena": "Plaćanje na rate bez kamate",
       "linijaNaslov": "Šta je važno, i kada",
       "linija": [
-        { "period": "10. nedelja", "tekst": "Prenatalni test Harmony ili Symphony, od 390 €", "link": "/trudnoca-i-beba/#testovi", "prazanKrug": false },
-        { "period": "Drugi trimestar", "tekst": "Besplatna škola za trudnice", "link": "/trudnoca-i-beba/#skola", "prazanKrug": true },
+        { "period": "10. nedelja", "tekst": "Prenatalni test Harmony ili Symphony, od 490 €", "link": "/trudnoca-i-beba/#testovi", "prazanKrug": false },
+        { "period": "Drugi trimestar", "tekst": "Besplatna škola za trudnice", "link": "/skola-za-trudnice/", "prazanKrug": true },
         { "period": "Do 36. nedelje", "tekst": "Odluka o matičnim ćelijama: 1.980 € ili 12 rata po 165 €", "link": "/maticne-celije/", "prazanKrug": false },
         { "period": "Porođaj", "tekst": "Bezbolno prikupljanje krvi iz pupčanika", "link": "/maticne-celije/", "prazanKrug": false }
       ],
       "sklopljenoNadnaslov": "Trudnoća i beba",
       "sklopljenoNaslov": "Od 10. nedelje do prvog dana bebe",
       "linkoviMobilni": [
-        { "tekst": "Harmony, od 390 €", "link": "/trudnoca-i-beba/harmony/" },
+        { "tekst": "Harmony, od 490 €", "link": "/trudnoca-i-beba/harmony/" },
         { "tekst": "Symphony, svi hromozomi", "link": "/trudnoca-i-beba/symphony/" },
         { "tekst": "Matične ćelije, 1.980 € ili 12 rata", "link": "/maticne-celije/" },
-        { "tekst": "Škola za trudnice, besplatna", "link": "/trudnoca-i-beba/#skola" }
+        { "tekst": "Škola Zdravo mama, besplatna", "link": "/skola-za-trudnice/" }
       ]
     }
   },

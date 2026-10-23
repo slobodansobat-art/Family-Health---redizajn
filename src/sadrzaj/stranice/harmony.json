@@ -2,7 +2,7 @@
   "_naziv": "Harmony (prenatalni test)",
   "seo": {
     "naslov": "Harmony prenatalni test – cena i paketi | Family Health",
-    "opis": "Harmony test kompanije Roche: precizan skrining za trizomije 21, 18 i 13 iz krvi majke, od 390 €. Rezultat za 3 do 5 radnih dana."
+    "opis": "Harmony test kompanije Roche: precizan skrining za trizomije 21, 18 i 13 iz krvi majke, od 490 €. Rezultat za 3 do 5 radnih dana."
   },
   "hero": {
     "putanja": [
@@ -55,14 +55,13 @@
     }
   },
   "paketi": {
-    "naslov": "Četiri paketa, po obimu ispitivanja",
+    "naslov": "Tri paketa, po obimu ispitivanja",
     "naslovMobilni": "Izaberite paket",
     "uvod": "Svaki sledeći paket ispituje sve što i prethodni, plus još nešto. Ako niste sigurni koji vam treba, lekar će vam pomoći u izboru.",
     "uvodMobilni": "Svaki paket uključuje sve iz prethodnog. Lekar vam pomaže u izboru.",
     "izabranPaket": "Harmony Kvartet",
     "stavke": [
-      { "naziv": "Harmony Solo", "cena": 390, "opis": "Trizomija 21 (Daunov sindrom)", "oznaka": "Osnovni" },
-      { "naziv": "Harmony Trio", "cena": 490, "opis": "Trizomije 13, 18 i 21", "oznaka": "Tri najčešće trizomije" },
+      { "naziv": "Harmony Trio", "cena": 490, "opis": "Trizomije 13, 18 i 21", "opisMobilni": "Trizomije 13, 18 i 21 · i za blizance", "oznaka": "Tri najčešće trizomije · i za blizance" },
       { "naziv": "Harmony Kvartet", "cena": 590, "opis": "Trizomije 13, 18 i 21 i polne aneuploidije", "opisMobilni": "+ polne aneuploidije", "oznaka": "Najčešći izbor" },
       { "naziv": "Harmony Plus", "cena": 690, "opis": "Kvartet i DiGeorge mikrodelecija", "opisMobilni": "+ DiGeorge mikrodelecija", "oznaka": "Najširi Harmony" }
     ],
@@ -77,7 +76,8 @@
     "dugme": { "tekst": "Zakažite vađenje krvi", "link": "#kontakt" },
     "napomenaMobilniMd": "**Kombinovani (double) test se radi uvek.** Prenatalni test ga dopunjuje, ali ne zamenjuje.",
     "symphonyMd": "Treba vam širi pregled, svih hromozoma i većih mikrodelecija? [Pogledajte Symphony test](/trudnoca-i-beba/symphony/)",
-    "symphonyMobilniMd": "Širi pregled, svih hromozoma i većih mikrodelecija: [Symphony test](/trudnoca-i-beba/symphony/)"
+    "symphonyMobilniMd": "Širi pregled, svih hromozoma i većih mikrodelecija: [Symphony test](/trudnoca-i-beba/symphony/)",
+    "popustMd": "**300 € popusta na matične ćelije.** Svaka trudnica koja kod nas uradi prenatalni test ostvaruje 300 € popusta na osnovnu cenu čuvanja matičnih ćelija iz pupčanika. [Izračunajte cenu →](/maticne-celije/#paketi) [Niste sigurni koji test? Vodič kroz izbor →](/trudnoca-i-beba/#vodic)"
   },
   "koraci": {
     "naslov": "Kako izgleda testiranje",
@@ -171,10 +171,10 @@
       { "pitanje": "Da li Harmony zamenjuje kombinovani (double) test?", "odgovor": "Ne. Kombinovani (double) test se radi uvek, pre prenatalnog testa. Njegov ultrazvučni deo pregleda razvoj bebe, a to test iz krvi ne može da zameni. Harmony se radi uz njega, da bi se rizik za hromozomske poremećaje proverio preciznije." },
       { "pitanje": "Da li treba da uradim Harmony test ako imam manje od 35 godina?", "odgovor": "Stručna udruženja preporučuju da se test ponudi svakoj trudnici. Većina beba sa Daunovim sindromom rodi se kod majki mlađih od 35 godina, iako je rizik veći posle 35." },
       { "pitanje": "Kako se pripremiti za vađenje krvi?", "odgovor": "Nije potrebna posebna priprema. Ne morate biti našte, jer hrana, piće i doba dana ne utiču na genetski test. Pripremite poslednji nalaz ultrazvuka, a krv vadimo u našoj ordinaciji ili kod vas kući, a dolazak ne naplaćujemo." },
-      { "pitanje": "Imam blizance. Mogu li da uradim test?", "odgovor": "Da, za trizomije 21, 18 i 13. Kod blizanaca se umesto pola svake bebe utvrđuje samo da li je prisutan Y hromozom [potvrditi]. Polne aneuploidije i DiGeorge mikrodelecija ne mogu se ispitati kod blizanačke trudnoće." },
+      { "pitanje": "Imam blizance. Mogu li da uradim test?", "odgovor": "Da. Kod blizanačke trudnoće radi se Harmony Trio, za trizomije 21, 18 i 13, ili Symphony. Umesto pola svake bebe utvrđuje se samo da li je prisutan Y hromozom [potvrditi]. Polne aneuploidije i DiGeorge mikrodelecija ne mogu se ispitati Harmony testom kod blizanaca." },
       { "pitanje": "Trudnoća je začeta vantelesnom oplodnjom. Da li je test moguć?", "odgovor": "Da, i kod trudnoća začetih vantelesnom oplodnjom, uključujući one sa doniranom jajnom ćelijom." },
       { "pitanje": "Primam heparin. Da li to utiče na test?", "odgovor": "Test je moguće uraditi i uz terapiju heparinom." },
-      { "pitanje": "Mogu li da saznam pol bebe?", "odgovor": "Da, pol bebe se određuje u paketima Kvartet i Plus. [potvrditi za pakete Solo i Trio]" },
+      { "pitanje": "Mogu li da saznam pol bebe?", "odgovor": "Da, pol bebe se određuje u paketima Kvartet i Plus. [potvrditi za paket Trio]" },
       { "pitanje": "Da li dobar rezultat znači da je beba potpuno zdrava?", "odgovor": "Ne u potpunosti. Test ispituje samo određene hromozomske poremećaje i postoji veoma mala mogućnost lažno negativnog rezultata. Zato redovni ultrazvučni pregledi ostaju važni." }
     ]
   },

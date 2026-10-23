@@ -18,13 +18,13 @@
     "vaznoOznaka": "Sada je za vas važno:",
     "ciljevi": {
       "testovi": { "tekst": "Prenatalni test, uz kombinovani test", "link": "#testovi" },
-      "skola": { "tekst": "Škola za trudnice, besplatna", "link": "#skola" },
+      "skola": { "tekst": "Škola Zdravo mama, besplatna", "link": "#skola" },
       "maticne": { "tekst": "Odluka o matičnim ćelijama, do 36. nedelje", "link": "/maticne-celije/" }
     },
     "poruke": {
       "preTesta": "U {n}. nedelji ste. Prenatalni test možete uraditi od 10. nedelje, dakle za {razlika}. Termin možete rezervisati već sada.",
       "testovi": "U {n}. nedelji ste, a ovo je pravo vreme za prenatalni test, uz kombinovani (double) test kod vašeg ginekologa. Rezultat Harmony testa stiže za 3 do 5 radnih dana.",
-      "skola": "U {n}. nedelji ste. Ovo je dobar trenutak za besplatnu školu za trudnice, a u programu saznajete i sve o matičnim ćelijama.",
+      "skola": "U {n}. nedelji ste. Ovo je dobar trenutak za besplatnu školu Zdravo mama, a u programu saznajete i sve o matičnim ćelijama.",
       "maticne": "U {n}. nedelji ste. Ovo je pravo vreme za odluku o matičnim ćelijama: set za prikupljanje treba da bude kod vas najkasnije do 36. nedelje.",
       "porodjaj": "U {n}. nedelji ste i porođaj je blizu. Ako želite da sačuvate matične ćelije, pozovite nas danas na {telefon}."
     }
@@ -36,7 +36,7 @@
     "oznakaSledeci": "Sledeći korak",
     "faze": [
       { "kada": "11–14. nedelja", "naslov": "Kombinovani (double) test", "tekst": "Obavezan pregled kod ginekologa: ultrazvuk bebe i krv." },
-      { "kada": "Uz kombinovani test", "naslov": "Prenatalni test", "tekst": "Harmony ili Symphony, iz krvi, od 10. nedelje. Od 390 €." },
+      { "kada": "Uz kombinovani test", "naslov": "Prenatalni test", "tekst": "Harmony ili Symphony, iz krvi, od 10. nedelje. Od 490 €." },
       { "kada": "Drugi trimestar", "naslov": "Škola za trudnice", "tekst": "Besplatna online predavanja lekara i psihologa." },
       { "kada": "Do 36. nedelje", "naslov": "Odluka o matičnim ćelijama", "tekst": "Potpisujete ugovor i dobijate set za porodilište." },
       { "kada": "Porođaj", "naslov": "Prikupljanje krvi iz pupčanika", "tekst": "Bezbolno za mamu i bebu. Kurir preuzima set." }
@@ -53,7 +53,6 @@
     "grupaSymphony": "Symphony",
     "kolonaOznaka": "Šta test ispituje",
     "paketiOznaka": "Paketi",
-    "podrazumevaniPaketRedniBroj": 3,
     "brojRata": 3,
     "rataKratko": "ili {broj} × {rata}",
     "rataTekst": "ili {broj} rate po {rata}, bez kamate",
@@ -63,21 +62,107 @@
     "dugmeZakazite": "Zakažite {paket}",
     "dugmeVise": "Sve o testu {porodica} →",
     "paketi": [
-      { "porodica": "Harmony", "naziv": "Solo", "cena": 390, "opis": "Trizomija 21", "opisMobilni": "Trizomija 21 (Daunov sindrom)", "rezultat": "3–5 radnih dana", "link": "/trudnoca-i-beba/harmony/" },
-      { "porodica": "Harmony", "naziv": "Trio", "cena": 490, "opis": "Trizomije 13, 18 i 21", "rezultat": "3–5 radnih dana", "link": "/trudnoca-i-beba/harmony/" },
-      { "porodica": "Harmony", "naziv": "Kvartet", "cena": 590, "opis": "Trizomije 13, 18 i 21 i polne aneuploidije", "rezultat": "3–5 radnih dana", "link": "/trudnoca-i-beba/harmony/" },
-      { "porodica": "Harmony", "naziv": "Plus", "cena": 690, "opis": "Trizomije 13, 18 i 21, polne aneuploidije i DiGeorge mikrodelecija", "opisMobilni": "Kvartet i DiGeorge mikrodelecija", "rezultat": "3–5 radnih dana", "link": "/trudnoca-i-beba/harmony/" },
-      { "porodica": "Symphony", "naziv": "Symphony", "cena": 790, "opis": "Svi hromozomi 1–22, polni hromozomi i 241 mikrodelecija i mikroduplikacija veća od 7 Mb", "rezultat": "5 radnih dana", "link": "/trudnoca-i-beba/symphony/" }
+      { "porodica": "Harmony", "naziv": "Trio", "cena": 490, "opis": "Trizomije 13, 18 i 21. Može i kod blizanaca.", "rezultat": "3–5 radnih dana", "rokRezultata": "3 do 5 radnih dana", "link": "/trudnoca-i-beba/harmony/" },
+      { "porodica": "Harmony", "naziv": "Kvartet", "cena": 590, "opis": "Trizomije 13, 18 i 21 i polne aneuploidije", "rezultat": "3–5 radnih dana", "rokRezultata": "3 do 5 radnih dana", "link": "/trudnoca-i-beba/harmony/" },
+      { "porodica": "Harmony", "naziv": "Plus", "cena": 690, "opis": "Trizomije 13, 18 i 21, polne aneuploidije i DiGeorge mikrodelecija", "opisMobilni": "Kvartet i DiGeorge mikrodelecija", "rezultat": "3–5 radnih dana", "rokRezultata": "3 do 5 radnih dana", "link": "/trudnoca-i-beba/harmony/" },
+      { "porodica": "Symphony", "naziv": "Symphony", "cena": 790, "opis": "Svi hromozomi 1–22, polni hromozomi i 241 mikrodelecija i mikroduplikacija veća od 7 Mb", "opisMobilni": "Svi hromozomi i 241 mikrodelecija i mikroduplikacija veća od 7 Mb", "rezultat": "5 radnih dana", "rokRezultata": "5 radnih dana", "link": "/trudnoca-i-beba/symphony/" }
     ],
     "redovi": [
-      { "oznaka": "Trizomija 21 (Daunov sindrom)", "vrednosti": ["da", "da", "da", "da", "da"] },
-      { "oznaka": "Trizomije 13 i 18", "vrednosti": ["ne", "da", "da", "da", "da"] },
-      { "oznaka": "Polne aneuploidije", "vrednosti": ["ne", "ne", "da", "da", "da"] },
-      { "oznaka": "DiGeorge mikrodelecija", "vrednosti": ["ne", "ne", "ne", "da", "[potvrditi]"] },
-      { "oznaka": "Svi hromozomi 1–22", "vrednosti": ["ne", "ne", "ne", "ne", "da"] },
-      { "oznaka": "Mikrodelecije i mikroduplikacije veće od 7 Mb (241)", "vrednosti": ["ne", "ne", "ne", "ne", "da"] }
+      { "oznaka": "Trizomija 21 (Daunov sindrom)", "vrednosti": ["da", "da", "da", "da"] },
+      { "oznaka": "Trizomije 13 i 18", "vrednosti": ["da", "da", "da", "da"] },
+      { "oznaka": "Polne aneuploidije", "vrednosti": ["ne", "da", "da", "da"] },
+      { "oznaka": "DiGeorge mikrodelecija", "vrednosti": ["ne", "ne", "da", "[potvrditi]"] },
+      { "oznaka": "Svi hromozomi 1–22", "vrednosti": ["ne", "ne", "ne", "da"] },
+      { "oznaka": "Mikrodelecije i mikroduplikacije veće od 7 Mb (241)", "vrednosti": ["ne", "ne", "ne", "da"] },
+      { "oznaka": "Može kod blizanaca", "vrednosti": ["da", "ne", "ne", "da"] }
     ],
-    "rezultatOznaka": "Rezultat"
+    "rezultatOznaka": "Rezultat",
+    "oznakaPreporuka": "Preporuka",
+    "oznakaDrugaOpcija": "Druga opcija",
+    "bezIzbora": "Izaberite paket u tabeli ili odgovorite na pitanja vodiča.",
+    "bezIzboraMobilni": "Izaberite paket ili odgovorite na pitanja vodiča iznad.",
+    "bezIzboraDugme": { "tekst": "Na vodič ↑", "link": "#vodic" },
+    "popustMd": "**300 € popusta na matične ćelije.** Svaka trudnica koja kod nas uradi prenatalni test ostvaruje 300 € popusta na osnovnu cenu čuvanja matičnih ćelija iz pupčanika. [Izračunajte cenu →](/maticne-celije/#paketi)"
+  },
+  "vodic": {
+    "nadnaslov": "Vodič kroz izbor · 4 pitanja",
+    "naslov": "Niste sigurni koji test da izaberete?",
+    "tekst": "Odgovorite na četiri kratka pitanja i pokazaćemo vam test koji odgovara vašoj trudnoći, sa cenom i ratama.",
+    "nedeljaOznaka": "Nedelja trudnoće",
+    "pitanja": [
+      { "kljuc": "bebe", "pitanje": "Koliko beba nosite?", "odgovori": [
+        { "vrednost": "jedna", "tekst": "Jednu bebu" },
+        { "vrednost": "dve", "tekst": "Blizance" },
+        { "vrednost": "iscezli", "tekst": "Iščezli blizanac" }
+      ] },
+      { "kljuc": "godine", "pitanje": "Koliko imate godina?", "odgovori": [
+        { "vrednost": "do34", "tekst": "Do 34" },
+        { "vrednost": "35", "tekst": "35 ili više" }
+      ] },
+      { "kljuc": "nalaz", "pitanje": "Kakav je nalaz kombinovanog (double) testa ili ultrazvuka?", "odgovori": [
+        { "vrednost": "uredan", "tekst": "Uredan" },
+        { "vrednost": "odstupanje", "tekst": "Povišen rizik ili odstupanje" },
+        { "vrednost": "nije", "tekst": "Još ga nisam radila" }
+      ] },
+      { "kljuc": "prioritet", "pitanje": "Šta vam je najvažnije?", "odgovori": [
+        { "vrednost": "sirok", "tekst": "Najširi pregled" },
+        { "vrednost": "brzina", "tekst": "Najbrži rezultat" },
+        { "vrednost": "cena", "tekst": "Najpovoljnija cena" }
+      ] }
+    ],
+    "hromozomi": {
+      "pitanje": "Na koji hromozom se sumnja?",
+      "pitanjeDodatak": "Možete izabrati više.",
+      "neZnam": "Ne znam / nije navedeno",
+      "napomena": "Kombinovani test računa rizik za 13, 18 i 21. Ostale izaberite ako je odstupanje pokazao ultrazvuk ili drugi nalaz.",
+      "oznakaDugmeta": "Hromozom {n}"
+    },
+    "cekanje": {
+      "oznaka": "Vaša preporuka",
+      "naslov": "Odgovorili ste na {n} od {ukupno} pitanja.",
+      "tekst": "Preporuka se pojavljuje čim odgovorite na sva četiri pitanja."
+    },
+    "iscezli": {
+      "oznaka": "Iščezli blizanac",
+      "naslov": "Pre izbora testa, javite nam se.",
+      "tekst": "Struka preporučuje da se prenatalni test iz krvi radi najmanje 8 nedelja nakon što je srce blizanca prestalo da kuca. Do tada njegova DNK može da bude u vašoj krvi i da utiče na rezultat.",
+      "tekst2": "Najbolje je da nas pozovete: naš lekar će sa vama proveriti kada i koji test ima smisla. Razgovor je besplatan.",
+      "dugmePoziv": "Pozovite {telefon}",
+      "dugme": { "tekst": "Zakažite razgovor", "link": "#kontakt" }
+    },
+    "preporuka": {
+      "oznaka": "Preporučujemo",
+      "rate": "ili {broj} rate po {rata}, bez kamate",
+      "nedeljaPre": "Test možete uraditi od 10. nedelje, za {razlika}. Termin možete rezervisati već sada.",
+      "nedeljaSada": "U {n}. nedelji ste: test možete uraditi već sada.",
+      "rezultat": "Rezultat za {rok}.",
+      "popustMd": "**Uz ovaj test: 300 € popusta** na osnovnu cenu čuvanja matičnih ćelija.",
+      "dugmeIzaberite": "Izaberite {paket} ↓",
+      "dugme": { "tekst": "Zakažite", "link": "#kontakt" },
+      "drugaOpcija": "Druga opcija"
+    },
+    "ispocetka": "Počnite ispočetka",
+    "napomena": "Preporuka je informativna i zasniva se na opštim smernicama za prenatalni skrining. Konačan izbor donosite sa svojim ginekologom, a razgovor sa našim lekarom je besplatan.",
+    "razlozi": {
+      "hromozomJedan": "hromozom {lista}",
+      "hromozomVise": "hromozome {lista}",
+      "blizanciVanHarmony": "Kod blizanaca Harmony Trio proverava samo hromozome 13, 18 i 21, pa za {hromozomi} dolazi u obzir samo Symphony. O daljim koracima odlučuje vaš ginekolog: nekada se odmah preporučuje dijagnostički test. Razgovor sa našim lekarom je besplatan.",
+      "vanHarmony": "Harmony ne proverava {hromozomi}, a Symphony pregleda sve hromozome. Zato je ovde Symphony jedini test iz krvi koji dolazi u obzir. O daljim koracima odlučuje vaš ginekolog: nekada se odmah preporučuje dijagnostički test. Razgovor sa našim lekarom je besplatan.",
+      "blizanciTrizomija21": "Kod sumnje na trizomiju 21 kod blizanaca preporučujemo Harmony Trio: to je ciljani test za trizomije 21, 18 i 13. Rezultat stiže za 3 do 5 radnih dana. Ako želite pregled svih hromozoma, druga opcija je Symphony. O daljim koracima odlučuje vaš ginekolog: nekada se odmah preporučuje dijagnostički test. Razgovor sa našim lekarom je besplatan.",
+      "trizomija21": "Kod sumnje na trizomiju 21 preporučujemo Harmony: to je ciljani test za trizomije 21, 18 i 13. Paket Plus uz to proverava polne hromozome i DiGeorge sindrom. Rezultat stiže za 3 do 5 radnih dana. Ako želite pregled svih hromozoma, druga opcija je Symphony. O daljim koracima odlučuje vaš ginekolog: nekada se odmah preporučuje dijagnostički test. Razgovor sa našim lekarom je besplatan.",
+      "polniITrizomije": "Symphony pregleda sve hromozome, pa daje najviše informacija. Harmony Plus proverava i trizomije 13, 18 i 21 i polne hromozome, po nižoj ceni. O daljim koracima odlučuje vaš ginekolog: nekada se odmah preporučuje dijagnostički test. Razgovor sa našim lekarom je besplatan.",
+      "polni": "Symphony pregleda sve hromozome, pa daje najviše informacija. Harmony Kvartet proverava i polne hromozome, po nižoj ceni. O daljim koracima odlučuje vaš ginekolog: nekada se odmah preporučuje dijagnostički test. Razgovor sa našim lekarom je besplatan.",
+      "trizomija": "Kada je povišen rizik za trizomiju {trizomije}, Symphony daje najviše informacija jer pregleda sve hromozome. Harmony Plus takođe proverava tu trizomiju, po nižoj ceni. O daljim koracima odlučuje vaš ginekolog: nekada se odmah preporučuje dijagnostički test. Razgovor sa našim lekarom je besplatan.",
+      "trizomije": "Kada je povišen rizik za trizomiju {trizomije}, Symphony daje najviše informacija jer pregleda sve hromozome. Harmony Plus takođe proverava te trizomije, po nižoj ceni. O daljim koracima odlučuje vaš ginekolog: nekada se odmah preporučuje dijagnostički test. Razgovor sa našim lekarom je besplatan.",
+      "blizanciPovoljno": "Kod blizanačke trudnoće rade se Harmony Trio ili Symphony. Harmony Trio proverava tri najčešće trizomije, po najpovoljnijoj ceni i sa rezultatom za 3 do 5 radnih dana.",
+      "blizanci": "Kod blizanačke trudnoće rade se Harmony Trio ili Symphony. Symphony pregleda sve hromozome, pa daje najviše informacija za obe bebe.",
+      "odstupanje": "Kada kombinovani test ili ultrazvuk pokaže odstupanje, najviše informacija daje pregled svih hromozoma. O daljim koracima odlučuje vaš ginekolog: nekada se odmah preporučuje dijagnostički test. Razgovor sa našim lekarom je besplatan.",
+      "najsiri": "Symphony je najširi prenatalni test iz krvi koji radimo: pregleda svih 46 hromozoma i 241 mikrodeleciju i mikroduplikaciju.",
+      "posle35Brzina": "Posle 35. godine raste verovatnoća hromozomskih promena, pa preporučujemo pregled svih hromozoma. Rezultat stiže za 5 radnih dana.",
+      "posle35": "Harmony Plus pokriva tri najčešće trizomije, polne hromozome i DiGeorge sindrom, po nižoj ceni od Symphony testa.",
+      "cena": "Harmony Kvartet proverava tri najčešće trizomije i polne hromozome i otkriva pol bebe, po najpovoljnijoj ceni za taj obim.",
+      "ostalo": "Harmony daje rezultat za 3 do 5 radnih dana. Plus je najširi Harmony paket: uz trizomije i polne hromozome proverava i DiGeorge sindrom."
+    }
   },
   "maticne": {
     "naslov": "Matične ćelije se prikupljaju samo jednom, na porođaju.",
@@ -99,6 +184,9 @@
       "rateTekst": "ili {broj} rata po {rata} bez kamate, uz sve Banca Intesa kartice. TotiCyte obrada +300 €.",
       "rateTekstMobilni": "ili {broj} rata po {rata} bez kamate, uz Banca Intesa kartice. TotiCyte +300 €.",
       "isticanje": "Paket plaćate tek kad stigne sertifikat o sačuvanim ćelijama.",
+      "popust": 300,
+      "popustTekst": "Uz prenatalni test kod nas: {cena} ({popust} popusta na osnovnu cenu).",
+      "popustTekstMobilni": "Uz prenatalni test kod nas: {cena}.",
       "isticanjeMobilni": "Paket plaćate tek kad stigne sertifikat.",
       "napomena": "Pored paketa: set za prikupljanje 120 € i državna taksa za iznošenje uzorka. Paketi i za 25, 30 i 50 godina.",
       "napomenaMobilni": "Set 120 € i državna taksa plaćaju se posebno. Paketi i za 25, 30 i 50 godina.",
@@ -106,15 +194,16 @@
     }
   },
   "skola": {
-    "naslov": "Besplatna škola za trudnice",
-    "tekst": "Četiri online predavanja ginekologa, pedijatra, nutricioniste i psihologa, u saradnji sa Euromedikom. Posle sva četiri dobijate vaučer za besplatan ultrazvuk.",
-    "tekstMobilni": "Četiri online predavanja u drugom trimestru: ginekolog, pedijatar, nutricionista i psiholog, uz Euromedik. Posle sva četiri, vaučer za besplatan ultrazvuk.",
+    "naslov": "Zdravo mama, besplatna škola za trudnice",
+    "tekst": "Osam online predavanja lekara i stručnjaka, četvrtkom od 14 do 16 h, u saradnji sa Euromedikom. Posle sva četiri termina dobijate vaučer za besplatan ultrazvuk.",
+    "tekstMobilni": "Osam online predavanja lekara i stručnjaka, četvrtkom od 14 do 16 h, uz predavanje o matičnim ćelijama.",
     "maticneMd": "Deo programa je i predavanje o matičnim ćelijama: šta su, kako se čuvaju i do kada treba odlučiti. [Više o matičnim ćelijama](/maticne-celije/)",
     "maticneMobilniMd": "Uz predavanje o matičnim ćelijama i roku za odluku. [Više o matičnim ćelijama](/maticne-celije/)",
     "isticanjeMd": "Niste uradili prenatalni test? Još uvek možete. [Uporedite Harmony i Symphony](#testovi)",
-    "ciklusOznaka": "Sledeći ciklus",
-    "termini": "[termini za naredni mesec]",
-    "dugme": { "tekst": "Prijavite se", "link": "#kontakt" },
+    "rasporedOznaka": "Raspored, predavači i prijava",
+    "termini": "Četvrtkom od 14 do 16 h, online",
+    "dugme": { "tekst": "Prijavite se", "link": "/skola-za-trudnice/#prijava" },
+    "rasporedLink": { "tekst": "Raspored i predavači →", "link": "/skola-za-trudnice/" },
     "slika": "",
     "slikaOpis": "Fotografija sa predavanja"
   },

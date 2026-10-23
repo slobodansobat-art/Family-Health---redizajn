@@ -99,15 +99,7 @@
   display: flex; flex-direction: column; gap: 4px;
   padding: 32px; border-radius: 28px; background: var(--bela);
 }
-.onko-lekari__dokumenta { list-style: none; }
-.onko-lekari__dokument {
-  display: flex; justify-content: space-between; gap: 12px; padding: 14px 0;
-  border-bottom: 1px solid var(--linija-svetla); color: var(--tekst); text-decoration: none;
-}
-a.onko-lekari__dokument:hover { color: var(--ljubicasta-600); }
-.onko-lekari__dokument--uskoro { cursor: default; }
-.onko-lekari__oznaka { flex-shrink: 0; font-size: 14px; color: var(--tekst-blag); }
-.onko-lekari__linija { margin-top: 18px; font-size: 15px; color: var(--tekst-blag); }
+.onko-lekari__linija { font-size: 15px; color: var(--tekst-blag); }
 .onko-lekari__telefon { font-size: 22px; color: var(--ljubicasta-800); text-decoration: none; }
 .onko-lekari__telefon:hover { color: var(--ljubicasta-600); }
 
@@ -130,7 +122,8 @@ a.onko-lekari__dokument:hover { color: var(--ljubicasta-600); }
    ========================================================================== */
 @media (max-width: 959px) {
   /* Hero */
-  .onko-hero__mreza { right: -150px; top: -40px; width: 360px; height: 360px; opacity: .6; }
+  /* telefon: mreža je iza teksta, pa je blaža i pomerena udesno da ne smeta čitanju */
+  .onko-hero__mreza { right: -190px; top: -40px; width: 360px; height: 360px; opacity: .35; }
   .onko-hero__unutra { padding-block: 26px 34px; }
   .onko-hero__nadnaslov { margin-bottom: 10px; font-size: 14px; }
   .onko-hero__naslov { font-size: 38px; line-height: 1.05; letter-spacing: 0; }
@@ -184,10 +177,7 @@ a.onko-lekari__dokument:hover { color: var(--ljubicasta-600); }
   .onko-lekari__uzorak { font-size: 15px; }
   .onko-lekari__dugme { display: flex; width: 100%; margin-top: 22px; padding: 14px; }
   .onko-lekari__kartica { gap: 0; padding: 20px; border-radius: 22px; }
-  .onko-lekari__kartica .onko-lekari__podnaslov { margin-bottom: 6px; }
-  .onko-lekari__dokument { padding: 13px 0; font-size: 15px; }
-  .onko-lekari__oznaka { font-size: 13px; }
-  .onko-lekari__linija { margin-top: 16px; font-size: 14px; }
+  .onko-lekari__linija { font-size: 14px; }
   .onko-lekari__telefon { font-family: var(--font-naslov); font-size: 26px; }
 
   /* Kontakt */

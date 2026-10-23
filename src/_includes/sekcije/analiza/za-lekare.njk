@@ -1,4 +1,4 @@
-{#- ANALIZA · panel "Za lekare": tehnički podaci, uzorak, izveštaj, dokumenta, direktna linija
+{#- ANALIZA · panel "Za lekare": tehnički podaci, uzorak, izveštaj, veze za lekare, direktna linija
     Sadržaj: analiza.stranica.zaLekare (+ stranice.analiza.dokumenti/linija)
     Telefon i radno vreme: podesavanja.kontakt
     Stil: css/stranice/analiza.css (.analiza-tehnicki, .analiza-kartice, .analiza-dokumenti) -#}
@@ -58,7 +58,8 @@
   </div>
   {%- endif %}
 
-  {#- Dokumenta (PDF) + direktna linija za lekare (linija se prikazuje i kad nema dokumenata) #}
+  {#- Veze za lekare (npr. "Kako uputiti pacijenta") + direktna linija (prikazuje se i kad nema veza).
+      Polje se u sadržaju zove "dokumenti" (ostalo od ranije), ali su to samo linkovi, bez PDF-ova. #}
   {%- if imaDokumente or z.linija.oznaka %}
   {%- set zd = z.dokumenti or {} %}
   <section class="kontejner analiza-dokumenti{% if not imaDokumente %} analiza-dokumenti--samo-linija{% endif %}"{% if imaDokumente %} aria-labelledby="analiza-dokumenti-naslov"{% else %} aria-label="{{ z.linija.oznaka }}"{% endif %}>
@@ -68,14 +69,10 @@
       <ul>
         {%- for st in l.dokumenti.stavke %}
         <li>
-          {%- if st.fajl %}
-          {#- PDF je dodat u CMS-u: link za preuzimanje #}
-          <a href="{{ st.fajl }}" class="analiza-dokumenti__stavka analiza-dokumenti__stavka--link" download>{{ st.tekst }} <span class="analiza-dokumenti__oznaka">{{ zd.oznakaFajl }}</span></a>
-          {%- elif st.link %}
+          {%- if st.link %}
           <a href="{{ st.link }}" class="analiza-dokumenti__stavka analiza-dokumenti__stavka--link">{{ st.tekst }} <span aria-hidden="true">→</span></a>
           {%- else %}
-          {#- PDF još ne postoji: neaktivna stavka "uskoro" #}
-          <span class="analiza-dokumenti__stavka" aria-disabled="true">{{ st.tekst }} <span class="analiza-dokumenti__oznaka">{{ zd.oznakaUskoro }}</span></span>
+          <span class="analiza-dokumenti__stavka">{{ st.tekst }}</span>
           {%- endif %}
         </li>
         {%- endfor %}

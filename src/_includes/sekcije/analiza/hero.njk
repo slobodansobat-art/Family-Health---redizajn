@@ -1,9 +1,13 @@
-{#- ANALIZA · hero: putanja, naziv, kratak opis, osnovni podaci, animirana mreža
+{#- ANALIZA · hero: putanja, naziv, kratak opis, osnovni podaci, animacija poređenja zapisa
     Sadržaj: analiza.naziv + analiza.stranica.hero (putanja: stranice.analiza.putanja)
+    Animacija (redovi slova zdravog tkiva i tumora, nišan na mutaciji) se crta na <canvas>
+    u js/stranice/analiza.js; isključuje se poljem hero.animacija = false.
     Stil: css/stranice/analiza.css (.analiza-hero) -#}
 {%- set h = s.hero or {} -%}
 <section class="analiza-hero" aria-labelledby="analiza-naslov">
-  <div class="analiza-hero__mreza" aria-hidden="true">{% onkoMreza analiza.slug %}</div>
+  {%- if h.animacija != false %}
+  <div class="analiza-hero__niz" aria-hidden="true"><canvas class="analiza-hero__platno" data-analiza-niz></canvas></div>
+  {%- endif %}
   <div class="kontejner analiza-hero__unutra">
     {%- if z.putanja.length %}
     <nav class="analiza-hero__putanja" aria-label="Putanja">

@@ -1,6 +1,7 @@
 ---
 # Trudnoća i beba: pregled oblasti (alat "u kojoj ste nedelji", vremenska
-# linija, poređenje prenatalnih testova, matične ćelije, škola, kontakt).
+# linija, prenatalni testovi sa vodičem za izbor testa, matične ćelije,
+# škola Zdravo mama, kontakt).
 # Sadržaj: src/sadrzaj/stranice/trudnoca.json
 # Stil: src/assets/css/stranice/trudnoca.css · JS: src/assets/js/stranice/trudnoca.js
 kljuc: trudnoca
@@ -11,8 +12,7 @@ zaglavlje:
   nazad: /
   linkovi:
     - { tekst: "Matične ćelije", link: "#maticne" }
-    - { tekst: "Škola za trudnice", link: "#skola" }
-    - { tekst: "Kontakt", link: "#kontakt" }
+    - { tekst: "Škola Zdravo mama", link: "/skola-za-trudnice/" }
   dugme: { tekst: "Besplatne konsultacije", link: "#kontakt" }
 donjaTraka: { tekst: "Zakažite", link: "#kontakt" }
 skripte: ["stranice/trudnoca.js"]
@@ -24,6 +24,6 @@ skripte: ["stranice/trudnoca.js"]
 {% include "sekcije/trudnoca/skola.njk" %}
 {% include "sekcije/trudnoca/kontakt.njk" %}
 
-{#- Podaci za JS (alat za nedelju, poruke, paketi). Telefon dolazi iz podešavanja. #}
+{#- Podaci za JS (alat za nedelju, poruke, paketi, vodič). Telefon dolazi iz podešavanja. #}
 {%- set t = stranice.trudnoca %}
-<script type="application/json" id="trudnoca-podaci">{{ { alat: t.alat, linija: t.vremenskaLinija, testovi: t.testovi, telefon: podesavanja.kontakt.telefon } | uJson | safe }}</script>
+<script type="application/json" id="trudnoca-podaci">{{ { alat: t.alat, linija: t.vremenskaLinija, testovi: t.testovi, vodic: t.vodic, telefon: podesavanja.kontakt.telefon } | uJson | safe }}</script>

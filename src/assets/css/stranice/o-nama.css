@@ -1,12 +1,12 @@
 /* ==========================================================================
    STRANICA: O NAMA  (/o-nama/)  ·  sekcije: src/_includes/sekcije/o-nama/
-   hero (osnivač) · put uzorka (animirana mapa) · tim · mediji · poziv
+   hero (osnivač) · put uzorka (animirana mapa) · mediji · poziv
    ========================================================================== */
 
 /* Boje partnera: ista boja za liniju na mapi i tačku u listi */
 .onama-boja-1 { --boja: var(--ljubicasta-600); }
-.onama-boja-2 { --boja: var(--mint-600); }
-.onama-boja-3 { --boja: var(--ljubicasta-500); }
+.onama-boja-2 { --boja: var(--ljubicasta-500); }
+.onama-boja-3 { --boja: var(--mint-600); }   /* rezerva za trećeg partnera */
 
 /* Zajednički h2 sekcija na ovoj stranici */
 .onama-naslov { font-family: var(--font-naslov); font-size: 40px; line-height: 1.1; color: var(--ljubicasta-800); }
@@ -63,6 +63,8 @@
   animation: onama-talas 2.4s ease-out infinite;          /* talas oko Beograda */
 }
 .onama-mapa__cilj { fill: var(--boja); }
+/* Avion na liniji (kretanje: SVG animateMotion u mapa.njk) */
+.onama-mapa__avion { fill: var(--boja); stroke: var(--bela); stroke-width: 1.2; stroke-linejoin: round; }
 .onama-mapa__grad { font-family: var(--font-tekst); font-size: 13px; fill: var(--ljubicasta-800); }
 .onama-mapa__grad--start { font-size: 14px; font-weight: 600; }
 
@@ -71,24 +73,9 @@
   0% { transform: scale(1); opacity: .5; }
   100% { transform: scale(2.6); opacity: 0; }
 }
-/* Bez pokreta: talas se ne prikazuje, linije stoje (globalno pravilo gasi animacije) */
-@media (prefers-reduced-motion: reduce) { .onama-mapa__talas { display: none; } }
-
-/* --- Tim ------------------------------------------------------------------- */
-.onama-tim { padding-block: 60px 88px; }
-.onama-tim__naslov { margin-bottom: 10px; }
-.onama-tim__uvod { max-width: 560px; margin-bottom: 32px; }
-.onama-tim__lista { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
-.onama-clan { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.onama-clan__foto { aspect-ratio: 1 / 1; border-radius: var(--zaobljenje); }
-/* Prazno mesto za fotografiju: natpis dole levo, boje se smenjuju */
-.onama-clan__foto.slika--prazna {
-  min-height: 0; padding: 16px; align-items: flex-end; justify-content: flex-start; text-align: left;
-  background: var(--ljubicasta-150); font-size: 13px;
-}
-.onama-clan:nth-child(even) .onama-clan__foto.slika--prazna { background: var(--ljubicasta-50); }
-.onama-clan__ime { font-weight: 600; color: var(--ljubicasta-800); }
-.onama-clan__uloga { margin-top: -8px; font-size: 15px; color: var(--tekst-blag); }
+/* Bez pokreta: talas i avioni se ne prikazuju, linije stoje
+   (globalno pravilo gasi CSS animacije, ali ne i SVG animateMotion) */
+@media (prefers-reduced-motion: reduce) { .onama-mapa__talas, .onama-mapa__avion { display: none; } }
 
 /* --- Mediji ---------------------------------------------------------------- */
 .onama-mediji { padding-bottom: 88px; }
@@ -156,15 +143,6 @@
   .onama-put__mapa { border-radius: 26px; padding: 12px 15px; }
   .onama-partneri { margin-top: 18px; gap: 12px; font-size: 15px; }
   .onama-partner { gap: 12px; }
-
-  .onama-tim { padding-block: 34px 10px; }
-  .onama-tim__naslov { margin-bottom: 8px; }
-  .onama-tim__uvod { font-size: 15px; margin-bottom: 20px; }
-  .onama-tim__lista { grid-template-columns: 1fr 1fr; gap: 20px 14px; }
-  .onama-clan { gap: 8px; }
-  .onama-clan__foto { border-radius: 22px; }
-  .onama-clan__foto.slika--prazna { padding: 12px; }
-  .onama-clan__uloga { font-size: 13.5px; }
 
   /* Mediji: vodoravni niz do ivice ekrana */
   .onama-mediji { padding-block: 34px 10px; }

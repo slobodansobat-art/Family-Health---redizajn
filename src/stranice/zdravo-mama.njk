@@ -1,0 +1,112 @@
+---js
+{
+// Škola za trudnice "Zdravo mama": raspored po ciklusima (mesecima), predavači,
+// kako funkcioniše, prijava (posebna Netlify forma "zdravo-mama"), partneri, pitanja.
+// Sadržaj: src/sadrzaj/stranice/zdravo-mama.json (stranice.zdravoMama)
+// Stil: src/assets/css/stranice/zdravo-mama.css · JS: src/assets/js/stranice/zdravo-mama.js
+// Adresa je ista kao na starom sajtu (zbog Google-a).
+//
+// Front matter je JavaScript (ne YAML) samo zato što stranica mora da zna
+// današnji datum PRI IZRADI sajta: od njega zavise oznake termina (Održano,
+// Danas, Sledeće, Uskoro), kartica "Sledeće predavanje", izabrani mesec i
+// skriveno polje "ciklus" u formi. To je prikaz bez JavaScript-a; u pregledaču
+// isto računa js/stranice/zdravo-mama.js sa današnjim datumom posetioca.
+kljuc: "zdravo-mama",
+permalink: "/skola-za-trudnice/",
+zaglavlje: {
+  tema: "svetla", oblast: "trudnoca", nazad: "/trudnoca-i-beba/", prekidacMobilni: false,
+  // ova stranica nema sekciju #kontakt: linkovi i dugme vode na delove škole
+  linkovi: [
+    { tekst: "Raspored", link: "#raspored" },
+    { tekst: "Predavači", link: "#predavaci" },
+    { tekst: "Prijava", link: "#prijava" }
+  ],
+  dugme: { tekst: "Prijavite se", link: "#prijava" }
+},
+donjaTraka: { tekst: "Kontakt", link: "/kontakt/" },
+skripte: ["stranice/zdravo-mama.js"],
+
+// Današnji datum u Beogradu u trenutku izrade, kao "gggg-mm-dd"
+danasIzrada: new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Belgrade", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()),
+
+eleventyComputed: {
+  // zm = raspored pripremljen za prikaz (ista pravila kao u js/stranice/zdravo-mama.js)
+  zm: (data) => {
+    // (Eleventy ovu funkciju prvo pozove "na prazno" da vidi koje podatke čita,
+    //  zato provere za prazne vrednosti)
+    const s = data.stranice && data.stranice.zdravoMama;
+    if (!s || !s.raspored || !s.hero || !s.prijava || !s.predavaci || typeof data.danasIzrada !== "string") return {};
+    const r = s.raspored;
+    const danas = data.danasIzrada;
+    const lista = (s.predavaci.lista || []).filter(Boolean);
+
+    // Predavač po ključu ili po imenu (velika/mala slova nisu bitna)
+    const predavac = (x) => {
+      const k = String(x || "").trim().toLowerCase();
+      return lista.find((p) => String(p.kljuc).toLowerCase() === k || String(p.ime).toLowerCase() === k) || { ime: String(x || "").trim(), zvanje: "", tema: "" };
+    };
+    // "2026-10-08" -> "Četvrtak, 8. oktobar"
+    const nazivDana = (iso) => {
+      const [g, m, d] = iso.split("-").map(Number);
+      return r.daniUNedelji[new Date(Date.UTC(g, m - 1, d)).getUTCDay()] + ", " + d + ". " + r.meseci[m - 1];
+    };
+    const poDatumu = (a, b) => (a.datum < b.datum ? -1 : a.datum > b.datum ? 1 : 0);
+
+    // Sledeći termin: prvi koji nije prošao (danas se računa)
+    const sviCiklusi = (r.ciklusi || []).filter(Boolean);
+    const sviDatumi = sviCiklusi.flatMap((c) => (c.termini || []).filter(Boolean).map((t) => t.datum)).filter(Boolean).sort();
+    const sledeci = sviDatumi.find((iso) => iso >= danas) || null;
+
+    const ciklusi = sviCiklusi.map((c, i) => ({
+      naziv: c.naziv, kratko: c.kratko, napomena: c.napomena, broj: i + 1,
+      termini: (c.termini || []).filter((t) => t && t.datum).slice().sort(poDatumu).map((t) => {
+        const status = t.datum === danas ? "danas" : t.datum < danas ? "odrzano" : t.datum === sledeci ? "sledece" : "uskoro";
+        return { datum: t.datum, naziv: nazivDana(t.datum), status, oznaka: r.oznake[status], predavaci: (t.predavaci || []).map(predavac) };
+      }),
+    }));
+
+    // Izabrani mesec: ciklus sa sledećim terminom (ako ga nema: poslednji)
+    let izabran = ciklusi.findIndex((c) => c.termini.some((t) => t.datum === sledeci));
+    if (izabran < 0) izabran = Math.max(0, ciklusi.length - 1);
+
+    // Kartica "Sledeće predavanje"
+    const h = s.hero.sledece;
+    const sled = sledeci
+      ? { oznaka: sledeci === danas ? h.oznakaDanas : h.oznaka, dan: nazivDana(sledeci), vreme: h.vreme,
+          predavaci: ciklusi.flatMap((c) => c.termini).find((t) => t.datum === sledeci).predavaci }
+      : { oznaka: h.nemaOznaka, dan: h.nemaDan, vreme: h.nemaVreme, predavaci: [] };
+
+    // Prijava je uvek za SLEDEĆI kalendarski mesec (u decembru: januar sledeće godine)
+    const [g, m] = danas.split("-").map(Number);
+    const sg = m === 12 ? g + 1 : g, sm = m === 12 ? 1 : m + 1;
+    const mesec = sg + "-" + String(sm).padStart(2, "0");
+    const cik = ciklusi.find((c) => c.termini.length && c.termini[0].datum.slice(0, 7) === mesec);
+    const imeMeseca = r.meseci[sm - 1].charAt(0).toUpperCase() + r.meseci[sm - 1].slice(1);
+    const ciklusPrijave = cik
+      ? cik.naziv + " (" + cik.termini.map((t) => Number(t.datum.slice(8)) + ".").join(", ") + ")"
+      : imeMeseca + " " + sg + " " + s.prijava.ciklusUskoro;
+
+    // Inicijali predavača (mesto za fotografiju): "dr Mia Koić Antović" -> "MK"
+    const predavaci = lista.map((p) => ({
+      ...p,
+      inicijali: String(p.ime).replace(/^dr\.?\s+/i, "").split(/\s+/).filter((w) => w.length > 1).slice(0, 2).map((w) => w[0]).join(""),
+    }));
+
+    return { danas, ciklusi, izabran, sled, ciklusPrijave, predavaci };
+  },
+},
+}
+---
+{#- Omotač .zm nosi boje škole (breskva, teget, tirkiz): css/stranice/zdravo-mama.css -#}
+<div class="zm">
+{% include "sekcije/zdravo-mama/hero.njk" %}
+{% include "sekcije/zdravo-mama/raspored.njk" %}
+{% include "sekcije/zdravo-mama/predavaci.njk" %}
+{% include "sekcije/zdravo-mama/kako.njk" %}
+{% include "sekcije/zdravo-mama/prijava.njk" %}
+{% include "sekcije/zdravo-mama/faq.njk" %}
+</div>
+
+{#- Podaci za JS: raspored, predavači i tekstovi koje JS upisuje (oznake, kartica, ciklus) #}
+{%- set s = stranice.zdravoMama %}
+<script type="application/json" id="zdravo-mama-podaci">{{ { raspored: s.raspored, predavaci: s.predavaci.lista, sledece: s.hero.sledece, ciklusUskoro: s.prijava.ciklusUskoro } | uJson | safe }}</script>

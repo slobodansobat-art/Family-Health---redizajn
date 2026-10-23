@@ -110,7 +110,7 @@
 {% macro forma(ime, klasa = "forma", fajlovi = false, akcija = "/hvala/") -%}
 <form name="{{ ime }}" method="POST" action="{{ akcija }}" class="{{ klasa }}" data-netlify="true" netlify-honeypot="bot-polje"{% if fajlovi %} enctype="multipart/form-data"{% endif %}>
   <input type="hidden" name="form-name" value="{{ ime }}">
-  <p class="sr-only"><label>Ne popunjavajte ovo polje: <input name="bot-polje" tabindex="-1" autocomplete="off"></label></p>
+  <p class="sr-only" aria-hidden="true"><label>Ne popunjavajte ovo polje: <input name="bot-polje" tabindex="-1" autocomplete="off"></label></p>
   {{ caller() }}
 </form>
 {%- endmacro %}
@@ -118,7 +118,7 @@
 {% macro polje(id, ime, oznaka, tip = "text", autocomplete = "", obavezno = false, placeholder = "", klasa = "", vrednost = "", pomoc = "") -%}
 <div class="polje {{ klasa }}">
   <label for="{{ id }}" class="polje__oznaka">{{ oznaka }}{% if obavezno %} <span class="polje__obavezno" aria-hidden="true">*</span>{% endif %}</label>
-  <input id="{{ id }}" name="{{ ime }}" type="{{ tip }}" class="unos"{% if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}{% if obavezno %} required{% endif %}{% if placeholder %} placeholder="{{ placeholder }}"{% endif %}{% if vrednost %} value="{{ vrednost }}"{% endif %}{% if tip == "email" %} spellcheck="false" autocapitalize="off"{% endif %}{% if pomoc %} aria-describedby="{{ id }}-pomoc"{% endif %}>
+  <input id="{{ id }}" name="{{ ime }}" type="{{ tip }}" class="unos"{% if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}{% if obavezno %} required{% endif %}{% if placeholder %} placeholder="{{ placeholder }}"{% endif %}{% if vrednost %} value="{{ vrednost }}"{% endif %}{% if tip == "email" %} spellcheck="false" autocapitalize="off"{% endif %}{% if tip == "tel" %} inputmode="tel" pattern="[0-9+\(\)\/ .\-]{6,}" title="Broj telefona, na primer 062 123 4567"{% endif %}{% if pomoc %} aria-describedby="{{ id }}-pomoc"{% endif %}>
   {%- if pomoc %}<span class="polje__pomoc" id="{{ id }}-pomoc">{{ pomoc }}</span>{% endif %}
 </div>
 {%- endmacro %}

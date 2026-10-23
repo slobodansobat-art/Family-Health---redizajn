@@ -1,0 +1,54 @@
+{#- ZDRAVO MAMA · raspored predavanja (sidro #raspored)
+    Tabovi po mesecima (ciklusima): zajednički tabovi iz glavni.js ([data-tabovi]).
+    Bez JS-a vide se svi meseci jedan ispod drugog, svaki sa svojim naslovom.
+    Oznake termina (Održano / Danas / Sledeće / Uskoro) i izabrani mesec su ovde
+    izračunati za dan izrade sajta (zm, front matter stranice); JS ih osvežava
+    po današnjem datumu posetioca (js/stranice/zdravo-mama.js).
+    Sadržaj: stranice.zdravoMama.raspored (ciklusi: naziv, kratko, napomena,
+    termini: [{ datum "gggg-mm-dd", predavaci: [ključ ili ime predavača] }])
+    Stil: css/stranice/zdravo-mama.css (.zm-ras, .zm-termin) -#}
+{%- set d = stranice.zdravoMama.raspored -%}
+<section id="raspored" class="zm-ras" aria-labelledby="zm-ras-naslov">
+  <div class="kontejner" data-tabovi>
+    <div class="zm-ras__glava">
+      <div class="zm-ras__uvod">
+        <h2 id="zm-ras-naslov" class="zm-naslov zm-ras__naslov">{{ d.naslov }}</h2>
+        <p class="zm-blag"><span class="samo-desktop">{{ d.tekst }}</span><span class="samo-mobilni">{{ d.tekstMobilni or d.tekst }}</span></p>
+      </div>
+      <div class="zm-ras__meseci" role="tablist" aria-label="{{ d.izborOznaka }}">
+        {%- for c in zm.ciklusi %}
+        {%- set izabran = loop.index0 == zm.izabran %}
+        <button type="button" class="zm-ras__mesec-dugme" role="tab" id="zm-mesec-{{ c.broj }}" aria-controls="zm-ciklus-{{ c.broj }}" aria-selected="{{ 'true' if izabran else 'false' }}"{% if not izabran %} tabindex="-1"{% endif %}>{{ c.kratko }}</button>
+        {%- endfor %}
+      </div>
+    </div>
+
+    {%- for c in zm.ciklusi %}
+    <div class="zm-ras__panel" role="tabpanel" id="zm-ciklus-{{ c.broj }}" aria-labelledby="zm-mesec-{{ c.broj }}">
+      {#- Naziv meseca: vidi se samo bez JS-a (kad su svi meseci jedan ispod drugog) #}
+      <h3 class="zm-ras__mesec">{{ c.naziv }}</h3>
+      <ol class="zm-ras__termini">
+        {%- for t in c.termini %}
+        <li class="zm-termin zm-termin--{{ t.status }}" data-zm-termin="{{ t.datum }}">
+          <span class="zm-termin__oznaka" data-zm-oznaka>{{ t.oznaka }}</span>
+          <span class="zm-termin__vreme">{{ d.vreme }}</span>
+          <p class="zm-termin__dan"><time datetime="{{ t.datum }}">{{ t.naziv }}</time></p>
+          {%- if t.predavaci.length %}
+          <ul class="zm-termin__lista">
+            {%- for p in t.predavaci %}
+            <li><span class="zm-termin__tema">{{ p.tema }}</span><span class="zm-termin__ime">{{ p.ime }}</span></li>
+            {%- endfor %}
+          </ul>
+          {%- else %}
+          <p class="zm-termin__prazno">{{ d.nemaPredavaca }}</p>
+          {%- endif %}
+        </li>
+        {%- endfor %}
+      </ol>
+      {%- if c.napomena %}
+      <p class="zm-ras__napomena">{{ c.napomena }}</p>
+      {%- endif %}
+    </div>
+    {%- endfor %}
+  </div>
+</section>

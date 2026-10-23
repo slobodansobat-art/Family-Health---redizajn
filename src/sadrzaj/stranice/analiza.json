@@ -13,9 +13,7 @@
     "dugme": { "tekst": "Pošaljite nalaz na procenu", "link": "#kontakt" }
   },
   "dokumenti": {
-    "naslov": "Dokumenta",
-    "oznakaUskoro": "PDF, uskoro [dodati]",
-    "oznakaFajl": "PDF"
+    "naslov": "Za lekare"
   },
   "linija": {
     "oznaka": "Direktna linija za lekare",
@@ -32,7 +30,6 @@
     "emailOznaka": "Mejl adresa",
     "ulogaOznaka": "Javljate se kao",
     "uloge": ["Pacijent", "Član porodice", "Lekar"],
-    "nalazOznaka": "Nalaz (PDF ili fotografija)",
-    "dugme": "Pošaljite nalaz"
+    "dugme": "Pošaljite upit"
   }
 }

@@ -1,7 +1,7 @@
-{#- ONKO ANALIZE · kontakt: forma za slanje nalaza (sa prilogom)
+{#- ONKO ANALIZE · kontakt: upit za besplatnu procenu
     Sadržaj: stranice.onkoAnalize.kontakt   ·   Stil: css/stranice/onko-analize.css
     Forma: Netlify Forms "onko-analize-kontakt" (posle slanja ide na /hvala/) -#}
-{%- from "makroi/komponente.njk" import forma, polje, izbor, fajlPolje, saglasnost, posalji with context -%}
+{%- from "makroi/komponente.njk" import forma, polje, izbor, saglasnost, posalji with context -%}
 {%- set d = stranice.onkoAnalize.kontakt -%}
 <section id="kontakt" class="analize-kontakt" aria-labelledby="analize-kontakt-naslov">
   <div class="kontejner analize-kontakt__mreza">
@@ -9,12 +9,11 @@
       <h2 id="analize-kontakt-naslov" class="analize-kontakt__naslov">{{ d.naslov }}</h2>
       <p class="analize-kontakt__tekst">{{ d.tekst }}</p>
     </div>
-    {% call forma("onko-analize-kontakt", "forma forma--bela analize-kontakt__forma", true) %}
+    {% call forma("onko-analize-kontakt", "forma forma--bela analize-kontakt__forma") %}
       {{ polje("analize-ime", "ime", d.poljeIme, autocomplete="name", obavezno=true) }}
       {{ polje("analize-telefon", "telefon", d.poljeTelefon, tip="tel", autocomplete="tel", obavezno=true) }}
-      {{ polje("analize-email", "email", d.poljeEmail, tip="email", autocomplete="email", obavezno=true, klasa="polje--ceo-red") }}
+      {{ polje("analize-email", "email", d.poljeEmail, tip="email", autocomplete="email", obavezno=true) }}
       {{ izbor("analize-uloga", "uloga", d.poljeUloga, d.uloge) }}
-      {{ fajlPolje("analize-nalaz", "nalaz", d.poljeNalaz, "") }}
       {{ saglasnost("analize-ok") }}
       {{ posalji(d.dugme) }}
     {% endcall %}

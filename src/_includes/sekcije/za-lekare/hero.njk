@@ -1,10 +1,11 @@
-{#- ZA LEKARE · uvodni deo (hero) sa onko mrežom, dugmetom i direktnom linijom
+{#- ZA LEKARE · uvodni deo (hero) sa animacijom krvnih zrnaca, dugmetom i direktnom linijom
     Sadržaj: stranice.zaLekare.hero  ·  telefon: podesavanja.kontakt.mobilni
+    Animacija (krvna zrnca i delovi DNK, tečna biopsija) se crta na <canvas> u js/stranice/za-lekare.js
     Stil: css/stranice/za-lekare.css (.lekari-hero) -#}
 {%- set d = stranice.zaLekare.hero -%}
 {%- set k = podesavanja.kontakt -%}
 <section class="lekari-hero" aria-labelledby="lekari-hero-naslov">
-  <div class="lekari-hero__mreza" aria-hidden="true">{% onkoMreza "lekari" %}</div>
+  <div class="lekari-hero__krv" aria-hidden="true"><canvas class="lekari-hero__platno" data-lekari-krv></canvas></div>
   <div class="kontejner lekari-hero__unutra">
     <nav class="lekari-hero__putanja" aria-label="Putanja">
       <a href="{{ d.putanjaRoditeljLink }}">{{ d.putanjaRoditelj }}</a> <span aria-hidden="true">/</span> <span aria-current="page">{{ d.putanjaTrenutna }}</span>

@@ -1,0 +1,34 @@
+{#- ZDRAVO MAMA · partneri i česta pitanja
+    Desktop: partneri levo (nazivi, ili logo kad se doda u CMS-u), pitanja desno.
+    Telefon: pitanja, pa ispod jedan red "U saradnji sa: …".
+    Pitanja su <details>/<summary> (rade bez JS-a), izgled kao u skici.
+    Sadržaj: stranice.zdravoMama.partneri, stranice.zdravoMama.faq (odgovor: Markdown)
+    Stil: css/stranice/zdravo-mama.css (.zm-faq) -#}
+{%- set p = stranice.zdravoMama.partneri -%}
+{%- set d = stranice.zdravoMama.faq -%}
+<section class="zm-faq" aria-labelledby="zm-faq-naslov">
+  <div class="kontejner zm-faq__mreza">
+    <div class="zm-faq__partneri">
+      <div class="samo-desktop">
+        <p class="zm-faq__oznaka">{{ p.naslov }}</p>
+        <ul class="zm-partneri">
+          {%- for x in p.lista %}
+          <li class="zm-partneri__stavka">{% if x.logoSlika %}<img src="{{ x.logoSlika }}" alt="{{ x.logoSlikaOpis or x.naziv }}" class="zm-partneri__logo" loading="lazy" decoding="async">{% else %}{{ x.naziv }}{% endif %}</li>
+          {%- endfor %}
+        </ul>
+        <p class="zm-napomena">{{ p.napomena }}</p>
+      </div>
+      <p class="zm-faq__partneri-red samo-mobilni">{{ p.naslov }}: {% for x in p.lista %}{{ x.naziv }}{{ ", " if not loop.last else "." }}{% endfor %}</p>
+    </div>
+
+    <div class="zm-faq__pitanja">
+      <h2 id="zm-faq-naslov" class="zm-naslov zm-faq__naslov">{{ d.naslov }}</h2>
+      {%- for f in d.pitanja %}
+      <details class="zm-faq__stavka">
+        <summary class="zm-faq__pitanje">{{ f.pitanje }}</summary>
+        <div class="zm-faq__odgovor">{{ f.odgovor | md | safe }}</div>
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

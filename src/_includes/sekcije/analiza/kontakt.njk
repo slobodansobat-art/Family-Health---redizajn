@@ -1,8 +1,8 @@
-{#- ANALIZA · kontakt: slanje nalaza na besplatnu procenu (Netlify forma sa prilogom)
+{#- ANALIZA · kontakt: upit za besplatnu procenu nalaza (Netlify forma)
     Tekstovi: stranice.analiza.kontakt (isti za sve analize; analiza.stranica.kontakt može da ih zameni)
     Forma "analiza-kontakt" je ista za sve analize; skriveno polje "analiza" nosi naziv analize.
     Stil: css/stranice/analiza.css (.analiza-kontakt) -#}
-{%- from "makroi/komponente.njk" import forma, polje, izbor, fajlPolje, saglasnost, posalji with context -%}
+{%- from "makroi/komponente.njk" import forma, polje, izbor, saglasnost, posalji with context -%}
 {%- set k = s.kontakt if s.kontakt.naslov else z.kontakt -%}
 {%- if k.naslov -%}
 <section class="analiza-kontakt" id="kontakt" aria-labelledby="analiza-kontakt-naslov">
@@ -11,13 +11,12 @@
       <h2 id="analiza-kontakt-naslov" class="analiza-kontakt__naslov">{{ k.naslov }}</h2>
       {%- if k.tekst %}<p class="analiza-kontakt__tekst">{{ k.tekst }}</p>{% endif %}
     </div>
-    {% call forma("analiza-kontakt", "forma forma--bela analiza-kontakt__forma", true) %}
+    {% call forma("analiza-kontakt", "forma forma--bela analiza-kontakt__forma") %}
       <input type="hidden" name="analiza" value="{{ analiza.naziv }}">
       {{ polje("an-ime", "ime", k.imeOznaka, autocomplete="name", obavezno=true) }}
       {{ polje("an-tel", "telefon", k.telefonOznaka, tip="tel", autocomplete="tel", obavezno=true) }}
-      {{ polje("an-email", "email", k.emailOznaka or z.kontakt.emailOznaka, tip="email", autocomplete="email", obavezno=true, klasa="polje--ceo-red") }}
+      {{ polje("an-email", "email", k.emailOznaka or z.kontakt.emailOznaka, tip="email", autocomplete="email", obavezno=true) }}
       {{ izbor("an-uloga", "uloga", k.ulogaOznaka, k.uloge) }}
-      {{ fajlPolje("an-nalaz", "nalaz", k.nalazOznaka, "") }}
       {{ saglasnost("an-ok") }}
       {{ posalji(k.dugme) }}
     {% endcall %}

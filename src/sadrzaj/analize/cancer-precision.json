@@ -19,6 +19,7 @@
       "opis": "Cancer Precision poredi tumorsko i zdravo tkivo i navodi ciljane lekove i kliničke studije za relevantne promene. Rezultat za 3 do 4 nedelje."
     },
     "hero": {
+      "animacija": true,
       "nadnaslov": "Analiza tumora za izbor ciljane terapije",
       "tekst": "Poredimo genetski zapis tumora sa zdravim tkivom istog pacijenta i za svaku relevantnu promenu navodimo da li postoji ciljani lek ili klinička studija.",
       "podaci": [
@@ -62,10 +63,7 @@
       },
       "dokumenti": {
         "stavke": [
-          { "tekst": "Kako uputiti pacijenta, korak po korak", "link": "/za-lekare/", "fajl": "" },
-          { "tekst": "Uputni obrazac", "link": "", "fajl": "" },
-          { "tekst": "Uputstvo za pripremu i slanje uzorka", "link": "", "fajl": "" },
-          { "tekst": "Spisak gena u panelu", "link": "", "fajl": "" }
+          { "tekst": "Kako uputiti pacijenta, korak po korak", "link": "/za-lekare/" }
         ]
       }
     },

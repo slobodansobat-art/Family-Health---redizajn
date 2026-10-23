@@ -5,7 +5,6 @@
              panel za pacijente · srodne analize · kontakt
    ========================================================================== */
 .analiza {
-  --analiza-mreza: 600px;          /* veličina animirane mreže u heru */
   --analiza-traka: 72px;           /* visina prilepljene trake sa tabovima */
   --analiza-senka: rgba(47, 21, 68, .06);  /* senka kartice izveštaja (mobilni) */
 }
@@ -17,12 +16,16 @@
 /* Prva sekcija panela uvek ima isti razmak od vrha (i kad analiza nema sve sekcije) */
 .analiza__panel > section:first-child, .analiza__panel > div:first-child { padding-top: 88px; }
 
-/* --- Hero (tamna pozadina + animirana mreža) ------------------------------ */
+/* --- Hero (tamna pozadina + animacija poređenja zapisa) ------------------- */
 .analiza-hero { position: relative; overflow: hidden; background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela); }
-.analiza-hero__mreza {
-  position: absolute; right: -80px; top: -110px;
-  width: var(--analiza-mreza); height: var(--analiza-mreza); opacity: .9; pointer-events: none;
+/* Okvir animacije: desna polovina hera, iznad tabele podataka; levo i desno se utapa u pozadinu.
+   Crta je js/stranice/analiza.js (crtajNiz) tako da ceo crtež uvek stane u okvir. */
+.analiza-hero__niz {
+  position: absolute; top: 24px; bottom: 140px; right: 0; width: min(700px, 50%); pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 30%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 30%, #000 92%, transparent 100%);
 }
+.analiza-hero__platno { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 .analiza-hero__unutra { position: relative; padding-top: 40px; }
 .analiza-hero__putanja { margin-bottom: 44px; font-size: 14px; color: var(--ljubicasta-400); }
 .analiza-hero__putanja a { color: var(--ljubicasta-400); }
@@ -95,7 +98,7 @@
 .analiza-kartica__traka { display: none; }
 .analiza-kartica__lista--kvacice svg { display: none; }
 
-/* Dokumenta + direktna linija */
+/* Veze za lekare ("Kako uputiti pacijenta") + direktna linija */
 .analiza-dokumenti {
   display: flex; flex-wrap: wrap; align-items: flex-start; gap: 32px 72px;
   padding-block: 48px var(--sekcija);
@@ -109,7 +112,6 @@
 }
 .analiza-dokumenti__stavka--link { color: var(--ljubicasta-600); font-weight: 600; }
 .analiza-dokumenti__stavka--link:hover { color: var(--ljubicasta-650); text-decoration: underline; }
-.analiza-dokumenti__oznaka { flex-shrink: 0; font-size: 14px; font-weight: 400; color: var(--tekst-blag); }
 .analiza-linija {
   flex: 1 1 320px; min-width: 0; padding: 32px;
   border-radius: var(--zaobljenje); background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela);
@@ -194,7 +196,7 @@
 .analiza-srodne__opis { color: var(--tekst-blag); }
 .analiza-srodne__strelica { display: none; color: var(--ljubicasta-600); }
 
-/* --- Kontakt (slanje nalaza) -------------------------------------------------- */
+/* --- Kontakt (upit za besplatnu procenu nalaza) -------------------------------- */
 .analiza-kontakt { background: var(--ljubicasta-800); --fokus: var(--fokus-na-tamnom); color: var(--bela); }
 .analiza-kontakt__unutra { display: flex; flex-wrap: wrap; gap: 40px 72px; padding-block: 88px; }
 .analiza-kontakt__uvod { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
@@ -212,12 +214,15 @@
    MOBILNI (ispod 960px)
    ========================================================================== */
 @media (max-width: 959px) {
-  .analiza { --analiza-mreza: 340px; }
   .analiza__h2 { font-size: 30px; }
   .analiza #kontakt, .analiza__panel { scroll-margin-top: 0; }   /* traka nije prilepljena na mobilnom */
 
   /* Hero */
-  .analiza-hero__mreza { right: -160px; top: -60px; opacity: .55; }
+  .analiza-hero__niz {
+    top: 4px; bottom: auto; width: 100%; height: 190px; opacity: .45;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, transparent 30%, #000 80%);
+    mask-image: linear-gradient(90deg, transparent 0, transparent 30%, #000 80%);
+  }
   .analiza-hero__unutra { padding-block: 20px 30px; }
   .analiza-hero__putanja { margin-bottom: 22px; }
   .analiza-hero__nadnaslov { margin-bottom: 6px; font-size: 14px; }
@@ -265,7 +270,6 @@
   .analiza-dokumenti { display: block; padding-block: 28px 0; }
   .analiza-dokumenti__lista .analiza-kartica__naslov { margin-bottom: 10px; }
   .analiza-dokumenti__stavka { padding: 13px 0; font-size: 15px; }
-  .analiza-dokumenti__oznaka { font-size: 13px; }
   .analiza-linija { margin-top: 18px; padding: 20px; border-radius: 22px; }
   .analiza-linija__oznaka { font-size: 14px; }
   .analiza-linija__broj { margin-top: 4px; font-size: 28px; }

@@ -2,15 +2,15 @@
     Sadržaj: stranice.kontakt.forma   ·   Stil: css/stranice/kontakt.css
     Ponašanje: js/stranice/kontakt.js
       - tema je deo forme: radio dugmad (name="tema") izgledaju kao čipovi
-      - svaka tema ima svoje dodatno polje (data-za-temu); polja drugih tema
-        se sakrivaju i isključuju (disabled), pa se ne šalju
+      - tema može da ima svoje dodatno polje (data-za-temu; onkogenetika nema);
+        polja drugih tema se sakrivaju i isključuju (disabled), pa se ne šalju
       - bez JavaScript-a sva dodatna polja su vidljiva -#}
-{%- from "makroi/komponente.njk" import forma, polje, tekstPolje, fajlPolje, saglasnost, posalji with context -%}
+{%- from "makroi/komponente.njk" import forma, polje, tekstPolje, saglasnost, posalji with context -%}
 {%- set d = stranice.kontakt.forma -%}
 {%- set izabrana = d.izabranaTema or 0 -%}
 <section id="forma" class="kontakt-upit" aria-labelledby="kontakt-forma-naslov">
   <div class="kontejner">
-    {% call forma("kontakt-upit", "kontakt-upit__okvir", true) %}
+    {% call forma("kontakt-upit", "kontakt-upit__okvir") %}
       <div class="kontakt-upit__uvod">
         <h2 id="kontakt-forma-naslov" class="kontakt-upit__naslov">{{ d.naslov }}</h2>
         <p class="kontakt-upit__tekst">{{ d.tekst }}</p>
@@ -39,10 +39,7 @@
         {{ polje("kontakt-tel", "telefon", d.poljeTelefon, tip="tel", autocomplete="tel", obavezno=true) }}
         {{ polje("kontakt-email", "email", d.poljeEmail, tip="email", autocomplete="email", obavezno=true, klasa="polje--ceo-red") }}
 
-        {#- Dodatna polja: po jedno za svaku temu #}
-        <div class="kontakt-upit__dodatno" data-za-temu="nalaz">
-          {{ fajlPolje("kontakt-nalaz", "nalaz", d.poljeNalaz, pomoc="") }}
-        </div>
+        {#- Dodatna polja: po jedno za temu koja ga ima #}
         <div class="kontakt-upit__dodatno" data-za-temu="nedelja">
           {#- Ručno (makro polje nema min/max): nedelja trudnoće od 4 do 42 #}
           <div class="polje">

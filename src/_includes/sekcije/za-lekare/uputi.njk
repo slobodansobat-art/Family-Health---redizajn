@@ -1,10 +1,9 @@
-{#- ZA LEKARE · "Uputite pacijenta": dokumenti (PDF), direktna linija i forma
+{#- ZA LEKARE · "Uputite pacijenta": tekst, direktna linija i forma
     Sidro: #uputi (dugme u zaglavlju, hero, donja traka)
-    Desktop: tekst + dokumenti levo, forma desno. Mobilni: tekst, forma, pa dokumenti.
-    Dokument bez fajla prikazuje se neaktivan, sa statusom ("PDF, uskoro").
+    Desktop: tekst i direktna linija levo, forma desno. Mobilni: tekst, forma, pa direktna linija.
     Sadržaj: stranice.zaLekare.uputi  ·  telefon: podesavanja.kontakt.mobilni
-    Forma: Netlify, ime "za-lekare-uputi", sa prilogom (uput / nalaz)  ·  Stil: css/stranice/za-lekare.css (.lekari-uputi) -#}
-{%- from "makroi/komponente.njk" import forma, polje, izbor, fajlPolje, saglasnost, posalji with context -%}
+    Forma: Netlify, ime "za-lekare-uputi"  ·  Stil: css/stranice/za-lekare.css (.lekari-uputi) -#}
+{%- from "makroi/komponente.njk" import forma, polje, izbor, saglasnost, posalji with context -%}
 {%- set d = stranice.zaLekare.uputi -%}
 {%- set f = d.forma -%}
 {%- set k = podesavanja.kontakt -%}
@@ -13,30 +12,17 @@
     <div class="lekari-uputi__levo">
       <h2 id="lekari-uputi-naslov" class="naslov-l lekari-uputi__naslov">{{ d.naslov }}</h2>
       <p class="lekari-uputi__tekst">{{ d.tekst }}</p>
-      <ul class="lekari-uputi__dokumenti" aria-label="{{ d.dokumentiOznaka }}">
-        {%- for dok in d.dokumenti %}
-        <li>
-          {%- if dok.fajl %}
-          <a href="{{ dok.fajl }}" class="lekari-uputi__dokument" download><span>{{ dok.naziv }}</span><span class="lekari-uputi__status">{{ d.dokumentPreuzmi }}</span></a>
-          {%- else %}
-          <span class="lekari-uputi__dokument lekari-uputi__dokument--uskoro" aria-disabled="true"><span>{{ dok.naziv }}</span><span class="lekari-uputi__status">{{ dok.status }}</span></span>
-          {%- endif %}
-        </li>
-        {%- endfor %}
-      </ul>
       <p class="lekari-uputi__linija">{{ d.telefonOznaka }}</p>
       <a href="tel:{{ k.mobilniLink }}" class="lekari-uputi__telefon">{{ k.mobilni }}</a>
     </div>
 
-    {#- treći parametar true: forma prima priloge (Netlify, multipart) #}
-    {% call forma("za-lekare-uputi", "forma forma--bela lekari-uputi__forma", true) %}
+    {% call forma("za-lekare-uputi", "forma forma--bela lekari-uputi__forma") %}
       {{ polje("zl-dr", "lekar", f.imeLekara, autocomplete="name", obavezno=true) }}
       {{ polje("zl-ust", "ustanova", f.ustanova, autocomplete="organization") }}
       {{ polje("zl-tel", "telefon", f.telefon, tip="tel", autocomplete="tel", obavezno=true) }}
       {{ polje("zl-email", "email", f.email, tip="email", autocomplete="email", obavezno=true) }}
       {{ izbor("zl-an", "analiza", f.analiza, f.analize, "polje--ceo-red") }}
       {{ polje("zl-pac", "pacijent", f.pacijent, placeholder=f.pacijentPrimer, klasa="polje--ceo-red") }}
-      {{ fajlPolje("zl-prilog", "prilog", f.prilog, f.prilogPomoc, "polje--ceo-red") }}
       <label for="zl-pok" class="saglasnost">
         <input id="zl-pok" name="saglasnost_pacijenta" type="checkbox" required>
         <span>{{ f.saglasnostPacijenta }}</span>

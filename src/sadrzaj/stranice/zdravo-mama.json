@@ -1,0 +1,130 @@
+{
+  "_naziv": "Škola Zdravo mama",
+  "seo": {
+    "naslov": "Zdravo mama, škola za trudnice | Family Health",
+    "opis": "Zdravo mama, besplatna online škola za trudnice: raspored predavanja, predavači i prijava. Četvrtkom od 14 do 16 h, u saradnji sa Euromedikom."
+  },
+  "hero": {
+    "putanja": { "roditeljTekst": "Trudnoća i beba", "roditeljLink": "/trudnoca-i-beba/", "trenutna": "Zdravo mama" },
+    "logoSlika": "/assets/slike/zdravo-mama-logo.webp",
+    "logoSlikaOpis": "Logo škole Zdravo mama",
+    "oznaka": "Škola za trudnice",
+    "oznakaTekst": "Program Family Health, u saradnji sa Euromedikom",
+    "naslov": "Zdravo mama, besplatna škola za trudnice.",
+    "tekst": "Lekari i stručnjaci odgovaraju na pitanja o trudnoći, porođaju, nezi bebe i prvim danima roditeljstva. Online, četvrtkom od 14 do 16 h, u saradnji sa Euromedikom.",
+    "cipovi": [
+      { "tekst": "Online", "istaknut": false, "samoDesktop": false },
+      { "tekst": "Četvrtkom 14–16 h", "istaknut": false, "samoDesktop": false },
+      { "tekst": "8 predavača", "istaknut": false, "samoDesktop": true },
+      { "tekst": "Vaučer za besplatan ultrazvuk", "istaknut": true, "samoDesktop": false }
+    ],
+    "dugme": { "tekst": "Prijavite se", "link": "#prijava" },
+    "dugmeRaspored": { "tekst": "Raspored predavanja", "link": "#raspored" },
+    "instagram": { "tekst": "@zdravo_mama", "link": "https://www.instagram.com/zdravo_mama/" },
+    "sledece": {
+      "oznaka": "Sledeće predavanje",
+      "oznakaDanas": "Danas",
+      "vreme": "Online, od 14 do 16 h",
+      "nemaOznaka": "Novi ciklus",
+      "nemaDan": "Uskoro",
+      "nemaVreme": "Termine objavljujemo na @zdravo_mama",
+      "dugme": { "tekst": "Prijavite se za ciklus", "link": "#prijava" }
+    }
+  },
+  "raspored": {
+    "naslov": "Raspored predavanja",
+    "tekst": "Jedan ciklus traje mesec dana: četiri četvrtka, po dva predavanja od 14 do 16 h. Prijavljujete se jednom, za ceo ciklus.",
+    "tekstMobilni": "Četiri četvrtka u mesecu, po dva predavanja od 14 do 16 h. Prijavljujete se jednom, za ceo ciklus.",
+    "izborOznaka": "Izaberite mesec",
+    "vreme": "14–16 h",
+    "nemaPredavaca": "[teme i predavači: dodati]",
+    "oznake": { "odrzano": "Održano", "danas": "Danas", "sledece": "Sledeće", "uskoro": "Uskoro" },
+    "ciklusi": [
+      {
+        "naziv": "Oktobar 2026",
+        "kratko": "Oktobar",
+        "napomena": "Raspored za oktobar je preuzet sa postojećeg sajta.",
+        "termini": [
+          { "datum": "2026-10-08", "predavaci": ["jakovljevic", "antovic"] },
+          { "datum": "2026-10-15", "predavaci": ["zdjelar", "dimic"] },
+          { "datum": "2026-10-22", "predavaci": ["oketic", "kis"] },
+          { "datum": "2026-10-29", "predavaci": ["ciric", "koic-antovic"] }
+        ]
+      },
+      {
+        "naziv": "Novembar 2026",
+        "kratko": "Novembar",
+        "napomena": "Na postojećem sajtu stoje 6, 13, 20. i 27. novembar, ali su to petci. Ovde su četvrtci 5, 12, 19. i 26. novembar [datume potvrditi].",
+        "termini": [
+          { "datum": "2026-11-05", "predavaci": [] },
+          { "datum": "2026-11-12", "predavaci": [] },
+          { "datum": "2026-11-19", "predavaci": [] },
+          { "datum": "2026-11-26", "predavaci": [] }
+        ]
+      }
+    ],
+    "daniUNedelji": ["Nedelja", "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak", "Subota"],
+    "meseci": ["januar", "februar", "mart", "april", "maj", "jun", "jul", "avgust", "septembar", "oktobar", "novembar", "decembar"]
+  },
+  "predavaci": {
+    "naslov": "Predavači",
+    "tekst": "Lekari i stručnjaci koji svakodnevno rade sa trudnicama i bebama. Posle svakog predavanja ostaje vreme za vaša pitanja.",
+    "napomena": "Krugovi sa inicijalima su mesta za fotografije predavača. Teme označene sa [potvrditi] treba proveriti sa predavačima.",
+    "mestoZaFoto": "Mesto za fotografiju",
+    "lista": [
+      { "kljuc": "jakovljevic", "ime": "dr Predrag Jakovljević", "zvanje": "specijalista ginekologije i akušerstva", "tema": "Trudnoća i porođaj", "slika": "", "slikaOpis": "dr Predrag Jakovljević" },
+      { "kljuc": "antovic", "ime": "dr Aleksandar Antović", "zvanje": "specijalista interne medicine", "tema": "Matične ćelije iz pupčanika [potvrditi temu]", "slika": "", "slikaOpis": "dr Aleksandar Antović" },
+      { "kljuc": "zdjelar", "ime": "dr Snežana Zdjelar", "zvanje": "specijalista pedijatrije", "tema": "Najčešća pitanja za pedijatra", "slika": "", "slikaOpis": "dr Snežana Zdjelar" },
+      { "kljuc": "dimic", "ime": "Zorica Dimić", "zvanje": "patronažna sestra", "tema": "Nega bebe u prvim danima [potvrditi temu]", "slika": "", "slikaOpis": "Zorica Dimić" },
+      { "kljuc": "oketic", "ime": "dr Katarina Oketić", "zvanje": "specijalista anesteziologije", "tema": "Anestezija na porođaju [potvrditi temu]", "slika": "", "slikaOpis": "dr Katarina Oketić" },
+      { "kljuc": "kis", "ime": "dr Adrijana Kiš", "zvanje": "dermatovenerolog", "tema": "Koža u trudnoći i nega bebine kože [potvrditi temu]", "slika": "", "slikaOpis": "dr Adrijana Kiš" },
+      { "kljuc": "ciric", "ime": "Sanja Ćirić", "zvanje": "master nutricionista", "tema": "Ishrana u trudnoći i posle porođaja", "slika": "", "slikaOpis": "Sanja Ćirić" },
+      { "kljuc": "koic-antovic", "ime": "dr Mia Koić Antović", "zvanje": "psiholog", "tema": "Psihološki izazovi u trudnoći i posle porođaja", "slika": "", "slikaOpis": "dr Mia Koić Antović" }
+    ]
+  },
+  "kako": {
+    "naslov": "Kako funkcioniše",
+    "koraci": [
+      { "naslov": "Prijavite se jednom", "tekst": "Forma je ispod. Potvrdu i link za predavanja šaljemo vam na mejl. [način slanja linka: potvrditi]", "tekstMobilni": "Potvrdu i link za predavanja šaljemo na mejl. [način slanja linka: potvrditi]" },
+      { "naslov": "Pratite online", "tekst": "Četvrtkom od 14 do 16 h, od kuće. Posle svakog predavanja ostaje vreme za vaša pitanja.", "tekstMobilni": "Četvrtkom od 14 do 16 h, od kuće." },
+      { "naslov": "Vaučer za ultrazvuk", "tekst": "Kada odslušate sva četiri termina u ciklusu, javite se Euromediku i zakažite besplatan ultrazvuk.", "tekstMobilni": "Posle sva četiri termina, besplatan ultrazvuk u Euromediku." }
+    ]
+  },
+  "prijava": {
+    "naslov": "Prijava za Zdravo mama",
+    "tekst": "Prijava je besplatna i važi za prvi sledeći ciklus. Polja sa zvezdicom su obavezna.",
+    "tekstMobilni": "Besplatno, za prvi sledeći ciklus. Polja sa zvezdicom su obavezna.",
+    "napomena": "Prijave stižu na poseban mejl škole: [mejl za prijave Zdravo mama]. Sve prijave mogu da se preuzmu kao tabela za Excel.",
+    "napomenaMobilni": "Prijave stižu na poseban mejl škole: [mejl za prijave Zdravo mama].",
+    "poljeIme": "Ime i prezime",
+    "poljeEmail": "Mejl adresa",
+    "poljeNedelja": "Nedelja trudnoće",
+    "poljeIzvor": "Kako ste čuli za nas?",
+    "izvorPrazno": "Izaberite",
+    "izvori": ["Instagram", "Preporuka lekara", "Prijateljica ili porodica", "Google", "Drugo"],
+    "ciklusOznaka": "Prijavljujete se za sledeći ciklus:",
+    "ciklusUskoro": "[termini uskoro]",
+    "saglasnost": "Saglasan/na sam da Family Health obrađuje moje podatke radi prijave za školu.",
+    "vesti": "Želim da na mejl dobijam edukativne sadržaje i pogodnosti za trudnice.",
+    "dugme": "Prijavite se"
+  },
+  "partneri": {
+    "naslov": "U saradnji sa",
+    "lista": [
+      { "naziv": "Euromedik", "logoSlika": "", "logoSlikaOpis": "Euromedik" },
+      { "naziv": "Lilly Junior", "logoSlika": "", "logoSlikaOpis": "Lilly Junior" },
+      { "naziv": "Bambo Nature", "logoSlika": "", "logoSlikaOpis": "Bambo Nature" },
+      { "naziv": "Pregnacare", "logoSlika": "", "logoSlikaOpis": "Pregnacare" }
+    ],
+    "napomena": "Kada stignu logoi partnera, idu umesto naziva."
+  },
+  "faq": {
+    "naslov": "Česta pitanja",
+    "pitanja": [
+      { "pitanje": "Da li su predavanja besplatna?", "odgovor": "Da. Prijava i sva predavanja su besplatni." },
+      { "pitanje": "Mogu li da slušam samo pojedina predavanja?", "odgovor": "Možete. Za vaučer za besplatan ultrazvuk potrebno je da odslušate sva četiri termina u ciklusu." },
+      { "pitanje": "Kako dobijam vaučer za ultrazvuk?", "odgovor": "Kada odslušate sva četiri termina, javite se Euromediku i zakažite besplatan ultrazvuk. [način potvrde prisustva: potvrditi]" },
+      { "pitanje": "Gde pratim novosti i nove termine?", "odgovor": "Na Instagram profilu @zdravo_mama, a prijavljenima šaljemo podsetnik pred svako predavanje. [potvrditi podsetnik]" }
+    ]
+  }
+}

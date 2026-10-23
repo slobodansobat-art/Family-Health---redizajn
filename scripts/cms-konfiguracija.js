@@ -189,6 +189,10 @@ function napraviPolje(kljuc, vrednost, staro, putanja, osnovno) {
   }
 
   if (typeof vrednost === "boolean") return { ...osnovno, widget: "boolean" };
+  // Datum u obliku gggg-mm-dd (npr. termini škole Zdravo mama) -> kalendar
+  if (typeof vrednost === "string" && /^\d{4}-\d{2}-\d{2}$/.test(vrednost)) {
+    return { ...osnovno, widget: "datetime", format: "YYYY-MM-DD", date_format: "DD.MM.YYYY.", time_format: false };
+  }
   if (typeof vrednost === "number") {
     const float = !Number.isInteger(vrednost) || (staro && staro.value_type === "float");
     return { ...osnovno, widget: "number", value_type: float ? "float" : "int" };

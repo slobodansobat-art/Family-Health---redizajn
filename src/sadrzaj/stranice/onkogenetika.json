@@ -174,25 +174,6 @@
       "tekst": "Sve za lekare: uput, uzorak, izveštaj →",
       "link": "/za-lekare/"
     },
-    "dokumenta": {
-      "naslov": "Dokumenta",
-      "oznakaUskoro": "PDF, uskoro [dodati]",
-      "oznakaPreuzmi": "PDF",
-      "stavke": [
-        {
-          "naziv": "Uputni obrazac",
-          "pdf": ""
-        },
-        {
-          "naziv": "Uputstvo za pripremu uzorka",
-          "pdf": ""
-        },
-        {
-          "naziv": "Spisak gena u panelima",
-          "pdf": ""
-        }
-      ]
-    },
     "linijaNaslov": "Direktna linija za lekare"
   },
   "kontakt": {
@@ -209,8 +190,7 @@
         "Član porodice",
         "Lekar"
       ],
-      "nalaz": "Nalaz (PDF ili fotografija)",
-      "posalji": "Pošaljite nalaz"
+      "posalji": "Pošaljite upit"
     }
   }
 }

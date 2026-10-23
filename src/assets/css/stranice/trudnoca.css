@@ -1,8 +1,8 @@
 /* ==========================================================================
    STRANICA: TRUDNOĆA I BEBA  (/trudnoca-i-beba/)
    Sekcije: src/_includes/sekcije/trudnoca/  ·  JS: js/stranice/trudnoca.js
-   Redosled: hero (alat za nedelju), vremenska linija, prenatalni testovi,
-   matične ćelije, škola za trudnice, kontakt.
+   Redosled: hero (alat za nedelju), vremenska linija, prenatalni testovi
+   (sa vodičem kroz izbor testa), matične ćelije, škola Zdravo mama, kontakt.
    Mobilni raspored je na kraju fajla (ispod 960px).
    ========================================================================== */
 
@@ -11,6 +11,12 @@
   --trudnoca-harmony-tacka: #2A9D8F;     /* tačka uz naziv grupe Harmony */
   --trudnoca-na-ljubicastoj: #EBDDF5;    /* blag tekst u ljubičastoj sekciji */
   --trudnoca-senka-alata: 0 12px 40px rgba(102, 45, 145, 0.08);
+  /* Vodič kroz izbor testa */
+  --trudnoca-mint-na-tamnom: #8FD6C8;    /* napredak i ikonica na tamnoj koloni */
+  --trudnoca-hromozom: #D3C6E2;          /* crtica hromozoma */
+  --trudnoca-hromozom-cest: #8E6BBF;     /* crtica za 13, 18 i 21 */
+  --trudnoca-hromozom-cest-pozadina: #EFE7F7;
+  --trudnoca-hromozom-broj: #6E6680;
 }
 
 /* Zajednički kurzivni naslov (linija, matične ćelije, kontakt) */
@@ -197,7 +203,7 @@
 
 /* Tabela poređenja (desktop) */
 .trudnoca-tabela-skrol { margin-top: 40px; overflow-x: auto; }
-.trudnoca-tabela { width: 100%; min-width: 880px; border-collapse: separate; border-spacing: 0; font-size: 15px; }
+.trudnoca-tabela { width: 100%; min-width: 780px; border-collapse: separate; border-spacing: 0; font-size: 15px; }
 .trudnoca-tabela__prazno { padding: 0; }
 .trudnoca-tabela__grupa { text-align: left; padding: 0 14px 12px; border-radius: 20px 20px 0 0; }
 .trudnoca-tabela__grupa > span { display: inline-flex; align-items: center; gap: 8px; padding-top: 14px; font-weight: 600; font-size: 15px; }
@@ -218,6 +224,14 @@
   padding: 18px 14px 14px; border: 0; background: transparent; text-align: left; font-weight: 400;
 }
 .trudnoca-tabela__dugme:hover .trudnoca-tabela__naziv { color: var(--p-tamna); }
+/* Oznaka "Preporuka" / "Druga opcija" (popunjava vodič) */
+.trudnoca-tabela__oznaka {
+  align-self: flex-start; margin-bottom: 6px; padding: 3px 10px; border-radius: 999px;
+  border: 1px solid var(--p-tamna); background: var(--bela); color: var(--p-tamna);
+  font-size: 12px; font-weight: 600; line-height: 1.5;
+}
+.trudnoca-tabela__oznaka.je-preporuka { background: var(--p-tamna); color: var(--bela); }
+.trudnoca-tabela__oznaka:empty { display: none; }
 .trudnoca-tabela__naziv { font-family: var(--font-naslov); font-size: 26px; line-height: 1.1; color: var(--ljubicasta-800); transition: color .2s ease; }
 .trudnoca-tabela__cena { margin-top: 6px; font-family: var(--font-naslov); font-size: 22px; color: var(--p-tamna); }
 .trudnoca-tabela__rata { font-size: 13px; color: var(--tekst-blag); }
@@ -246,9 +260,22 @@
 }
 .trudnoca-paket[aria-pressed="true"] { background: var(--p-ukljuceno); border-color: var(--p-tamna); }
 .trudnoca-paket__porodica { font-size: 12px; font-weight: 600; color: var(--p-tamna); }
+.trudnoca-paket__oznaka:not(:empty)::before { content: " · "; }
 .trudnoca-paket__naziv { font-family: var(--font-naslov); font-size: 20px; line-height: 1.3; color: var(--ljubicasta-800); }
 .trudnoca-paket__cena { font-size: 14px; font-weight: 600; color: var(--p-tamna); }
 .trudnoca-paket[aria-pressed="true"] :is(.trudnoca-paket__porodica, .trudnoca-paket__cena) { color: var(--p-jaka); }
+
+/* Mesto izabranog paketa: okvir "Izaberite paket…" dok ništa nije izabrano */
+.trudnoca-paket-mesto { scroll-margin-top: 24px; }
+.trudnoca-testovi:not(.ima-izbor) .trudnoca-izbor,
+.trudnoca-testovi.ima-izbor .trudnoca-bez-izbora { display: none; }
+.trudnoca-bez-izbora {
+  margin-top: 22px; padding: 24px 28px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 32px;
+  border: 2px dashed var(--ljubicasta-300); border-radius: var(--zaobljenje);
+}
+.trudnoca-bez-izbora__tekst { font-family: var(--font-naslov); font-size: 24px; line-height: 1.3; color: var(--ljubicasta-800); }
+.trudnoca-bez-izbora__dugme { box-shadow: inset 0 0 0 1px currentColor; }
 
 /* Izabrani paket: ukupna cena i rate */
 .trudnoca-izbor {
@@ -269,6 +296,126 @@
 .trudnoca-izbor__zakazi { min-height: 50px; }
 .trudnoca-izbor__vise { background: var(--bela); color: var(--p-tamna); box-shadow: inset 0 0 0 1px currentColor; }
 .trudnoca-izbor__vise:hover { background: var(--bela); color: var(--ljubicasta-800); }
+
+/* Popust na matične ćelije uz prenatalni test */
+.trudnoca-popust {
+  margin-top: 14px; padding: 16px 20px;
+  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--bela); border: 1px solid var(--ljubicasta-200); border-left: 4px solid var(--ljubicasta-600);
+  border-radius: var(--zaobljenje-malo); font-size: 15px; color: var(--tekst-blag);
+}
+.trudnoca-popust .trudnoca-poklon { flex-shrink: 0; margin-top: 2px; color: var(--ljubicasta-600); }
+.trudnoca-popust strong { font-weight: 600; color: var(--ljubicasta-800); }
+
+
+/* --- VODIČ KROZ IZBOR TESTA (deo sekcije testova, sidro #vodic) ------------ */
+/* Bez JS-a vodič ne radi, pa se ne prikazuje */
+html:not(.js) .trudnoca-vodic { display: none; }
+/* Dok se JS ne pokrene, vidi se samo panel "čekanje" */
+.trudnoca-vodic:not(.je-pokrenut) :is([data-vodic-panel="iscezli"], [data-vodic-panel="preporuka"], [data-vodic-hromozomi]) { display: none; }
+
+.trudnoca-vodic {
+  margin-top: 40px; scroll-margin-top: 16px;
+  display: flex; flex-wrap: wrap; overflow: hidden;
+  border: 1px solid var(--ljubicasta-100); border-radius: 32px;
+}
+.trudnoca-vodic__pitanja {
+  flex: 1.25 1 560px; min-width: 0; padding: 34px 36px;
+  display: flex; flex-direction: column; gap: 22px; background: var(--bela);
+}
+.trudnoca-vodic__nadnaslov { font-size: 13px; font-weight: 600; letter-spacing: .6px; text-transform: uppercase; color: var(--ljubicasta-600); }
+.trudnoca-vodic__naslov { margin: 8px 0 6px; font-family: var(--font-naslov); font-weight: 400; font-size: 34px; line-height: 1.1; color: var(--ljubicasta-800); }
+.trudnoca-vodic__tekst { color: var(--tekst-blag); }
+.trudnoca-vodic__pitanje { font-weight: 600; color: var(--ljubicasta-800); }
+
+/* Nedelja trudnoće (− broj +) */
+.trudnoca-vodic__nedelja { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.trudnoca-vodic__brojac { display: inline-flex; align-items: center; gap: 4px; padding: 4px; background: var(--ljubicasta-50); border-radius: 999px; }
+.trudnoca-vodic__korak {
+  width: 36px; height: 36px; padding: 0; border: 0; border-radius: 50%;
+  background: var(--bela); color: var(--ljubicasta-650); font-size: 20px; line-height: 1;
+}
+.trudnoca-vodic__korak:hover { background: var(--ljubicasta-150); }
+.trudnoca-vodic__broj { min-width: 48px; text-align: center; font-family: var(--font-naslov); font-size: 22px; color: var(--ljubicasta-600); }
+
+/* Pitanja i odgovori (čipovi) */
+.trudnoca-vodic__grupa { display: flex; flex-direction: column; gap: 10px; }
+.trudnoca-vodic__odgovori { display: flex; flex-wrap: wrap; gap: 8px; }
+.trudnoca-vodic__odgovor { padding: 10px 16px; font-size: 15px; font-weight: 400; white-space: normal; text-align: left; }
+
+/* Izbor hromozoma (kod odstupanja) */
+.trudnoca-hromozomi {
+  margin-top: 2px; padding: 16px 18px;
+  display: flex; flex-direction: column; gap: 12px;
+  background: var(--ljubicasta-25); border: 1px solid var(--linija-svetla); border-radius: 20px;
+}
+.trudnoca-hromozomi__pitanje { font-size: 15px; font-weight: 600; color: var(--ljubicasta-800); }
+.trudnoca-hromozomi__dodatak { font-weight: 400; color: var(--tekst-blag); }
+/* razmak 2px (skica: 3px) da svih 24 stane u jedan red i u užem kontejneru sajta */
+.trudnoca-hromozomi__lista { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 6px 2px; }
+.trudnoca-hromozom {
+  --crtica: var(--trudnoca-hromozom);
+  width: 22px; padding: 6px 0 4px; border: 0; border-radius: 8px; background: transparent;
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  transition: background .2s ease;
+}
+.trudnoca-hromozom__par { display: flex; align-items: flex-end; gap: 2px; height: 40px; }
+.trudnoca-hromozom__par > span { width: 5px; height: var(--visina); border-radius: 3px; background: var(--crtica); }
+.trudnoca-hromozom__broj { font-size: 11px; line-height: 1; font-weight: 500; color: var(--trudnoca-hromozom-broj); }
+.trudnoca-hromozom--cest { --crtica: var(--trudnoca-hromozom-cest); background: var(--trudnoca-hromozom-cest-pozadina); }
+.trudnoca-hromozom--cest .trudnoca-hromozom__broj { font-weight: 700; color: var(--ljubicasta-650); }
+.trudnoca-hromozom:hover { background: var(--ljubicasta-150); }
+.trudnoca-hromozom[aria-pressed="true"] { --crtica: var(--bela); background: var(--ljubicasta-800); }
+.trudnoca-hromozom[aria-pressed="true"] .trudnoca-hromozom__broj { font-weight: 700; color: var(--bela); }
+.trudnoca-hromozomi__dno { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.trudnoca-hromozomi__ne-znam { padding: 8px 14px; font-weight: 400; }
+.trudnoca-hromozomi__napomena { flex: 1 1 220px; font-size: 13px; color: var(--tekst-blag); }
+
+/* Rezultat (tamna kolona) */
+.trudnoca-vodic__rezultat {
+  flex: 1 1 380px; min-width: 0; padding: 34px 36px;
+  background: var(--ljubicasta-800); color: var(--bela);
+}
+.trudnoca-vodic__panel { display: flex; flex-direction: column; gap: 14px; }
+.trudnoca-vodic__oznaka, .trudnoca-vodic__mali { font-size: 14px; color: var(--ljubicasta-400); }
+.trudnoca-vodic__veliki { font-family: var(--font-naslov); font-size: 36px; line-height: 1.15; }
+.trudnoca-vodic__veliki--gusto { line-height: 1.1; }
+.trudnoca-vodic__blag { color: var(--tekst-na-tamnom); }
+.trudnoca-vodic__napredak { display: flex; gap: 6px; }
+.trudnoca-vodic__napredak > span { flex: 1; height: 6px; border-radius: 999px; background: var(--ljubicasta-700); transition: background .3s ease; }
+.trudnoca-vodic__napredak > span.je-odgovoreno { background: var(--trudnoca-mint-na-tamnom); }
+.trudnoca-vodic__paket { font-family: var(--font-naslov); font-size: 44px; line-height: 1.02; }
+.trudnoca-vodic__opis { font-size: 15px; color: var(--tekst-na-tamnom); }
+.trudnoca-vodic__cene { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.trudnoca-vodic__cena { font-family: var(--font-naslov); font-size: 36px; }
+.trudnoca-vodic__rata { font-weight: 600; color: var(--ljubicasta-400); }
+.trudnoca-vodic__popust {
+  display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px;
+  background: var(--ljubicasta-750); border-radius: 16px; font-size: 14px; color: var(--tekst-na-tamnom);
+}
+.trudnoca-vodic__popust .trudnoca-poklon { flex-shrink: 0; color: var(--trudnoca-mint-na-tamnom); }
+.trudnoca-vodic__popust strong { font-weight: 600; color: var(--bela); }
+.trudnoca-vodic__dugmad { display: flex; flex-wrap: wrap; gap: 10px; }
+.trudnoca-vodic__dugme { padding: 14px 22px; }
+.trudnoca-vodic__dugme--obrub { background: transparent; color: var(--bela); box-shadow: inset 0 0 0 1px var(--ivica-polja); }
+.trudnoca-vodic__dugme--obrub:hover { background: var(--ljubicasta-750); color: var(--bela); }
+.trudnoca-vodic__druga { padding-top: 14px; border-top: 1px solid var(--ljubicasta-700); }
+.trudnoca-vodic__druga .trudnoca-vodic__mali { margin-bottom: 6px; }
+.trudnoca-vodic__druga-dugme {
+  width: 100%; padding: 0; border: 0; background: transparent; color: var(--bela);
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  font-weight: 400; text-align: left;
+}
+.trudnoca-vodic__druga-naziv { display: block; font-family: var(--font-naslov); font-size: 22px; }
+.trudnoca-vodic__druga-dugme:hover .trudnoca-vodic__druga-naziv { text-decoration: underline; }
+.trudnoca-vodic__druga-opis { display: block; font-size: 13px; color: var(--tekst-na-tamnom); }
+.trudnoca-vodic__druga-cena { white-space: nowrap; font-weight: 600; }
+.trudnoca-vodic__ispocetka {
+  align-self: flex-start; padding: 0; border: 0; background: transparent;
+  color: var(--ljubicasta-400); text-decoration: underline; font-size: 14px; font-weight: 400;
+}
+.trudnoca-vodic__ispocetka:hover { color: var(--bela); }
+.trudnoca-vodic__napomena { flex: 1 1 100%; padding: 14px 36px; background: var(--ljubicasta-50); font-size: 13px; color: var(--tekst-blag); }
 
 
 /* --- MATIČNE ĆELIJE ------------------------------------------------------- */
@@ -291,6 +438,7 @@
 .trudnoca-maticne__kartica-naslov { font-family: var(--font-naslov); font-size: 30px; line-height: 1.2; color: var(--ljubicasta-800); }
 .trudnoca-maticne__cena { margin-top: 10px; font-family: var(--font-naslov); font-size: clamp(64px, 6vw, 80px); line-height: .9; color: var(--ljubicasta-600); }
 .trudnoca-maticne__rate { font-size: 15px; color: var(--tekst-blag); }
+.trudnoca-maticne__popust { margin-top: 6px; font-size: 15px; font-weight: 600; color: var(--mint-600); }
 .trudnoca-maticne__isticanje { margin-top: 6px; padding: 12px 16px; border-radius: 14px; background: var(--ljubicasta-50); font-size: 15px; color: var(--ljubicasta-650); }
 .trudnoca-maticne__napomena { margin-top: 6px; font-size: 14px; color: var(--tekst-blag); }
 .trudnoca-maticne__dugme { align-self: flex-start; margin-top: 10px; }
@@ -311,8 +459,9 @@
 }
 .trudnoca-skola__desno { display: flex; flex-direction: column; gap: 12px; }
 .trudnoca-skola__oznaka { font-size: 15px; }
-.trudnoca-skola__termini { font-family: var(--font-naslov); font-style: italic; font-size: 30px; line-height: 1.2; color: var(--ljubicasta-650); }
-.trudnoca-skola__dugme { align-self: flex-start; margin-top: 8px; box-shadow: inset 0 0 0 1px currentColor; }
+.trudnoca-skola__termini { font-family: var(--font-naslov); font-size: 30px; line-height: 1.2; color: var(--ljubicasta-800); }
+.trudnoca-skola__dugmad { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 8px; }
+.trudnoca-skola__link { font-weight: 600; color: var(--ljubicasta-600); }
 
 
 /* --- KONTAKT --------------------------------------------------------------- */
@@ -391,13 +540,33 @@
   .trudnoca-testovi__napomena strong { font-weight: 600; }
 
   /* Kartice paketa: na telefonu red koji se pomera bočno unutar sebe
-     (stranica nema horizontalni skrol), na tabletu svih 5 u jednom redu */
+     (stranica nema horizontalni skrol), na tabletu sve u jednom redu */
   .trudnoca-paketi {
     overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none;
     padding: 0 var(--margina) 6px; scroll-padding-inline: var(--margina);
   }
   .trudnoca-paketi::-webkit-scrollbar { display: none; }
   .trudnoca-paket { scroll-snap-align: start; }
+
+  /* Vodič: kolone jedna ispod druge */
+  .trudnoca-vodic { margin: 16px 0; border-radius: 24px; scroll-margin-top: 12px; }
+  .trudnoca-vodic__pitanja { flex-basis: 100%; padding: 20px 18px; gap: 16px; }
+  .trudnoca-vodic__naslov { font-size: 26px; }
+  .trudnoca-vodic__tekst { font-size: 15px; }
+  .trudnoca-vodic__odgovor { padding: 9px 13px; font-size: 14px; }
+  .trudnoca-hromozomi { padding: 14px 12px; }
+  .trudnoca-hromozomi__lista { gap: 6px 2px; }
+  .trudnoca-hromozom { width: 20px; }
+  .trudnoca-vodic__rezultat { flex-basis: 100%; padding: 20px 18px; }
+  .trudnoca-vodic__panel { gap: 12px; }
+  .trudnoca-vodic__veliki { font-size: 30px; }
+  .trudnoca-vodic__paket { font-size: 36px; }
+  .trudnoca-vodic__cena { font-size: 30px; }
+  .trudnoca-vodic__napomena { padding: 12px 18px; }
+
+  .trudnoca-bez-izbora { display: block; margin-top: 12px; padding: 18px 20px; border-radius: 24px; }
+  .trudnoca-bez-izbora__tekst { font-size: 20px; }
+  .trudnoca-popust { padding: 14px 16px; font-size: 14px; }
 
   .trudnoca-izbor { display: block; margin-top: 12px; padding: 20px; border-radius: 24px; }
   .trudnoca-izbor__naziv { margin-top: 0; font-size: 24px; }
@@ -427,6 +596,7 @@
   .trudnoca-maticne__kartica .blag { font-size: 14px; }
   .trudnoca-maticne__cena { margin-top: 12px; font-size: 50px; }
   .trudnoca-maticne__rate { margin-top: 8px; font-size: 13px; }
+  .trudnoca-maticne__popust { margin-top: 8px; font-size: 14px; }
   .trudnoca-maticne__isticanje { margin-top: 10px; padding: 10px 14px; background: var(--bela); font-size: 14px; }
   .trudnoca-maticne__napomena { margin-top: 8px; font-size: 13px; }
   .trudnoca-maticne__dugme { margin-top: 14px; min-height: 46px; padding: 12px 18px; font-size: 15px; }
@@ -439,10 +609,7 @@
   .trudnoca-skola__tekst { font-size: 15px; }
   .trudnoca-skola__maticne { margin-top: 10px; font-size: 15px; }
   .trudnoca-skola__isticanje { margin-top: 10px; font-size: 14px; }
-  .trudnoca-skola__desno { gap: 4px; margin-top: 18px; }
-  .trudnoca-skola__oznaka { font-size: 14px; }
-  .trudnoca-skola__termini { font-size: 22px; }
-  .trudnoca-skola__dugme { margin-top: 10px; }
+  .trudnoca-skola__dugme { width: 100%; margin-top: 14px; box-shadow: inset 0 0 0 1px currentColor; }
 
   /* Kontakt */
   .trudnoca-kontakt { margin-top: 34px; }
@@ -456,11 +623,11 @@
   .trudnoca-kontakt__forma { margin-top: 16px; }
 }
 
-/* Tablet (600–959px): svih pet kartica paketa stane u jedan red */
+/* Tablet (600–959px): sve četiri kartice paketa stanu u jedan red */
 @media (min-width: 600px) and (max-width: 959px) {
-  .trudnoca-paketi { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; max-width: var(--sirina); }
+  .trudnoca-paketi { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); overflow: visible; max-width: var(--sirina); }
   .trudnoca-paket { min-width: 0; }
-  .trudnoca-izbor { display: flex; align-items: flex-end; gap: 16px 32px; }
+  .trudnoca-testovi.ima-izbor .trudnoca-izbor { display: flex; align-items: flex-end; gap: 16px 32px; }
   .trudnoca-izbor__opis { flex-basis: 100%; }
   .trudnoca-izbor__cene { margin-top: 0; }
   .trudnoca-izbor__dugmad { margin: 0 0 0 auto; }

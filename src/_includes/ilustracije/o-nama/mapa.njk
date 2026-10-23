@@ -1,31 +1,33 @@
 {#- ==========================================================================
     MAPA PUTA UZORKA (stranica O nama): Beograd -> partnerske laboratorije
-    Isprekidane linije "putuju" od Beograda ka partneru, a oko Beograda
-    se širi talas (CSS animacije u css/stranice/o-nama.css).
+    Isprekidane linije "putuju" od Beograda ka partneru, oko Beograda se
+    širi talas (CSS animacije u css/stranice/o-nama.css), a po svakoj liniji
+    leti avion (SVG animateMotion; uz prefers-reduced-motion se ne prikazuje).
     Boja partnera: klasa .onama-boja-1/2/3 (ista kao tačka u listi pored mape).
       put       stranice.oNama.put (natpisi gradova i opis mape su u JSON-u)
       varijanta "desktop" (široka mapa) ili "mobilni" (uspravna mapa)
-    Položaji su ovde, po redosledu partnera u JSON-u (1. Tibingen,
-    2. Nemačka, 3. Velika Britanija). Partner bez položaja se ne crta.
+    Položaji su ovde, po redosledu partnera u JSON-u (1. Tibingen, Nemačka,
+    2. Velika Britanija). Partner bez položaja se ne crta.
+    Avion: trajanje leta (trajanje) i kašnjenje prvog leta (pocetak), u sekundama.
     ========================================================================== -#}
 {% macro mapa(put, varijanta = "desktop") -%}
+{#- Obris aviona (nos gleda udesno, rotate="auto" ga okreće duž linije) -#}
+{%- set avion = "M10 0 C10 -1.2 8.8 -1.6 7.5 -1.6 L3 -1.6 L-2 -8 L-4.2 -8 L-1.6 -1.6 L-6 -1.6 L-8 -4 L-9.6 -4 L-8.4 0 L-9.6 4 L-8 4 L-6 1.6 L-1.6 1.6 L-4.2 8 L-2 8 L3 1.6 L7.5 1.6 C8.8 1.6 10 1.2 10 0 Z" -%}
 {%- if varijanta == "mobilni" -%}
   {%- set sirina = 326 -%}{%- set visina = 380 -%}
   {%- set start = { x: 236, y: 320 } -%}
   {%- set tacke = [[60,90],[100,70],[140,110],[40,150],[90,140],[170,160],[60,230],[150,250],[250,110],[280,180],[190,280],[260,260],[120,320],[290,300],[210,70],[40,300],[300,120],[160,200]] -%}
   {%- set ciljevi = [
-    { put: "M236 320 C 210 260, 160 230, 112 204", x: 112, y: 204, tx: 98, ty: 188, sidro: "end" },
-    { put: "M236 320 C 246 280, 236 246, 222 214", x: 222, y: 214, tx: 236, ty: 210, sidro: "start" },
-    { put: "M236 320 C 300 200, 220 90, 84 64", x: 84, y: 64, tx: 84, ty: 44, sidro: "middle" }
+    { put: "M236 320 C 210 260, 160 230, 112 204", x: 112, y: 204, tx: 112, ty: 182, sidro: "middle", trajanje: 4.2, pocetak: 0 },
+    { put: "M236 320 C 300 200, 220 90, 84 64", x: 84, y: 64, tx: 84, ty: 44, sidro: "middle", trajanje: 6, pocetak: 1.6 }
   ] -%}
 {%- else -%}
   {%- set sirina = 560 -%}{%- set visina = 380 -%}
   {%- set start = { x: 440, y: 280 } -%}
   {%- set tacke = [[90,120],[110,96],[130,140],[160,110],[200,150],[230,190],[260,160],[290,210],[320,180],[350,230],[380,200],[420,250],[450,220],[470,280],[250,250],[300,290],[180,210],[140,190],[400,300],[340,140]] -%}
   {%- set ciljevi = [
-    { put: "M440 280 C 380 200, 320 200, 280 210", x: 280, y: 210, tx: 270, ty: 194, sidro: "end" },
-    { put: "M440 280 C 400 250, 330 250, 300 250", x: 300, y: 250, tx: 288, ty: 274, sidro: "end" },
-    { put: "M440 280 C 360 120, 200 80, 120 110", x: 120, y: 110, tx: 120, ty: 92, sidro: "middle" }
+    { put: "M440 280 C 380 200, 320 200, 280 210", x: 280, y: 210, tx: 270, ty: 194, sidro: "end", trajanje: 4.2, pocetak: 0 },
+    { put: "M440 280 C 360 120, 200 80, 120 110", x: 120, y: 110, tx: 120, ty: 92, sidro: "middle", trajanje: 6, pocetak: 1.6 }
   ] -%}
 {%- endif -%}
 <svg class="onama-mapa onama-mapa--{{ varijanta }}" width="{{ sirina }}" height="{{ visina }}" viewBox="0 0 {{ sirina }} {{ visina }}" role="img" aria-label="{{ put.mapaOpis }}">
@@ -36,6 +38,15 @@
   {#- Linije puta (ispod tačaka gradova) #}
   {%- for p in put.partneri %}{% set c = ciljevi[loop.index0] %}{% if c %}
   <path class="onama-mapa__put onama-boja-{{ loop.index }}" d="{{ c.put }}"></path>
+  {%- endif %}{% endfor %}
+  {#- Avioni: polete iz Beograda, nestanu pred odredištem i ponove let #}
+  {%- for p in put.partneri %}{% set c = ciljevi[loop.index0] %}{% if c %}
+  <g class="onama-mapa__avion onama-boja-{{ loop.index }}">
+    <path d="{{ avion }}" opacity="0">
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="{{ c.trajanje }}s" begin="{{ c.pocetak }}s" repeatCount="indefinite"></animate>
+      <animateMotion path="{{ c.put }}" rotate="auto" dur="{{ c.trajanje }}s" begin="{{ c.pocetak }}s" repeatCount="indefinite"></animateMotion>
+    </path>
+  </g>
   {%- endif %}{% endfor %}
   {#- Polazište: Beograd #}
   <circle class="onama-mapa__talas" cx="{{ start.x }}" cy="{{ start.y }}" r="14"></circle>

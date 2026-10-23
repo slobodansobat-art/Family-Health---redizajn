@@ -7,8 +7,8 @@
                        i poruka "do kada da odlučite"
      pokreniKorake()   na mobilnom je otvoren samo jedan korak (kao u skici);
                        sam stepper je zajednički (glavni.js)
-     pokreniPakete()   kalkulator paketa: dužina čuvanja + TotiCyte -> cena,
-                       rata i polje "Izabrani paket" u formi
+     pokreniPakete()   kalkulator paketa: dužina čuvanja + TotiCyte + popust
+                       uz prenatalni test -> cena, rata i polje "Izabrani paket"
    Podaci: src/sadrzaj/stranice/maticne-celije.json (na stranici u
    <script id="mc-rok-podaci"> i <script id="mc-paketi-podaci">).
    Bez JS-a: vide se svi odgovori, poruka i cena za početno stanje.
@@ -137,20 +137,26 @@
     var o = d.obracun;
     var opcije = Array.prototype.slice.call(sekcija.querySelectorAll("[data-mc-paket]"));
     var prekidac = sekcija.querySelector("[data-mc-toti]");
+    var prekidacPopust = sekcija.querySelector("[data-mc-prenatalni]");
+    var popustEl = sekcija.querySelector("[data-mc-popust]");
     var naslov = sekcija.querySelector("[data-mc-naslov]");
     var ukupnoEl = sekcija.querySelector("[data-mc-ukupno]");
     var rate = sekcija.querySelector("[data-mc-rate]");
     var poljeForme = document.querySelector("[data-mc-paket-polje]");
     var izabran = 0;
     var saToti = !!d.toti.ukljucenNaPocetku;
+    var saPopustom = !!(d.prenatalni && d.prenatalni.ukljucenNaPocetku);
 
     function osvezi() {
       var paket = d.stavke[izabran];
-      var ukupno = paket.cena + (saToti ? d.toti.cena : 0);
+      // Popust uz prenatalni test umanjuje osnovnu cenu paketa
+      var ukupno = paket.cena - (saPopustom ? d.prenatalni.popust : 0) + (saToti ? d.toti.cena : 0);
       var ime = popuni(o.naslovPaketa, { godina: paket.godina }) + (saToti ? o.dodatakToti : "");
 
       opcije.forEach(function (b, j) { b.setAttribute("aria-pressed", j === izabran ? "true" : "false"); });
       prekidac.setAttribute("aria-checked", saToti ? "true" : "false");
+      if (prekidacPopust) prekidacPopust.setAttribute("aria-checked", saPopustom ? "true" : "false");
+      if (popustEl) popustEl.hidden = !saPopustom;
       naslov.textContent = ime;
       ukupnoEl.textContent = FH.evra(ukupno);
       rate.textContent = popuni(o.rate, { brojRata: o.brojRata, iznosRate: FH.evra(ukupno / o.brojRata) });
@@ -161,6 +167,7 @@
       b.addEventListener("click", function () { izabran = j; osvezi(); });
     });
     prekidac.addEventListener("click", function () { saToti = !saToti; osvezi(); });
+    if (prekidacPopust) prekidacPopust.addEventListener("click", function () { saPopustom = !saPopustom; osvezi(); });
     osvezi();
   }
 

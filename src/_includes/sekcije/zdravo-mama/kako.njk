@@ -1,0 +1,24 @@
+{#- ZDRAVO MAMA · kako funkcioniše (3 koraka na breskva pozadini)
+    Sadržaj: stranice.zdravoMama.kako (koraci: naslov, tekst, tekstMobilni)
+    Stil: css/stranice/zdravo-mama.css (.zm-kako) -#}
+{%- set d = stranice.zdravoMama.kako -%}
+<section class="zm-kako" aria-labelledby="zm-kako-naslov">
+  <div class="kontejner">
+    <h2 id="zm-kako-naslov" class="zm-naslov zm-kako__naslov">{{ d.naslov }}</h2>
+    <ol class="zm-kako__koraci">
+      {%- for k in d.koraci %}
+      <li class="zm-kako__korak">
+        <span class="zm-kako__broj" aria-hidden="true">{{ loop.index }}</span>
+        <span class="zm-kako__tekstovi">
+          <strong class="zm-kako__ime">{{ k.naslov }}</strong>
+          {%- if k.tekstMobilni %}
+          <span class="zm-kako__tekst samo-desktop">{{ k.tekst }}</span><span class="zm-kako__tekst samo-mobilni">{{ k.tekstMobilni }}</span>
+          {%- else %}
+          <span class="zm-kako__tekst">{{ k.tekst }}</span>
+          {%- endif %}
+        </span>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
