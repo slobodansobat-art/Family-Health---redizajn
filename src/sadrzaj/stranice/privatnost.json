@@ -49,6 +49,11 @@
         "tekstMd": "[tekst: pravnik]"
       },
       {
+        "_sidro": "ai",
+        "naslov": "Upotreba veštačke inteligencije",
+        "tekstMd": "Za izradu sadržaja sajta i za organizaciju upita možemo da koristimo alate veštačke inteligencije. Vaše podatke o zdravlju ne unosimo u takve alate bez vaše saglasnosti, a o vašem nalazu i lečenju uvek odlučuju lekari. [tekst: pravni pregled]"
+      },
+      {
         "_sidro": "kolacici",
         "naslov": "Kolačići",
         "tekstMd": "Sajt koristi samo neophodne kolačiće. Mapa i analitika učitavaju se tek uz vašu saglasnost. [potvrditi]"

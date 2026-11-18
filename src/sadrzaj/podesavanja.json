@@ -25,8 +25,8 @@
     "odgovorRok": "istog radnog dana"
   },
   "vadjenjeKrvi": {
-    "kratko": "Krv vadimo u našoj ordinaciji ili kod vas kući, dolazak ne naplaćujemo",
-    "podrucje": "[područje dolaska: potvrditi]"
+    "kratko": "Krv vadimo u ordinaciji ili kod vas kući, u celoj Srbiji, bez naplate dolaska",
+    "podrucje": "Cela Srbija"
   },
   "pravno": {
     "futerRed": "[pravni naziv, PIB, MB, rešenje Ministarstva zdravlja: dodati]",

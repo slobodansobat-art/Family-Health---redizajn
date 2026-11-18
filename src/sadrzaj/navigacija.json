@@ -25,7 +25,7 @@
       "opisDugmeta": "Prikaži analize",
       "stavke": [
         { "naziv": "Cancer Precision", "opis": "Izbor ciljane terapije, tkivo i krv", "meta": "3–4 nedelje", "link": "/onkogenetika/analize/cancer-precision/", "boja": "ljubicasta" },
-        { "naziv": "Tečna biopsija", "opis": "Kada tkivo tumora nije dostupno", "meta": "iz krvi", "link": "/onkogenetika/analize/#cilj-bez", "boja": "crvena" },
+        { "naziv": "Tečna biopsija", "opis": "Genetski profil tumora iz krvi", "meta": "iz krvi", "link": "/onkogenetika/analize/#cilj-bez", "boja": "crvena" },
         { "naziv": "MRD praćenje", "opis": "Rano otkrivanje povratka bolesti", "meta": "kontrola na 3–4 meseca", "link": "/onkogenetika/analize/#cilj-pra", "boja": "lavanda" },
         { "naziv": "Cancer Neo", "opis": "Personalizovana vakcina protiv tumora", "meta": "4–6 nedelja", "link": "/onkogenetika/cancer-neo/", "boja": "premium", "oznaka": "Premium" }
       ],

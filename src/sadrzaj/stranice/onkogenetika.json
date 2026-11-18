@@ -18,7 +18,7 @@
     },
     "cinjenice": [
       "Poređenje tumorskog i zdravog tkiva",
-      "Tečna biopsija kada tkiva nema",
+      "Tečna biopsija, iz krvi",
       "Tumačenje konzilijuma nemačkih onkologa"
     ]
   },
@@ -41,7 +41,7 @@
         "pitanje": "Koja ciljana terapija može da pomogne?",
         "analiza": "Cancer Precision ili Cancer Essential",
         "opis": "Poredimo tumorsko i zdravo tkivo i za svaku relevantnu promenu navodimo da li postoji ciljani lek ili klinička studija.",
-        "uzorak": "Parafinski kalup tumora i 1–2 ml krvi",
+        "uzorak": "Uzorak tumora iz patologije i krv",
         "rezultat": "Za 3 do 4 nedelje",
         "dugme": {
           "tekst": "Sve o analizi Cancer Precision →",
@@ -49,9 +49,9 @@
         }
       },
       {
-        "pitanje": "Tkivo tumora nije dostupno.",
+        "pitanje": "Može li analiza samo iz krvi?",
         "analiza": "Tečna biopsija (Cancer Detect)",
-        "opis": "Genetski profil tumora dobijamo iz krvi, kada biopsija nije moguća ili je pacijent u lošem stanju.",
+        "opis": "Genetski profil tumora dobijamo iz uzorka krvi, bez nove biopsije.",
         "uzorak": "Tri epruvete krvi po 10 ml",
         "rezultat": "Za 3 do 4 nedelje",
         "dugme": {
@@ -73,7 +73,7 @@
       {
         "pitanje": "Da li je rizik nasledan u porodici?",
         "analiza": "Genetika naslednih tumora",
-        "opis": "Kod dela pacijenata predispozicija je nasleđena (prema studijama 5–10%, kod nekih tumora i više) [izvor dodati]. Nalaz pomaže i ostalim članovima porodice.",
+        "opis": "Kod 15–20% pacijenata predispozicija za tumor je nasleđena. Nalaz pomaže i ostalim članovima porodice.",
         "uzorak": "Uzorak krvi",
         "rezultat": "[potvrditi]",
         "dugme": {
@@ -85,7 +85,7 @@
         "pitanje": "Postoji li personalizovana vakcina?",
         "analiza": "Cancer Neo",
         "opis": "Analizom egzoma tumora biramo peptide za vakcinu koja pomaže imunom sistemu da prepozna tumor.",
-        "uzorak": "Parafinski blok i krv",
+        "uzorak": "Uzorak tumora i krv",
         "rezultat": "Analiza 4 do 6 nedelja",
         "dugme": {
           "tekst": "Sve o analizi Cancer Neo →",
@@ -97,7 +97,7 @@
         "analiza": "Cancer Advice",
         "opis": "Konzilijum nemačkih onkologa tumači nalaz i, zajedno sa vašim lekarom, predlaže terapiju.",
         "uzorak": "Postojeći genetski nalazi",
-        "rezultat": "[potvrditi]",
+        "rezultat": "Za 2 nedelje",
         "dugme": {
           "tekst": "",
           "link": ""
@@ -127,7 +127,7 @@
         "naslov": "Uzorak",
         "podnaslov": "Logistiku preuzimamo mi",
         "glava": "Tkivo iz patologije i krv",
-        "tekst": "Parafinski kalup tumora preuzimamo iz patologije, uz vašu saglasnost. Krv vadimo u ordinaciji ili kod vas kući.",
+        "tekst": "Uzorak tumora preuzimamo iz patologije, uz vašu saglasnost. Krv vadimo u ordinaciji ili kod vas kući.",
         "cinjenice": [
           "Nije potrebna nova biopsija",
           "Dolazak na kućnu adresu ne naplaćujemo"
@@ -166,7 +166,7 @@
     "pomocMd": "**Pomažemo i vama:** razgovor sa pacijentom, papirologiju, logistiku uzorka i tumačenje izveštaja preuzimamo mi.",
     "uzorakNaslov": "Šta se šalje",
     "uzorak": [
-      "Parafinski kalup ili pločice, sa najmanje 20% tumora u uzorku",
+      "Uzorak tumora iz patologije, sa najmanje 20% tumora",
       "1–2 ml krvi u EDTA epruveti, kao zdravo tkivo za poređenje",
       "Za tečnu biopsiju: 3 epruvete po 10 ml krvi"
     ],

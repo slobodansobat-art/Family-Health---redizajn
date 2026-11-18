@@ -29,7 +29,7 @@
     "oznakaNasKorak": "Naš korak",
     "koraci": [
       { "naslov": "Indikacija", "vasTekst": "Uput ili poziv, uz kratku anamnezu i patohistološki nalaz", "nasTekst": "Kontaktiramo pacijenta, besplatna procena i cena pre bilo kakve obaveze" },
-      { "naslov": "Uzorak", "vasTekst": "", "nasTekst": "Preuzimamo kalup iz patologije i vadimo krv, u ordinaciji ili kod pacijenta kući" },
+      { "naslov": "Uzorak", "vasTekst": "", "nasTekst": "Preuzimamo uzorak iz patologije i vadimo krv, u ordinaciji ili kod pacijenta kući" },
       { "naslov": "Analiza", "vasTekst": "", "nasTekst": "Transport u laboratoriju CeGaT u Tibingenu i sekvenciranje, 3 do 4 nedelje" },
       { "naslov": "Izveštaj", "vasTekst": "", "nasTekst": "Izveštaj sa varijantama, TMB, MSI i predlogom terapije šaljemo vama i pacijentu" },
       { "naslov": "Odluka", "vasTekst": "Odluka o terapiji, na osnovu izveštaja", "nasTekst": "Po potrebi, drugo mišljenje konzilijuma nemačkih onkologa" }
@@ -60,18 +60,18 @@
     "redovi": [
       { "situacija": "Uznapredovali solidni tumor, izbor ciljane terapije", "analiza": "Cancer Precision", "link": "/onkogenetika/analize/cancer-precision/", "uzorak": "Tkivo i krv", "rezultat": "3–4 nedelje", "premium": false },
       { "situacija": "Poznat tip tumora, ciljano pitanje", "analiza": "Cancer Essential", "link": "/onkogenetika/analize/", "uzorak": "Tkivo [potvrditi]", "rezultat": "oko 3 nedelje", "premium": false },
-      { "situacija": "Tkivo nije dostupno ili je biopsija rizična", "analiza": "Cancer Detect", "link": "/onkogenetika/analize/", "uzorak": "Krv, 3 × 10 ml", "rezultat": "3–4 nedelje", "premium": false },
+      { "situacija": "Tečna biopsija, analiza iz krvi", "analiza": "Cancer Detect", "link": "/onkogenetika/analize/", "uzorak": "Krv, 3 × 10 ml", "rezultat": "3–4 nedelje", "premium": false },
       { "situacija": "Praćenje posle operacije ili terapije", "analiza": "MRD praćenje", "link": "/onkogenetika/analize/", "uzorak": "Tkivo i krv, zatim krv", "rezultat": "na 3–4 meseca", "premium": false },
       { "situacija": "Kandidat za personalizovanu vakcinu", "analiza": "Cancer Neo", "link": "/onkogenetika/cancer-neo/", "uzorak": "Tkivo i krv", "rezultat": "4–6 nedelja", "premium": true },
-      { "situacija": "Postojeći nalaz, potrebno tumačenje", "analiza": "Cancer Advice", "link": "/onkogenetika/analize/", "uzorak": "Postojeći nalazi", "rezultat": "[potvrditi]", "premium": false }
+      { "situacija": "Postojeći nalaz, potrebno tumačenje", "analiza": "Cancer Advice", "link": "/onkogenetika/analize/", "uzorak": "Postojeći nalazi", "rezultat": "2 nedelje", "premium": false }
     ]
   },
   "uzorak": {
     "naslov": "Šta je potrebno od uzorka",
     "stavke": [
-      { "ikonica": "kalup", "naslov": "Tkivo tumora", "tekst": "Parafinski kalup ili pločice, sa najmanje 20% tumorskih ćelija. Preuzimanje iz patologije organizujemo mi." },
+      { "ikonica": "kalup", "naslov": "Tkivo tumora", "tekst": "Uzorak iz patologije, sa najmanje 20% tumorskih ćelija. Preuzimanje organizujemo mi." },
       { "ikonica": "kap", "naslov": "Krv, kao zdravo tkivo", "tekst": "1–2 ml u EDTA epruveti. Vadimo je mi, u ordinaciji ili kod pacijenta kući." },
-      { "ikonica": "epruveta", "naslov": "Tečna biopsija", "tekst": "3 epruvete po 10 ml krvi, u posebnim epruvetama za slobodnu DNK. [potvrditi: epruvete obezbeđujemo mi]" }
+      { "ikonica": "epruveta", "naslov": "Tečna biopsija", "tekst": "3 epruvete po 10 ml krvi, u posebnim epruvetama za slobodnu DNK." }
     ]
   },
   "izvestaj": {
@@ -102,7 +102,6 @@
       { "tekst": "Matične ćelije", "link": "/maticne-celije/", "glavno": false }
     ],
     "stavke": [
-      { "ikonica": "obrazac", "naslov": "Uput i materijal za pacijentkinje", "tekst": "Uputni obrazac i letak za čekaonicu šaljemo vam besplatno. [materijal: dodati]" },
       { "ikonica": "kap", "naslov": "Vađenje krvi organizujemo mi", "tekst": "U našoj ordinaciji ili kod pacijentkinje kući, a dolazak ne naplaćujemo." },
       { "ikonica": "kvacica", "naslov": "Nalaz stiže i vama", "tekst": "Uz saglasnost pacijentkinje, nalaz šaljemo i ginekologu koji je uputio. [način dostave: potvrditi]" },
       { "ikonica": "razgovor", "naslov": "Podrška kod povišenog rizika", "tekst": "Naš lekar je dostupan za razgovor o nalazu i sledećim koracima, uz genetsko savetovanje." }

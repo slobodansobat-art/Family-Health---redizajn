@@ -2,7 +2,7 @@
   "_naziv": "Harmony (prenatalni test)",
   "seo": {
     "naslov": "Harmony prenatalni test – cena i paketi | Family Health",
-    "opis": "Harmony test kompanije Roche: precizan skrining za trizomije 21, 18 i 13 iz krvi majke, od 490 €. Rezultat za 3 do 5 radnih dana."
+    "opis": "Harmony test kompanije Roche: precizan skrining za trizomije 21, 18 i 13 iz krvi majke, od 490 €. Rezultat za 3 radna dana od prijema uzorka u laboratoriju."
   },
   "hero": {
     "putanja": [
@@ -12,8 +12,8 @@
     "putanjaTrenutna": "Harmony",
     "nadnaslov": "Neinvazivni prenatalni test kompanije Roche",
     "naslov": "Harmony test, iz jedne epruvete krvi.",
-    "tekst": "Već od 10. nedelje trudnoće, bez ikakvog rizika za bebu, saznajte da li postoji povećan rizik za najčešće hromozomske poremećaje. Rezultat za 3 do 5 radnih dana.",
-    "tekstMobilni": "Od 10. nedelje, bez rizika za bebu, otkriva povećan rizik za najčešće hromozomske poremećaje. Rezultat za 3 do 5 radnih dana.",
+    "tekst": "Već od 10. nedelje trudnoće, bez ikakvog rizika za bebu, saznajte da li postoji povećan rizik za najčešće hromozomske poremećaje. Rezultat za 3 radna dana od prijema uzorka u laboratoriju.",
+    "tekstMobilni": "Od 10. nedelje, bez rizika za bebu, otkriva povećan rizik za najčešće hromozomske poremećaje. Rezultat za 3 radna dana.",
     "vadjenje": "Krv vadimo u našoj ordinaciji ili kod vas kući, a dolazak ne naplaćujemo",
     "vadjenjeMobilni": "U ordinaciji ili kod kuće, dolazak ne naplaćujemo",
     "dugmeTekst": "Izaberite paket, od",
@@ -21,7 +21,7 @@
     "sporedniLink": { "tekst": "Pitajte lekara koji test vam treba", "link": "#kontakt" },
     "cinjenice": [
       { "oznaka": "Od", "vrednost": "10. nedelje" },
-      { "oznaka": "Rezultat", "vrednost": "3 do 5 radnih dana" },
+      { "oznaka": "Rezultat", "vrednost": "3 radna dana od prijema uzorka" },
       { "oznaka": "Otkriva Daunov sindrom", "vrednost": "više od 99%*" }
     ],
     "fusnota": "* Stopa otkrivanja za trizomiju 21, uz manje od 0,1% lažno pozitivnih rezultata. Izvor: Roche.",
@@ -115,11 +115,11 @@
       },
       {
         "naslov": "Rezultat",
-        "podnaslov": "Za 3 do 5 radnih dana",
+        "podnaslov": "Za 3 radna dana",
         "oznaka": "",
-        "glava": "Nalaz za 3 do 5 radnih dana",
-        "tekst": "Rezultat stiže za 3 do 5 radnih dana od prijema uzorka u laboratoriju. Nalaz dobijate [način dostave: potvrditi], a ako imate pitanja o nalazu, pozovite nas.",
-        "tekstMobilni": "Za 3 do 5 radnih dana od prijema uzorka. Nalaz dobijate [način dostave: potvrditi]; za pitanja o nalazu pozovite nas.",
+        "glava": "Nalaz za 3 radna dana",
+        "tekst": "Rezultat stiže za 3 radna dana od prijema uzorka u laboratoriju. Nalaz dobijate [način dostave: potvrditi], a ako imate pitanja o nalazu, pozovite nas.",
+        "tekstMobilni": "Za 3 radna dana od prijema uzorka. Nalaz dobijate [način dostave: potvrditi]; za pitanja o nalazu pozovite nas.",
         "cinjenice": ["Rezultat tumači vaš ginekolog", "Kod povećanog rizika objašnjavamo sledeće korake"],
         "ilustracija": "harmony/rezultat"
       }
@@ -139,7 +139,7 @@
     "stavke": [
       { "oznaka": "Nizak rizik", "naslov": "Nizak rizik", "tekst": "Verovatnoća za ispitivane hromozomske poremećaje je veoma mala. Test ipak ne isključuje poremećaj u potpunosti.", "sledece": "Trudnoća se dalje vodi uobičajeno. Test ne zamenjuje ultrazvuk, koji otkriva i druge, fizičke promene." },
       { "oznaka": "Visok rizik", "naslov": "Visok rizik", "tekst": "Verovatnoća za neki od ispitivanih poremećaja je veća od uobičajene. To još nije dijagnoza: skrining test može dati i lažno pozitivan rezultat.", "sledece": "Nalaz se potvrđuje dijagnostičkom metodom, najčešće amniocentezom, uz genetsko savetovanje. U slučaju pozitivnog rezultata laboratorija pokriva troškove amniocenteze [potvrditi]." },
-      { "oznaka": "Bez rezultata", "naslov": "Bez rezultata", "tekst": "U malom broju slučajeva test ne može da izda rezultat, najčešće zato što u krvi ima premalo DNK bebe.", "sledece": "Preporučuje se ponovno vađenje krvi i testiranje [da li je ponovljeni test besplatan: potvrditi], ili druga dijagnostička metoda." }
+      { "oznaka": "Bez rezultata", "naslov": "Bez rezultata", "tekst": "U malom broju slučajeva test ne može da izda rezultat, najčešće zato što u krvi ima premalo DNK bebe.", "sledece": "Preporučuje se ponovno vađenje krvi i testiranje, koje je besplatno, ili druga dijagnostička metoda." }
     ]
   },
   "poredjenje": {

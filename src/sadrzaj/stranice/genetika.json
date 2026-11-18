@@ -56,7 +56,8 @@
         "naslov": "Preventivna genetika",
         "uvod": "Paneli za nasledne rizike, da se prevencija i lečenje planiraju na vreme. Pre analize preporučujemo razgovor sa genetičarem.",
         "testovi": [
-          { "naziv": "Preventivni paneli, 12 modula", "oznaka": "mogu se kombinovati", "opis": "Tumori, kardiovaskularne bolesti, tromboze, gvožđe i bakar, hiperholesterolemija, oči, maligna hipertermija, metabolizam lekova, dijabetes, urođene greške metabolizma, bubrezi i ACMG panel.", "uzorak": "[potvrditi]", "rezultat": "[potvrditi]" }
+          { "naziv": "Preventivni paneli, 12 modula", "oznaka": "mogu se kombinovati", "opis": "Tumori, kardiovaskularne bolesti, tromboze, gvožđe i bakar, hiperholesterolemija, oči, maligna hipertermija, metabolizam lekova, dijabetes, urođene greške metabolizma, bubrezi i ACMG panel.", "uzorak": "[potvrditi]", "rezultat": "[potvrditi]" },
+          { "naziv": "Farmakogenomika", "oznaka": "geni i lekovi", "opis": "Pokazuje kako vaši geni utiču na delovanje i razgradnju lekova, na primer lekova protiv bolova, antidepresiva i lekova protiv zgrušavanja krvi. Na osnovu nalaza lekar lakše bira lek i dozu koji vama odgovaraju. Radi se jednom, a nalaz važi celog života.", "uzorak": "[potvrditi]", "rezultat": "[potvrditi]" }
         ]
       },
       {

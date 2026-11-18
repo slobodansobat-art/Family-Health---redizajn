@@ -14,7 +14,7 @@
       "pitanjaNaslov": "Sa kojim pitanjem dolazite?",
       "pitanja": [
         { "tekst": "Koja ciljana terapija može da pomogne?", "link": "/onkogenetika/analize/cancer-precision/", "oznaka": "" },
-        { "tekst": "Tkivo tumora nije dostupno", "link": "/onkogenetika/#situacija-2", "oznaka": "" },
+        { "tekst": "Tečna biopsija", "link": "/onkogenetika/analize/#cilj-bez", "oznaka": "" },
         { "tekst": "Da li se bolest vratila?", "link": "/onkogenetika/#situacija-3", "oznaka": "" },
         { "tekst": "Da li je rizik nasledan?", "link": "/onkogenetika/#situacija-4", "oznaka": "" },
         { "tekst": "Personalizovana vakcina", "link": "/onkogenetika/cancer-neo/", "oznaka": "Premium" }
@@ -40,7 +40,7 @@
       "linija": [
         { "period": "10. nedelja", "tekst": "Prenatalni test Harmony ili Symphony, od 490 €", "link": "/trudnoca-i-beba/#testovi", "prazanKrug": false },
         { "period": "Drugi trimestar", "tekst": "Besplatna škola za trudnice", "link": "/skola-za-trudnice/", "prazanKrug": true },
-        { "period": "Do 36. nedelje", "tekst": "Odluka o matičnim ćelijama: 1.980 € ili 12 rata po 165 €", "link": "/maticne-celije/", "prazanKrug": false },
+        { "period": "Do 38. nedelje", "tekst": "Odluka o matičnim ćelijama: 1.980 € ili 12 rata po 165 €", "link": "/maticne-celije/", "prazanKrug": false },
         { "period": "Porođaj", "tekst": "Bezbolno prikupljanje krvi iz pupčanika", "link": "/maticne-celije/", "prazanKrug": false }
       ],
       "sklopljenoNadnaslov": "Trudnoća i beba",
@@ -59,7 +59,7 @@
       { "period": "11–14. nedelja", "naslov": "Kombinovani (double) test", "tekst": "Obavezan, kod vašeg ginekologa.", "prazanKrug": false },
       { "period": "Uz kombinovani test", "naslov": "Prenatalni test", "tekst": "Harmony ili Symphony, iz krvi, od 10. nedelje.", "prazanKrug": false },
       { "period": "Drugi trimestar", "naslov": "Škola za trudnice", "tekst": "Besplatna online predavanja.", "prazanKrug": true },
-      { "period": "Do 36. nedelje", "naslov": "Odluka o matičnim ćelijama", "tekst": "Ugovor i set za porodilište.", "prazanKrug": false },
+      { "period": "Do 38. nedelje", "naslov": "Odluka o matičnim ćelijama", "tekst": "Ugovor i set za porodilište.", "prazanKrug": false },
       { "period": "Porođaj", "naslov": "Prikupljanje krvi iz pupčanika", "tekst": "Bezbolno za mamu i bebu.", "prazanKrug": false }
     ]
   },
@@ -68,7 +68,7 @@
     "dugmeZaustavi": "Zaustavi",
     "dugmePokreni": "Pokreni",
     "trakaOznaka": "Partneri i tehnologije, lista se pomera bočno",
-    "napomena": "Uzorci matičnih ćelija čuvaju se po standardima AABB i HTA",
+    "napomena": "Uzorci matičnih ćelija čuvaju se uz licencu britanske agencije HTA",
     "lista": [
       { "naziv": "Roche", "logo": "" },
       { "naziv": "Illumina", "logo": "" },

@@ -13,11 +13,11 @@
   },
   "ordinacija": {
     "naslov": "Ordinacija",
-    "tekst": "U ordinaciji su konsultacije i vađenje krvi. Ako vam je lakše, krv vadimo i kod vas kući, a dolazak ne naplaćujemo.",
+    "tekst": "U ordinaciji su konsultacije i vađenje krvi. Ako vam je lakše, krv vadimo i kod vas kući, bilo gde u Srbiji, a dolazak ne naplaćujemo.",
     "oznakaRadniDan": "Radnim danom",
     "oznakaSubota": "Subotom",
     "oznakaKucnaPoseta": "Vađenje krvi kod kuće",
-    "kucnaPoseta": "Beograd i okolina [područje: potvrditi]",
+    "kucnaPoseta": "Cela Srbija",
     "oznakaParking": "Parking",
     "mapaOpis": "Mesto za mapu sa lokacijom ordinacije",
     "slikaMape": "",

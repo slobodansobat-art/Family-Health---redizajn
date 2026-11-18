@@ -19,7 +19,7 @@
       { "oznaka": "Uzorak", "vrednost": "Tkivo tumora i krv" },
       { "oznaka": "Analiza", "vrednost": "4–6 nedelja" },
       { "oznaka": "Uz lečenje", "vrednost": "Koje vodi onkolog" },
-      { "oznaka": "Cena", "vrednost": "Na upit [potvrditi]" }
+      { "oznaka": "Izrada", "vrednost": "U Nemačkoj" }
     ],
     "animacija": {
       "opis": "Animacija: na površini ćelije tumora označava se šest neoantigena, a za svaki se bira peptid za vakcinu",
@@ -79,10 +79,10 @@
     },
     "koraci": [
       { "naslov": "Razgovor sa lekarom", "oznaka": "Besplatno", "tekst": "Naš lekar pregleda dijagnozu i dosadašnje lečenje i procenjuje da li je Cancer Neo realna opcija. Razgovaramo i sa vašim onkologom." },
-      { "naslov": "Uzorak", "oznaka": "Logistiku preuzimamo mi", "tekst": "Parafinski blok tumora preuzimamo iz patologije, uz vaše ovlašćenje. Krv, kao zdravo tkivo, vadimo u ordinaciji ili kod vas kući." },
-      { "naslov": "Sekvenciranje egzoma", "oznaka": "4–6 nedelja", "tekst": "U laboratoriji u Nemačkoj [naziv: potvrditi] sekvencira se egzom tumora i zdravog tkiva i određuje HLA tip, koji pokazuje šta vaš imuni sistem može da prepozna." },
+      { "naslov": "Uzorak", "oznaka": "Logistiku preuzimamo mi", "tekst": "Uzorak tumora preuzimamo iz patologije, uz vaše ovlašćenje. Krv, kao zdravo tkivo, vadimo u ordinaciji ili kod vas kući." },
+      { "naslov": "Sekvenciranje egzoma", "oznaka": "4–6 nedelja", "tekst": "U laboratoriji CeGaT u Nemačkoj sekvencira se egzom tumora i zdravog tkiva i određuje HLA tip, koji pokazuje šta vaš imuni sistem može da prepozna." },
       { "naslov": "Izbor neoantigena", "oznaka": "Bioinformatička analiza", "tekst": "Od svih pronađenih promena biraju se one sa najvećom verovatnoćom imunog odgovora, i za njih se dizajniraju peptidi." },
-      { "naslov": "Izrada i primena vakcine", "oznaka": "U dogovoru sa onkologom", "tekst": "Vakcina se izrađuje prema izveštaju i primenjuje u dogovoru sa vašim onkologom. [ko izrađuje vakcinu i gde se primenjuje: potvrditi]" }
+      { "naslov": "Izrada i primena vakcine", "oznaka": "U dogovoru sa onkologom", "tekst": "Vakcina se izrađuje u Nemačkoj, prema izveštaju, i primenjuje u dogovoru sa vašim onkologom." }
     ]
   },
   "zaVas": {
@@ -91,7 +91,7 @@
     "uvod": "Odgovori vam pomažu da znate šta da očekujete. Konačnu procenu uvek daju lekari.",
     "pitanja": [
       "Imate dijagnozu solidnog tumora (na primer pluća, debelog creva, dojke, kože)?",
-      "Postoji sačuvano tkivo tumora iz biopsije ili operacije (parafinski blok)?",
+      "Postoji sačuvan uzorak tumora iz biopsije ili operacije?",
       "Vaš onkolog zna da razmatrate personalizovanu vakcinu?"
     ],
     "da": "Da",
@@ -140,9 +140,9 @@
   "paket": {
     "nadnaslov": "Šta dobijate",
     "naslov": "Sve na jednom mestu, uz jednu osobu koja vas vodi.",
-    "cenaOznaka": "Cena",
-    "cena": "Na upit",
-    "cenaNapomena": "Cenu dobijate posle prvog razgovora, kada znamo šta je za vas potrebno. [cena i mogućnost plaćanja na rate: potvrditi]",
+    "cenaOznaka": "Izrada",
+    "cena": "U Nemačkoj",
+    "cenaNapomena": "Analiza i izrada vakcine rade se u Nemačkoj, a ceo tok organizuje vaš lični koordinator.",
     "dugme": { "tekst": "Zakažite razgovor sa lekarom", "link": "#kontakt" },
     "stavke": [
       "Lični koordinator tokom celog procesa",
@@ -164,7 +164,7 @@
       { "pitanje": "Šta ako nemam sačuvano tkivo?", "odgovor": "Tkivo iz biopsije ili operacije obično čuva patologija bolnice. Proveravamo to umesto vas. Ako tkiva nema, lekar predlaže druge mogućnosti." },
       { "pitanje": "Koliko traje ceo proces?", "odgovor": "Analiza i izbor neoantigena traju 4 do 6 nedelja od prijema uzorka. Rok za izradu vakcine dogovaramo posle izveštaja. [potvrditi]" },
       { "pitanje": "Kako se vakcina podnosi?", "odgovor": "[formulaciju o bezbednosti i mogućim neželjenim reakcijama potvrditi sa lekarom]" },
-      { "pitanje": "Ko primenjuje vakcinu?", "odgovor": "[ko izrađuje i ko primenjuje vakcinu, i gde: potvrditi]" }
+      { "pitanje": "Ko izrađuje vakcinu?", "odgovor": "Vakcina se izrađuje u Nemačkoj, prema izveštaju analize. Primenjuje se u dogovoru sa vašim onkologom, a ceo tok organizuje vaš koordinator." }
     ]
   },
   "kontakt": {
@@ -177,7 +177,7 @@
       "email": "Mejl adresa",
       "uloga": "Javljate se kao",
       "ulogaOpcije": ["Pacijent", "Član porodice", "Lekar"],
-      "blok": "Postoji li parafinski blok tumora?",
+      "blok": "Postoji li sačuvan uzorak tumora?",
       "blokOpcije": ["Da", "Ne", "Ne znam"],
       "dijagnoza": "Dijagnoza, ukratko (nije obavezno)",
       "dugme": "Zakažite razgovor sa lekarom"

@@ -5958,46 +5958,6 @@ collections:
                     label: Tekst
                     required: false
                     widget: string
-              - name: iscezli
-                label: Iscezli
-                required: false
-                widget: object
-                collapsed: true
-                fields:
-                  - name: oznaka
-                    label: Oznaka
-                    required: false
-                    widget: string
-                  - name: naslov
-                    label: Naslov
-                    required: false
-                    widget: string
-                  - name: tekst
-                    label: Tekst
-                    required: false
-                    widget: text
-                  - name: tekst2
-                    label: Tekst2
-                    required: false
-                    widget: text
-                  - name: dugmePoziv
-                    label: Dugme poziv
-                    required: false
-                    widget: string
-                  - name: dugme
-                    label: Dugme
-                    required: false
-                    widget: object
-                    collapsed: true
-                    fields:
-                      - name: tekst
-                        label: Tekst
-                        required: false
-                        widget: string
-                      - name: link
-                        label: Link
-                        required: false
-                        widget: string
               - name: preporuka
                 label: Preporuka
                 required: false

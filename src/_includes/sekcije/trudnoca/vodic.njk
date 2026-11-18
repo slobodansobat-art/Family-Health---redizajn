@@ -1,7 +1,7 @@
 {#- TRUDNOĆA · vodič kroz izbor testa (sidro #vodic), deo sekcije "Prenatalni testovi"
     Levo: nedelja trudnoće (ista kao u alatu iz hero sekcije) i 4 pitanja; kod
     nalaza "Povišen rizik ili odstupanje" pojavljuje se izbor hromozoma.
-    Desno (tamno): čekanje / savet za iščezlog blizanca / preporuka sa cenom i ratama.
+    Desno (tamno): čekanje / preporuka sa cenom i ratama.
     Pravila preporuke su u JS-u (js/stranice/trudnoca.js, "Vodič"); tekstovi
     razloga su u JSON-u (vodic.razlozi). U pitanjima se menja samo tekst: "kljuc"
     i "vrednost" koristi JS i ne smeju se menjati.
@@ -74,20 +74,7 @@
       <p class="trudnoca-vodic__blag">{{ v.cekanje.tekst }}</p>
     </div>
 
-    {#- 2. Iščezli blizanac: savet i poziv umesto preporuke #}
-    <div class="trudnoca-vodic__panel pojava" data-vodic-panel="iscezli">
-      <p class="trudnoca-vodic__oznaka">{{ v.iscezli.oznaka }}</p>
-      <p class="trudnoca-vodic__veliki trudnoca-vodic__veliki--gusto">{{ v.iscezli.naslov }}</p>
-      <p class="trudnoca-vodic__blag">{{ v.iscezli.tekst }}</p>
-      <p class="trudnoca-vodic__blag">{{ v.iscezli.tekst2 }}</p>
-      <div class="trudnoca-vodic__dugmad">
-        <a href="tel:{{ kt.telefonLink }}" class="dugme dugme--belo trudnoca-vodic__dugme">{{ v.iscezli.dugmePoziv | replace("{telefon}", kt.telefon) }}</a>
-        <a href="{{ v.iscezli.dugme.link }}" class="dugme trudnoca-vodic__dugme trudnoca-vodic__dugme--obrub">{{ v.iscezli.dugme.tekst }}</a>
-      </div>
-      <button type="button" class="trudnoca-vodic__ispocetka" data-vodic-ispocetka>{{ v.ispocetka }}</button>
-    </div>
-
-    {#- 3. Preporuka (popunjava JS) #}
+    {#- 2. Preporuka (popunjava JS) #}
     {%- set pr = v.preporuka %}
     <div class="trudnoca-vodic__panel pojava" data-vodic-panel="preporuka">
       <p class="trudnoca-vodic__oznaka">{{ pr.oznaka }}</p>

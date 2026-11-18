@@ -54,7 +54,7 @@
       {
         "naziv": "Novembar 2026",
         "kratko": "Novembar",
-        "napomena": "Na postojećem sajtu stoje 6, 13, 20. i 27. novembar, ali su to petci. Ovde su četvrtci 5, 12, 19. i 26. novembar [datume potvrditi].",
+        "napomena": "",
         "termini": [
           { "datum": "2026-11-05", "predavaci": [] },
           { "datum": "2026-11-12", "predavaci": [] },
@@ -94,8 +94,8 @@
     "naslov": "Prijava za Zdravo mama",
     "tekst": "Prijava je besplatna i važi za prvi sledeći ciklus. Polja sa zvezdicom su obavezna.",
     "tekstMobilni": "Besplatno, za prvi sledeći ciklus. Polja sa zvezdicom su obavezna.",
-    "napomena": "Prijave stižu na poseban mejl škole: [mejl za prijave Zdravo mama]. Sve prijave mogu da se preuzmu kao tabela za Excel.",
-    "napomenaMobilni": "Prijave stižu na poseban mejl škole: [mejl za prijave Zdravo mama].",
+    "napomena": "Prijave stižu na poseban mejl škole: zdravomama@familyhealth.rs. Sve prijave mogu da se preuzmu kao tabela za Excel.",
+    "napomenaMobilni": "Prijave stižu na poseban mejl škole: zdravomama@familyhealth.rs.",
     "poljeIme": "Ime i prezime",
     "poljeEmail": "Mejl adresa",
     "poljeNedelja": "Nedelja trudnoće",

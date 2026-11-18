@@ -45,7 +45,7 @@
       "uzorak": {
         "naslov": "Uzorak",
         "stavke": [
-          { "istaknuto": "Tumorsko tkivo:", "tekst": "parafinski blok ili pločice, sa najmanje 20% tumorskih ćelija u uzorku" },
+          { "istaknuto": "Tumorsko tkivo:", "tekst": "uzorak iz patologije, sa najmanje 20% tumorskih ćelija" },
           { "istaknuto": "Normalno tkivo:", "tekst": "1–2 ml krvi u EDTA epruveti" },
           { "istaknuto": "", "tekst": "Uz uzorak: patohistološki nalaz i popunjen uputni obrazac" }
         ],
@@ -101,7 +101,7 @@
             "naslov": "Tkivo iz bolnice",
             "podnaslov": "Preuzimanje organizujemo mi",
             "glava": "Tkivo već postoji u patologiji",
-            "tekst": "Parafinski kalup čuva patologija bolnice u kojoj je rađena biopsija ili operacija. Uz vašu saglasnost, preuzimanje organizujemo mi.",
+            "tekst": "Uzorak tumora čuva patologija bolnice u kojoj je rađena biopsija ili operacija. Uz vašu saglasnost, preuzimanje organizujemo mi.",
             "cinjenice": ["Nije potrebna nova biopsija", "Potrebno je vaše ovlašćenje"],
             "ilustracija": "analiza/tkivo"
           },
@@ -133,7 +133,7 @@
     "srodne": {
       "stavke": [
         { "slug": "cancer-essential", "opis": "Ciljani panel za određene tipove tumora" },
-        { "slug": "cancer-detect", "opis": "Tečna biopsija, kada tkivo nije dostupno" },
+        { "slug": "cancer-detect", "opis": "Tečna biopsija, iz krvi" },
         { "slug": "cancer-precision-double-best", "opis": "Tkivo i tečna biopsija zajedno" },
         { "slug": "mrd-pracenje", "opis": "Rano otkrivanje povratka bolesti" }
       ]
