@@ -7,8 +7,8 @@ datum: 2026-07-14
 vremeCitanja: "4 min"
 autor: "[Autor: ime lekara]"
 autorUloga: ""
-slika: ""
-slikaOpis: "Fotografija uz članak"
+slika: "/assets/slike/ai-blog-starost.webp"
+slikaOpis: "Kalendar trudnoće i snimak ultrazvuka (privremena AI fotografija)"
 istaknuto: true
 kalkulatorTrudnoce: true
 predlogTeme: false

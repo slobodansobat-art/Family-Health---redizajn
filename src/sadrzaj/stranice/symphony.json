@@ -21,8 +21,8 @@
       { "oznaka": "Rezultat", "vrednost": "5 radnih dana" },
       { "oznaka": "Tehnologija", "vrednost": "Illumina VeriSeq" }
     ],
-    "slika": "",
-    "slikaOpis": "Fotografija trudnice sa postojećeg sajta"
+    "slika": "/assets/slike/ai-symphony.webp",
+    "slikaOpis": "Ruke drže snimak ultrazvuka ispred stomaka (privremena AI fotografija)"
   },
   "kariogram": {
     "naslov": "Šta Symphony pregleda",

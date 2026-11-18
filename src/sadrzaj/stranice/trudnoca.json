@@ -7,8 +7,8 @@
   "hero": {
     "naslov": "Od 10. nedelje trudnoće do prvog dana bebe.",
     "tekst": "Prenatalni testovi bez rizika za bebu i čuvanje matičnih ćelija iz pupčanika, uz lekara koji vas vodi kroz svaku odluku.",
-    "slika": "",
-    "slikaOpis": "Fotografija porodice sa postojećeg sajta"
+    "slika": "/assets/slike/ai-trudnoca.webp",
+    "slikaOpis": "Trudnica drži ruke na stomaku (privremena AI fotografija)"
   },
   "alat": {
     "pitanje": "U kojoj ste nedelji trudnoće?",
@@ -204,8 +204,8 @@
     "termini": "Četvrtkom od 14 do 16 h, online",
     "dugme": { "tekst": "Prijavite se", "link": "/skola-za-trudnice/#prijava" },
     "rasporedLink": { "tekst": "Raspored i predavači →", "link": "/skola-za-trudnice/" },
-    "slika": "",
-    "slikaOpis": "Fotografija sa predavanja"
+    "slika": "/assets/slike/ai-skola.webp",
+    "slikaOpis": "Laptop sa online predavanjem, sveska i čaj (privremena AI fotografija)"
   },
   "kontakt": {
     "naslov": "Pitajte nas bilo šta.",

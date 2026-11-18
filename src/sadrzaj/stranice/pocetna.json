@@ -32,8 +32,8 @@
     "trudnoca": {
       "nadnaslov": "Trudnoća i beba",
       "naslov": "Od 10. nedelje trudnoće do prvog dana bebe.",
-      "slika": "",
-      "slikaOpis": "Fotografija porodice",
+      "slika": "/assets/slike/ai-porodica.webp",
+      "slikaOpis": "Ručica bebe drži prst roditelja (privremena AI fotografija)",
       "dugme": { "tekst": "Testovi i matične ćelije", "link": "/trudnoca-i-beba/" },
       "napomena": "Plaćanje na rate bez kamate",
       "linijaNaslov": "Šta je važno, i kada",
