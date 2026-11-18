@@ -13,7 +13,7 @@
     "nadnaslov": "Najširi neinvazivni test koji nudimo",
     "naslov": "Symphony: svih 46 hromozoma iz jedne epruvete krvi.",
     "tekst": "Od 10. nedelje trudnoće, bez rizika za bebu. Pored najčešćih trizomija, Symphony pregleda svaki hromozom i sve mikrodelecije i mikroduplikacije veće od 1 Mb.",
-    "vadjenje": "Krv vadimo u našoj ordinaciji ili kod vas kući, a dolazak ne naplaćujemo",
+    "vadjenje": "Krv vadimo u ordinaciji ili kod vas kući, u celoj Srbiji, bez naplate dolaska",
     "dugme": { "tekst": "Zakažite Symphony, 790 €", "link": "#kontakt" },
     "link": { "tekst": "Harmony ili Symphony?", "link": "#izbor" },
     "cinjenice": [
@@ -139,7 +139,7 @@
     "_napomena": "ikonica: telefon | kuca | epruveta | nalaz",
     "koraci": [
       { "naslov": "Zakazivanje", "tekst": "Telefonom ili preko forme. Pripremite nalaz ultrazvuka.", "ikonica": "telefon", "istaknuto": false },
-      { "naslov": "Vađenje krvi", "tekst": "U našoj ordinaciji ili kod vas kući, a dolazak ne naplaćujemo.", "ikonica": "kuca", "istaknuto": true },
+      { "naslov": "Vađenje krvi", "tekst": "U našoj ordinaciji ili kod vas kući, bilo gde u Srbiji, a dolazak ne naplaćujemo.", "ikonica": "kuca", "istaknuto": true },
       { "naslov": "Analiza celog genoma", "tekst": "Laboratorija analizira slobodnu DNK bebe iz krvi majke.", "ikonica": "epruveta", "istaknuto": false },
       { "naslov": "Nalaz za 5 radnih dana", "tekst": "Od prijema uzorka u laboratoriju.", "ikonica": "nalaz", "istaknuto": false }
     ]
