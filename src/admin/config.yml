@@ -94,6 +94,14 @@ collections:
                 label: Lekari Link
                 required: false
                 widget: string
+              - name: ginekolozi
+                label: Ginekolozi
+                required: false
+                widget: string
+              - name: ginekoloziLink
+                label: Ginekolozi Link
+                required: false
+                widget: string
               - name: viberLink
                 label: Viber link
                 required: false
@@ -6759,6 +6767,10 @@ collections:
             fields:
               - name: nadnaslov
                 label: Nadnaslov
+                required: false
+                widget: string
+              - name: telefonOznaka
+                label: Telefon Oznaka
                 required: false
                 widget: string
               - name: naslov

@@ -162,6 +162,9 @@
 .lekari-gin__naslov { color: var(--mint-900); font-size: clamp(30px, 3vw, 42px); line-height: 1.1; }
 .lekari-gin__tekst { max-width: 460px; }
 .lekari-gin__dugmad { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.lekari-gin__linija { margin-top: 18px; color: var(--tekst-blag); font-size: 15px; }
+.lekari-gin__telefon { margin-left: 4px; color: var(--mint-900); font-weight: 600; font-size: 17px; text-decoration: none; white-space: nowrap; }
+.lekari-gin__telefon:hover { text-decoration: underline; }
 .lekari-gin__dugme {
   display: inline-flex; align-items: center; justify-content: space-between; gap: 10px;
   min-height: 48px; padding: 12px 20px; border-radius: 999px; border: 1px solid var(--mint-600);

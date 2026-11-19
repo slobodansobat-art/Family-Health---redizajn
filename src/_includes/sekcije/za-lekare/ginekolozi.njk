@@ -1,9 +1,10 @@
 {#- ZA LEKARE · sekcija za ginekologe (prenatalni testovi i matične ćelije)
     Sidro: #ginekolozi (link u zaglavlju)
-    Sadržaj: stranice.zaLekare.ginekolozi  ·  dugme sa "glavno: true" je puno zeleno
+    Sadržaj: stranice.zaLekare.ginekolozi  ·  telefon: podesavanja.kontakt.ginekolozi  ·  dugme sa "glavno: true" je puno zeleno
     Ikonice: ilustracije/za-lekare/ikonice.njk  ·  Stil: css/stranice/za-lekare.css (.lekari-gin) -#}
 {%- from "ilustracije/za-lekare/ikonice.njk" import ikonica -%}
 {%- set d = stranice.zaLekare.ginekolozi -%}
+{%- set k = podesavanja.kontakt -%}
 <section id="ginekolozi" class="lekari-gin" aria-labelledby="lekari-gin-naslov">
   <div class="kontejner lekari-gin__mreza">
     <div class="lekari-gin__levo">
@@ -15,6 +16,9 @@
         <a href="{{ b.link }}" class="lekari-gin__dugme{% if b.glavno %} lekari-gin__dugme--glavno{% endif %}">{{ b.tekst }}<span class="lekari-gin__strelica" aria-hidden="true">→</span></a>
         {%- endfor %}
       </div>
+      {%- if k.ginekolozi %}
+      <p class="lekari-gin__linija">{{ d.telefonOznaka }} <a href="tel:{{ k.ginekoloziLink }}" class="lekari-gin__telefon">{{ k.ginekolozi }}</a></p>
+      {%- endif %}
     </div>
     <ul class="lekari-gin__lista">
       {%- for s in d.stavke %}
