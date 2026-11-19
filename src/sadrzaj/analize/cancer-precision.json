@@ -46,7 +46,7 @@
         "naslov": "Uzorak",
         "stavke": [
           { "istaknuto": "Tumorsko tkivo:", "tekst": "uzorak iz patologije, sa najmanje 20% tumorskih ćelija" },
-          { "istaknuto": "Normalno tkivo:", "tekst": "krv u EDTA epruveti od 3,5 ml" },
+          { "istaknuto": "Normalno tkivo:", "tekst": "krv u EDTA epruveti od 3,0 ml" },
           { "istaknuto": "", "tekst": "Uz uzorak: patohistološki nalaz i popunjen uputni obrazac" }
         ],
         "napomena": "Uzorak iz patologije donosi pacijent. Transport u laboratoriju organizuje Family Health."
@@ -110,7 +110,7 @@
             "podnaslov": "U ordinaciji ili kod kuće",
             "glava": "Jedna epruveta krvi",
             "tekst": "Krv služi kao zdravo tkivo za poređenje. Vadimo je u našoj ordinaciji ili kod vas kući, a uzorci zatim putuju u laboratoriju u Nemačkoj.",
-            "cinjenice": ["Jedna EDTA epruveta, 3,5 ml", "Dolazak na kućnu adresu ne naplaćujemo"],
+            "cinjenice": ["Jedna EDTA epruveta, 3,0 ml", "Dolazak na kućnu adresu ne naplaćujemo"],
             "ilustracija": "analiza/krv"
           },
           {

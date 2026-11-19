@@ -60,7 +60,7 @@
     "redovi": [
       { "situacija": "Uznapredovali solidni tumor, izbor ciljane terapije", "analiza": "Cancer Precision", "link": "/onkogenetika/analize/cancer-precision/", "uzorak": "Tkivo i krv", "rezultat": "3–4 nedelje", "premium": false },
       { "situacija": "Poznat tip tumora, ciljano pitanje", "analiza": "Cancer Essential", "link": "/onkogenetika/analize/", "uzorak": "Tkivo [potvrditi]", "rezultat": "oko 3 nedelje", "premium": false },
-      { "situacija": "Tečna biopsija, analiza iz krvi", "analiza": "Cancer Detect", "link": "/onkogenetika/analize/", "uzorak": "Krv, 3 × 8 ml", "rezultat": "3–4 nedelje", "premium": false },
+      { "situacija": "Tečna biopsija, analiza iz krvi", "analiza": "Cancer Detect", "link": "/onkogenetika/analize/", "uzorak": "Krv, 3 × 8,5 ml", "rezultat": "3–4 nedelje", "premium": false },
       { "situacija": "Praćenje posle operacije ili terapije", "analiza": "MRD praćenje", "link": "/onkogenetika/analize/", "uzorak": "Tkivo i krv, zatim krv", "rezultat": "na 3–4 meseca", "premium": false },
       { "situacija": "Kandidat za personalizovanu vakcinu", "analiza": "Cancer Neo", "link": "/onkogenetika/cancer-neo/", "uzorak": "Tkivo i krv", "rezultat": "4–6 nedelja", "premium": true },
       { "situacija": "Postojeći nalaz, potrebno tumačenje", "analiza": "Cancer Advice", "link": "/onkogenetika/analize/", "uzorak": "Postojeći nalazi", "rezultat": "2 nedelje", "premium": false }
@@ -70,8 +70,8 @@
     "naslov": "Šta je potrebno od uzorka",
     "stavke": [
       { "ikonica": "kalup", "naslov": "Tkivo tumora", "tekst": "Uzorak iz patologije, sa najmanje 20% tumorskih ćelija. Donosi ga pacijent." },
-      { "ikonica": "kap", "naslov": "Krv, kao zdravo tkivo", "tekst": "EDTA epruveta od 3,5 ml. Vadimo je mi, u ordinaciji ili kod pacijenta kući." },
-      { "ikonica": "epruveta", "naslov": "Tečna biopsija", "tekst": "3 epruvete za slobodnu DNK (cfDNA), po 8 ml krvi." }
+      { "ikonica": "kap", "naslov": "Krv, kao zdravo tkivo", "tekst": "EDTA epruveta od 3,0 ml. Vadimo je mi, u ordinaciji ili kod pacijenta kući." },
+      { "ikonica": "epruveta", "naslov": "Tečna biopsija", "tekst": "3 epruvete za slobodnu DNK (cfDNA), po 8,5 ml krvi." }
     ]
   },
   "izvestaj": {

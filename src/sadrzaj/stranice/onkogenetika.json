@@ -52,7 +52,7 @@
         "pitanje": "Može li analiza samo iz krvi?",
         "analiza": "Tečna biopsija (Cancer Detect)",
         "opis": "Genetski profil tumora dobijamo iz uzorka krvi, bez nove biopsije.",
-        "uzorak": "Tri epruvete za slobodnu DNK, po 8 ml",
+        "uzorak": "Tri epruvete za slobodnu DNK, po 8,5 ml",
         "rezultat": "Za 3 do 4 nedelje",
         "dugme": {
           "tekst": "",
@@ -167,8 +167,8 @@
     "uzorakNaslov": "Šta se šalje",
     "uzorak": [
       "Uzorak tumora iz patologije, sa najmanje 20% tumora",
-      "krv u EDTA epruveti od 3,5 ml, kao zdravo tkivo za poređenje",
-      "Za tečnu biopsiju: 3 epruvete za slobodnu DNK, po 8 ml"
+      "krv u EDTA epruveti od 3,0 ml, kao zdravo tkivo za poređenje",
+      "Za tečnu biopsiju: 3 epruvete za slobodnu DNK, po 8,5 ml"
     ],
     "dugme": {
       "tekst": "Sve za lekare: uput, uzorak, izveštaj →",
