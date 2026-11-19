@@ -1,5 +1,5 @@
 ---
-naslov: "Tečna biopsija: kada je tkivo tumora nedostupno"
+naslov: "Tečna biopsija: profil tumora iz uzorka krvi"
 opis: "Kako se profil tumora dobija iz krvi i koja su ograničenja."
 kategorija: "Onkogenetika"
 datum: ""
