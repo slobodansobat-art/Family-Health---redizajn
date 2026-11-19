@@ -9,7 +9,7 @@
     "naslov": "Genetika tumora koja pomaže da se izabere prava terapija.",
     "tekst": "Svaki tumor nosi sopstvene mutacije. Analiziramo ih u nemačkim laboratorijama, a konzilijum onkologa pomaže vašem lekaru da izabere terapiju koja cilja baš njih.",
     "dugmeGlavno": {
-      "tekst": "Pošaljite nalaz na besplatnu procenu",
+      "tekst": "Zakažite besplatne konsultacije",
       "link": "#kontakt"
     },
     "dugmeSporedno": {
@@ -52,7 +52,7 @@
         "pitanje": "Može li analiza samo iz krvi?",
         "analiza": "Tečna biopsija (Cancer Detect)",
         "opis": "Genetski profil tumora dobijamo iz uzorka krvi, bez nove biopsije.",
-        "uzorak": "Tri epruvete krvi po 10 ml",
+        "uzorak": "Tri epruvete za slobodnu DNK, po 8 ml",
         "rezultat": "Za 3 do 4 nedelje",
         "dugme": {
           "tekst": "",
@@ -108,28 +108,28 @@
   "proces": {
     "naslov": "Kako izgleda proces",
     "poslednjeDugme": {
-      "tekst": "Pošaljite nalaz na procenu",
+      "tekst": "Zakažite konsultacije",
       "link": "#kontakt"
     },
     "koraci": [
       {
         "naslov": "Razgovor sa lekarom",
         "podnaslov": "Besplatno",
-        "glava": "Prvo pregledamo nalaz",
-        "tekst": "Pošaljite nalaz ili nas pozovite. Lekar predlaže analizu koja ima smisla za vaš slučaj, uz okvirnu cenu, pre bilo kakve obaveze.",
+        "glava": "Prvo razgovaramo o nalazu",
+        "tekst": "Zakažite konsultacije ili nas pozovite. Na razgovoru lekar pregleda vaše nalaze i predlaže analizu koja ima smisla za vaš slučaj, uz okvirnu cenu, pre bilo kakve obaveze.",
         "cinjenice": [
-          "Procena je besplatna",
+          "Konsultacije su besplatne",
           "Javljamo se istog radnog dana"
         ],
         "ilustracija": "onkogenetika/razgovor"
       },
       {
         "naslov": "Uzorak",
-        "podnaslov": "Logistiku preuzimamo mi",
+        "podnaslov": "Nije potrebna nova biopsija",
         "glava": "Tkivo iz patologije i krv",
-        "tekst": "Uzorak tumora preuzimamo iz patologije, uz vašu saglasnost. Krv vadimo u ordinaciji ili kod vas kući.",
+        "tekst": "Uzorak tumora preuzimate iz patologije bolnice u kojoj je rađena biopsija ili operacija i donosite ga nama. Objasnićemo vam tačno šta da tražite. Krv vadimo u ordinaciji ili kod vas kući.",
         "cinjenice": [
-          "Nije potrebna nova biopsija",
+          "Uzorak donosite vi",
           "Dolazak na kućnu adresu ne naplaćujemo"
         ],
         "ilustracija": "onkogenetika/uzorak"
@@ -157,18 +157,18 @@
         "ilustracija": "onkogenetika/izvestaj"
       }
     ],
-    "napomena": "Cena zavisi od vrste analize i panela. Okvirnu cenu dobijate posle besplatne procene nalaza, pre nego što se za bilo šta odlučite."
+    "napomena": "Cena zavisi od vrste analize i panela. Okvirnu cenu dobijate na besplatnim konsultacijama, pre nego što se za bilo šta odlučite."
   },
   "lekari": {
     "nadnaslov": "Za onkologe i patologe",
-    "naslov": "Pošaljite pacijenta, a mi preuzimamo logistiku.",
+    "naslov": "Uputite pacijenta, a ostalo vodimo mi.",
     "tekst": "Izveštaj stiže vama i pacijentu, sa listom varijanti od terapijskog značaja, TMB i MSI statusom i predlogom ciljane terapije.",
-    "pomocMd": "**Pomažemo i vama:** razgovor sa pacijentom, papirologiju, logistiku uzorka i tumačenje izveštaja preuzimamo mi.",
+    "pomocMd": "**Pomažemo i vama:** razgovor sa pacijentom, papirologiju, slanje uzorka u laboratoriju i tumačenje izveštaja preuzimamo mi.",
     "uzorakNaslov": "Šta se šalje",
     "uzorak": [
       "Uzorak tumora iz patologije, sa najmanje 20% tumora",
-      "1–2 ml krvi u EDTA epruveti, kao zdravo tkivo za poređenje",
-      "Za tečnu biopsiju: 3 epruvete po 10 ml krvi"
+      "krv u EDTA epruveti od 3,5 ml, kao zdravo tkivo za poređenje",
+      "Za tečnu biopsiju: 3 epruvete za slobodnu DNK, po 8 ml"
     ],
     "dugme": {
       "tekst": "Sve za lekare: uput, uzorak, izveštaj →",
@@ -177,9 +177,9 @@
     "linijaNaslov": "Direktna linija za lekare"
   },
   "kontakt": {
-    "naslov": "Pošaljite nalaz na besplatnu procenu.",
-    "tekst": "Lekar pregleda nalaz i javlja vam se istog radnog dana sa predlogom analize i okvirnom cenom.",
-    "privatnost": "Vaši podaci koriste se samo za procenu i ne prosleđuju se nikome bez vaše saglasnosti.",
+    "naslov": "Zakažite besplatne konsultacije.",
+    "tekst": "Javljamo vam se istog radnog dana da dogovorimo termin. Na razgovor ponesite nalaze koje imate, a lekar predlaže analizu i okvirnu cenu.",
+    "privatnost": "Vaši podaci koriste se samo za dogovor konsultacija i ne prosleđuju se nikome bez vaše saglasnosti.",
     "forma": {
       "ime": "Ime i prezime",
       "telefon": "Telefon",

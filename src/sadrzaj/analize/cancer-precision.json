@@ -46,10 +46,10 @@
         "naslov": "Uzorak",
         "stavke": [
           { "istaknuto": "Tumorsko tkivo:", "tekst": "uzorak iz patologije, sa najmanje 20% tumorskih ćelija" },
-          { "istaknuto": "Normalno tkivo:", "tekst": "1–2 ml krvi u EDTA epruveti" },
+          { "istaknuto": "Normalno tkivo:", "tekst": "krv u EDTA epruveti od 3,5 ml" },
           { "istaknuto": "", "tekst": "Uz uzorak: patohistološki nalaz i popunjen uputni obrazac" }
         ],
-        "napomena": "Preuzimanje uzorka i transport organizuje Family Health."
+        "napomena": "Uzorak iz patologije donosi pacijent. Transport u laboratoriju organizuje Family Health."
       },
       "izvestaj": {
         "naslov": "Medicinski izveštaj sadrži",
@@ -90,19 +90,19 @@
         "naslov": "Šta je potrebno od vas",
         "stavke": [
           {
-            "naslov": "Pošaljite nalaz",
-            "podnaslov": "Procena je besplatna",
-            "glava": "Prvo pogledamo nalaz",
-            "tekst": "Pošaljite patohistološki nalaz i otpusnu listu preko forme ili mejlom. Lekar procenjuje da li analiza ima smisla i javlja se sa cenom.",
+            "naslov": "Konsultacije",
+            "podnaslov": "Besplatno",
+            "glava": "Prvo razgovaramo o nalazu",
+            "tekst": "Zakažite konsultacije i ponesite patohistološki nalaz i otpusnu listu. Lekar procenjuje da li analiza ima smisla i predlaže cenu.",
             "cinjenice": ["Bez obaveze", "Javljamo se istog radnog dana"],
             "ilustracija": "analiza/nalaz"
           },
           {
             "naslov": "Tkivo iz bolnice",
-            "podnaslov": "Preuzimanje organizujemo mi",
+            "podnaslov": "Donosite ga vi",
             "glava": "Tkivo već postoji u patologiji",
-            "tekst": "Uzorak tumora čuva patologija bolnice u kojoj je rađena biopsija ili operacija. Uz vašu saglasnost, preuzimanje organizujemo mi.",
-            "cinjenice": ["Nije potrebna nova biopsija", "Potrebno je vaše ovlašćenje"],
+            "tekst": "Uzorak tumora čuva patologija bolnice u kojoj je rađena biopsija ili operacija. Preuzimate ga vi i donosite nama, a mi vam kažemo tačno šta da tražite.",
+            "cinjenice": ["Nije potrebna nova biopsija", "Uz uzorak: patohistološki nalaz"],
             "ilustracija": "analiza/tkivo"
           },
           {
@@ -110,7 +110,7 @@
             "podnaslov": "U ordinaciji ili kod kuće",
             "glava": "Jedna epruveta krvi",
             "tekst": "Krv služi kao zdravo tkivo za poređenje. Vadimo je u našoj ordinaciji ili kod vas kući, a uzorci zatim putuju u laboratoriju u Nemačkoj.",
-            "cinjenice": ["Dovoljno je 1–2 ml krvi", "Dolazak na kućnu adresu ne naplaćujemo"],
+            "cinjenice": ["Jedna EDTA epruveta, 3,5 ml", "Dolazak na kućnu adresu ne naplaćujemo"],
             "ilustracija": "analiza/krv"
           },
           {
@@ -122,7 +122,7 @@
             "ilustracija": "analiza/izvestaj"
           }
         ],
-        "poslednje": { "tekst": "Pošaljite nalaz na procenu", "link": "#kontakt" }
+        "poslednje": { "tekst": "Zakažite konsultacije", "link": "#kontakt" }
       },
       "cena": {
         "naslov": "Koliko košta?",

@@ -2,7 +2,7 @@
   "_naziv": "Za lekare",
   "seo": {
     "naslov": "Za lekare – upućivanje pacijenata | Family Health",
-    "opis": "Uputite pacijenta na genetsku analizu tumora ili prenatalni test. Logistiku uzorka, transport i izveštaj preuzimamo mi. Direktna linija za lekare."
+    "opis": "Uputite pacijenta na genetsku analizu tumora ili prenatalni test. Slanje uzorka u laboratoriju i izveštaj preuzimamo mi. Direktna linija za lekare."
   },
   "hero": {
     "putanjaRoditelj": "Onkogenetika",
@@ -10,13 +10,13 @@
     "putanjaTrenutna": "Za lekare",
     "nadnaslov": "Za onkologe, hirurge i patologe",
     "naslov": "Vi postavljate indikaciju. Mi preuzimamo sve ostalo.",
-    "tekst": "Genetska analiza tumora za vašeg pacijenta, od preuzimanja uzorka iz patologije do izveštaja sa predlogom ciljane terapije. Logistiku, papirologiju i razgovor sa pacijentom preuzimamo mi.",
+    "tekst": "Genetska analiza tumora za vašeg pacijenta, od uzorka do izveštaja sa predlogom ciljane terapije. Slanje uzorka u laboratoriju, papirologiju i razgovor sa pacijentom preuzimamo mi.",
     "dugme": { "tekst": "Uputite pacijenta", "link": "#uputi" },
     "telefonOznaka": "Direktna linija",
     "cinjenice": [
       { "oznaka": "Laboratorija", "vrednost": "CeGaT, Tibingen, Nemačka" },
       { "oznaka": "Rezultat", "vrednost": "3 do 4 nedelje za većinu analiza" },
-      { "oznaka": "Logistika", "vrednost": "Uzorak iz patologije preuzimamo mi" },
+      { "oznaka": "Uzorak", "vrednost": "Iz patologije, donosi ga pacijent" },
       { "oznaka": "Izveštaj", "vrednost": "Stiže vama i pacijentu" }
     ]
   },
@@ -29,7 +29,7 @@
     "oznakaNasKorak": "Naš korak",
     "koraci": [
       { "naslov": "Indikacija", "vasTekst": "Uput ili poziv, uz kratku anamnezu i patohistološki nalaz", "nasTekst": "Kontaktiramo pacijenta, besplatna procena i cena pre bilo kakve obaveze" },
-      { "naslov": "Uzorak", "vasTekst": "", "nasTekst": "Preuzimamo uzorak iz patologije i vadimo krv, u ordinaciji ili kod pacijenta kući" },
+      { "naslov": "Uzorak", "vasTekst": "", "nasTekst": "Pacijentu objašnjavamo koji uzorak da preuzme iz patologije; krv vadimo u ordinaciji ili kod pacijenta kući" },
       { "naslov": "Analiza", "vasTekst": "", "nasTekst": "Transport u laboratoriju CeGaT u Tibingenu i sekvenciranje, 3 do 4 nedelje" },
       { "naslov": "Izveštaj", "vasTekst": "", "nasTekst": "Izveštaj sa varijantama, TMB, MSI i predlogom terapije šaljemo vama i pacijentu" },
       { "naslov": "Odluka", "vasTekst": "Odluka o terapiji, na osnovu izveštaja", "nasTekst": "Po potrebi, drugo mišljenje konzilijuma nemačkih onkologa" }
@@ -42,8 +42,8 @@
     "dugmeTelefon": "Direktna linija:",
     "stavke": [
       { "ikonica": "razgovor", "naslov": "Razgovor sa pacijentom preuzimamo mi", "tekst": "Objašnjavamo analizu, cenu i proceduru, pa vi u ambulanti ne trošite vreme na to." },
-      { "ikonica": "dokument", "naslov": "Papirologija je na nama", "tekst": "Ovlašćenje za preuzimanje bloka iz patologije i dozvole za slanje uzorka u inostranstvo." },
-      { "ikonica": "kamion", "naslov": "Logistika uzorka", "tekst": "Od patologije do laboratorije u Nemačkoj, uz praćenje statusa do izveštaja." },
+      { "ikonica": "dokument", "naslov": "Papirologija je na nama", "tekst": "Dozvole i dokumentacija za slanje uzorka u laboratoriju u inostranstvu." },
+      { "ikonica": "kamion", "naslov": "Slanje uzorka", "tekst": "Od naše ordinacije do laboratorije u Nemačkoj, uz praćenje statusa do izveštaja." },
       { "ikonica": "lupa", "naslov": "Pomoć pri izboru analize", "tekst": "Za konkretnog pacijenta, telefonom, pre nego što izdate uput." },
       { "ikonica": "ljudi", "naslov": "Tumačenje izveštaja", "tekst": "Konsultacija o nalazu, a po potrebi i mišljenje konzilijuma nemačkih onkologa." },
       { "ikonica": "knjiga", "naslov": "Stručni materijali", "tekst": "Spiskovi gena u panelima, uputstva za uzorak i primeri izveštaja. [edukacije za lekare: potvrditi]" }
@@ -60,7 +60,7 @@
     "redovi": [
       { "situacija": "Uznapredovali solidni tumor, izbor ciljane terapije", "analiza": "Cancer Precision", "link": "/onkogenetika/analize/cancer-precision/", "uzorak": "Tkivo i krv", "rezultat": "3–4 nedelje", "premium": false },
       { "situacija": "Poznat tip tumora, ciljano pitanje", "analiza": "Cancer Essential", "link": "/onkogenetika/analize/", "uzorak": "Tkivo [potvrditi]", "rezultat": "oko 3 nedelje", "premium": false },
-      { "situacija": "Tečna biopsija, analiza iz krvi", "analiza": "Cancer Detect", "link": "/onkogenetika/analize/", "uzorak": "Krv, 3 × 10 ml", "rezultat": "3–4 nedelje", "premium": false },
+      { "situacija": "Tečna biopsija, analiza iz krvi", "analiza": "Cancer Detect", "link": "/onkogenetika/analize/", "uzorak": "Krv, 3 × 8 ml", "rezultat": "3–4 nedelje", "premium": false },
       { "situacija": "Praćenje posle operacije ili terapije", "analiza": "MRD praćenje", "link": "/onkogenetika/analize/", "uzorak": "Tkivo i krv, zatim krv", "rezultat": "na 3–4 meseca", "premium": false },
       { "situacija": "Kandidat za personalizovanu vakcinu", "analiza": "Cancer Neo", "link": "/onkogenetika/cancer-neo/", "uzorak": "Tkivo i krv", "rezultat": "4–6 nedelja", "premium": true },
       { "situacija": "Postojeći nalaz, potrebno tumačenje", "analiza": "Cancer Advice", "link": "/onkogenetika/analize/", "uzorak": "Postojeći nalazi", "rezultat": "2 nedelje", "premium": false }
@@ -69,9 +69,9 @@
   "uzorak": {
     "naslov": "Šta je potrebno od uzorka",
     "stavke": [
-      { "ikonica": "kalup", "naslov": "Tkivo tumora", "tekst": "Uzorak iz patologije, sa najmanje 20% tumorskih ćelija. Preuzimanje organizujemo mi." },
-      { "ikonica": "kap", "naslov": "Krv, kao zdravo tkivo", "tekst": "1–2 ml u EDTA epruveti. Vadimo je mi, u ordinaciji ili kod pacijenta kući." },
-      { "ikonica": "epruveta", "naslov": "Tečna biopsija", "tekst": "3 epruvete po 10 ml krvi, u posebnim epruvetama za slobodnu DNK." }
+      { "ikonica": "kalup", "naslov": "Tkivo tumora", "tekst": "Uzorak iz patologije, sa najmanje 20% tumorskih ćelija. Donosi ga pacijent." },
+      { "ikonica": "kap", "naslov": "Krv, kao zdravo tkivo", "tekst": "EDTA epruveta od 3,5 ml. Vadimo je mi, u ordinaciji ili kod pacijenta kući." },
+      { "ikonica": "epruveta", "naslov": "Tečna biopsija", "tekst": "3 epruvete za slobodnu DNK (cfDNA), po 8 ml krvi." }
     ]
   },
   "izvestaj": {

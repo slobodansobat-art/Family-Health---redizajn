@@ -79,7 +79,7 @@
     },
     "koraci": [
       { "naslov": "Razgovor sa lekarom", "oznaka": "Besplatno", "tekst": "Naš lekar pregleda dijagnozu i dosadašnje lečenje i procenjuje da li je Cancer Neo realna opcija. Razgovaramo i sa vašim onkologom." },
-      { "naslov": "Uzorak", "oznaka": "Logistiku preuzimamo mi", "tekst": "Uzorak tumora preuzimamo iz patologije, uz vaše ovlašćenje. Krv, kao zdravo tkivo, vadimo u ordinaciji ili kod vas kući." },
+      { "naslov": "Uzorak", "oznaka": "Iz patologije i krv", "tekst": "Uzorak tumora preuzimate iz patologije i donosite nama; objasnićemo vam tačno šta da tražite. Krv, kao zdravo tkivo, vadimo u ordinaciji ili kod vas kući." },
       { "naslov": "Sekvenciranje egzoma", "oznaka": "4–6 nedelja", "tekst": "U laboratoriji CeGaT u Nemačkoj sekvencira se egzom tumora i zdravog tkiva i određuje HLA tip, koji pokazuje šta vaš imuni sistem može da prepozna." },
       { "naslov": "Izbor neoantigena", "oznaka": "Bioinformatička analiza", "tekst": "Od svih pronađenih promena biraju se one sa najvećom verovatnoćom imunog odgovora, i za njih se dizajniraju peptidi." },
       { "naslov": "Izrada i primena vakcine", "oznaka": "U dogovoru sa onkologom", "tekst": "Vakcina se izrađuje u Nemačkoj, prema izveštaju, i primenjuje u dogovoru sa vašim onkologom." }
@@ -147,7 +147,7 @@
     "stavke": [
       "Lični koordinator tokom celog procesa",
       "Razgovor sa lekarom pre i posle analize",
-      "Preuzimanje tkiva iz patologije i vađenje krvi",
+      "Vađenje krvi i slanje uzoraka u laboratoriju",
       "Sekvenciranje egzoma tumora i zdravog tkiva",
       "HLA tipizacija",
       "Izveštaj sa izabranim neoantigenima i dizajnom peptida",

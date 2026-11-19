@@ -11,7 +11,7 @@
     },
     "putanjaOvde": "Sve analize",
     "naslov": "Sve analize, od izbora terapije do praćenja.",
-    "tekst": "Izaberite šta vam treba ili kakav uzorak imate. Ako niste sigurni, pošaljite nalaz, a naš lekar predlaže analizu besplatno.",
+    "tekst": "Izaberite šta vam treba ili kakav uzorak imate. Ako niste sigurni, zakažite konsultacije, a naš lekar predlaže analizu besplatno.",
     "pretragaOznaka": "Pretražite analize",
     "pretragaPlaceholder": "Pretražite po nazivu, npr. MRD ili tečna biopsija",
     "pretragaPlaceholderMobilni": "Pretražite po nazivu, npr. MRD"
@@ -79,9 +79,9 @@
   },
   "nedoumica": {
     "naslov": "Ne znate koja analiza je prava?",
-    "tekst": "To je najčešće pitanje i ne morate sami da ga rešite. Pošaljite postojeći nalaz, a lekar predlaže analizu i javlja se sa cenom, bez obaveze.",
+    "tekst": "To je najčešće pitanje i ne morate sami da ga rešite. Zakažite konsultacije, a lekar na osnovu vaših nalaza predlaže analizu i cenu, bez obaveze.",
     "dugme": {
-      "tekst": "Pošaljite nalaz",
+      "tekst": "Zakažite konsultacije",
       "link": "#kontakt"
     },
     "link": {
@@ -90,8 +90,8 @@
     }
   },
   "kontakt": {
-    "naslov": "Pošaljite nalaz na besplatnu procenu.",
-    "tekst": "Lekar pregleda nalaz i javlja se istog radnog dana sa preporukom i cenom.",
+    "naslov": "Zakažite besplatne konsultacije.",
+    "tekst": "Javljamo se istog radnog dana da dogovorimo termin. Na razgovoru lekar pregleda nalaze i predlaže analizu, uz cenu.",
     "poljeIme": "Ime i prezime",
     "poljeTelefon": "Telefon",
     "poljeEmail": "Mejl adresa",

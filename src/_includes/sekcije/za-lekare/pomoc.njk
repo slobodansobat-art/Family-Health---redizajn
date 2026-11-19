@@ -1,7 +1,7 @@
 {#- ZA LEKARE · "Pomažemo i vama": šta preuzimamo od lekara
     Desktop: uvod levo (lepi se pri skrolu), lista u dve kolone desno.
     Mobilni: uvod, lista, pa dugme za direktnu liniju.
-    Sadržaj: stranice.zaLekare.pomoc  ·  telefon: podesavanja.kontakt.mobilni
+    Sadržaj: stranice.zaLekare.pomoc  ·  telefon: podesavanja.kontakt.lekari (direktna linija za lekare)
     Ikonice: ilustracije/za-lekare/ikonice.njk  ·  Stil: css/stranice/za-lekare.css (.lekari-pomoc) -#}
 {%- from "ilustracije/za-lekare/ikonice.njk" import ikonica -%}
 {%- set d = stranice.zaLekare.pomoc -%}
@@ -12,7 +12,7 @@
       <p class="lekari-pomoc__nadnaslov">{{ d.nadnaslov }}</p>
       <h2 id="lekari-pomoc-naslov" class="naslov-l lekari-pomoc__naslov">{{ d.naslov }}</h2>
       <p class="blag lekari-pomoc__tekst">{{ d.tekst }}</p>
-      <a href="tel:{{ k.mobilniLink }}" class="dugme lekari-pomoc__dugme">{{ d.dugmeTelefon }} {{ k.mobilni }}</a>
+      <a href="tel:{{ k.lekariLink }}" class="dugme lekari-pomoc__dugme">{{ d.dugmeTelefon }} {{ k.lekari }}</a>
     </div>
     <ul class="lekari-pomoc__lista">
       {%- for s in d.stavke %}

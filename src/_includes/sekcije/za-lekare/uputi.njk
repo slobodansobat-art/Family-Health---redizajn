@@ -1,7 +1,7 @@
 {#- ZA LEKARE · "Uputite pacijenta": tekst, direktna linija i forma
     Sidro: #uputi (dugme u zaglavlju, hero, donja traka)
     Desktop: tekst i direktna linija levo, forma desno. Mobilni: tekst, forma, pa direktna linija.
-    Sadržaj: stranice.zaLekare.uputi  ·  telefon: podesavanja.kontakt.mobilni
+    Sadržaj: stranice.zaLekare.uputi  ·  telefon: podesavanja.kontakt.lekari (direktna linija za lekare)
     Forma: Netlify, ime "za-lekare-uputi"  ·  Stil: css/stranice/za-lekare.css (.lekari-uputi) -#}
 {%- from "makroi/komponente.njk" import forma, polje, izbor, saglasnost, posalji with context -%}
 {%- set d = stranice.zaLekare.uputi -%}
@@ -13,7 +13,7 @@
       <h2 id="lekari-uputi-naslov" class="naslov-l lekari-uputi__naslov">{{ d.naslov }}</h2>
       <p class="lekari-uputi__tekst">{{ d.tekst }}</p>
       <p class="lekari-uputi__linija">{{ d.telefonOznaka }}</p>
-      <a href="tel:{{ k.mobilniLink }}" class="lekari-uputi__telefon">{{ k.mobilni }}</a>
+      <a href="tel:{{ k.lekariLink }}" class="lekari-uputi__telefon">{{ k.lekari }}</a>
     </div>
 
     {% call forma("za-lekare-uputi", "forma forma--bela lekari-uputi__forma") %}

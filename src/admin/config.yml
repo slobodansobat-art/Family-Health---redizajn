@@ -86,6 +86,14 @@ collections:
                 required: false
                 widget: string
                 hint: Broj za poziv, sa +381, bez razmaka
+              - name: lekari
+                label: Lekari
+                required: false
+                widget: string
+              - name: lekariLink
+                label: Lekari Link
+                required: false
+                widget: string
               - name: viberLink
                 label: Viber link
                 required: false
@@ -738,7 +746,7 @@ collections:
               - name: tekst
                 label: Tekst
                 required: false
-                widget: string
+                widget: text
               - name: imeOznaka
                 label: Ime Oznaka
                 required: false
@@ -3971,7 +3979,7 @@ collections:
               - name: tekst
                 label: Tekst
                 required: false
-                widget: string
+                widget: text
               - name: poljeIme
                 label: Polje ime
                 required: false
@@ -4318,7 +4326,7 @@ collections:
               - name: privatnost
                 label: Privatnost
                 required: false
-                widget: string
+                widget: text
               - name: forma
                 label: Forma
                 required: false
@@ -6524,7 +6532,7 @@ collections:
                   - name: nasTekst
                     label: Naš Tekst
                     required: false
-                    widget: string
+                    widget: text
           - name: pomoc
             label: Pomoc
             required: false

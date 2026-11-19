@@ -10,7 +10,7 @@
     "lekari": "Za lekare",
     "pacijenti": "Za pacijente i porodicu",
     "pacijentiMobilni": "Za pacijente",
-    "dugme": { "tekst": "Pošaljite nalaz na procenu", "link": "#kontakt" }
+    "dugme": { "tekst": "Zakažite konsultacije", "link": "#kontakt" }
   },
   "dokumenti": {
     "naslov": "Za lekare"
@@ -23,8 +23,8 @@
     "naslov": "Srodne analize"
   },
   "kontakt": {
-    "naslov": "Pošaljite nalaz na besplatnu procenu.",
-    "tekst": "Lekar pregleda nalaz i javlja se istog radnog dana sa preporukom i cenom.",
+    "naslov": "Zakažite besplatne konsultacije.",
+    "tekst": "Javljamo se istog radnog dana da dogovorimo termin. Na razgovoru lekar pregleda nalaze i predlaže analizu, uz cenu.",
     "imeOznaka": "Ime i prezime",
     "telefonOznaka": "Telefon",
     "emailOznaka": "Mejl adresa",

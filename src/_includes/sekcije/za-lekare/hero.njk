@@ -1,5 +1,5 @@
 {#- ZA LEKARE · uvodni deo (hero) sa animacijom krvnih zrnaca, dugmetom i direktnom linijom
-    Sadržaj: stranice.zaLekare.hero  ·  telefon: podesavanja.kontakt.mobilni
+    Sadržaj: stranice.zaLekare.hero  ·  telefon: podesavanja.kontakt.lekari (direktna linija za lekare)
     Animacija (krvna zrnca i delovi DNK, tečna biopsija) se crta na <canvas> u js/stranice/za-lekare.js
     Stil: css/stranice/za-lekare.css (.lekari-hero) -#}
 {%- set d = stranice.zaLekare.hero -%}
@@ -15,7 +15,7 @@
     <p class="lekari-hero__tekst">{{ d.tekst }}</p>
     <div class="lekari-hero__akcije">
       <a href="{{ d.dugme.link }}" class="dugme dugme--belo lekari-hero__dugme">{{ d.dugme.tekst }}</a>
-      <a href="tel:{{ k.mobilniLink }}" class="lekari-hero__telefon"><span>{{ d.telefonOznaka }}</span> <strong>{{ k.mobilni }}</strong></a>
+      <a href="tel:{{ k.lekariLink }}" class="lekari-hero__telefon"><span>{{ d.telefonOznaka }}</span> <strong>{{ k.lekari }}</strong></a>
     </div>
     <dl class="lekari-hero__cinjenice">
       {%- for c in d.cinjenice %}

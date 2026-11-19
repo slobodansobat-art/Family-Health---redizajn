@@ -1,5 +1,5 @@
 {#- ONKOGENETIKA · za lekare ("Pomažemo i vama") + direktna linija za lekare
-    Sadržaj: stranice.onkogenetika.lekari, telefon iz podesavanja.kontakt.mobilni
+    Sadržaj: stranice.onkogenetika.lekari, telefon iz podesavanja.kontakt.lekari (direktna linija za lekare)
     Stil: css/stranice/onkogenetika.css (.onko-lekari) -#}
 {%- set d = stranice.onkogenetika.lekari -%}
 {%- set k = podesavanja.kontakt -%}
@@ -21,7 +21,7 @@
 
     <div class="onko-lekari__kartica">
       <p class="onko-lekari__linija">{{ d.linijaNaslov }}</p>
-      <a href="tel:{{ k.mobilniLink }}" class="onko-lekari__telefon">{{ k.mobilni }}</a>
+      <a href="tel:{{ k.lekariLink }}" class="onko-lekari__telefon">{{ k.lekari }}</a>
     </div>
   </div>
 </section>
